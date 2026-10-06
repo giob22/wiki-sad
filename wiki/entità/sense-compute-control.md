@@ -26,6 +26,12 @@ L'interazione segue **tre fasi**:
 | **Compute** | componenti di elaborazione del contesto | **aggregano e interpretano** i dati dei sensori per determinare la **situazione corrente** |
 | **Control** | componenti di controllo | **decidono quali azioni** eseguire e **inviano comandi agli attuatori** |
 
+> ⚠️ Contraddizione: le slide assegnano la **decisione** a due fasi diverse.
+> - [[3-Architectural Patterns-complete.pdf#page=84]] (descrizione generale): Compute **interpreta** soltanto («aggregate and interpret sensor data to determine the current situation»); Control **decide** e invia i comandi («decide which actions to perform and send commands to the actuators»).
+> - [[3-Architectural Patterns-complete.pdf#page=87]] (variante a tre stadi): Compute **interpreta e decide** («combines context interpretation and decision making»); Control **invia soltanto** i comandi («sends commands to the actuators»). Vanno nella stessa direzione la figura di [[3-Architectural Patterns-complete.pdf#page=85]] (un unico blocco «Compute and Control»), quella di [[3-Architectural Patterns-complete.pdf#page=88]] (Compute = «Interpret data and decide», Control = «Activate physical actions») e la tabella del Lunar Lander di [[3-Architectural Patterns-complete.pdf#page=93]] (Compute = «Determine the required thrust», Control = «Activate the engine»).
+>
+> 🧩 Come leggerle: la descrizione di p. 84 separa interpretazione e decisione, quindi descrive di fatto i ruoli della **variante a quattro stadi** (Context processing → Control logic), con gli attuatori fuori dalle tre fasi. Quando si parla della **variante a tre stadi**, vale p. 87: la decisione sta in Compute e Control coincide con l'attuazione. All'orale conviene dichiarare quale variante si sta descrivendo.
+
 Il **ciclo di controllo** (*control loop*, [[3-Architectural Patterns-complete.pdf#page=85]]): leggere tutti i valori dei sensori → calcolare le uscite di controllo → inviare i comandi agli attuatori → ripetere.
 
 ## Diagramma
@@ -154,3 +160,4 @@ La slide pone la domanda — *che dire di modificabilità, testabilità, prestaz
 - [[architectural-patterns-mvc-scc]] — [[3-Architectural Patterns-complete.pdf#page=83]]–[[3-Architectural Patterns-complete.pdf#page=95]]
 
 _Aggiornato: 2026-10-06 — ingest 3-Architectural Patterns-complete.pdf (nuova lezione)_
+_Aggiornato: 2026-10-07 — segnalata la contraddizione tra p. 84 e p. 87 su chi prende la decisione_

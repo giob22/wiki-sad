@@ -94,3 +94,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 ## [2026-10-06] setup | repository git e regola di commit/push
 - repository privato https://github.com/giob22/wiki-sad (primo commit b686f1e)
 - CLAUDE.md: ogni modifica alla wiki si chiude con commit e push
+
+## [2026-10-07] fix | sense-compute-control: contraddizione delle slide sulla fase che decide
+- p. 84: Compute interpreta, Control decide e invia; p. 87 (e figure pp. 85, 88, tabella p. 93): Compute interpreta e decide, Control invia
+- aggiunta nota ⚠️ Contraddizione con le citazioni testuali e la chiave di lettura (p. 84 ≈ ruoli della variante a quattro stadi)
