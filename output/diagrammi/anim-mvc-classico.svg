@@ -1,0 +1,41 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 430' font-family='Segoe UI, Helvetica, Arial, sans-serif'>
+<rect width='760' height='430' fill='#ffffff'/>
+<text x='380.0' y='26' text-anchor='middle' font-size='18' font-weight='700' fill='#1f2d3d'>MVC classico — prenotare una sessione d'esame</text>
+<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a99a8'/></marker></defs>
+<path d='M130,165 L208,105' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M305,130 L305,238' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M400,275 L528,205' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M528,160 L402,100' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M402,115 L528,175' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M208,120 L132,190' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<rect x='20' y='150' width='110' height='60' rx='10' fill='#e8edf3' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='75.0' y='185.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Student</text>
+<rect x='210' y='60' width='190' height='70' rx='10' fill='#dbeefb' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='305.0' y='92.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>View</text>
+<text x='305.0' y='108.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>Exam Booking UI</text>
+<rect x='210' y='240' width='190' height='70' rx='10' fill='#ece3f7' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='305.0' y='272.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Controller</text>
+<text x='305.0' y='288.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>Booking Controller</text>
+<rect x='530' y='140' width='200' height='90' rx='10' fill='#e3f3e6' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='630.0' y='182.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Model</text>
+<text x='630.0' y='198.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>Exam Booking Domain</text>
+<path d='M130,165 L208,105' fill='none' stroke='#2f6fa8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.0000;0.0020;0.1477;0.1497;1'/></path>
+<circle r='8' fill='#2f6fa8' opacity='0'><animateMotion dur='14.700000000000001s' repeatCount='indefinite' path='M130,165 L208,105' keyPoints='0;0;1;1' keyTimes='0;0.0000;0.1477;1' calcMode='linear'/><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.0000;0.0020;0.1477;0.1497;1'/></circle>
+<text x='380.0' y='390' text-anchor='middle' font-size='15' fill='#2f6fa8' font-weight='600' opacity='0'>1. lo studente seleziona una sessione (evento sulla View)<animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.0000;0.0020;0.1477;0.1497;1'/></text>
+<path d='M305,130 L305,238' fill='none' stroke='#7a4ea8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.1497;0.1517;0.2973;0.2993;1'/></path>
+<circle r='8' fill='#7a4ea8' opacity='0'><animateMotion dur='14.700000000000001s' repeatCount='indefinite' path='M305,130 L305,238' keyPoints='0;0;1;1' keyTimes='0;0.1497;0.2973;1' calcMode='linear'/><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.1497;0.1517;0.2973;0.2993;1'/></circle>
+<text x='380.0' y='390' text-anchor='middle' font-size='15' fill='#7a4ea8' font-weight='600' opacity='0'>2. la View delega l'input: bookExam(sessionId)  [Strategy]<animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.1497;0.1517;0.2973;0.2993;1'/></text>
+<path d='M400,275 L528,205' fill='none' stroke='#7a4ea8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.2993;0.3013;0.4470;0.4490;1'/></path>
+<circle r='8' fill='#7a4ea8' opacity='0'><animateMotion dur='14.700000000000001s' repeatCount='indefinite' path='M400,275 L528,205' keyPoints='0;0;1;1' keyTimes='0;0.2993;0.4470;1' calcMode='linear'/><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.2993;0.3013;0.4470;0.4490;1'/></circle>
+<text x='380.0' y='390' text-anchor='middle' font-size='15' fill='#7a4ea8' font-weight='600' opacity='0'>3. il Controller invoca il Model: createBooking(...)<animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.2993;0.3013;0.4470;0.4490;1'/></text>
+<path d='M528,160 L402,100' fill='none' stroke='#3b8a4a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.4490;0.4510;0.5966;0.5986;1'/></path>
+<circle r='8' fill='#3b8a4a' opacity='0'><animateMotion dur='14.700000000000001s' repeatCount='indefinite' path='M528,160 L402,100' keyPoints='0;0;1;1' keyTimes='0;0.4490;0.5966;1' calcMode='linear'/><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.4490;0.4510;0.5966;0.5986;1'/></circle>
+<text x='380.0' y='390' text-anchor='middle' font-size='15' fill='#3b8a4a' font-weight='600' opacity='0'>4. il Model notifica il cambiamento alle View iscritte  [Observer]<animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.4490;0.4510;0.5966;0.5986;1'/></text>
+<path d='M402,115 L528,175' fill='none' stroke='#2f6fa8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.5986;0.6006;0.7463;0.7483;1'/></path>
+<circle r='8' fill='#2f6fa8' opacity='0'><animateMotion dur='14.700000000000001s' repeatCount='indefinite' path='M402,115 L528,175' keyPoints='0;0;1;1' keyTimes='0;0.5986;0.7463;1' calcMode='linear'/><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.5986;0.6006;0.7463;0.7483;1'/></circle>
+<text x='380.0' y='390' text-anchor='middle' font-size='15' fill='#2f6fa8' font-weight='600' opacity='0'>5. la View legge lo stato aggiornato dal Model (pull)<animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.5986;0.6006;0.7463;0.7483;1'/></text>
+<path d='M208,120 L132,190' fill='none' stroke='#3b8a4a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.7483;0.7503;0.8960;0.8980;1'/></path>
+<circle r='8' fill='#3b8a4a' opacity='0'><animateMotion dur='14.700000000000001s' repeatCount='indefinite' path='M208,120 L132,190' keyPoints='0;0;1;1' keyTimes='0;0.7483;0.8960;1' calcMode='linear'/><animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.7483;0.7503;0.8960;0.8980;1'/></circle>
+<text x='380.0' y='390' text-anchor='middle' font-size='15' fill='#3b8a4a' font-weight='600' opacity='0'>6. la View mostra il risultato allo studente<animate attributeName='opacity' dur='14.700000000000001s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.7483;0.7503;0.8960;0.8980;1'/></text>
+<text x='380.0' y='418' text-anchor='middle' font-size='12' fill='#6b7a89'>Il Model non conosce la View concreta: pubblica un evento (notify, then pull)</text>
+</svg>

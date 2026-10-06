@@ -1,0 +1,9 @@
+{
+  "theme": "obsidian",
+  "cssTheme": "",
+  "enabledCssSnippets": [
+    "Catppuccin-Latte–Graph-View"
+  ],
+  "baseFontSizeAction": true,
+  "baseFontSize": 20
+}

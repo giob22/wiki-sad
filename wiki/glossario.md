@@ -1,0 +1,127 @@
+# Glossario — Software Architecture Design
+
+Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico per termine inglese.
+
+| Inglese | Italiano | Pagina | Prima comparsa |
+|---|---|---|---|
+| active redundancy (hot spare) | ridondanza attiva | [[tattiche-availability]] | [[02-Availability.pdf#page=18]] |
+| actuator | attuatore | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
+| allocation structure | struttura di allocazione | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=5]] |
+| applicability scope | ambito di applicabilità | [[progettazione-basata-sul-riuso]] | [[04-Architectural Patterns.pdf#page=9]] |
+| architectural driver | driver architetturale | [[attribute-driven-design]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=49]] |
+| architectural pattern | pattern architetturale | [[pattern-architetturali]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=47]] |
+| artifact (scenario) | artefatto | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=9]] |
+| «artifact» (UML) | file di qualsiasi tipo | [[uml]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=46]] |
+| Attribute-Driven Design (ADD) | progettazione guidata dagli attributi | [[attribute-driven-design]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=49]] |
+| availability | disponibilità | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=12]] |
+| bean | *bean* (oggetto gestito dal container) | [[spring-mvc]] | [[3-Architectural Patterns-complete.pdf#page=61]] |
+| binding | legame, scelta di un valore/componente/servizio | [[tattiche-modifiability]] | [[03-Modifiability.pdf#page=23]] |
+| bounded context | *bounded context* (contesto delimitato) | [[microservices]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=3]] |
+| change impact analysis | analisi d'impatto delle modifiche | [[analisi-impatto-modifiche]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=17]] |
+| circuit breaker | *circuit breaker* (interruttore di circuito) | [[circuit-breaker]] | [[02-Availability.pdf#page=19]] |
+| cohesion | coesione | [[tattiche-modifiability]] | [[03-Modifiability.pdf#page=19]] |
+| cold spare | riserva fredda | [[tattiche-availability]] | [[02-Availability.pdf#page=18]] |
+| commonality / variability | comunanza / variabilità | [[linee-di-prodotto-software]] | [[04-Architectural Patterns.pdf#page=19]] |
+| component | componente | [[strutture-componenti-e-connettori]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=25]] |
+| component-and-connector (C&C) | componenti e connettori | [[strutture-componenti-e-connettori]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=5]] |
+| configuration item | elemento di configurazione (file o directory) | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=45]] |
+| connector | connettore | [[strutture-componenti-e-connettori]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=25]] |
+| context processing | elaborazione del contesto | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
+| control loop | ciclo di controllo | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=85]] |
+| controller (MVC) | *controller* | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=42]] |
+| core assets | asset di base condivisi | [[linee-di-prodotto-software]] | [[04-Architectural Patterns.pdf#page=18]] |
+| coupling | accoppiamento | [[tattiche-modifiability]] | [[03-Modifiability.pdf#page=20]] |
+| decomposition structure | struttura di decomposizione | [[strutture-di-modulo]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=18]] |
+| defer binding | posticipare il binding | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=29]] |
+| deployment structure | struttura di deployment | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=44]] |
+| design method | metodo di progettazione | [[progettazione-basata-sul-riuso]] | [[04-Architectural Patterns.pdf#page=4]] |
+| design strategy | strategia di progettazione | [[progettazione-basata-sul-riuso]] | [[04-Architectural Patterns.pdf#page=4]] |
+| DispatcherServlet | *DispatcherServlet* (front controller di Spring MVC) | [[spring-mvc]] | [[3-Architectural Patterns-complete.pdf#page=63]] |
+| DSSA (Domain-Specific Software Architecture) | architettura software specifica di dominio | [[dssa]] | [[04-Architectural Patterns.pdf#page=10]] |
+| dumb terminal | terminale «stupido» | [[architetture-multi-tier]] | [[04-Architectural Patterns.pdf#page=28]] |
+| edge | *edge* (nodo periferico vicino ai dispositivi) | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=90]] |
+| elasticity | elasticità | [[modifiability]] | [[03-Modifiability.pdf#page=11]] |
+| environment (scenario) | ambiente | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=12]] |
+| error | errore (stato interno scorretto) | [[availability]] | [[02-Availability.pdf#page=4]] |
+| eventual consistency | consistenza finale | [[strutture-componenti-e-connettori]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=29]] |
+| fat client / thin client | client «pesante» / client «leggero» | [[architetture-multi-tier]] | [[04-Architectural Patterns.pdf#page=30]] |
+| fault / failure | guasto / malfunzionamento | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=13]] |
+| fault tolerance | tolleranza ai guasti | [[availability]] | [[02-Availability.pdf#page=4]] |
+| faultlessness | assenza di guasti | [[availability]] | [[02-Availability.pdf#page=4]] |
+| Front Controller | *front controller* (unico punto d'ingresso) | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=58]] |
+| general / concrete scenario | scenario generale / concreto | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=13]] |
+| graceful degradation | degradazione controllata | [[tattiche-availability]] | [[02-Availability.pdf#page=16]] |
+| HandlerMapping | *HandlerMapping* (mappa URL → metodi) | [[spring-mvc]] | [[3-Architectural Patterns-complete.pdf#page=65]] |
+| heartbeat | *heartbeat* (battito) | [[tattiche-availability]] | [[02-Availability.pdf#page=15]] |
+| hide information | nascondere l'informazione | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=29]] |
+| horizontal / vertical scaling | scalabilità orizzontale (*scale out*) / verticale (*scale up*) | [[modifiability]] | [[03-Modifiability.pdf#page=11]] |
+| implicit invocation | invocazione implicita | [[publish-subscribe]] | [[03-Modifiability.pdf#page=33]] |
+| information hiding | *information hiding* | [[buone-pratiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=50]] |
+| install view | vista di installazione | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=45]] |
+| IoC container (Inversion of Control) | container a inversione del controllo | [[spring-mvc]] | [[3-Architectural Patterns-complete.pdf#page=61]] |
+| layer | strato | [[layered]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=21]] |
+| layer bridging | salto di strato | [[layered]] | [[03-Modifiability.pdf#page=31]] |
+| load-balanced cluster | cluster con bilanciamento del carico | [[architetture-multi-tier]] | [[04-Architectural Patterns.pdf#page=37]] |
+| localize changes | localizzare le modifiche | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=29]] |
+| location independence | indipendenza dalla posizione | [[modifiability]] | [[03-Modifiability.pdf#page=14]] |
+| «manifest» (UML) | «è contenuto in» un artifact | [[uml]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=46]] |
+| middleware | *middleware* | [[architetture-multi-tier]] | [[04-Architectural Patterns.pdf#page=35]] |
+| Model–View–Controller (MVC) | *Model–View–Controller* | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=40]] |
+| modifiability | modificabilità | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=11]] |
+| module | modulo | [[strutture-di-modulo]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=9]] |
+| MTBF / MTTR | tempo medio tra malfunzionamenti / tempo medio di riparazione | [[availability]] | [[02-Availability.pdf#page=6]] |
+| Observer (design pattern) | *Observer* (osservatore) | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=49]] |
+| open system | sistema aperto | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=43]] |
+| passive redundancy (warm spare) | ridondanza passiva | [[tattiche-availability]] | [[02-Availability.pdf#page=18]] |
+| performance | prestazioni | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=12]] |
+| ping / echo | *ping / echo* | [[tattiche-availability]] | [[02-Availability.pdf#page=15]] |
+| plug-in | *plug-in* | [[plug-in]] | [[03-Modifiability.pdf#page=30]] |
+| portability | portabilità | [[layered]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=21]] |
+| product line | linea di prodotto | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=40]] |
+| publisher / subscriber / event bus | chi pubblica / chi si iscrive / bus degli eventi | [[publish-subscribe]] | [[03-Modifiability.pdf#page=32]] |
+| quality attribute (QA) | attributo di qualità | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=2]] |
+| quality attribute scenario | scenario di qualità | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=8]] |
+| RBAC (Role Based Access Control) | controllo degli accessi basato sui ruoli | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=28]] |
+| reactive UI | interfaccia utente reattiva | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=55]] |
+| recoverability | recuperabilità | [[availability]] | [[02-Availability.pdf#page=4]] |
+| reference architecture | architettura di riferimento | [[dssa]] | [[04-Architectural Patterns.pdf#page=10]] |
+| replicate resources | replicare le risorse | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=23]] |
+| response / response measure | risposta / misura della risposta | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=10]] |
+| reuse of experience | riuso dell'esperienza | [[progettazione-basata-sul-riuso]] | [[04-Architectural Patterns.pdf#page=6]] |
+| ripple effect | effetto a catena | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=36]] |
+| RTO / RPO (Recovery Time / Point Objective) | tempo massimo di ripristino / massima perdita di dati accettabile | [[availability]] | [[02-Availability.pdf#page=21]] |
+| running example | esempio guida | [[exam-booking-system]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=12]] |
+| scalability | scalabilità | [[modifiability]] | [[03-Modifiability.pdf#page=11]] |
+| security | sicurezza | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=12]] |
+| Sense–Compute–Control | *Sense–Compute–Control* (rilevare–calcolare–controllare) | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
+| sensor | sensore | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
+| separation of concerns | separazione degli interessi (*concerns*) | [[buone-pratiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=50]] |
+| single point of failure | punto singolo di guasto | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=40]] |
+| skeletal system | sistema scheletro | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=48]] |
+| SLA (Service Level Agreement) | accordo sul livello di servizio | [[availability]] | [[02-Availability.pdf#page=6]] |
+| social debt | *social debt* (debito sociale) | [[strutture-di-modulo]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=20]] |
+| Software Product Line (SPL) | linea di prodotto software | [[linee-di-prodotto-software]] | [[04-Architectural Patterns.pdf#page=18]] |
+| stakeholder | *stakeholder* (portatore di interesse) | [[strutture-e-viste]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=5]] |
+| State-Logic-Display (three-tiered pattern) | *State-Logic-Display* (pattern a tre tier) | [[state-logic-display]] | [[04-Architectural Patterns.pdf#page=23]] |
+| stimulus / stimulus source | stimolo / sorgente dello stimolo | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=10]] |
+| Strategy (design pattern) | *Strategy* (strategia) | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=50]] |
+| structure | struttura | [[strutture-e-viste]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=4]] |
+| Subject | soggetto osservato | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=49]] |
+| tactic | tattica | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=21]] |
+| technical debt | debito tecnico | [[modifiability]] | [[03-Modifiability.pdf#page=7]] |
+| testability | testabilità | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=5]] |
+| Thymeleaf | *Thymeleaf* (motore di template) | [[spring-mvc]] | [[3-Architectural Patterns-complete.pdf#page=66]] |
+| tier | livello fisico di deployment (*tier*) | [[architetture-multi-tier]] | [[04-Architectural Patterns.pdf#page=24]] |
+| trade-off | compromesso | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=6]] |
+| use an intermediary | usare un intermediario | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=21]] |
+| uses (relation) | relazione «usa» | [[strutture-di-modulo]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=9]] |
+| variability | variabilità | [[modifiability]] | [[03-Modifiability.pdf#page=12]] |
+| view | vista | [[strutture-e-viste]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=6]] |
+| View Model | modello per la vista | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=54]] |
+| ViewResolver | *ViewResolver* (nome logico → template) | [[spring-mvc]] | [[3-Architectural Patterns-complete.pdf#page=66]] |
+| work assignment | assegnazione del lavoro | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=43]] |
+
+_Aggiornato: 2026-09-26 — ingest lezione 0 e lezione 1_
+_Aggiornato: 2026-09-30 — termini delle Lez. 2 (availability) e 3 (modifiability)_
+_Aggiornato: 2026-10-01 — termini della Lez. 4 (riuso, DSSA, pattern, multi-tier)_
+_Aggiornato: 2026-10-06 — termini di MVC, Spring MVC e Sense–Compute–Control_

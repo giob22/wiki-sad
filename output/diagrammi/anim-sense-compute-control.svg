@@ -1,0 +1,41 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 370' font-family='Segoe UI, Helvetica, Arial, sans-serif'>
+<rect width='900' height='370' fill='#ffffff'/>
+<text x='450.0' y='26' text-anchor='middle' font-size='18' font-weight='700' fill='#1f2d3d'>Sense–Compute–Control: il ciclo di controllo</text>
+<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a99a8'/></marker></defs>
+<path d='M160,130 L198,80' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M340,70 L378,70' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M540,70 L578,70' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M720,85 L800,158' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M740,200 C500,280 300,260 160,170' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<rect x='20' y='110' width='140' height='70' rx='10' fill='#e8edf3' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='90.0' y='142.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Ambiente</text>
+<text x='90.0' y='158.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>esterno</text>
+<rect x='200' y='40' width='140' height='60' rx='10' fill='#dbeefb' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='270.0' y='67.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Sensing</text>
+<text x='270.0' y='83.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>sensori di movimento</text>
+<rect x='380' y='40' width='160' height='60' rx='10' fill='#e3f3e6' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='460.0' y='67.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Context processing</text>
+<text x='460.0' y='83.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>possibile intrusione?</text>
+<rect x='580' y='40' width='140' height='60' rx='10' fill='#ece3f7' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='650.0' y='67.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Control logic</text>
+<text x='650.0' y='83.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>decidere l'azione</text>
+<rect x='740' y='160' width='140' height='60' rx='10' fill='#fdf0d9' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='810.0' y='187.0' text-anchor='middle' font-size='14' font-weight='700' fill='#1f2d3d'>Actuation</text>
+<text x='810.0' y='203.0' text-anchor='middle' font-size='14' font-weight='400' fill='#1f2d3d'>allarme / notifica</text>
+<path d='M160,130 L198,80' fill='none' stroke='#6b7a89' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.0000;0.0020;0.1758;0.1778;1'/></path>
+<circle r='8' fill='#6b7a89' opacity='0'><animateMotion dur='13.5s' repeatCount='indefinite' path='M160,130 L198,80' keyPoints='0;0;1;1' keyTimes='0;0.0000;0.1758;1' calcMode='linear'/><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.0000;0.0020;0.1758;0.1778;1'/></circle>
+<text x='450.0' y='330' text-anchor='middle' font-size='15' fill='#6b7a89' font-weight='600' opacity='0'>1. l'ambiente produce fenomeni fisici (movimento)<animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.0000;0.0020;0.1758;0.1778;1'/></text>
+<path d='M340,70 L378,70' fill='none' stroke='#2f6fa8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.1778;0.1798;0.3536;0.3556;1'/></path>
+<circle r='8' fill='#2f6fa8' opacity='0'><animateMotion dur='13.5s' repeatCount='indefinite' path='M340,70 L378,70' keyPoints='0;0;1;1' keyTimes='0;0.1778;0.3536;1' calcMode='linear'/><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.1778;0.1798;0.3536;0.3556;1'/></circle>
+<text x='450.0' y='330' text-anchor='middle' font-size='15' fill='#2f6fa8' font-weight='600' opacity='0'>2. SENSE: i sensori inviano i dati grezzi<animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.1778;0.1798;0.3536;0.3556;1'/></text>
+<path d='M540,70 L578,70' fill='none' stroke='#3b8a4a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.3556;0.3576;0.5313;0.5333;1'/></path>
+<circle r='8' fill='#3b8a4a' opacity='0'><animateMotion dur='13.5s' repeatCount='indefinite' path='M540,70 L578,70' keyPoints='0;0;1;1' keyTimes='0;0.3556;0.5313;1' calcMode='linear'/><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.3556;0.3576;0.5313;0.5333;1'/></circle>
+<text x='450.0' y='330' text-anchor='middle' font-size='15' fill='#3b8a4a' font-weight='600' opacity='0'>3. COMPUTE: il contesto stimato (intrusione: sì/no)<animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.3556;0.3576;0.5313;0.5333;1'/></text>
+<path d='M720,85 L800,158' fill='none' stroke='#7a4ea8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.5333;0.5353;0.7091;0.7111;1'/></path>
+<circle r='8' fill='#7a4ea8' opacity='0'><animateMotion dur='13.5s' repeatCount='indefinite' path='M720,85 L800,158' keyPoints='0;0;1;1' keyTimes='0;0.5333;0.7091;1' calcMode='linear'/><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.5333;0.5353;0.7091;0.7111;1'/></circle>
+<text x='450.0' y='330' text-anchor='middle' font-size='15' fill='#7a4ea8' font-weight='600' opacity='0'>4. CONTROL: comando agli attuatori<animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.5333;0.5353;0.7091;0.7111;1'/></text>
+<path d='M740,200 C500,280 300,260 160,170' fill='none' stroke='#c26a1a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.7111;0.7131;0.8869;0.8889;1'/></path>
+<circle r='8' fill='#c26a1a' opacity='0'><animateMotion dur='13.5s' repeatCount='indefinite' path='M740,200 C500,280 300,260 160,170' keyPoints='0;0;1;1' keyTimes='0;0.7111;0.8869;1' calcMode='linear'/><animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.7111;0.7131;0.8869;0.8889;1'/></circle>
+<text x='450.0' y='330' text-anchor='middle' font-size='15' fill='#c26a1a' font-weight='600' opacity='0'>5. gli attuatori cambiano l'ambiente → il ciclo riparte<animate attributeName='opacity' dur='13.5s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.7111;0.7131;0.8869;0.8889;1'/></text>
+<text x='450.0' y='358' text-anchor='middle' font-size='12' fill='#6b7a89'>Variante a 4 stadi: l'interpretazione del contesto è separata dalla decisione di controllo</text>
+</svg>
