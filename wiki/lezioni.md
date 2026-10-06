@@ -221,15 +221,15 @@ _Aggiornato: 2026-10-01 — aggiunta Lezione 4 (Architectural Patterns)_
 
 Nelle slide l'esercizio Strategy (pp. 51–52) e il codice Spring (pp. 65–66) arrivano dentro la teoria, e l'esempio completo delle spese (pp. 72–82) usa Spring MVC: conviene leggere la teoria di MVC e di Spring prima degli esercizi.
 
-| # | Pagina | Perché in questa posizione |
-|---|---|---|
-| 1 | architetture multi-tier (sezione middleware) | completa la lezione precedente |
-| 2 | MVC | teoria del pattern |
-| 4 | Spring MVC | il framework che realizza il web MVC lato server |
-| 3 | implementare MVC *(esercizio)* | i tre casi usano sia MVC sia Spring MVC |
-| 5 | Sense–Compute–Control | |
-| 6 | applicare Sense–Compute–Control *(esercizio)* | |
-| 7 | pattern architetturali (confronto dei tre pattern) | chiusura della lezione |
+| #   | Pagina                                             | Perché in questa posizione                       |
+| --- | -------------------------------------------------- | ------------------------------------------------ |
+| 1   | architetture multi-tier (sezione middleware)       | completa la lezione precedente                   |
+| 2   | MVC                                                | teoria del pattern                               |
+| 4   | Spring MVC                                         | il framework che realizza il web MVC lato server |
+| 3   | implementare MVC *(esercizio)*                     | i tre casi usano sia MVC sia Spring MVC          |
+| 5   | Sense–Compute–Control                              |                                                  |
+| 6   | applicare Sense–Compute–Control *(esercizio)*      |                                                  |
+| 7   | pattern architetturali (confronto dei tre pattern) | chiusura della lezione                           |
 
 Il riepilogo della lezione va letto per ultimo, come ripasso.
 

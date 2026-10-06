@@ -373,6 +373,7 @@ Una pagina senza nemmeno un riferimento a `raw/` è sospetta: LINT la segnala.
 Marcatori di provenienza (`📄 Fonte`, `🧩 Elaborazione mia`, `📚 Fonte esterna`, `❓ Salto non ricostruito`): vedi *Tracciabilità*.
 
 **Regole rigide:**
+- **Ogni modifica alla wiki si chiude con commit e push** sul repository privato `origin` (https://github.com/giob22/wiki-sad, branch `main`): `git add -A`, messaggio descrittivo in italiano, `git push`. Le risposte senza file modificati non richiedono commit
 - `raw/` non si tocca mai (eccetto `raw/assets/` per le immagini estratte)
 - Non inventare: se non hai info, scrivi `TODO`. Vale anche per dettagli del progetto di corso
 - Nessun esempio copiato senza spiegazione: o lo espandi, o marchi `❓ Salto non ricostruito`

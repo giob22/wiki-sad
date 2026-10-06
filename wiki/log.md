@@ -90,3 +90,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - avanzamento-studio.md: «da fare» spuntato per D2 (Sense–Compute–Control) e D3 (MVC); aggiunto X3 (Spring); nessuna spunta dell'utente toccata
 - CLAUDE.md: regola per i PDF aggiornati con lo stesso argomento
 - revisione di copertura totale: tutte le 60 pagine nuove citate, tutte le 32 figure usate, 0 orfani, 0 link irrisolti, 0 duplicati in lezioni.md
+
+## [2026-10-06] setup | repository git e regola di commit/push
+- repository privato https://github.com/giob22/wiki-sad (primo commit b686f1e)
+- CLAUDE.md: ogni modifica alla wiki si chiude con commit e push
