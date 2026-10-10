@@ -234,3 +234,23 @@ Nelle slide l'esercizio Strategy (pp. 51–52) e il codice Spring (pp. 65–66) 
 Il riepilogo della lezione va letto per ultimo, come ripasso.
 
 _Aggiornato: 2026-10-06 — aggiunta Lezione 5 (parte nuova di 3-Architectural Patterns-complete.pdf)_
+
+---
+
+## Lezione 6 — Agile Project Management
+**PDF:** [[04_Agile_01.pdf]] (pp. 1–60, slide = pagina). Il file si chiama «04_…» ma è la sesta lezione ingerita.
+**Riepilogo della lezione:** [[agile-project-management]]
+
+### Percorso di lettura (ordine delle slide)
+
+1. [[sviluppo-agile]] — pp. 3–21: i problemi dei progetti, definizione di Agile, quattro valori e dodici principi del Manifesto, come funziona (con animazione del ciclo), sviluppo iterativo ed evolutivo vs waterfall, ruoli e tre responsabilità.
+2. [[cerimonie-e-artefatti-agile]] — pp. 22–31: le quattro cerimonie con le tabelle, gli artefatti, la lavagna product/sprint backlog con la DoD, il burndown chart (con grafico commentato).
+3. [[user-stories]] — pp. 32–50: definizione e tre aspetti, template, chi le scrive, dimensione, epic e task, INVEST, revisione e stima, criteri di accettazione vs Definition of Done.
+4. [[valutare-user-stories-invest]] *(esercizio)* — pp. 41–48: cassiere, PayPal, gestione utenti, revisione dei Post-it.
+5. [[criteri-di-accettazione-e-bdd]] — pp. 50–55, 60: criteri di accettazione con esempi (e l'errore di p. 54), BDD, Three Amigos, Gherkin.
+6. [[da-criteri-di-accettazione-a-bdd]] *(esercizio)* — pp. 52, 56–60: recupero password in sei scenari Gherkin, scenari per il login.
+
+Ordine consigliato: quello delle slide.
+
+_Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01.pdf)_
+

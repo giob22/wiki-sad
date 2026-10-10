@@ -33,6 +33,12 @@
 - [[tattiche-modifiability]] — increase cohesion, reduce coupling, defer binding per momento di binding (alta)
 - [[pattern-modifiability]] — confronto client-server, plug-in, layers, publish-subscribe (alta)
 
+**Processo Agile** (Lez. 6)
+- [[sviluppo-agile]] — definizione, Manifesto (valori e principi), iterativo vs waterfall, ruoli (alta)
+- [[cerimonie-e-artefatti-agile]] — planning, daily, demo, retrospettiva; backlog e burndown chart (alta)
+- [[user-stories]] — tre aspetti, template, epic e task, INVEST, criteri vs DoD (alta)
+- [[criteri-di-accettazione-e-bdd]] — criteri di accettazione, BDD, Gherkin Given–When–Then (alta)
+
 **Progettazione e pattern** (Lez. 4)
 - [[progettazione-basata-sul-riuso]] — strategie vs metodi, riuso dell'esperienza, tre alternative, ambito di applicabilità (alta)
 - [[dssa]] — architetture di riferimento: definizione, esempi (web, TV, AUTOSAR, IoT, cloud), vantaggi e limiti (alta)
@@ -64,6 +70,7 @@
 - [[quality-attributes-availability]] — 02-Availability.pdf, pp. 1–23
 - [[quality-attributes-modifiability]] — 03-Modifiability.pdf, pp. 1–33 (slide 1–34)
 - [[approcci-riuso-progettazione-architettura]] — 04-Architectural Patterns.pdf, pp. 1–37 (slide 1–41)
+- [[agile-project-management]] — 04_Agile_01.pdf, pp. 1–60
 - [[architectural-patterns-mvc-scc]] — 3-Architectural Patterns-complete.pdf, parte nuova pp. 35–36, 39–96 (slide 38–39, 43–101)
 - Programma ufficiale del corso: [[Programma Syllabus]] (raw/)
 
@@ -74,6 +81,8 @@
 - [[applicazione-tattiche]] — tattica → dove → effetto → trade-off; dallo scenario alle decisioni; momento di binding (media)
 - [[implementare-mvc]] — View con Strategy, ShowExamSessions in Spring MVC, applicazione spese (media)
 - [[applicare-sense-compute-control]] — antintrusione, controllo accessi, Lunar Lander con simulazione, ADS (bassa)
+- [[valutare-user-stories-invest]] — checklist INVEST, scomposizione di epic (cassiere, PayPal, gestione utenti) (bassa)
+- [[da-criteri-di-accettazione-a-bdd]] — dai criteri agli scenari Gherkin (recupero password, login) (bassa)
 
 ## Progetto
 - [[progetto-di-corso]] — organizzazione, iterazioni, calendario, valutazione; decisioni: nessuna ancora
@@ -85,4 +94,5 @@ _nessun materiale ancora — lancia `prepara esame`_
 Figure in `raw/assets/`: 2 dalla presentazione (`lez00-intro-pN-*.png`), 24 da 01-IntroductionOnSoftwareArchitecture (`lez01-intro-pN-*.png`), 10 dalla parte 2 (`lez01b-qa-pN-*.png`; N = pagina del PDF, non numero di slide).
 Lez. 2: 13 figure `lez02-av-pN-*.png`; Lez. 3: 14 figure `lez03-mo-pN-*.png`; Lez. 4: 20 figure `lez04-ap-pN-*.png`; Lez. 5: 32 figure `lez05-ap-pN-*.png` (N = pagina di 3-Architectural Patterns-complete.pdf).
 Animazioni SVG e grafico della Lez. 5 in `output/diagrammi/` (script [[genera_animazioni_lez05.py]]): [[anim-mvc-classico.svg]], [[anim-spring-mvc-richiesta.svg]], [[anim-sense-compute-control.svg]], [[grafico-lunar-lander-controllo.svg]].
+Lez. 6: 25 figure `lez06-ag-pN-*.png`; animazione [[anim-ciclo-iterazione-agile.svg]] e grafico [[grafico-burndown-sprint.svg]] (script [[genera_grafici_lez06.py]]).
 Diagrammi Mermaid ricostruiti (🧩) direttamente nelle pagine: vista dei moduli e versione event-based, vista runtime, deployment iniziale, tattiche di prestazioni e modificabilità, ADD, catena fault→error→failure, stati del circuit breaker, reduce coupling, plug-in, publish-subscribe, sequenza client-server.

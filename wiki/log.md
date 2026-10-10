@@ -98,3 +98,17 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 ## [2026-10-07] fix | sense-compute-control: contraddizione delle slide sulla fase che decide
 - p. 84: Compute interpreta, Control decide e invia; p. 87 (e figure pp. 85, 88, tabella p. 93): Compute interpreta e decide, Control invia
 - aggiunta nota ⚠️ Contraddizione con le citazioni testuali e la chiave di lettura (p. 84 ≈ ruoli della variante a quattro stadi)
+
+## [2026-10-10] ingest | Agile Project Management (04_Agile_01.pdf) | pagine coperte: 1-60
+- Lezione 6 (il nome del file inizia con «04» ma è la sesta lezione ingerita)
+- fonte: [[agile-project-management]]
+- concetti creati (4): sviluppo-agile, cerimonie-e-artefatti-agile, user-stories, criteri-di-accettazione-e-bdd
+- esercizi creati (2): valutare-user-stories-invest, da-criteri-di-accettazione-a-bdd (scenari in Gherkin)
+- aggiornato: progetto-di-corso (metodo Agile nel progetto)
+- figure: 25 in raw/assets/lez06-ag-pN-*.png
+- grafici (🧩) con genera_grafici_lez06.py: anim-ciclo-iterazione-agile.svg (SVG animato), grafico-burndown-sprint.svg (burndown con cambio di ambito, letto passo per passo)
+- segnalati: user story sbagliata a p. 54 (login invece di ricerca); agenda con DoD, Iteration Demo e Information Radiator non coperti dal PDF; stima delle storie rimandata alla prossima lezione
+- glossario: +24 termini (140 totali)
+- lezioni.md: Lezione 6 (ordine consigliato = quello delle slide)
+- avanzamento-studio.md: «da fare» spuntato per I1, J1, J4; aggiunto X4 (criteri di accettazione e BDD); nessuna spunta dell'utente toccata
+- revisione di copertura totale: tutte le 60 pagine citate, tutte le 25 figure usate, 0 orfani, 0 link irrisolti, 0 duplicati in lezioni.md

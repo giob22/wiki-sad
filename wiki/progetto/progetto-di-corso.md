@@ -68,6 +68,14 @@ Pagina di riferimento sul progetto software della classe, da quanto detto nella 
 
 > 🎯 Esame: per l'orale, ogni decisione del team va collegata ai concetti del corso — per questo le decisioni si annotano in questa cartella.
 
+## Metodo Agile nel progetto (Lez. 6)
+
+> 📄 Fonte: [[04_Agile_01.pdf#page=21]]–[[04_Agile_01.pdf#page=31]]
+
+Il progetto usa le pratiche spiegate nella lezione su Agile: il tutor del team fa da **Scrum Master**, gli sprint durano 2 settimane e si chiudono con l'**iteration review** (demo), i requisiti si scrivono come **user story** con criteri di accettazione. Ruoli, cerimonie e artefatti → pagine «cerimonie e artefatti Agile» e «user story» (linkate nella Lezione 6).
+
+> 🧩 Con sprint di 2 settimane, l'iteration planning dura circa 2 ore (regola «un'ora per settimana di iterazione», [[04_Agile_01.pdf#page=24]]).
+
 ## Esperimenti di disponibilità per gruppo (da confermare)
 
 > 📄 Fonte: [[02-Availability.pdf#page=23]]
@@ -83,3 +91,4 @@ _nessuna ancora — il progetto non è stato assegnato. Usa `annota decisione [.
 _Aggiornato: 2026-09-26 — ingest 00_IntroduzioneAlCorso_SAD.pdf_
 _Aggiornato: 2026-09-30 — tabella dei gruppi di 02-Availability.pdf p. 23_
 _Aggiornato: 2026-10-06 — collegamento a Spring MVC_
+_Aggiornato: 2026-10-10 — metodo Agile nel progetto_

@@ -1,0 +1,57 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 430' font-family='Segoe UI, Helvetica, Arial, sans-serif'>
+<rect width='900' height='430' fill='#fff'/>
+<text x='370.0' y='26' text-anchor='middle' font-size='16' font-weight='700' fill='#1f2d3d'>Burndown chart di uno sprint di 15 giorni</text>
+<rect x='70' y='50' width='600' height='320' fill='none' stroke='#9aa7b3'/>
+<line x1='70' x2='670' y1='370.0' y2='370.0' stroke='#eef1f4'/><text x='62' y='374.0' text-anchor='end' font-size='11' fill='#55606b'>0</text>
+<line x1='70' x2='670' y1='332.3529411764706' y2='332.3529411764706' stroke='#eef1f4'/><text x='62' y='336.3529411764706' text-anchor='end' font-size='11' fill='#55606b'>10</text>
+<line x1='70' x2='670' y1='294.70588235294116' y2='294.70588235294116' stroke='#eef1f4'/><text x='62' y='298.70588235294116' text-anchor='end' font-size='11' fill='#55606b'>20</text>
+<line x1='70' x2='670' y1='257.05882352941177' y2='257.05882352941177' stroke='#eef1f4'/><text x='62' y='261.05882352941177' text-anchor='end' font-size='11' fill='#55606b'>30</text>
+<line x1='70' x2='670' y1='219.41176470588235' y2='219.41176470588235' stroke='#eef1f4'/><text x='62' y='223.41176470588235' text-anchor='end' font-size='11' fill='#55606b'>40</text>
+<line x1='70' x2='670' y1='181.76470588235293' y2='181.76470588235293' stroke='#eef1f4'/><text x='62' y='185.76470588235293' text-anchor='end' font-size='11' fill='#55606b'>50</text>
+<line x1='70' x2='670' y1='144.11764705882354' y2='144.11764705882354' stroke='#eef1f4'/><text x='62' y='148.11764705882354' text-anchor='end' font-size='11' fill='#55606b'>60</text>
+<line x1='70' x2='670' y1='106.47058823529412' y2='106.47058823529412' stroke='#eef1f4'/><text x='62' y='110.47058823529412' text-anchor='end' font-size='11' fill='#55606b'>70</text>
+<line x1='70' x2='670' y1='68.82352941176471' y2='68.82352941176471' stroke='#eef1f4'/><text x='62' y='72.82352941176471' text-anchor='end' font-size='11' fill='#55606b'>80</text>
+<text x='70.0' y='386' text-anchor='middle' font-size='11' fill='#55606b'>1</text>
+<text x='112.85714285714286' y='386' text-anchor='middle' font-size='11' fill='#55606b'>2</text>
+<text x='155.71428571428572' y='386' text-anchor='middle' font-size='11' fill='#55606b'>3</text>
+<text x='198.57142857142856' y='386' text-anchor='middle' font-size='11' fill='#55606b'>4</text>
+<text x='241.42857142857142' y='386' text-anchor='middle' font-size='11' fill='#55606b'>5</text>
+<text x='284.2857142857143' y='386' text-anchor='middle' font-size='11' fill='#55606b'>6</text>
+<text x='327.1428571428571' y='386' text-anchor='middle' font-size='11' fill='#55606b'>7</text>
+<text x='370.0' y='386' text-anchor='middle' font-size='11' fill='#55606b'>8</text>
+<text x='412.85714285714283' y='386' text-anchor='middle' font-size='11' fill='#55606b'>9</text>
+<text x='455.7142857142857' y='386' text-anchor='middle' font-size='11' fill='#55606b'>10</text>
+<text x='498.57142857142856' y='386' text-anchor='middle' font-size='11' fill='#55606b'>11</text>
+<text x='541.4285714285714' y='386' text-anchor='middle' font-size='11' fill='#55606b'>12</text>
+<text x='584.2857142857142' y='386' text-anchor='middle' font-size='11' fill='#55606b'>13</text>
+<text x='627.1428571428571' y='386' text-anchor='middle' font-size='11' fill='#55606b'>14</text>
+<text x='670.0' y='386' text-anchor='middle' font-size='11' fill='#55606b'>15</text>
+<text x='370.0' y='416' text-anchor='middle' font-size='12' fill='#55606b'>giorno dello sprint</text>
+<text x='25' y='210.0' font-size='12' fill='#55606b' text-anchor='middle' transform='rotate(-90 25 210.0)'>Story Point rimanenti</text>
+<polyline points='70.0,106.5 112.9,106.5 155.7,106.5 198.6,106.5 241.4,106.5 284.3,106.5 327.1,106.5 370.0,80.1 412.9,80.1 455.7,80.1 498.6,80.1 541.4,80.1 584.3,80.1 627.1,80.1 670.0,80.1' fill='none' stroke='#2f6fa8' stroke-width='2.5'/>
+<polyline points='70.0,106.5 112.9,125.3 155.7,144.1 198.6,162.9 241.4,181.8 284.3,200.6 327.1,219.4 370.0,238.2 412.9,257.1 455.7,275.9 498.6,294.7 541.4,313.5 584.3,332.4 627.1,351.2 670.0,370.0' fill='none' stroke='#6b7a89' stroke-width='2' stroke-dasharray='6 5'/>
+<polyline points='70.0,106.5 112.9,136.6 155.7,162.9 198.6,162.9 241.4,181.8 284.3,181.8 327.1,226.9 370.0,204.4 412.9,226.9 455.7,257.1 498.6,257.1 541.4,290.9 584.3,321.1 627.1,351.2 670.0,370.0' fill='none' stroke='#8e2c8a' stroke-width='3'/>
+<circle cx='70.0' cy='106.5' r='3.5' fill='#8e2c8a'/>
+<circle cx='112.9' cy='136.6' r='3.5' fill='#8e2c8a'/>
+<circle cx='155.7' cy='162.9' r='3.5' fill='#8e2c8a'/>
+<circle cx='198.6' cy='162.9' r='3.5' fill='#8e2c8a'/>
+<circle cx='241.4' cy='181.8' r='3.5' fill='#8e2c8a'/>
+<circle cx='284.3' cy='181.8' r='3.5' fill='#8e2c8a'/>
+<circle cx='327.1' cy='226.9' r='3.5' fill='#8e2c8a'/>
+<circle cx='370.0' cy='204.4' r='3.5' fill='#8e2c8a'/>
+<circle cx='412.9' cy='226.9' r='3.5' fill='#8e2c8a'/>
+<circle cx='455.7' cy='257.1' r='3.5' fill='#8e2c8a'/>
+<circle cx='498.6' cy='257.1' r='3.5' fill='#8e2c8a'/>
+<circle cx='541.4' cy='290.9' r='3.5' fill='#8e2c8a'/>
+<circle cx='584.3' cy='321.1' r='3.5' fill='#8e2c8a'/>
+<circle cx='627.1' cy='351.2' r='3.5' fill='#8e2c8a'/>
+<circle cx='670.0' cy='370.0' r='3.5' fill='#8e2c8a'/>
+<text x='376.0' y='72.11764705882354' font-size='11' fill='#2f6fa8'>giorno 8: +7 SP aggiunti all'ambito</text>
+<text x='376.0' y='194.35294117647058' font-size='11' fill='#8e2c8a'>il lavoro rimanente risale</text>
+<text x='198.57142857142856' y='152.94117647058823' font-size='11' fill='#8e2c8a' text-anchor='middle'>piatto: nessuna storia chiusa</text>
+<line x1='685' x2='713' y1='70' y2='70' stroke='#6b7a89' stroke-width='3' stroke-dasharray='6 5'/><text x='719' y='74' font-size='12' fill='#1f2d3d'>progresso ideale</text>
+<line x1='685' x2='713' y1='94' y2='94' stroke='#8e2c8a' stroke-width='3' stroke-dasharray=''/><text x='719' y='98' font-size='12' fill='#1f2d3d'>progresso reale</text>
+<line x1='685' x2='713' y1='118' y2='118' stroke='#2f6fa8' stroke-width='3' stroke-dasharray=''/><text x='719' y='122' font-size='12' fill='#1f2d3d'>ambito dello sprint</text>
+<text x='685' y='160' font-size='11' fill='#55606b'>sopra la linea ideale = in ritardo</text>
+<text x='685' y='176' font-size='11' fill='#55606b'>sotto la linea ideale = in anticipo</text>
+</svg>

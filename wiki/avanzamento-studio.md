@@ -286,8 +286,8 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 
 ## I. Sviluppo di architetture con processi iterativi e incrementali
 
-**I1. Sviluppo iterativo e incrementale: differenze rispetto al waterfall**
-- [ ] da fare
+**I1. Sviluppo iterativo e incrementale: differenze rispetto al waterfall** — Lez. 6, sezione «Sviluppo iterativo ed evolutivo» della pagina sviluppo-agile (linkata in J1)
+- [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
@@ -305,8 +305,8 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 
 > Il modo in cui questi temi si applicano al progetto di gruppo è in [[progetto-di-corso]].
 
-**J1. Principi dello sviluppo Agile, Manifesto Agile e pratiche Agili**
-- [ ] da fare
+**J1. Principi dello sviluppo Agile, Manifesto Agile e pratiche Agili** — Lez. 6, con user story e INVEST → [[sviluppo-agile]], [[user-stories]], [[valutare-user-stories-invest]]
+- [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
@@ -320,8 +320,8 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 - [ ] studiato
 - [ ] consolidato
 
-**J4. Framework Scrum: ruoli, backlog, pratiche**
-- [ ] da fare
+**J4. Framework Scrum: ruoli, backlog, pratiche** — Lez. 6: ruoli (PO, Scrum Master, team), product e sprint backlog, cerimonie, burndown; presentati in forma Agile generale, non ancora come framework Scrum completo → [[cerimonie-e-artefatti-agile]]
+- [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
@@ -403,6 +403,11 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 - [ ] studiato
 - [ ] consolidato
 
+**X4. Criteri di accettazione e Behavior-Driven Development (BDD)** *(aggiunto: Lez. 6 — il programma cita TDD, non BDD)* → [[criteri-di-accettazione-e-bdd]], [[da-criteri-di-accettazione-a-bdd]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
 ## Argomenti del programma delle slide assenti dal programma ufficiale
 
 Il programma delle slide di presentazione ([[00_IntroduzioneAlCorso_SAD.pdf#page=15]]–[[00_IntroduzioneAlCorso_SAD.pdf#page=17]]) cita anche questi argomenti, che nel programma ufficiale non compaiono. Restano qui finché non si capisce se verranno trattati; se no, si barrano.
@@ -441,3 +446,4 @@ _Aggiornato: 2026-09-27 — creata dal programma di 00_IntroduzioneAlCorso_SAD.p
 _Aggiornato: 2026-09-30 — riallineata al programma ufficiale (raw/Programma Syllabus.md); «da fare» spuntato per gli argomenti delle Lez. 2 (availability) e 3 (modifiability)_
 _Aggiornato: 2026-10-01 — «da fare» spuntato per D1 e Y3 (Lez. 4); aggiunto X2 (linee di prodotto)_
 _Aggiornato: 2026-10-06 — «da fare» spuntato per D2 (Sense–Compute–Control) e D3 (MVC); aggiunto X3 (Spring)_
+_Aggiornato: 2026-10-10 — «da fare» spuntato per I1, J1, J4 (Lez. 6); aggiunto X4 (criteri di accettazione e BDD)_

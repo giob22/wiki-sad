@@ -22,8 +22,8 @@ Elenco lezioni e percorso di lettura → [[lezioni]] · Stato dello studio → [
 | Tattiche | availability, deployability, modifiability, energy efficiency, performance, security, safety, testability, usability | [[tattiche-architetturali]], [[tattiche-availability]], [[tattiche-modifiability]], [[pattern-modifiability]] | availability (Lez. 2) e modifiability (Lez. 3); prime tattiche di performance e security nella Lez. 1 |
 | Soluzioni architetturali | interfacce e stili di interazione; XML, JSON, binario; virtualizzazione e cloud | — | da trattare |
 | Documentazione | stili di documentazione delle viste; contesto, comportamento, decisioni, interfacce; ISO/IEC 42010 | — | da trattare |
-| Processi iterativi e incrementali | iterativo vs waterfall; Unified Process | — | da trattare |
-| Agile | principi, manifesto, TDD, refactoring, CI; Scrum | [[progetto-di-corso]] (Scrum nel progetto) | da trattare |
+| Processi iterativi e incrementali | iterativo vs waterfall; Unified Process | [[sviluppo-agile]] (sezione sviluppo iterativo) | iterativo vs waterfall trattato (Lez. 6); Unified Process da trattare |
+| Agile | principi, manifesto, TDD, refactoring, CI; Scrum | [[cerimonie-e-artefatti-agile]], [[user-stories]], [[criteri-di-accettazione-e-bdd]], [[progetto-di-corso]] | manifesto, principi, ruoli, cerimonie, artefatti, user story, BDD (Lez. 6); TDD, refactoring, CI e stima delle storie da trattare |
 | Gestione della configurazione | version control, build, CI, DevOps, change request, release | — | da trattare |
 | Architetture di nuova generazione (cenni) | IoT, cloud-native, edge–cloud, IA, sistemi autonomi, ML e LLM | — | da trattare |
 
@@ -36,6 +36,8 @@ Dalla Lez. 2 si studiano gli attributi uno per uno, sempre con lo schema **defin
 La Lez. 4 risponde a «come si progetta un'architettura?»: riusando l'esperienza ([[progettazione-basata-sul-riuso]]). Le forme di riuso vanno dalla più generale alla più specifica del dominio — design pattern, stili, pattern architetturali, **DSSA** o architetture di riferimento ([[dssa]]) — e il riuso pianificato dentro un'azienda prende la forma delle **linee di prodotto** ([[linee-di-prodotto-software]]). Il primo pattern studiato è **State-Logic-Display** ([[state-logic-display]]), un caso delle **architetture multi-tier**, dove i *tier* (distribuzione fisica) vanno distinti dai *layer* (decomposizione logica) e ogni scelta di 1, 2, 3 o n tier ha benefici e limiti precisi sugli attributi di qualità ([[architetture-multi-tier]]).
 
 La Lez. 5 completa i pattern. Il **middleware** collega i tier e i sistemi esterni. Il **Model–View–Controller** ([[mvc]]) separa dati, presentazione e interazione: le responsabilità sono fisse, le interazioni variano (pull, Observer, web lato server, UI reattiva) e il MVC classico combina i design pattern Observer e Strategy. **Spring MVC** ([[spring-mvc]]) realizza il web MVC lato server con un Front Controller, il DispatcherServlet, e Spring Boot ne semplifica l'avvio. Il **Sense–Compute–Control** ([[sense-compute-control]]) struttura i sistemi che controllano un ambiente fisico con un ciclo sensori → calcolo → attuatori, in tre o quattro stadi, fino all'IoT e alla guida autonoma.
+
+La Lez. 6 passa al **processo**: lo sviluppo **Agile** consegna valore per piccoli incrementi in iterazioni brevi, guidato dai valori e principi del Manifesto. Ruoli (Product Owner, Scrum Master, team), **cerimonie** (planning, daily, demo, retrospettiva) e **artefatti** (backlog, burndown) organizzano il lavoro; i requisiti si scrivono come **user story** che rispettano INVEST, completate da **criteri di accettazione** che il **BDD** trasforma in scenari Given–When–Then eseguibili. È il metodo con cui si sviluppa il progetto di corso.
 
 ## Argomenti mancanti / da ingerire
 
@@ -50,9 +52,10 @@ La Lez. 5 completa i pattern. Il **middleware** collega i tier e i sistemi ester
 
 ## Fonti ingerite
 
-7 — [[presentazione-corso]], [[introduzione-architettura-software]], [[attributi-di-qualita-e-importanza-architettura]], [[quality-attributes-availability]], [[quality-attributes-modifiability]], [[approcci-riuso-progettazione-architettura]], [[architectural-patterns-mvc-scc]]; programma ufficiale in [[Programma Syllabus]]
+8 — [[presentazione-corso]], [[introduzione-architettura-software]], [[attributi-di-qualita-e-importanza-architettura]], [[quality-attributes-availability]], [[quality-attributes-modifiability]], [[approcci-riuso-progettazione-architettura]], [[architectural-patterns-mvc-scc]], [[agile-project-management]]; programma ufficiale in [[Programma Syllabus]]
 
 _Aggiornato: 2026-09-26 — ingest di 00_IntroduzioneAlCorso_SAD.pdf e delle due parti di 01-IntroductionOnSoftwareArchitecture_
 _Aggiornato: 2026-09-30 — ingest di 02-Availability.pdf e 03-Modifiability.pdf; programma allineato a Programma Syllabus.md_
 _Aggiornato: 2026-10-01 — ingest di 04-Architectural Patterns.pdf_
 _Aggiornato: 2026-10-06 — ingest della parte nuova di 3-Architectural Patterns-complete.pdf_
+_Aggiornato: 2026-10-10 — ingest di 04_Agile_01.pdf_

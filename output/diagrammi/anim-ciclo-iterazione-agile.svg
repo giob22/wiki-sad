@@ -1,0 +1,48 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 400' font-family='Segoe UI, Helvetica, Arial, sans-serif'>
+<rect width='900' height='400' fill='#ffffff'/>
+<text x='450.0' y='26' text-anchor='middle' font-size='18' font-weight='700' fill='#1f2d3d'>Il ciclo di un'iterazione Agile</text>
+<defs><marker id='a' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#8a99a8'/></marker></defs>
+<path d='M170,150 L218,150' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M370,140 L418,90' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M570,80 L618,80' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M695,110 L695,208' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M618,240 L572,240' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<path d='M420,250 C250,320 100,280 95,182' fill='none' stroke='#c9d3dc' stroke-width='1.6' marker-end='url(#a)'/>
+<rect x='20' y='120' width='150' height='60' rx='10' fill='#fdf0d9' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='95.0' y='147.0' text-anchor='middle' font-size='13' font-weight='700' fill='#1f2d3d'>Product Backlog</text>
+<text x='95.0' y='163.0' text-anchor='middle' font-size='13' font-weight='400' fill='#1f2d3d'>ordinato per priorità</text>
+<rect x='220' y='120' width='150' height='60' rx='10' fill='#dbeefb' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='295.0' y='147.0' text-anchor='middle' font-size='13' font-weight='700' fill='#1f2d3d'>Iteration Planning</text>
+<text x='295.0' y='163.0' text-anchor='middle' font-size='13' font-weight='400' fill='#1f2d3d'>obiettivo + storie</text>
+<rect x='420' y='50' width='150' height='60' rx='10' fill='#e3f3e6' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='495.0' y='77.0' text-anchor='middle' font-size='13' font-weight='700' fill='#1f2d3d'>Iteration Backlog</text>
+<text x='495.0' y='93.0' text-anchor='middle' font-size='13' font-weight='400' fill='#1f2d3d'>storie → task</text>
+<rect x='620' y='50' width='150' height='60' rx='10' fill='#ece3f7' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='695.0' y='77.0' text-anchor='middle' font-size='13' font-weight='700' fill='#1f2d3d'>Daily meeting</text>
+<text x='695.0' y='93.0' text-anchor='middle' font-size='13' font-weight='400' fill='#1f2d3d'>15 min ogni giorno</text>
+<rect x='620' y='210' width='150' height='60' rx='10' fill='#e3f3e6' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='695.0' y='237.0' text-anchor='middle' font-size='13' font-weight='700' fill='#1f2d3d'>Iteration Demo</text>
+<text x='695.0' y='253.0' text-anchor='middle' font-size='13' font-weight='400' fill='#1f2d3d'>incremento + feedback</text>
+<rect x='420' y='210' width='150' height='60' rx='10' fill='#f2f4f6' stroke='#5b6b7b' stroke-width='1.2'/>
+<text x='495.0' y='237.0' text-anchor='middle' font-size='13' font-weight='700' fill='#1f2d3d'>Retrospective</text>
+<text x='495.0' y='253.0' text-anchor='middle' font-size='13' font-weight='400' fill='#1f2d3d'>migliorare il processo</text>
+<path d='M170,150 L218,150' fill='none' stroke='#b07a1a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.0000;0.0020;0.1489;0.1509;1'/></path>
+<circle r='8' fill='#b07a1a' opacity='0'><animateMotion dur='15.899999999999999s' repeatCount='indefinite' path='M170,150 L218,150' keyPoints='0;0;1;1' keyTimes='0;0.0000;0.1489;1' calcMode='linear'/><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.0000;0.0020;0.1489;0.1509;1'/></circle>
+<text x='450.0' y='360' text-anchor='middle' font-size='15' fill='#b07a1a' font-weight='600' opacity='0'>1. il PO ordina il Product Backlog per priorità (valore)<animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.0000;0.0020;0.1489;0.1509;1'/></text>
+<path d='M370,140 L418,90' fill='none' stroke='#2f6fa8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.1509;0.1529;0.2999;0.3019;1'/></path>
+<circle r='8' fill='#2f6fa8' opacity='0'><animateMotion dur='15.899999999999999s' repeatCount='indefinite' path='M370,140 L418,90' keyPoints='0;0;1;1' keyTimes='0;0.1509;0.2999;1' calcMode='linear'/><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.1509;0.1529;0.2999;0.3019;1'/></circle>
+<text x='450.0' y='360' text-anchor='middle' font-size='15' fill='#2f6fa8' font-weight='600' opacity='0'>2. Iteration Planning: si scelgono le storie e l'obiettivo<animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.1509;0.1529;0.2999;0.3019;1'/></text>
+<path d='M570,80 L618,80' fill='none' stroke='#7a4ea8' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.3019;0.3039;0.4508;0.4528;1'/></path>
+<circle r='8' fill='#7a4ea8' opacity='0'><animateMotion dur='15.899999999999999s' repeatCount='indefinite' path='M570,80 L618,80' keyPoints='0;0;1;1' keyTimes='0;0.3019;0.4508;1' calcMode='linear'/><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.3019;0.3039;0.4508;0.4528;1'/></circle>
+<text x='450.0' y='360' text-anchor='middle' font-size='15' fill='#7a4ea8' font-weight='600' opacity='0'>3. il team lavora; ogni giorno il daily meeting allinea il lavoro<animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.3019;0.3039;0.4508;0.4528;1'/></text>
+<path d='M695,110 L695,208' fill='none' stroke='#3b8a4a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.4528;0.4548;0.6018;0.6038;1'/></path>
+<circle r='8' fill='#3b8a4a' opacity='0'><animateMotion dur='15.899999999999999s' repeatCount='indefinite' path='M695,110 L695,208' keyPoints='0;0;1;1' keyTimes='0;0.4528;0.6018;1' calcMode='linear'/><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.4528;0.4548;0.6018;0.6038;1'/></circle>
+<text x='450.0' y='360' text-anchor='middle' font-size='15' fill='#3b8a4a' font-weight='600' opacity='0'>4. fine iterazione: software funzionante, integrato e testato<animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.4528;0.4548;0.6018;0.6038;1'/></text>
+<path d='M618,240 L572,240' fill='none' stroke='#3b8a4a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.6038;0.6058;0.7527;0.7547;1'/></path>
+<circle r='8' fill='#3b8a4a' opacity='0'><animateMotion dur='15.899999999999999s' repeatCount='indefinite' path='M618,240 L572,240' keyPoints='0;0;1;1' keyTimes='0;0.6038;0.7527;1' calcMode='linear'/><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.6038;0.6058;0.7527;0.7547;1'/></circle>
+<text x='450.0' y='360' text-anchor='middle' font-size='15' fill='#3b8a4a' font-weight='600' opacity='0'>5. Demo agli stakeholder: si raccoglie il feedback<animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.6038;0.6058;0.7527;0.7547;1'/></text>
+<path d='M420,250 C250,320 100,280 95,182' fill='none' stroke='#c26a1a' stroke-width='3' opacity='0' marker-end='url(#a)'><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0.25;0.25' keyTimes='0;0.7547;0.7567;0.9037;0.9057;1'/></path>
+<circle r='8' fill='#c26a1a' opacity='0'><animateMotion dur='15.899999999999999s' repeatCount='indefinite' path='M420,250 C250,320 100,280 95,182' keyPoints='0;0;1;1' keyTimes='0;0.7547;0.9037;1' calcMode='linear'/><animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.7547;0.7567;0.9037;0.9057;1'/></circle>
+<text x='450.0' y='360' text-anchor='middle' font-size='15' fill='#c26a1a' font-weight='600' opacity='0'>6. Retrospettiva + feedback aggiornano il backlog → nuova iterazione<animate attributeName='opacity' dur='15.899999999999999s' repeatCount='indefinite' values='0;0;1;1;0;0' keyTimes='0;0.7547;0.7567;0.9037;0.9057;1'/></text>
+<text x='450.0' y='388' text-anchor='middle' font-size='12' fill='#6b7a89'>Backlog → Priority → Iteration → Feedback → Improvement (slide 13): niente «big bang», piccoli incrementi di valore</text>
+</svg>
