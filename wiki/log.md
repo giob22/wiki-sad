@@ -123,3 +123,4 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - creata: [[a2-stakeholder-e-contesto]] — stakeholder SH-01…08, tabella stakeholder/utenti/sistemi esterni, confini, 14 flussi IF-xx, Context Diagram CTX-01 (Mermaid), ipotesi IP-01…05, domande Q-01/05/08/09/10/11, verifica dei 7 criteri dell'issue
 - fonte della bozza: Documentazione_SAD_2026.pdf del team (v0.2); differenze elencate nella pagina
 - aggiornati: guida-progetto-picus (attività 1), index, lezioni.md (Lezione 0, voce 6)
+- esportato: output/A2-stakeholder-e-contesto.docx (5 pagine, modificabile) con il diagramma CTX-01 in PNG; script genera_docx_a2.py e genera_context_diagram_a2.py in output/

@@ -214,6 +214,9 @@ flowchart LR
 ```
 *🧩 Context Diagram CTX-01. Al centro PICUS, scatola unica. A sinistra i quattro utenti applicativi: **Banco**, **OPT** (nelle due funzioni di richiedente ed erogatrice, che è la stessa organizzazione) e **Operatore**. A destra, fuori dal confine, la **persona assistita** (stakeholder senza accesso) e il **portale ministeriale** (sistema esterno). Le frecce continue sono flussi applicativi IF-01…IF-11 ([[01-PICUS_richieste_informali_del_committente (1).pdf#page=2]]); le tratteggiate sono IF-12, IF-13 e IF-14, che non attraversano PICUS.*
 
+![[ctx-01-context-diagram.png]]
+*🧩 Versione grafica usata nel file Word (sorgente [[ctx-01-context-diagram.svg]]): stesso contenuto del diagramma Mermaid sopra, con i flussi IF-12…IF-14 disegnati in corridoi esterni tratteggiati.*
+
 **Come leggerlo:**
 1. **IF-01 → IF-04**: l'OPT richiedente invia la richiesta e riceve in cambio stato e dettagli dell'appuntamento. Non c'è nessuna freccia tra PICUS e l'assistito: l'OPT inoltra le informazioni con **IF-12**, fuori dal sistema.
 2. **IF-05, IF-06, IF-07**: il Banco è l'unico attore con **vista complessiva**; amministra e coordina.
@@ -294,6 +297,7 @@ Le ipotesi seguono il formato del registro IP del Word (assunzione, stato, riesa
 - 📄 [[00-Presentazione Progetto Picus.pdf#page=18]] — attività 1 «Analizzare contesto e stakeholder»; [[00-Presentazione Progetto Picus.pdf#page=27]] — deliverable (Context Diagram).
 - 📄 [[01-PICUS_richieste_informali_del_committente (1).pdf#page=1]]–[[01-PICUS_richieste_informali_del_committente (1).pdf#page=3]] — §1–§5; [[01-PICUS_richieste_informali_del_committente (1).pdf#page=4]] — §6–§7; [[01-PICUS_richieste_informali_del_committente (1).pdf#page=5]] — §8–§9.
 - 📘 [[AGENTS]] §8–§9 — regole di dominio e distinzione stakeholder/utenti.
+- **File Word scaricabile e modificabile:** [[A2-stakeholder-e-contesto.docx]] (stesso contenuto, in formato adatto al documento del gruppo; generato da [[genera_docx_a2.py]]; il diagramma da [[genera_context_diagram_a2.py]]).
 - Guida generale al progetto: [[guida-progetto-picus]] (attività 1 in § 5.2).
 
 _Aggiornato: 2026-10-18 — prima stesura di A2 per l'issue S1-01_
