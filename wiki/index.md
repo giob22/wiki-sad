@@ -87,6 +87,7 @@
 ## Progetto
 - [[progetto-di-corso]] — organizzazione, iterazioni, calendario, valutazione; decisioni: nessuna ancora
 - [[a2-stakeholder-e-contesto]] — capitolo A2 (issue S1-01): stakeholder, utenti e sistemi esterni, flussi, Context Diagram CTX-01, ipotesi e domande
+- [[burndown-github-project]] — burndown dello sprint sul GitHub Project del team, pesato con le taglie; script e workflow
 - [[guida-progetto-picus]] — guida completa al progetto d'esame PICUS (presentazione, desiderata del committente, AGENTS.md del team, iterazione preparatoria, ruoli Scrum in 8)
 
 ## Esame

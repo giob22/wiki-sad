@@ -124,3 +124,9 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - fonte della bozza: Documentazione_SAD_2026.pdf del team (v0.2); differenze elencate nella pagina
 - aggiornati: guida-progetto-picus (attività 1), index, lezioni.md (Lezione 0, voce 6)
 - esportato: output/A2-stakeholder-e-contesto.docx (5 pagine, modificabile) con il diagramma CTX-01 in PNG; script genera_docx_a2.py e genera_context_diagram_a2.py in output/
+
+## [2026-10-18] progetto | burndown dello sprint sul GitHub Project
+- creata: [[burndown-github-project]] — come calcolare e mostrare il burndown pesato con le taglie; adattamenti al project Progetto-SAD (Iteration, Status, Workflows, durata 21 giorni di S1)
+- script in output/burndown/: burndown.py (solo libreria standard, `--demo` senza API), burndown.yml (workflow schedulato, pubblica sul branch burndown-data), esempio-burndown-demo.svg
+- non testato su un project reale: verificati solo calcolo e grafico con dati finti
+- aggiornati: lezioni.md (Lezione 0, voce 7), index, guida-progetto-picus

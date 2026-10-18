@@ -585,6 +585,8 @@ La review è un **confronto collettivo**: serve a verificare i risultati, riceve
 | Demo / Sprint Review | in aula alle date di review (§ 7.3) | gli 8 punti della review + demo dell'incremento |
 | Retrospettiva | subito dopo ogni review, solo il team | 1–3 azioni di miglioramento per lo sprint successivo |
 
+> 🧩 Per mostrare l'avanzamento dello sprint sul GitHub Project (burndown pesato con le taglie dei task) → [[burndown-github-project]].
+
 ### 8.3 Una possibile divisione del lavoro nella preparatoria
 
 | Coppia | Attività (§ 5.2) | Deliverable |

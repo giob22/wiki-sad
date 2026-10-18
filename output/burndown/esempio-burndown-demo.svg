@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" font-family="Arial">
+<rect width="900" height="440" fill="#fff"/>
+<text x="450.0" y="28" text-anchor="middle" font-size="17" font-weight="bold">Burndown — S1 - Preparazione</text>
+<text x="450.0" y="46" text-anchor="middle" font-size="11" fill="#555">15/10/2026 → 05/11/2026 · punti rimanenti</text>
+<line x1="70" y1="370.0" x2="870" y2="370.0" stroke="#e5e7eb"/>
+<text x="62" y="374.0" text-anchor="end" font-size="11" fill="#555">0</text>
+<line x1="70" y1="315.2020202020202" x2="870" y2="315.2020202020202" stroke="#e5e7eb"/>
+<text x="62" y="319.2020202020202" text-anchor="end" font-size="11" fill="#555">7</text>
+<line x1="70" y1="260.4040404040404" x2="870" y2="260.4040404040404" stroke="#e5e7eb"/>
+<text x="62" y="264.4040404040404" text-anchor="end" font-size="11" fill="#555">14</text>
+<line x1="70" y1="205.60606060606062" x2="870" y2="205.60606060606062" stroke="#e5e7eb"/>
+<text x="62" y="209.60606060606062" text-anchor="end" font-size="11" fill="#555">21</text>
+<line x1="70" y1="150.8080808080808" x2="870" y2="150.8080808080808" stroke="#e5e7eb"/>
+<text x="62" y="154.8080808080808" text-anchor="end" font-size="11" fill="#555">28</text>
+<line x1="70" y1="96.01010101010104" x2="870" y2="96.01010101010104" stroke="#e5e7eb"/>
+<text x="62" y="100.01010101010104" text-anchor="end" font-size="11" fill="#555">35</text>
+<line x1="70.0" y1="370" x2="70.0" y2="375" stroke="#555"/>
+<text x="70.0" y="390" text-anchor="middle" font-size="11" fill="#555">15/10</text>
+<line x1="146.1904761904762" y1="370" x2="146.1904761904762" y2="375" stroke="#555"/>
+<text x="146.1904761904762" y="390" text-anchor="middle" font-size="11" fill="#555">17/10</text>
+<line x1="222.38095238095238" y1="370" x2="222.38095238095238" y2="375" stroke="#555"/>
+<text x="222.38095238095238" y="390" text-anchor="middle" font-size="11" fill="#555">19/10</text>
+<line x1="298.57142857142856" y1="370" x2="298.57142857142856" y2="375" stroke="#555"/>
+<text x="298.57142857142856" y="390" text-anchor="middle" font-size="11" fill="#555">21/10</text>
+<line x1="374.76190476190476" y1="370" x2="374.76190476190476" y2="375" stroke="#555"/>
+<text x="374.76190476190476" y="390" text-anchor="middle" font-size="11" fill="#555">23/10</text>
+<line x1="450.95238095238096" y1="370" x2="450.95238095238096" y2="375" stroke="#555"/>
+<text x="450.95238095238096" y="390" text-anchor="middle" font-size="11" fill="#555">25/10</text>
+<line x1="527.1428571428571" y1="370" x2="527.1428571428571" y2="375" stroke="#555"/>
+<text x="527.1428571428571" y="390" text-anchor="middle" font-size="11" fill="#555">27/10</text>
+<line x1="603.3333333333334" y1="370" x2="603.3333333333334" y2="375" stroke="#555"/>
+<text x="603.3333333333334" y="390" text-anchor="middle" font-size="11" fill="#555">29/10</text>
+<line x1="679.5238095238095" y1="370" x2="679.5238095238095" y2="375" stroke="#555"/>
+<text x="679.5238095238095" y="390" text-anchor="middle" font-size="11" fill="#555">31/10</text>
+<line x1="755.7142857142857" y1="370" x2="755.7142857142857" y2="375" stroke="#555"/>
+<text x="755.7142857142857" y="390" text-anchor="middle" font-size="11" fill="#555">02/11</text>
+<line x1="831.9047619047619" y1="370" x2="831.9047619047619" y2="375" stroke="#555"/>
+<text x="831.9047619047619" y="390" text-anchor="middle" font-size="11" fill="#555">04/11</text>
+<rect x="70" y="60" width="800" height="310" fill="none" stroke="#555"/>
+<line x1="70.0" y1="127.32323232323235" x2="870.0" y2="370.0" stroke="#9ca3af" stroke-width="2" stroke-dasharray="7 5"/>
+<polyline fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="2 3" points="70.0,127.3 108.1,127.3 146.2,127.3 184.3,127.3 222.4,103.8 260.5,103.8 298.6,88.2 336.7,88.2 374.8,88.2 412.9,88.2 451.0,88.2 489.0,88.2 527.1,88.2 565.2,88.2 603.3,88.2 641.4,88.2 660.5,88.2"/>
+<polyline fill="none" stroke="#1d4ed8" stroke-width="2.5" points="70.0,127.3 108.1,127.3 146.2,127.3 184.3,127.3 222.4,103.8 260.5,103.8 298.6,111.7 336.7,111.7 374.8,111.7 412.9,150.8 451.0,174.3 489.0,174.3 527.1,174.3 565.2,213.4 603.3,213.4 641.4,213.4 660.5,252.6"/>
+<circle cx="70.0" cy="127.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="108.1" cy="127.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="146.2" cy="127.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="184.3" cy="127.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="222.4" cy="103.8" r="3.5" fill="#1d4ed8"/>
+<circle cx="260.5" cy="103.8" r="3.5" fill="#1d4ed8"/>
+<circle cx="298.6" cy="111.7" r="3.5" fill="#1d4ed8"/>
+<circle cx="336.7" cy="111.7" r="3.5" fill="#1d4ed8"/>
+<circle cx="374.8" cy="111.7" r="3.5" fill="#1d4ed8"/>
+<circle cx="412.9" cy="150.8" r="3.5" fill="#1d4ed8"/>
+<circle cx="451.0" cy="174.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="489.0" cy="174.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="527.1" cy="174.3" r="3.5" fill="#1d4ed8"/>
+<circle cx="565.2" cy="213.4" r="3.5" fill="#1d4ed8"/>
+<circle cx="603.3" cy="213.4" r="3.5" fill="#1d4ed8"/>
+<circle cx="641.4" cy="213.4" r="3.5" fill="#1d4ed8"/>
+<circle cx="660.5" cy="252.6" r="3.5" fill="#1d4ed8"/>
+<line x1="70" y1="416" x2="100" y2="416" stroke="#9ca3af" stroke-width="2.5" stroke-dasharray="7 5"/>
+<text x="108" y="420" font-size="12">ideale</text>
+<line x1="190" y1="416" x2="220" y2="416" stroke="#1d4ed8" stroke-width="2.5"/>
+<text x="228" y="420" font-size="12">rimanenti</text>
+<line x1="320" y1="416" x2="350" y2="416" stroke="#b45309" stroke-width="2.5" stroke-dasharray="2 3"/>
+<text x="358" y="420" font-size="12">scope (totale assegnato)</text>
+</svg>

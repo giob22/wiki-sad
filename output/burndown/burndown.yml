@@ -1,0 +1,59 @@
+# Da copiare nel repository del progetto come .github/workflows/burndown.yml
+# e insieme a scripts/burndown.py (output/burndown/burndown.py del wiki).
+# NON TESTATO su un project reale: provarlo con "Run workflow" prima di fidarsi.
+#
+# Prerequisiti:
+#  - secret di repository PROJECT_TOKEN: token personale CLASSICO con scope `project` e `repo`
+#  - variabile di repository PROJECT_NUMBER: numero del project (dall'URL .../projects/<numero>)
+name: burndown
+
+on:
+  schedule:
+    - cron: "0 20 * * *"        # ogni giorno alle 20:00 UTC (22:00 in Italia con l'ora legale)
+  workflow_dispatch:
+
+permissions:
+  contents: write                # serve per pubblicare sul branch burndown-data
+
+jobs:
+  burndown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calcola il burndown
+        env:
+          PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          PROJECT_OWNER: CapHello
+          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+          OWNER_TYPE: user
+          ITERATION_FIELD: Iteration
+          STATUS_FIELD: Status
+          DONE_VALUE: Done
+          POINTS_FIELD: Punti      # campo Number; se non esiste si usa la mappatura di Size
+          SIZE_FIELD: Size
+          OUT_DIR: ${{ runner.temp }}/out
+        run: python scripts/burndown.py
+
+      - name: Conserva come artefatto
+        uses: actions/upload-artifact@v4
+        with:
+          name: burndown
+          path: ${{ runner.temp }}/out
+
+      # main è protetto: i file vanno su un branch dedicato, non su main
+      - name: Pubblica sul branch burndown-data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin burndown-data >/dev/null; then
+            git fetch origin burndown-data
+            git checkout -B burndown-data origin/burndown-data
+          else
+            git checkout --orphan burndown-data
+            git rm -rf . >/dev/null
+          fi
+          cp "$RUNNER_TEMP"/out/* .
+          git add -A
+          git commit -m "chore: aggiorna burndown" || echo "nessuna modifica"
+          git push origin burndown-data

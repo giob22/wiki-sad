@@ -17,7 +17,8 @@ Regola: 1 PDF = 1 lezione, salvo diversa indicazione. Glossario dei termini ingl
 4. [[progetto-di-corso]] — pp. 18–29: metodi didattici, progetto di classe, iterazioni, Scrum, tecnologie, calendario, **valutazione d'esame**.
 5. [[guida-progetto-picus]] — **progetto d'esame PICUS**, dai documenti in `wiki/progetto/riferimenti/`: presentazione PICUS pp. 1–29, richieste informali del committente pp. 1–7, AGENTS.md del team §1–10. Cosa fare, calendario delle iterazioni, dominio e desiderata, attività e deliverable dell'iterazione preparatoria, decisioni del team, come lavorare in 8 ruotando i ruoli Scrum.
 6. [[a2-stakeholder-e-contesto]] — **attività 1 del progetto** (presentazione PICUS p. 18, richieste §2–3): analisi degli stakeholder, confini del sistema, flussi, Context Diagram, ipotesi e domande aperte.
-7. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
+7. [[burndown-github-project]] — **strumento per il progetto**: burndown dello sprint sul GitHub Project pesato con le taglie dei task (richiama il burndown chart della Lezione 6, pagina «cerimonie e artefatti Agile»).
+8. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
 
 Ordine consigliato: quello delle slide.
 
