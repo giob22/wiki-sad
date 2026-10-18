@@ -118,3 +118,8 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - figura: raw/assets/prog-picus-p12-piano-iterazioni.png (piano delle iterazioni, p. 12)
 - 🧩 aggiunti: diagramma dei flussi tra attori, gantt delle iterazioni, catena di tracciabilità, proposta di rotazione dei ruoli Scrum in un team di 8 e checklist della preparatoria
 - aggiornati: progetto-di-corso (rimando), index, lezioni.md (Lezione 0, voce 5)
+
+## [2026-10-18] progetto | A2 Stakeholder e contesto (issue S1-01)
+- creata: [[a2-stakeholder-e-contesto]] — stakeholder SH-01…08, tabella stakeholder/utenti/sistemi esterni, confini, 14 flussi IF-xx, Context Diagram CTX-01 (Mermaid), ipotesi IP-01…05, domande Q-01/05/08/09/10/11, verifica dei 7 criteri dell'issue
+- fonte della bozza: Documentazione_SAD_2026.pdf del team (v0.2); differenze elencate nella pagina
+- aggiornati: guida-progetto-picus (attività 1), index, lezioni.md (Lezione 0, voce 6)
