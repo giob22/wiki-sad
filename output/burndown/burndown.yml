@@ -48,7 +48,7 @@ jobs:
           ITERATION_FIELD: Iteration
           STATUS_FIELD: Status
           DONE_VALUE: Done
-          POINTS_FIELD: Punti      # campo Number; se non esiste si usa la mappatura di Size
+          POINTS_FIELD: Estimate   # campo Number del project; se un task non ce l'ha si usa la mappatura di Size, poi 1
           SIZE_FIELD: Size
           OUT_DIR: ${{ runner.temp }}/out
         run: python scripts/burndown.py

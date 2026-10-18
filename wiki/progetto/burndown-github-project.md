@@ -29,12 +29,26 @@ dove $p_i$ sono i **punti** del task $i$. La linea ideale parte da $\text{scope}
 |---|---|
 | Task dello sprint | item del project con il campo **Iteration** uguale all'iterazione scelta (di default quella in corso oggi) |
 | Inizio e durata | dal campo Iteration (data di inizio e durata in giorni) |
-| Punti del task | campo **Number** `Punti` se esiste; altrimenti la **taglia** del campo `Size` tramite la mappatura `XS=1, S=2, M=3, L=5, XL=8` in [[burndown.py]]; altrimenti 1 |
+| Punti del task | campo **Number** `Estimate` (stima del task nel project) se compilato; altrimenti la **taglia** del campo `Size` tramite la mappatura `XS=1, S=2, M=3, L=5, XL=8` in [[burndown.py]]; altrimenti 1 |
 | «Fatto» | `Status = Done` |
 | Data di completamento | `closedAt` dell'issue; se manca, ultimo aggiornamento dell'item |
 | Data di aggiunta | data in cui l'item è stato aggiunto al project |
 
 > ⚖️ Trade-off: la **mappatura delle taglie in punti è una scelta del team** (qui una scala tipo Fibonacci: i task grandi pesano più che proporzionalmente perché sono più incerti). Cambiarla cambia la pendenza di ogni gradino, non la forma del grafico.
+
+## Quale campo usare per le stime
+
+Nel project e nelle issue ci sono più campi che sembrano fare la stessa cosa:
+
+| Campo | Tipo | Valori | Adatto alla pendenza? |
+|---|---|---|---|
+| **Estimate** (nel project) | **numero** | libero | **sì, è la scelta consigliata**: già numerico, nessuna mappatura, sommabile anche da Insights |
+| **Size** (nel project) | selezione singola | XS, S, M, L, XL | ripiego: serve la mappatura in punti (XS=1 … XL=8) |
+| **Effort** (campo delle issue) | selezione singola | Low, Medium, High | **no**: solo 3 livelli, i gradini sarebbero quasi tutti uguali; inoltre è un campo dell'issue e non del project, che lo script non legge |
+
+> 🧩 Elaborazione mia: conviene concordare nel team una **scala unica** per Estimate, per esempio 1, 2, 3, 5, 8 (stile Fibonacci). Un task da più di 8 va **spezzato**: è il criterio *Small* di INVEST ([[valutare-user-stories-invest]]). Non mescolate Estimate e Size nello stesso sprint: lo script usa Estimate quando c'è e Size solo se manca, e un task senza nessuno dei due vale **1 punto**, quindi distorce il grafico. `--inspect` segnala quanti task sono senza stima.
+
+> ⚠️ **Durata di S1 nel project:** la scheda di un'issue mostra l'iterazione *S1 - Preparazione* come «Oct 15 – Nov 3». Se l'interfaccia mostra la data finale inclusa, sono **20 giorni**, mentre il piano della docente prevede 3 settimane, cioè **21 giorni**, con review il 5/11 ([[00-Presentazione Progetto Picus.pdf#page=12]]). `--inspect` stampa i giorni e li confronta con il piano: se segnala «ATTENZIONE», correggete la durata nelle impostazioni del campo Iteration.
 
 ## Adattamenti al vostro project
 
@@ -45,7 +59,7 @@ Dalla schermata del board:
 - **Durata dell'iterazione:** la preparatoria è un'eccezione di **3 settimane** (15/10–5/11, [[00-Presentazione Progetto Picus.pdf#page=12]]), le altre iterazioni sono di 2: vedi la tabella nella sezione «Più sprint». La linea ideale usa la durata che trova nel campo Iteration.
 - **Una iterazione per sprint:** lo script sceglie da solo l'iterazione che contiene la data di oggi. Per rigenerare uno sprint passato impostate `ITERATION_TITLE`, ma ricordate che i task spostati altrove non compaiono più.
 - **Task che escono dall'iterazione:** un item spostato in un'altra iterazione sparisce dalla serie anche nel passato: il grafico è fedele per i task che restano nello sprint.
-- **Campo Size:** non è visibile sulle card. Se i valori non sono XS/S/M/L/XL, modificate `SIZE_POINTS`. Se preferite un campo Number, create `Punti` (nome configurabile con `POINTS_FIELD`).
+- **Campo Size:** non è visibile sulle card; è il ripiego se un task non ha Estimate. Se i valori non sono XS/S/M/L/XL, modificate `SIZE_POINTS`. Il campo preferito è **Estimate** (Number); il nome si cambia con `POINTS_FIELD`.
 
 ## Più sprint: board diverse, durate diverse, chiusura
 
@@ -189,7 +203,7 @@ Sorgenti vettoriali (SVG): [[A-stile-docente.svg]], [[B-dashboard.svg]], [[C-scu
 
 ## Alternative
 
-- **Grafico nativo (Insights):** è un burn-up che conta gli item nel tempo; con un campo Number `Punti` si può provare a sommarlo sull'asse Y. Nessun burndown nativo.
+- **Grafico nativo (Insights):** è un burn-up che conta gli item nel tempo; con il campo Number `Estimate` si può provare a sommarlo sull'asse Y. Nessun burndown nativo.
 - **Strumento esterno:** Screenful offre un burndown per GitHub Projects con campi numerici e linea attesa.
 
 _Aggiornato: 2026-10-18 — prima stesura_

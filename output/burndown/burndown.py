@@ -14,7 +14,7 @@ Variabili d'ambiente (le prime tre servono, le altre hanno un default):
   ITERATION_FIELD   nome del campo iterazione                (default: Iteration)
   STATUS_FIELD      nome del campo stato                     (default: Status)
   DONE_VALUE        valore di stato che vale «fatto»         (default: Done)
-  POINTS_FIELD      campo Number con i punti                 (default: Punti)
+  POINTS_FIELD      campo Number con i punti                 (default: Estimate)
   SIZE_FIELD        campo Size (selezione singola)           (default: Size)
   OUT_DIR           cartella di output                       (default: docs/burndown)
 
@@ -321,6 +321,21 @@ def inspect(ptitle, nodes):
             f"ATTENZIONE: il piano prevede {PIANO[st]} giorni da quella data" if st in PIANO
             else "ATTENZIONE: data di inizio non presente nel piano")
         print(f"  «{t}»: {st:%d/%m/%Y}, {d} gg, fine {st + timedelta(days=d):%d/%m/%Y} -> {esito}")
+    pf, sf = os.environ.get("POINTS_FIELD", "Estimate"), os.environ.get("SIZE_FIELD", "Size")
+    print(f"Task per iterazione e stima (campo Number «{pf}», altrimenti taglia «{sf}», altrimenti 1 punto):")
+    for t in sorted(iters, key=lambda k: iters[k][0]):
+        tot = no = 0
+        for n in nodes:
+            vals = n["fieldValues"]["nodes"]
+            if not any("startDate" in v and v["title"] == t for v in vals):
+                continue
+            tot += 1
+            has_num = any(v["__typename"] == "ProjectV2ItemFieldNumberValue" and (v.get("field") or {}).get("name") == pf
+                          for v in vals)
+            has_size = any(v["__typename"] == "ProjectV2ItemFieldSingleSelectValue" and (v.get("field") or {}).get("name") == sf
+                           for v in vals)
+            no += not (has_num or has_size)
+        print(f"  «{t}»: {tot} task, {no} senza stima" + ("  <- contati come 1 punto" if no else ""))
     print("Item senza issue collegata (bozze):", sum(1 for n in nodes if (n['content'] or {}).get('__typename') == 'DraftIssue'))
 
 
@@ -333,7 +348,7 @@ def main():
         cfg = {"iter_field": os.environ.get("ITERATION_FIELD", "Iteration"),
                "status_field": os.environ.get("STATUS_FIELD", "Status"),
                "done_value": os.environ.get("DONE_VALUE", "Done"),
-               "points_field": os.environ.get("POINTS_FIELD", "Punti"),
+               "points_field": os.environ.get("POINTS_FIELD", "Estimate"),
                "size_field": os.environ.get("SIZE_FIELD", "Size")}
         ptitle, nodes = graphql(os.environ["PROJECT_TOKEN"], os.environ.get("OWNER_TYPE", "user"),
                                 os.environ["PROJECT_OWNER"], int(os.environ["PROJECT_NUMBER"]))
