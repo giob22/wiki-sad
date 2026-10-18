@@ -20,6 +20,7 @@ Variabili d'ambiente (le prime tre servono, le altre hanno un default):
 
 I punti di un task: campo Number se presente, altrimenti mappatura della taglia
 (SIZE_POINTS qui sotto), altrimenti 1.  Prova senza API:  python burndown.py --demo
+Controlla i nomi dei campi sul project reale:  python burndown.py --inspect
 """
 import csv
 import json
@@ -196,6 +197,23 @@ def demo_items():
             it("S1-09", 3, 4, None), it("S1-10", 2, 6, None)]
 
 
+def inspect(ptitle, nodes):
+    """Diagnostica: mostra project, campi e valori trovati, per controllare i nomi in configurazione."""
+    seen = {}
+    for n in nodes:
+        for v in n["fieldValues"]["nodes"]:
+            name = (v.get("field") or {}).get("name")
+            if not name:
+                continue
+            val = v.get("name") or v.get("number") or (f"{v['title']} ({v['startDate']}, {v['duration']} gg)"
+                                                       if "startDate" in v else "?")
+            seen.setdefault((name, v["__typename"].replace("ProjectV2ItemField", "")), set()).add(str(val))
+    print(f"Project «{ptitle}»: {len(nodes)} item")
+    for (name, kind), vals in sorted(seen.items()):
+        print(f"  campo «{name}» [{kind}]: {sorted(vals)}")
+    print("Item senza issue collegata (bozze):", sum(1 for n in nodes if (n['content'] or {}).get('__typename') == 'DraftIssue'))
+
+
 def main():
     if "--demo" in sys.argv:
         items = demo_items()
@@ -207,8 +225,11 @@ def main():
                "done_value": os.environ.get("DONE_VALUE", "Done"),
                "points_field": os.environ.get("POINTS_FIELD", "Punti"),
                "size_field": os.environ.get("SIZE_FIELD", "Size")}
-        _, nodes = graphql(os.environ["PROJECT_TOKEN"], os.environ.get("OWNER_TYPE", "user"),
-                           os.environ["PROJECT_OWNER"], int(os.environ["PROJECT_NUMBER"]))
+        ptitle, nodes = graphql(os.environ["PROJECT_TOKEN"], os.environ.get("OWNER_TYPE", "user"),
+                                os.environ["PROJECT_OWNER"], int(os.environ["PROJECT_NUMBER"]))
+        if "--inspect" in sys.argv:
+            inspect(ptitle, nodes)
+            return
         items = normalize(nodes, cfg)
         now = datetime.now(UTC)
         out = Path(os.environ.get("OUT_DIR", "docs/burndown"))

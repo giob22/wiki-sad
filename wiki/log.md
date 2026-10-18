@@ -130,3 +130,4 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - script in output/burndown/: burndown.py (solo libreria standard, `--demo` senza API), burndown.yml (workflow schedulato, pubblica sul branch burndown-data), esempio-burndown-demo.svg
 - non testato su un project reale: verificati solo calcolo e grafico con dati finti
 - aggiornati: lezioni.md (Lezione 0, voce 7), index, guida-progetto-picus
+- burndown.py: aggiunta la modalità --inspect (campi e valori trovati nel project) e la sezione «Provarlo in locale con dati reali» in burndown-github-project

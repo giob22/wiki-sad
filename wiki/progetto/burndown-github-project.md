@@ -55,13 +55,50 @@ Dalla schermata del board:
 4. Lanciare il workflow a mano con *Run workflow* e controllare il risultato.
 5. I file `burndown-<iterazione>.svg` e `.csv` finiscono come artefatto e sul branch **`burndown-data`**, non su `main`, perché in `AGENTS.md` i branch principali sono protetti (§7). Aprire l'SVG su GitHub per vederlo.
 
-Prova in locale **senza API**, per vedere il grafico di esempio:
+Prova in locale **senza API** (per vedere il grafico di esempio; per i dati reali vedi la sezione successiva):
 
 ```bash
 python output/burndown/burndown.py --demo
 ```
 
 > ⚠️ **Non testato su un project reale:** ho provato solo il calcolo e il grafico con dati finti. Il collegamento con l'API GraphQL e il workflow vanno verificati la prima volta. Il token non deve mai essere scritto nel codice ([[AGENTS]] §3: niente credenziali nel codice).
+
+## Provarlo in locale con dati reali (senza Actions)
+
+Basta l'API: lo script gira sul tuo PC e legge il project con un token. Nessun workflow, nessun commit.
+
+1. **Token.** Ottienilo in uno di questi due modi:
+   - con la GitHub CLI già installata: `gh auth refresh -s read:project -s repo` e poi `gh auth token`;
+   - oppure da *Settings → Developer settings → Personal access tokens (classic)*, con scope `read:project` e `repo`.
+2. **Numero del project:** nell'URL `github.com/users/CapHello/projects/<numero>`.
+3. **Variabili d'ambiente** (PowerShell), poi **controllo dei campi**:
+
+```powershell
+$env:PROJECT_TOKEN  = (gh auth token)     # oppure il token incollato qui, solo in questa finestra
+$env:PROJECT_OWNER  = "CapHello"
+$env:PROJECT_NUMBER = "<numero>"
+py -3.11 output/burndown/burndown.py --inspect
+```
+
+   `--inspect` stampa il project, il numero di item e, per ogni campo trovato, i suoi valori: devono comparire **Status** (con Done), **Iteration** (con *S1 - Preparazione* e i suoi giorni) e, se c'è, **Size**. Se un nome è diverso, impostalo con `ITERATION_FIELD`, `STATUS_FIELD`, `SIZE_FIELD`, `DONE_VALUE`.
+4. **Grafico reale:** stesso comando senza `--inspect`, con `OUT_DIR` per scegliere dove scrivere.
+
+```powershell
+$env:OUT_DIR = "out"
+py -3.11 output/burndown/burndown.py
+```
+
+   Compare `out/burndown-s1-preparazione.svg` (aprilo nel browser) e il `.csv` con i numeri giorno per giorno.
+
+| Sintomo | Causa probabile |
+|---|---|
+| `INSUFFICIENT_SCOPES` | al token manca `read:project` |
+| `Could not resolve to a User` | `PROJECT_OWNER` sbagliato, o project di un'organizzazione (`OWNER_TYPE=organization`) |
+| `Iterazione … non trovata` | nome del campo Iteration diverso (`ITERATION_FIELD`) o titolo diverso (`ITERATION_TITLE`) |
+| 0 task o tutti da 1 punto | nome o valori di Status/Size diversi: guarda l'output di `--inspect` |
+| gradini nei giorni sbagliati | Done non coincide con «issue chiusa» (vedi Workflows del project) |
+
+> ⚠️ Il token è una credenziale: tienilo solo nella variabile d'ambiente della finestra, non nei file, non in chat, non nei commit.
 
 ## Alternative
 
