@@ -104,13 +104,13 @@ Il workflow ([[burndown.yml]]) fa, ogni giorno alle 23:50 UTC e a richiesta:
 <!-- BURNDOWN:START — grafico dello sprint in corso, aggiornato ogni sera dal workflow "burndown"; non modificare il link -->
 ## Avanzamento dello sprint
 
-![Burndown dello sprint in corso](https://github.com/CapHello/Progetto-SAD/raw/burndown-data/burndown-latest.svg)
+![Burndown dello sprint in corso](https://github.com/Pinguini-alla-Fragola/Progetto-SAD/raw/burndown-data/burndown-latest.svg)
 
-*Aggiornato ogni sera. Gli sprint precedenti sono nel branch [`burndown-data`](https://github.com/CapHello/Progetto-SAD/tree/burndown-data).*
+*Aggiornato ogni sera. Gli sprint precedenti sono nel branch [`burndown-data`](https://github.com/Pinguini-alla-Fragola/Progetto-SAD/tree/burndown-data).*
 <!-- BURNDOWN:END -->
 ```
 
-   🧩 Sostituite `CapHello/Progetto-SAD` se il repository ha un altro proprietario o nome.
+   🧩 Il repository è `Pinguini-alla-Fragola/Progetto-SAD` (organizzazione), mentre il **project** è dell'utente `CapHello`: nel workflow restano `PROJECT_OWNER: CapHello` e `OWNER_TYPE: user`, perché riguardano il project, non il repository.
 
 ### Cosa succede a ogni cambio di sprint
 
@@ -124,6 +124,8 @@ Il workflow ([[burndown.yml]]) fa, ogni giorno alle 23:50 UTC e a richiesta:
 > 3. far aggiornare al workflow un blocco del README direttamente su `main`, permesso solo se i branch protetti lo consentono al bot e se il team lo accetta.
 >
 > Il browser può tenere in cache il grafico per qualche minuto dopo l'aggiornamento.
+
+> ⚠️ Repository di un'**organizzazione**: se il primo run risponde che l'organizzazione non consente l'accesso con un token personale **classico**, un owner dell'organizzazione deve consentirlo in *Organization settings → Personal access tokens* (criteri per i token). Se l'organizzazione usa il single sign-on, il token va anche **autorizzato** per l'organizzazione dalla pagina dei token.
 
 > ⚠️ Limiti da conoscere: se una regola dei branch del repository si applica a **tutti** i branch, il push su `burndown-data` fallisce; se in *Settings → Actions → General* i permessi del workflow sono bloccati in sola lettura da una regola dell'organizzazione, `permissions: contents: write` nel file può non bastare. Il token non va mai scritto nel codice ([[AGENTS]] §3: niente credenziali nel codice).
 
@@ -193,4 +195,5 @@ Sorgenti vettoriali (SVG): [[A-stile-docente.svg]], [[B-dashboard.svg]], [[C-scu
 _Aggiornato: 2026-10-18 — prima stesura_
 _Aggiornato: 2026-10-18 — più sprint, durate 21/14 giorni, chiusura dello sprint
 _Aggiornato: 2026-10-18 — design scelto: dashboard con area colorata
-_Aggiornato: 2026-10-18 — workflow completo e posizione nel README (burndown-latest.svg)_
+_Aggiornato: 2026-10-18 — workflow completo e posizione nel README (burndown-latest.svg)
+_Aggiornato: 2026-10-18 — repository dell'organizzazione Pinguini-alla-Fragola_
