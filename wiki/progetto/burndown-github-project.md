@@ -32,7 +32,7 @@ dove $p_i$ sono i **punti** del task $i$. La linea ideale parte da $\text{scope}
 | Punti del task | campo **Number** `Estimate` (stima del task nel project) se compilato; altrimenti la **taglia** del campo `Size` tramite la mappatura `XS=1, S=2, M=3, L=5, XL=8` in [[burndown.py]]; altrimenti 1 |
 | «Fatto» | `Status = Done` |
 | Data di completamento | `closedAt` dell'issue; se manca, ultimo aggiornamento dell'item |
-| Data di aggiunta | data in cui l'item è stato aggiunto al project |
+| Data di aggiunta | data in cui l'item è stato aggiunto al project. I task aggiunti **nel primo giorno** dello sprint (la planning) contano come scope **iniziale**; solo quelli aggiunti dopo sono un aumento di perimetro |
 
 > ⚖️ Trade-off: la **mappatura delle taglie in punti è una scelta del team** (qui una scala tipo Fibonacci: i task grandi pesano più che proporzionalmente perché sono più incerti). Cambiarla cambia la pendenza di ogni gradino, non la forma del grafico.
 

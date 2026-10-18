@@ -146,9 +146,13 @@ def compute(items, title, start, days, now):
     stops = [t0 + timedelta(days=k) for k in range(days + 1) if t0 + timedelta(days=k) <= now]
     if now < t0 + timedelta(days=days):
         stops.append(now)                           # punto «adesso» se lo sprint è in corso
+    # I task aggiunti al project nel primo giorno dello sprint (planning) contano come scope iniziale:
+    # solo quelli aggiunti dopo sono «aumento di perimetro».
+    grace = t0 + timedelta(days=1)
+    added = lambda i: t0 if i["created"] < grace else i["created"]
     rows = []
     for t in stops:
-        scope = sum(i["points"] for i in mine if i["created"] <= t)
+        scope = sum(i["points"] for i in mine if added(i) <= t)
         done = sum(i["points"] for i in mine if i["done_at"] and i["done_at"] <= t)
         rows.append(((t - t0).total_seconds() / 86400, scope, done, scope - done))
     base = rows[0][1] if rows and rows[0][1] > 0 else sum(i["points"] for i in mine)
