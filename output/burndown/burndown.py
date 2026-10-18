@@ -20,7 +20,7 @@ Variabili d'ambiente (le prime tre servono, le altre hanno un default):
 
 Il grafico ha riquadri di stato, previsione a fine sprint e area colorata (rosa = in ritardo,
 azzurra = in anticipo rispetto alla linea ideale).
-Scrive solo l'iterazione in corso: i file degli sprint conclusi restano com'erano, cosi'
+Scrive solo l'iterazione in corso (e la copia `burndown-latest.svg` per il README): i file degli sprint conclusi restano com'erano, cosi'
 i task non finiti e spostati nello sprint successivo non alterano la storia (un file per sprint).
 
 I punti di un task: campo Number se presente, altrimenti mappatura della taglia
@@ -351,7 +351,10 @@ def main():
         w = csv.writer(fh)
         w.writerow(["giorno", "scope", "completati", "rimanenti"])
         w.writerows([(f"{r[0]:.2f}", r[1], r[2], r[3]) for r in rows])
-    (out / f"burndown-{slug}.svg").write_text(render_svg(title, start, days, base, rows, now), encoding="utf-8")
+    svg = render_svg(title, start, days, base, rows, now)
+    (out / f"burndown-{slug}.svg").write_text(svg, encoding="utf-8")
+    # copia con nome fisso: il README punta sempre a questo file, che mostra lo sprint in corso
+    (out / "burndown-latest.svg").write_text(svg, encoding="utf-8")
     print(f"{title}: {len(mine)} task, base {base:g} punti, rimanenti {rows[-1][3]:g}" if rows else "nessun dato")
 
 

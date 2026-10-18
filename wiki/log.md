@@ -134,3 +134,4 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - burndown: gestione di più sprint (durate 21 e 14 giorni dal piano, controllo in --inspect, un file per sprint, input iteration_title nel workflow, esecuzione alle 23:50 UTC)
 - burndown: quattro varianti grafiche su dati simulati (output/burndown/genera_varianti_grafico.py, varianti/) in attesa di scelta
 - burndown: scelto il design B (dashboard) con l'area colorata della A; integrato in burndown.py (riquadri, previsione, area rosa/azzurra, stato «Concluso»); provati i casi limite (concluso, in anticipo, completato, scope iniziale zero, primo giorno)
+- burndown: workflow completato (setup-python, concurrency, burndown-latest.svg con nome fisso per il README) e istruzioni per l'attivazione nel repository (token, secret, variabile, PR, blocco README con delimitatori); YAML validato, non testato su GitHub

@@ -72,21 +72,66 @@ Le **board** (le viste con il filtro `iteration:"S1 - Preparazione"`) non influi
 
 > ⚠️ Limite: un task già nel project ma assegnato all'iterazione **dopo** l'inizio dello sprint risulta, per lo script, presente fin dall'inizio: **non** compare come aumento di perimetro (cioè come salita dello scope). Compaiono come aumento solo i task **aggiunti al project** durante lo sprint.
 
-## Passi per attivarlo (nel repository del progetto)
+## Attivarlo su GitHub: workflow e README
 
-1. Copiare [[burndown.py]] in `scripts/burndown.py` e [[burndown.yml]] in `.github/workflows/burndown.yml`.
-2. Creare un token personale **classico** con scope `project` e `repo` e salvarlo come secret `PROJECT_TOKEN`. Il `GITHUB_TOKEN` di Actions non basta per leggere un project di un utente.
-3. Salvare come variabile di repository `PROJECT_NUMBER` il numero del project (dall'URL `.../projects/<numero>`).
-4. Lanciare il workflow a mano con *Run workflow* e controllare il risultato.
-5. I file `burndown-<iterazione>.svg` e `.csv` finiscono come artefatto e sul branch **`burndown-data`**, non su `main`, perché in `AGENTS.md` i branch principali sono protetti (§7). Aprire l'SVG su GitHub per vederlo.
+**Idea.** `main` è protetto ([[AGENTS]] §7), quindi il workflow **non riscrive il README**. Il README contiene un'immagine con un indirizzo **fisso**; il workflow sovrascrive ogni sera il file a quell'indirizzo, sul branch `burndown-data`, con il grafico dello sprint in corso. Così il README mostra sempre l'ultimo sprint senza nessuna modifica a `main`.
+
+Il workflow ([[burndown.yml]]) fa, ogni giorno alle 23:50 UTC e a richiesta:
+1. legge il project con il token;
+2. calcola il burndown dello sprint in corso con [[burndown.py]];
+3. pubblica sul branch `burndown-data`: **`burndown-latest.svg`** (usato dal README), un `burndown-<sprint>.svg` e `.csv` per ogni sprint, conservati per lo storico;
+4. salva gli stessi file come artefatto dell'esecuzione.
+
+### Passi, in ordine
+
+1. **Token.** Su GitHub: *Settings → Developer settings → Personal access tokens → Tokens (classic)*, scope `project` e `repo`. Metti una **scadenza dopo il 17/12/2026**: a token scaduto il workflow smette di aggiornare il grafico senza avvisi evidenti.
+2. **Secret e variabile** nel repository *Progetto-SAD*, in *Settings → Secrets and variables → Actions*:
+   - scheda *Secrets* → nuovo secret `PROJECT_TOKEN` con il token;
+   - scheda *Variables* → nuova variabile `PROJECT_NUMBER` con il numero del project.
+3. **File nel repository**, su un branch dedicato (regola del team: un branch per attività, Conventional Commits, niente push su `main`):
+
+   | File | Contenuto |
+   |---|---|
+   | `scripts/burndown.py` | copia di [[burndown.py]] |
+   | `.github/workflows/burndown.yml` | copia di [[burndown.yml]] |
+   | `README.md` | il blocco del punto 5, **per ultimo** |
+
+   Per esempio branch `feat/burndown-sprint`, commit `feat(ci): aggiungi il burndown dello sprint`, poi pull request verso `main`. Il workflow pianificato parte **solo dopo il merge** perché le esecuzioni programmate usano il file presente sul branch predefinito.
+4. **Prima esecuzione a mano, prima di inserire l'immagine nel README:** scheda *Actions* → *burndown* → *Run workflow*. A fine esecuzione devono esistere il branch `burndown-data` e il file `burndown-latest.svg`. Se il run fallisce, il log del passo «Calcola il burndown» dice perché (stessi sintomi della tabella più sotto).
+5. **README.** Nel punto che preferite, un blocco con delimitatori, così il posto resta riconoscibile:
+
+```markdown
+<!-- BURNDOWN:START — grafico dello sprint in corso, aggiornato ogni sera dal workflow "burndown"; non modificare il link -->
+## Avanzamento dello sprint
+
+![Burndown dello sprint in corso](https://github.com/CapHello/Progetto-SAD/raw/burndown-data/burndown-latest.svg)
+
+*Aggiornato ogni sera. Gli sprint precedenti sono nel branch [`burndown-data`](https://github.com/CapHello/Progetto-SAD/tree/burndown-data).*
+<!-- BURNDOWN:END -->
+```
+
+   🧩 Sostituite `CapHello/Progetto-SAD` se il repository ha un altro proprietario o nome.
+
+### Cosa succede a ogni cambio di sprint
+
+- Dalla data di inizio del nuovo sprint lo script sceglie la nuova iterazione, e `burndown-latest.svg` passa a mostrarla: il README cambia da solo.
+- Il file dello sprint concluso resta nel branch come `burndown-<sprint>.svg`, fissato all'ultimo aggiornamento (vedi «Chiusura dello sprint»).
+- Nei primissimi giorni di uno sprint il grafico ha pochi punti e la previsione è poco affidabile.
+
+> ⚠️ **Da verificare al primo giro.** Se il repository è **privato**, l'immagine nel README si vede **a chi ha accesso** al repository ed è collegato a GitHub nel browser, ma non l'ho potuto provare. Il link `.../raw/burndown-data/...` viene reindirizzato con un permesso temporaneo. Se invece l'immagine non compare, scegliete una di queste strade:
+> 1. un link cliccabile al file sul branch `burndown-data` al posto dell'immagine (si apre il grafico, ma non è incorporato);
+> 2. una versione PNG al posto dell'SVG (l'SVG è il formato più delicato con le immagini esterne): richiede una piccola modifica allo script;
+> 3. far aggiornare al workflow un blocco del README direttamente su `main`, permesso solo se i branch protetti lo consentono al bot e se il team lo accetta.
+>
+> Il browser può tenere in cache il grafico per qualche minuto dopo l'aggiornamento.
+
+> ⚠️ Limiti da conoscere: se una regola dei branch del repository si applica a **tutti** i branch, il push su `burndown-data` fallisce; se in *Settings → Actions → General* i permessi del workflow sono bloccati in sola lettura da una regola dell'organizzazione, `permissions: contents: write` nel file può non bastare. Il token non va mai scritto nel codice ([[AGENTS]] §3: niente credenziali nel codice).
 
 Prova in locale **senza API** (per vedere il grafico di esempio; per i dati reali vedi la sezione successiva):
 
 ```bash
 python output/burndown/burndown.py --demo
 ```
-
-> ⚠️ **Non testato su un project reale:** ho provato solo il calcolo e il grafico con dati finti. Il collegamento con l'API GraphQL e il workflow vanno verificati la prima volta. Il token non deve mai essere scritto nel codice ([[AGENTS]] §3: niente credenziali nel codice).
 
 ## Provarlo in locale con dati reali (senza Actions)
 
@@ -147,4 +192,5 @@ Sorgenti vettoriali (SVG): [[A-stile-docente.svg]], [[B-dashboard.svg]], [[C-scu
 
 _Aggiornato: 2026-10-18 — prima stesura_
 _Aggiornato: 2026-10-18 — più sprint, durate 21/14 giorni, chiusura dello sprint
-_Aggiornato: 2026-10-18 — design scelto: dashboard con area colorata_
+_Aggiornato: 2026-10-18 — design scelto: dashboard con area colorata
+_Aggiornato: 2026-10-18 — workflow completo e posizione nel README (burndown-latest.svg)_
