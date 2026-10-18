@@ -336,6 +336,28 @@ def inspect(ptitle, nodes):
                            for v in vals)
             no += not (has_num or has_size)
         print(f"  «{t}»: {tot} task, {no} senza stima" + ("  <- contati come 1 punto" if no else ""))
+        stf = os.environ.get("STATUS_FIELD", "Status")
+        somma = 0.0
+        for n in nodes:
+            vals = n["fieldValues"]["nodes"]
+            if not any("startDate" in v and v["title"] == t for v in vals):
+                continue
+            num = next((v["number"] for v in vals if v["__typename"] == "ProjectV2ItemFieldNumberValue"
+                        and (v.get("field") or {}).get("name") == pf), None)
+            size = next((v["name"] for v in vals if v["__typename"] == "ProjectV2ItemFieldSingleSelectValue"
+                         and (v.get("field") or {}).get("name") == sf), None)
+            stato = next((v["name"] for v in vals if v["__typename"] == "ProjectV2ItemFieldSingleSelectValue"
+                          and (v.get("field") or {}).get("name") == stf), "?")
+            if num is not None:
+                punti, da = num, pf
+            elif size in SIZE_POINTS:
+                punti, da = SIZE_POINTS[size], f"{sf}={size}"
+            else:
+                punti, da = 1, "NESSUNA STIMA (default)"
+            somma += punti
+            titolo = (n["content"] or {}).get("title", "?")
+            print(f"      {punti:>4g} pt  [{da}]  {stato:<12} {titolo[:60]}  (aggiunto al project: {n['createdAt'][:16]})")
+        print(f"      totale punti dell'iterazione: {somma:g}")
     print("Item senza issue collegata (bozze):", sum(1 for n in nodes if (n['content'] or {}).get('__typename') == 'DraftIssue'))
 
 
