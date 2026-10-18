@@ -6,7 +6,7 @@ data: 2026-10-18
 
 # Burndown dello sprint sul GitHub Project
 
-Come mostrare l'avanzamento di uno sprint nel project **Progetto-SAD** (utente `CapHello`, viste *Sprint 1 - Preparazione*, *Current iteration*, ecc.), pesando i task con la loro taglia. Il codice vive nel repository del team: qui ci sono i file da copiare e le spiegazioni.
+Come mostrare l'avanzamento di uno sprint nel project **Progetto-SAD** (project dell'organizzazione `Pinguini-alla-Fragola`; viste *Sprint 1 - Preparazione*, *Current iteration*, ecc.), pesando i task con la loro taglia. Il codice vive nel repository del team: qui ci sono i file da copiare e le spiegazioni.
 
 > 🧩 Elaborazione mia: nelle fonti del corso non c'è nulla su GitHub Projects. Il concetto di burndown è nella Lezione 6 → [[cerimonie-e-artefatti-agile]] (burndown chart: asse = lavoro rimanente nello sprint, linea ideale retta, tratti piatti = giorni senza storie chiuse).
 
@@ -124,7 +124,7 @@ Il workflow ([[burndown.yml]]) fa, ogni giorno alle 23:50 UTC e a richiesta:
 <!-- BURNDOWN:END -->
 ```
 
-   🧩 Il repository è `Pinguini-alla-Fragola/Progetto-SAD` (organizzazione), mentre il **project** è dell'utente `CapHello`: nel workflow restano `PROJECT_OWNER: CapHello` e `OWNER_TYPE: user`, perché riguardano il project, non il repository.
+   🧩 Repository e **project** sono dell'organizzazione `Pinguini-alla-Fragola`: nel workflow `PROJECT_OWNER` e `OWNER_TYPE` valgono di default `Pinguini-alla-Fragola` e `organization`, e si possono cambiare con le variabili di repository omonime senza toccare il file. Un project **personale** ha invece `OWNER_TYPE=user` e il login dell'utente.
 
 ### Cosa succede a ogni cambio di sprint
 
@@ -156,12 +156,13 @@ Basta l'API: lo script gira sul tuo PC e legge il project con un token. Nessun w
 1. **Token.** Ottienilo in uno di questi due modi:
    - con la GitHub CLI già installata: `gh auth refresh -s read:project -s repo` e poi `gh auth token`;
    - oppure da *Settings → Developer settings → Personal access tokens (classic)*, con scope `read:project` e `repo`.
-2. **Numero del project:** nell'URL `github.com/users/CapHello/projects/<numero>`.
+2. **Numero del project:** nell'URL `github.com/orgs/Pinguini-alla-Fragola/projects/<numero>`; oppure `gh project list --owner Pinguini-alla-Fragola` (per un project personale: `--owner <utente>`).
 3. **Variabili d'ambiente** (PowerShell), poi **controllo dei campi**:
 
 ```powershell
 $env:PROJECT_TOKEN  = (gh auth token)     # oppure il token incollato qui, solo in questa finestra
-$env:PROJECT_OWNER  = "CapHello"
+$env:PROJECT_OWNER  = "Pinguini-alla-Fragola"
+$env:OWNER_TYPE     = "organization"
 $env:PROJECT_NUMBER = "<numero>"
 py -3.11 output/burndown/burndown.py --inspect
 ```
@@ -210,4 +211,5 @@ _Aggiornato: 2026-10-18 — prima stesura_
 _Aggiornato: 2026-10-18 — più sprint, durate 21/14 giorni, chiusura dello sprint
 _Aggiornato: 2026-10-18 — design scelto: dashboard con area colorata
 _Aggiornato: 2026-10-18 — workflow completo e posizione nel README (burndown-latest.svg)
-_Aggiornato: 2026-10-18 — repository dell'organizzazione Pinguini-alla-Fragola_
+_Aggiornato: 2026-10-18 — repository dell'organizzazione Pinguini-alla-Fragola
+_Aggiornato: 2026-10-19 — project dell'organizzazione (owner e tipo configurabili)_

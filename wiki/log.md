@@ -137,3 +137,4 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - burndown: workflow completato (setup-python, concurrency, burndown-latest.svg con nome fisso per il README) e istruzioni per l'attivazione nel repository (token, secret, variabile, PR, blocco README con delimitatori); YAML validato, non testato su GitHub
 - burndown: campo delle stime = Estimate (Number) con ripiego su Size; --inspect segnala i task senza stima; segnalata la durata di S1 (20 giorni mostrati contro 21 del piano)
 - burndown.py: --inspect elenca ogni task dell'iterazione con punti, provenienza della stima (Estimate, Size o default), stato e data di aggiunta al project, e il totale dei punti
+- burndown: il project reale è dell'organizzazione Pinguini-alla-Fragola (il project 2 di CapHello era una copia); workflow con PROJECT_OWNER e OWNER_TYPE configurabili (default organizzazione); diagnosi fatta con --inspect (stati e stime letti da un project diverso)
