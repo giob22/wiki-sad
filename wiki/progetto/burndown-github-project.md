@@ -13,7 +13,7 @@ Come mostrare l'avanzamento di uno sprint nel project **Progetto-SAD** (utente `
 ## Cosa si ottiene
 
 ![[esempio-burndown-demo.svg]]
-*🧩 Grafico di esempio prodotto da [[burndown.py]] con dati finti (`--demo`: 10 task da 2–5 punti, due aggiunti a sprint iniziato). **Linea grigia tratteggiata** = ideale, dal totale iniziale a 0 alla fine dell'iterazione. **Linea blu** = punti rimanenti: scende a gradini quando un task passa a Done, della taglia del task, e **sale** quando si aggiungono task a sprint iniziato. **Linea arancione** = totale assegnato (scope): è la variazione di perimetro. Il tratto piatto tra il 15/10 e il 20/10 significa nessun task chiuso in quei giorni.*
+*🧩 Grafico di esempio prodotto da [[burndown.py]] con dati finti (`--demo`; anteprima raster: [[esempio-burndown-demo.png]]): sprint di 21 giorni, 10 task, 5 punti aggiunti a sprint iniziato. **Quattro riquadri**: punti rimanenti, completati su totale (con la percentuale), giorni rimasti, stato («In ritardo / In anticipo / In linea» e di quanti punti rispetto alla linea ideale). **Grafico**: linea grigia tratteggiata = ideale, dal totale iniziale a 0 alla fine dell'iterazione; linea blu = punti rimanenti, che scende quando un task passa a Done, della sua taglia, e sale se si aggiungono task a sprint iniziato; **area rosa** = scostamento in ritardo rispetto all'ideale, **area azzurra** = in anticipo (come nel grafico della docente, [[04_Agile_01.pdf#page=31]]); linea rossa «OGGI»; linea arancione = **previsione** a fine sprint continuando al ritmo attuale. A sprint concluso i riquadri passano a «Concluso» e la previsione sparisce.*
 
 ## Come funziona il calcolo
 
@@ -125,22 +125,20 @@ py -3.11 output/burndown/burndown.py
 
 > ⚠️ Il token è una credenziale: tienilo solo nella variabile d'ambiente della finestra, non nei file, non in chat, non nei commit.
 
-## Varianti grafiche (da scegliere)
+## Varianti grafiche provate
 
-La prima versione del grafico è molto essenziale. Quattro proposte con **dati simulati**, generate da [[genera_varianti_grafico.py]]. Il modello è il grafico della docente ([[04_Agile_01.pdf#page=31]]: griglia, linea ideale puntinata, linea reale viola, area colorata tra reale e ideale, linea dello scope con «salto» annotato).
+Scelta del team: variante **B (dashboard)** con l'**area colorata della A (stile docente)**, ora in [[burndown.py]]. Le quattro proposte iniziali, su dati simulati e generate da [[genera_varianti_grafico.py]], restano come archivio:
 
-| Variante | Idea | Punti di forza |
-|---|---|---|
-| **A — stile docente** | ![[A-stile-docente.png]] | più vicina alla slide: area rosa «in ritardo», azzurra «in anticipo», annotazione dell'ambito modificato |
-| **B — dashboard** | ![[B-dashboard.png]] | quattro riquadri (rimanenti, completati, giorni rimasti, stato) e **previsione a fine sprint** al ritmo attuale |
-| **C — scuro** | ![[C-scuro.png]] | tema scuro, numero grande dei punti rimanenti, aumenti di scope etichettati |
-| **D — task e ritmo** | ![[D-task-e-ritmo.png]] | **gradini veri**: ogni task chiuso è un'etichetta con i suoi punti; sotto, i punti completati al giorno |
+| Variante | Idea |
+|---|---|
+| **A — stile docente** ![[A-stile-docente.png]] | più vicina alla slide: area rosa «in ritardo», azzurra «in anticipo», annotazione dell'ambito modificato |
+| **B — dashboard** ![[B-dashboard.png]] | quattro riquadri e **previsione a fine sprint** (scelta) |
+| **C — scuro** ![[C-scuro.png]] | tema scuro, numero grande dei punti rimanenti |
+| **D — task e ritmo** ![[D-task-e-ritmo.png]] | gradini veri con etichette dei task e punti completati al giorno |
 
-*🧩 Tutte le varianti mostrano la stessa simulazione: sprint S1 di 21 giorni, 31 punti iniziali, 5 aggiunti in corso, 21 completati al 30/10. Con questi numeri lo sprint risulta in ritardo di circa 7 punti rispetto all'ideale e il ritmo di 1,4 punti al giorno porterebbe a chiudere con circa 8 punti non completati (previsione nella B: è una proiezione lineare, non una promessa).*
+Sorgenti vettoriali (SVG): [[A-stile-docente.svg]], [[B-dashboard.svg]], [[C-scuro.svg]], [[D-task-e-ritmo.svg]].
 
-Sorgenti vettoriali (SVG, modificabili): [[A-stile-docente.svg]], [[B-dashboard.svg]], [[C-scuro.svg]], [[D-task-e-ritmo.svg]].
-
-Dopo la scelta, il design viene portato in [[burndown.py]], al posto del grafico attuale, e nel workflow.
+> 🧩 Non è nel grafico finale la linea dello **scope** (totale assegnato) della variante A: l'aumento di perimetro si legge dal totale nel riquadro «Completati» (es. 21 / 36) e dalla salita della linea blu. Si può riaggiungere.
 
 ## Alternative
 
@@ -148,4 +146,5 @@ Dopo la scelta, il design viene portato in [[burndown.py]], al posto del grafico
 - **Strumento esterno:** Screenful offre un burndown per GitHub Projects con campi numerici e linea attesa.
 
 _Aggiornato: 2026-10-18 — prima stesura_
-_Aggiornato: 2026-10-18 — più sprint, durate 21/14 giorni, chiusura dello sprint_
+_Aggiornato: 2026-10-18 — più sprint, durate 21/14 giorni, chiusura dello sprint
+_Aggiornato: 2026-10-18 — design scelto: dashboard con area colorata_

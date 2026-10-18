@@ -18,6 +18,8 @@ Variabili d'ambiente (le prime tre servono, le altre hanno un default):
   SIZE_FIELD        campo Size (selezione singola)           (default: Size)
   OUT_DIR           cartella di output                       (default: docs/burndown)
 
+Il grafico ha riquadri di stato, previsione a fine sprint e area colorata (rosa = in ritardo,
+azzurra = in anticipo rispetto alla linea ideale).
 Scrive solo l'iterazione in corso: i file degli sprint conclusi restano com'erano, cosi'
 i task non finiti e spostati nello sprint successivo non alterano la storia (un file per sprint).
 
@@ -26,6 +28,7 @@ I punti di un task: campo Number se presente, altrimenti mappatura della taglia
 Controlla i nomi dei campi sul project reale:  python burndown.py --inspect
 """
 import csv
+import html
 import json
 import os
 import re
@@ -152,40 +155,130 @@ def compute(items, title, start, days, now):
     return mine, base, rows
 
 
-def render_svg(title, start, days, base, rows, unit="punti"):
-    W, H, L, R, T, B = 900, 440, 70, 30, 60, 70
-    pw, ph = W - L - R, H - T - B
-    ymax = max([base] + [r[1] for r in rows] + [1]) * 1.1
-    X = lambda d: L + pw * d / days
-    Y = lambda v: T + ph * (1 - v / ymax)
+def _nice_step(ymax):
+    for s in (1, 2, 5, 10, 20, 50, 100):
+        if ymax / s <= 8:
+            return s
+    return 100
+
+
+def render_svg(title, start, days, base, rows, now):
+    """Grafico in stile dashboard (riquadri di stato, previsione) con l'area colorata tra reale e ideale."""
+    W, H = 960, 600
+    x_now = rows[-1][0] if rows else 0.0
+    scope, done, rem = (rows[-1][1], rows[-1][2], rows[-1][3]) if rows else (0.0, 0.0, 0.0)
+    finished = x_now >= days
+    ideal = lambda x: base * (1 - x / days)
+    behind = rem - ideal(x_now)
+    left = max(0.0, days - x_now)
+    velocity = done / x_now if x_now > 0 else 0.0
+    forecast_end = rem if finished else max(0.0, rem - velocity * left)
+    ymax = max([base, scope, 1.0] + [r[1] for r in rows]) * 1.12
+    px0, py0, pw, ph = 100, 220, 790, 280
+    X = lambda d: px0 + pw * d / days
+    Y = lambda v: py0 + ph * (1 - v / ymax)
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Arial">',
-         f'<rect width="{W}" height="{H}" fill="#fff"/>',
-         f'<text x="{W/2}" y="28" text-anchor="middle" font-size="17" font-weight="bold">Burndown — {title}</text>',
-         f'<text x="{W/2}" y="46" text-anchor="middle" font-size="11" fill="#555">'
-         f'{start:%d/%m/%Y} → {(start + timedelta(days=days)):%d/%m/%Y} · {unit} rimanenti</text>']
-    step = max(1, round(ymax / 6))
-    for v in range(0, int(ymax) + 1, step):
-        o.append(f'<line x1="{L}" y1="{Y(v)}" x2="{L+pw}" y2="{Y(v)}" stroke="#e5e7eb"/>')
-        o.append(f'<text x="{L-8}" y="{Y(v)+4}" text-anchor="end" font-size="11" fill="#555">{v}</text>')
-    for d in range(0, days + 1, max(1, days // 10)):
-        day = start + timedelta(days=d)
-        o.append(f'<line x1="{X(d)}" y1="{T+ph}" x2="{X(d)}" y2="{T+ph+5}" stroke="#555"/>')
-        o.append(f'<text x="{X(d)}" y="{T+ph+20}" text-anchor="middle" font-size="11" fill="#555">{day:%d/%m}</text>')
-    o.append(f'<rect x="{L}" y="{T}" width="{pw}" height="{ph}" fill="none" stroke="#555"/>')
-    o.append(f'<line x1="{X(0)}" y1="{Y(base)}" x2="{X(days)}" y2="{Y(0)}" stroke="#9ca3af" stroke-width="2" stroke-dasharray="7 5"/>')
-    if rows:
-        o.append('<polyline fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="2 3" points="'
-                 + " ".join(f"{X(r[0]):.1f},{Y(r[1]):.1f}" for r in rows) + '"/>')
-        o.append('<polyline fill="none" stroke="#1d4ed8" stroke-width="2.5" points="'
-                 + " ".join(f"{X(r[0]):.1f},{Y(r[3]):.1f}" for r in rows) + '"/>')
-        for r in rows:
-            o.append(f'<circle cx="{X(r[0]):.1f}" cy="{Y(r[3]):.1f}" r="3.5" fill="#1d4ed8"/>')
-    ly = H - 24
-    for x, color, dash, label in ((L, "#9ca3af", "7 5", "ideale"), (L + 120, "#1d4ed8", "", "rimanenti"),
-                                  (L + 250, "#b45309", "2 3", "scope (totale assegnato)")):
+         f'<rect width="{W}" height="{H}" fill="#f3f4f6"/>']
+
+    def text(x, y, s, size=12, anchor="middle", color="#0f172a", weight="normal"):
+        o.append(f'<text x="{x:.1f}" y="{y:.1f}" font-size="{size}" text-anchor="{anchor}" fill="{color}" '
+                 f'font-weight="{weight}">{html.escape(str(s))}</text>')
+
+    def line(x1, y1, x2, y2, color, w=1.5, dash=""):
         d = f' stroke-dasharray="{dash}"' if dash else ""
-        o.append(f'<line x1="{x}" y1="{ly}" x2="{x+30}" y2="{ly}" stroke="{color}" stroke-width="2.5"{d}/>')
-        o.append(f'<text x="{x+38}" y="{ly+4}" font-size="12">{label}</text>')
+        o.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{color}" stroke-width="{w}"{d}/>')
+
+    def rect(x, y, w, h, fill, rx=8, stroke="none", sw=1, op=1.0):
+        o.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{rx}" fill="{fill}" '
+                 f'fill-opacity="{op}" stroke="{stroke}" stroke-width="{sw}"/>')
+
+    def poly(pts, fill="none", op=1.0, stroke="none", w=1.5, dash="", closed=True):
+        tag, f = ("polygon", fill) if closed else ("polyline", "none")
+        d = f' stroke-dasharray="{dash}"' if dash else ""
+        o.append(f'<{tag} points="' + " ".join(f"{x:.1f},{y:.1f}" for x, y in pts) +
+                 f'" fill="{f}" fill-opacity="{op}" stroke="{stroke}" stroke-width="{w}" stroke-linejoin="round"{d}/>')
+
+    # intestazione
+    text(40, 42, f"Burndown · {title}", 22, "start", "#111827", "bold")
+    text(40, 62, f"{start:%d/%m/%Y} → {start + timedelta(days=days):%d/%m/%Y} · aggiornato al "
+                 f"{now:%d/%m %H:%M} UTC", 12, "start", "#6b7280")
+    # riquadri
+    if finished:
+        stato = ("Concluso", "tutto completato" if rem <= 0 else f"{rem:g} punti non completati",
+                 "#047857" if rem <= 0 else "#b91c1c")
+    elif behind > 0.5:
+        stato = ("In ritardo", f"{behind:.1f} punti sopra la linea ideale", "#b91c1c")
+    elif behind < -0.5:
+        stato = ("In anticipo", f"{-behind:.1f} punti sotto la linea ideale", "#1d4ed8")
+    else:
+        stato = ("In linea", "sulla linea ideale", "#047857")
+    pct = f"{done / scope:.0%} del lavoro" if scope else "nessun task"
+    cards = [("RIMANENTI", f"{rem:g}", "punti", "#1d4ed8"),
+             ("COMPLETATI", f"{done:g} / {scope:g}", pct, "#047857"),
+             ("GIORNI RIMASTI", f"{left:.1f}", f"su {days}", "#6d28d9"),
+             ("STATO", stato[0], stato[1], stato[2])]
+    for k, (t, v, sub, col) in enumerate(cards):
+        x = 40 + k * 224
+        rect(x, 82, 208, 92, "#ffffff", 12, "#e5e7eb")
+        rect(x, 82, 6, 92, col, 3)
+        text(x + 20, 106, t, 11, "start", "#6b7280", "bold")
+        text(x + 20, 142, v, 28 if len(str(v)) < 9 else 22, "start", col, "bold")
+        text(x + 20, 162, sub, 11, "start", "#6b7280")
+    rect(40, 192, 880, 394, "#ffffff", 12, "#e5e7eb")
+    # griglia
+    st = _nice_step(ymax)
+    for v in range(0, int(ymax) + 1, st):
+        line(px0, Y(v), px0 + pw, Y(v), "#f1f5f9", 1)
+        text(px0 - 8, Y(v) + 4, v, 11, "end", "#6b7280")
+    every = max(1, round(days / 7))
+    for d in range(0, days + 1, every):
+        line(X(d), py0, X(d), py0 + ph, "#f8fafc", 1)
+        text(X(d), py0 + ph + 16, f"{start + timedelta(days=d):%d/%m}", 10, "middle", "#6b7280")
+    # area colorata tra reale e ideale (rosa = in ritardo, azzurra = in anticipo)
+    xs, acts = [r[0] for r in rows], [r[3] for r in rows]
+    for i in range(len(xs) - 1):
+        x0, x1, a0, a1 = xs[i], xs[i + 1], acts[i], acts[i + 1]
+        d0, d1 = a0 - ideal(x0), a1 - ideal(x1)
+        if d0 * d1 >= 0:
+            col = "#f9a8d4" if (d0 + d1) > 0 else "#93c5fd"
+            poly([(X(x0), Y(a0)), (X(x1), Y(a1)), (X(x1), Y(ideal(x1))), (X(x0), Y(ideal(x0)))], col, 0.5)
+        else:
+            t = d0 / (d0 - d1)
+            xc = x0 + t * (x1 - x0)
+            yc = ideal(xc)
+            poly([(X(x0), Y(a0)), (X(xc), Y(yc)), (X(x0), Y(ideal(x0)))], "#f9a8d4" if d0 > 0 else "#93c5fd", 0.5)
+            poly([(X(xc), Y(yc)), (X(x1), Y(a1)), (X(x1), Y(ideal(x1)))], "#f9a8d4" if d1 > 0 else "#93c5fd", 0.5)
+    poly([(X(0), Y(base)), (X(days), Y(0))], stroke="#6b7280", w=2, dash="7 5", closed=False)
+    if not finished and velocity > 0:
+        poly([(X(x_now), Y(rem)), (X(days), Y(forecast_end))], stroke="#ea580c", w=2.2, dash="3 4", closed=False)
+    if rows:
+        poly([(X(x), Y(a)) for x, a in zip(xs, acts)], stroke="#2563eb", w=3, closed=False)
+        for x, a in zip(xs, acts):
+            o.append(f'<circle cx="{X(x):.1f}" cy="{Y(a):.1f}" r="3.2" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>')
+    if not finished:
+        line(X(x_now), py0, X(x_now), py0 + ph, "#ef4444", 1.3, "4 3")
+        rect(X(x_now) - 24, py0 - 4, 48, 18, "#ef4444", 9)
+        text(X(x_now), py0 + 9, "OGGI", 10, "middle", "#ffffff", "bold")
+        if velocity > 0:
+            ok = forecast_end < 0.5
+            msg = ("Previsione: sprint completato in tempo" if ok
+                   else f"Previsione: {forecast_end:.0f} punti non completati a fine sprint")
+            bx, by = X(days), py0 + 32
+            o.append(f'<circle cx="{bx:.1f}" cy="{Y(forecast_end):.1f}" r="5" fill="#ea580c"/>')
+            line(bx, by + 26, bx, Y(forecast_end) - 6, "#ea580c", 1.2, "3 3")
+            rect(bx - 290, by, 290, 26, "#f0fdf4" if ok else "#fff7ed", 13, "#16a34a" if ok else "#ea580c", 1.2)
+            text(bx - 145, by + 17, msg, 11, "middle", "#15803d" if ok else "#c2410c", "bold")
+    # legenda
+    items = [(100, 534, "#2563eb", "", "punti rimanenti"), (260, 534, "#6b7280", "7 5", "ideale")]
+    if not finished and velocity > 0:
+        items.append((340, 534, "#ea580c", "3 4", f"previsione al ritmo attuale ({velocity:.1f} punti/giorno)"))
+    for x, y, col, dash, txt in items:
+        line(x, y, x + 30, y, col, 3, dash)
+        text(x + 38, y + 4, txt, 12, "start", "#374151")
+    rect(100, 551, 22, 14, "#f9a8d4", 3, op=0.7)
+    text(128, 562, "area rosa: in ritardo rispetto all'ideale", 12, "start", "#374151")
+    rect(430, 551, 22, 14, "#93c5fd", 3, op=0.7)
+    text(458, 562, "area azzurra: in anticipo rispetto all'ideale", 12, "start", "#374151")
     o.append("</svg>")
     return "\n".join(o)
 
@@ -258,7 +351,7 @@ def main():
         w = csv.writer(fh)
         w.writerow(["giorno", "scope", "completati", "rimanenti"])
         w.writerows([(f"{r[0]:.2f}", r[1], r[2], r[3]) for r in rows])
-    (out / f"burndown-{slug}.svg").write_text(render_svg(title, start, days, base, rows), encoding="utf-8")
+    (out / f"burndown-{slug}.svg").write_text(render_svg(title, start, days, base, rows, now), encoding="utf-8")
     print(f"{title}: {len(mine)} task, base {base:g} punti, rimanenti {rows[-1][3]:g}" if rows else "nessun dato")
 
 
