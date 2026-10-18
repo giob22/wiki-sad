@@ -42,10 +42,35 @@ Dalla schermata del board:
 
 - **Colonne di Status:** Backlog, Ready, In progress, In review, Done. Lo script considera fatto solo `Done` (descritto nel board come «lavoro completato e verificato»).
 - **Workflows (7):** nel menu *Workflows* del project verificate che **Item closed → Status = Done** sia attivo. Se Done e «issue chiusa» non coincidono, le date di completamento diventano approssimate (ultimo aggiornamento).
-- **Durata dell'iterazione:** la preparatoria è un'eccezione di **3 settimane** (15/10–5/11, [[00-Presentazione Progetto Picus.pdf#page=12]]), le altre iterazioni sono di 2. Controllate nelle impostazioni del campo Iteration che *S1 - Preparazione* abbia **21 giorni**: la linea ideale si basa su quella durata.
-- **Una iterazione per sprint:** così com'è, lo script sceglie da solo l'iterazione che contiene la data di oggi. Per vedere uno sprint passato impostate `ITERATION_TITLE`.
+- **Durata dell'iterazione:** la preparatoria è un'eccezione di **3 settimane** (15/10–5/11, [[00-Presentazione Progetto Picus.pdf#page=12]]), le altre iterazioni sono di 2: vedi la tabella nella sezione «Più sprint». La linea ideale usa la durata che trova nel campo Iteration.
+- **Una iterazione per sprint:** lo script sceglie da solo l'iterazione che contiene la data di oggi. Per rigenerare uno sprint passato impostate `ITERATION_TITLE`, ma ricordate che i task spostati altrove non compaiono più.
 - **Task che escono dall'iterazione:** un item spostato in un'altra iterazione sparisce dalla serie anche nel passato: il grafico è fedele per i task che restano nello sprint.
 - **Campo Size:** non è visibile sulle card. Se i valori non sono XS/S/M/L/XL, modificate `SIZE_POINTS`. Se preferite un campo Number, create `Punti` (nome configurabile con `POINTS_FIELD`).
+
+## Più sprint: board diverse, durate diverse, chiusura
+
+Le **board** (le viste con il filtro `iteration:"S1 - Preparazione"`) non influiscono: lo script legge i dati dal campo **Iteration** degli item, non dalle viste. Quando create la board del nuovo sprint non dovete cambiare nulla nello script.
+
+**Durate.** Ogni iterazione ha la **sua** data di inizio e la sua durata nel campo Iteration. Impostatele come nel piano del progetto ([[00-Presentazione Progetto Picus.pdf#page=11]], [[00-Presentazione Progetto Picus.pdf#page=12]]):
+
+| Sprint | Inizio | Durata | Fine (esclusa) | Review |
+|---|---|---|---|---|
+| S1 - Preparazione | 15/10/2026 | **21 giorni** (3 settimane, eccezione) | 05/11/2026 | 05/11 |
+| Costruzione 1 | 05/11/2026 | 14 giorni | 19/11/2026 | 19/11 |
+| Costruzione 2 | 19/11/2026 | 14 giorni | 03/12/2026 | 03/12 |
+| Costruzione 3 | 03/12/2026 | 14 giorni | 17/12/2026 | 17/12 |
+
+> 🧩 I titoli delle iterazioni successive alla prima sono un esempio: usate quelli che avete in GitHub. Contano le **date** e le **durate**.
+
+`--inspect` confronta le iterazioni trovate con questo piano e segnala con «ATTENZIONE» una durata o una data di inizio diverse (per esempio S1 impostata a 14 giorni).
+
+**Chiusura dello sprint.**
+- Il workflow scrive **solo l'iterazione in corso**. I file degli sprint finiti restano com'erano: un file per sprint (`burndown-s1-preparazione.svg`, poi quello dello sprint dopo, ecc.), conservati sul branch `burndown-data`.
+- Questo evita un problema: i task **non finiti**, spostati nello sprint successivo, cambiano iterazione e, se lo sprint fosse ricalcolato dopo, **sparirebbero** dalla sua storia. Così il grafico dello sprint chiuso resta quello vero.
+- L'ultimo aggiornamento dello sprint avviene alle **23:50 UTC dell'ultimo giorno** (data di fine esclusa meno un giorno, es. 4/11 per S1). Se spostate i task non finiti **prima** di quell'ora, o lavorate fino a tardi, lanciate a mano il workflow con il titolo dell'iterazione nel campo *iteration_title* **prima** di spostarli.
+- Lo sprint successivo parte alla data di fine del precedente: da quel giorno lo script sceglie da solo la nuova iterazione.
+
+> ⚠️ Limite: un task già nel project ma assegnato all'iterazione **dopo** l'inizio dello sprint risulta, per lo script, presente fin dall'inizio: **non** compare come aumento di perimetro (cioè come salita dello scope). Compaiono come aumento solo i task **aggiunti al project** durante lo sprint.
 
 ## Passi per attivarlo (nel repository del progetto)
 
@@ -106,3 +131,4 @@ py -3.11 output/burndown/burndown.py
 - **Strumento esterno:** Screenful offre un burndown per GitHub Projects con campi numerici e linea attesa.
 
 _Aggiornato: 2026-10-18 — prima stesura_
+_Aggiornato: 2026-10-18 — più sprint, durate 21/14 giorni, chiusura dello sprint_

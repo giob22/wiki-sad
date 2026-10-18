@@ -18,6 +18,9 @@ Variabili d'ambiente (le prime tre servono, le altre hanno un default):
   SIZE_FIELD        campo Size (selezione singola)           (default: Size)
   OUT_DIR           cartella di output                       (default: docs/burndown)
 
+Scrive solo l'iterazione in corso: i file degli sprint conclusi restano com'erano, cosi'
+i task non finiti e spostati nello sprint successivo non alterano la storia (un file per sprint).
+
 I punti di un task: campo Number se presente, altrimenti mappatura della taglia
 (SIZE_POINTS qui sotto), altrimenti 1.  Prova senza API:  python burndown.py --demo
 Controlla i nomi dei campi sul project reale:  python burndown.py --inspect
@@ -32,6 +35,9 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 SIZE_POINTS = {"XS": 1, "S": 2, "M": 3, "L": 5, "XL": 8}   # mappatura da concordare nel team
+# Calendario del progetto PICUS (presentazione, slide 11-12): data di inizio -> durata in giorni.
+# La preparatoria dura 3 settimane (eccezione); le tre iterazioni di costruzione 2 settimane.
+PIANO = {date(2026, 10, 15): 21, date(2026, 11, 5): 14, date(2026, 11, 19): 14, date(2026, 12, 3): 14}
 UTC = timezone.utc
 
 QUERY = """
@@ -211,6 +217,17 @@ def inspect(ptitle, nodes):
     print(f"Project «{ptitle}»: {len(nodes)} item")
     for (name, kind), vals in sorted(seen.items()):
         print(f"  campo «{name}» [{kind}]: {sorted(vals)}")
+    iters = {}
+    for n in nodes:
+        for v in n["fieldValues"]["nodes"]:
+            if "startDate" in v:
+                iters[v["title"]] = (date.fromisoformat(v["startDate"]), int(v["duration"]))
+    print("Iterazioni trovate (con item) e confronto con il piano del progetto:")
+    for t, (st, d) in sorted(iters.items(), key=lambda kv: kv[1][0]):
+        esito = "ok" if PIANO.get(st) == d else (
+            f"ATTENZIONE: il piano prevede {PIANO[st]} giorni da quella data" if st in PIANO
+            else "ATTENZIONE: data di inizio non presente nel piano")
+        print(f"  «{t}»: {st:%d/%m/%Y}, {d} gg, fine {st + timedelta(days=d):%d/%m/%Y} -> {esito}")
     print("Item senza issue collegata (bozze):", sum(1 for n in nodes if (n['content'] or {}).get('__typename') == 'DraftIssue'))
 
 

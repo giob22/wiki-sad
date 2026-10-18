@@ -9,8 +9,13 @@ name: burndown
 
 on:
   schedule:
-    - cron: "0 20 * * *"        # ogni giorno alle 20:00 UTC (22:00 in Italia con l'ora legale)
+    - cron: "50 23 * * *"       # ogni giorno alle 23:50 UTC, appena prima del cambio di giorno
   workflow_dispatch:
+    inputs:
+      iteration_title:
+        description: "Titolo dell'iterazione (vuoto = quella in corso). Es. 'S1 - Preparazione'"
+        required: false
+        default: ""
 
 permissions:
   contents: write                # serve per pubblicare sul branch burndown-data
@@ -27,6 +32,7 @@ jobs:
           PROJECT_OWNER: CapHello
           PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
           OWNER_TYPE: user
+          ITERATION_TITLE: ${{ github.event.inputs.iteration_title }}
           ITERATION_FIELD: Iteration
           STATUS_FIELD: Status
           DONE_VALUE: Done
