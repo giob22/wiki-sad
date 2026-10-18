@@ -132,3 +132,4 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - aggiornati: lezioni.md (Lezione 0, voce 7), index, guida-progetto-picus
 - burndown.py: aggiunta la modalità --inspect (campi e valori trovati nel project) e la sezione «Provarlo in locale con dati reali» in burndown-github-project
 - burndown: gestione di più sprint (durate 21 e 14 giorni dal piano, controllo in --inspect, un file per sprint, input iteration_title nel workflow, esecuzione alle 23:50 UTC)
+- burndown: quattro varianti grafiche su dati simulati (output/burndown/genera_varianti_grafico.py, varianti/) in attesa di scelta

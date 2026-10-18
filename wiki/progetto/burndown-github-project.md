@@ -125,6 +125,23 @@ py -3.11 output/burndown/burndown.py
 
 > ⚠️ Il token è una credenziale: tienilo solo nella variabile d'ambiente della finestra, non nei file, non in chat, non nei commit.
 
+## Varianti grafiche (da scegliere)
+
+La prima versione del grafico è molto essenziale. Quattro proposte con **dati simulati**, generate da [[genera_varianti_grafico.py]]. Il modello è il grafico della docente ([[04_Agile_01.pdf#page=31]]: griglia, linea ideale puntinata, linea reale viola, area colorata tra reale e ideale, linea dello scope con «salto» annotato).
+
+| Variante | Idea | Punti di forza |
+|---|---|---|
+| **A — stile docente** | ![[A-stile-docente.png]] | più vicina alla slide: area rosa «in ritardo», azzurra «in anticipo», annotazione dell'ambito modificato |
+| **B — dashboard** | ![[B-dashboard.png]] | quattro riquadri (rimanenti, completati, giorni rimasti, stato) e **previsione a fine sprint** al ritmo attuale |
+| **C — scuro** | ![[C-scuro.png]] | tema scuro, numero grande dei punti rimanenti, aumenti di scope etichettati |
+| **D — task e ritmo** | ![[D-task-e-ritmo.png]] | **gradini veri**: ogni task chiuso è un'etichetta con i suoi punti; sotto, i punti completati al giorno |
+
+*🧩 Tutte le varianti mostrano la stessa simulazione: sprint S1 di 21 giorni, 31 punti iniziali, 5 aggiunti in corso, 21 completati al 30/10. Con questi numeri lo sprint risulta in ritardo di circa 7 punti rispetto all'ideale e il ritmo di 1,4 punti al giorno porterebbe a chiudere con circa 8 punti non completati (previsione nella B: è una proiezione lineare, non una promessa).*
+
+Sorgenti vettoriali (SVG, modificabili): [[A-stile-docente.svg]], [[B-dashboard.svg]], [[C-scuro.svg]], [[D-task-e-ritmo.svg]].
+
+Dopo la scelta, il design viene portato in [[burndown.py]], al posto del grafico attuale, e nel workflow.
+
 ## Alternative
 
 - **Grafico nativo (Insights):** è un burn-up che conta gli item nel tempo; con un campo Number `Punti` si può provare a sommarlo sull'asse Y. Nessun burndown nativo.
