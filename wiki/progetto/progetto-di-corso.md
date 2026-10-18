@@ -86,9 +86,10 @@ La Lez. 2 chiude con una tabella di **otto gruppi**, ognuno con un problema di d
 
 ## Decisioni architetturali
 
-_nessuna ancora — il progetto non è stato assegnato. Usa `annota decisione [...]`._
+_nessuna ancora in formato ADR. Il progetto assegnato è **PICUS**: tutto quello che serve sapere (desiderata, iterazioni, deliverable, scelte tecniche già fissate dal team in AGENTS.md) è in [[guida-progetto-picus]]. Usa `annota decisione [...]`._
 
 _Aggiornato: 2026-09-26 — ingest 00_IntroduzioneAlCorso_SAD.pdf_
 _Aggiornato: 2026-09-30 — tabella dei gruppi di 02-Availability.pdf p. 23_
 _Aggiornato: 2026-10-06 — collegamento a Spring MVC_
 _Aggiornato: 2026-10-10 — metodo Agile nel progetto_
+_Aggiornato: 2026-10-18 — rimando alla guida del progetto PICUS_

@@ -112,3 +112,9 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - lezioni.md: Lezione 6 (ordine consigliato = quello delle slide)
 - avanzamento-studio.md: «da fare» spuntato per I1, J1, J4; aggiunto X4 (criteri di accettazione e BDD); nessuna spunta dell'utente toccata
 - revisione di copertura totale: tutte le 60 pagine citate, tutte le 25 figure usate, 0 orfani, 0 link irrisolti, 0 duplicati in lezioni.md
+
+## [2026-10-18] progetto | guida al progetto PICUS dai documenti in wiki/progetto/riferimenti
+- creata: [[guida-progetto-picus]] — un'unica pagina con tutto il contenuto di 00-Presentazione Progetto Picus.pdf (pp. 1–29), 01-PICUS_richieste_informali_del_committente (1).pdf (pp. 1–7, appendici A e B) e AGENTS.md (§1–10), con tabella di copertura pagina → sezione
+- figura: raw/assets/prog-picus-p12-piano-iterazioni.png (piano delle iterazioni, p. 12)
+- 🧩 aggiunti: diagramma dei flussi tra attori, gantt delle iterazioni, catena di tracciabilità, proposta di rotazione dei ruoli Scrum in un team di 8 e checklist della preparatoria
+- aggiornati: progetto-di-corso (rimando), index, lezioni.md (Lezione 0, voce 5)

@@ -86,12 +86,14 @@
 
 ## Progetto
 - [[progetto-di-corso]] — organizzazione, iterazioni, calendario, valutazione; decisioni: nessuna ancora
+- [[guida-progetto-picus]] — guida completa al progetto d'esame PICUS (presentazione, desiderata del committente, AGENTS.md del team, iterazione preparatoria, ruoli Scrum in 8)
 
 ## Esame
 _nessun materiale ancora — lancia `prepara esame`_
 
 ## Asset
 Figure in `raw/assets/`: 2 dalla presentazione (`lez00-intro-pN-*.png`), 24 da 01-IntroductionOnSoftwareArchitecture (`lez01-intro-pN-*.png`), 10 dalla parte 2 (`lez01b-qa-pN-*.png`; N = pagina del PDF, non numero di slide).
+Progetto: 1 figura `prog-picus-p12-piano-iterazioni.png` (p. 12 di 00-Presentazione Progetto Picus.pdf).
 Lez. 2: 13 figure `lez02-av-pN-*.png`; Lez. 3: 14 figure `lez03-mo-pN-*.png`; Lez. 4: 20 figure `lez04-ap-pN-*.png`; Lez. 5: 32 figure `lez05-ap-pN-*.png` (N = pagina di 3-Architectural Patterns-complete.pdf).
 Animazioni SVG e grafico della Lez. 5 in `output/diagrammi/` (script [[genera_animazioni_lez05.py]]): [[anim-mvc-classico.svg]], [[anim-spring-mvc-richiesta.svg]], [[anim-sense-compute-control.svg]], [[grafico-lunar-lander-controllo.svg]].
 Lez. 6: 25 figure `lez06-ag-pN-*.png`; animazione [[anim-ciclo-iterazione-agile.svg]] e grafico [[grafico-burndown-sprint.svg]] (script [[genera_grafici_lez06.py]]).
