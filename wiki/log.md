@@ -147,3 +147,5 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - limiti: nessuna posa nuova disegnata (i gesti extra sono movimenti delle pose esistenti)
 - aggiornati: lezioni.md (Lezione 0, voce 8), index
 - mascotte: versione estesa (pinguino-lavoro-estesa.webp/.gif) di 11,3 s, 341 fotogrammi fino a 50 fps, storia con quattro colpi, cenno, salto e dondolio, ombra uniforme; compressione WebP qualità 52/alpha 70 scelta confrontando i contorni a 2×; script con --solo-estesa
+- mascotte: sostituita la versione estesa con pinguino-costruzione (.webp/.gif, 11,3 s, 341 fotogrammi, 50 fps): la casetta di legno (disegnata a codice) cresce a ogni colpo di martello e la fragola resta ferma; causa trovata misurando i frame (la fragola si spostava fino a 29 px con l'allineamento sui piedi), soluzione = allineamento sulla fragola per i frame 5-20 e livello del pinguino separato dalla fragola nei frame 6-19; verificato sui file finali: scarto della fragola 0-1 px da 2,0 a 7,8 s
+- script: nuove opzioni --costruzione e --anteprima, variabile PINGUINO_SC; eliminati i file della versione estesa

@@ -28,32 +28,34 @@ Animazione della mascotte del gruppo *Pinguini alla Fragola*, ricavata da una ta
 
 **Versione fedele ai 25 disegni**, senza fotogrammi aggiunti (12 fotogrammi al secondo circa, con le stesse pose tenute): ![[pinguino-lavoro-originale.webp]] — GIF: [[pinguino-lavoro-originale.gif]].
 
-## Versione estesa: più lunga e più fluida
+## Versione con la casetta: costruisce davvero qualcosa
 
-![[pinguino-lavoro-estesa.webp]]
-*Storia completa di **11,3 secondi**, 341 fotogrammi, fino a **50 fotogrammi al secondo** (un fotogramma ogni 20 ms) durante il movimento, sfondo trasparente, 652 × 597 px. GIF su fondo bianco (326 × 298 px): [[pinguino-lavoro-estesa.gif]].*
+![[pinguino-costruzione.webp]]
+*Storia completa di **11,3 secondi**, 341 fotogrammi, fino a **50 al secondo** (uno ogni 20 ms) durante il movimento, sfondo trasparente, 824 × 599 px. GIF su fondo bianco (412 × 300 px): [[pinguino-costruzione.gif]].*
 
 **La storia**, in ordine:
 
-1. il pinguino **respira** tenendo la fragola;
-2. **posa la fragola** a terra e prende il martello;
-3. **primo colpo**, poi **secondo colpo** (le pose originali 8–15);
-4. **due colpi in più**: il martello torna su lentamente, si ferma in alto e cala veloce, con scossa all'impatto;
-5. **ripone il martello**, sorride e **annuisce** due volte;
-6. **riprende la fragola**, la abbraccia e fa il **salto di gioia**;
-7. **dondola** contento e torna alla posa iniziale, per ripartire.
+1. il pinguino **respira** tenendo la fragola; accanto a lui c'è solo la **base** di legno di un cantiere;
+2. **posa la fragola** a terra, alla sua sinistra, e prende il martello;
+3. a **ogni colpo** compare un pezzo della casetta, con un rimbalzo: **1)** i due pali, **2)** la parete bassa, **3)** la parete alta con porta e finestra, **4)** il tetto rosso con la bandierina gialla;
+4. ripone il martello, sorride e **annuisce** due volte;
+5. **riprende la fragola**, la abbraccia e fa il **salto di gioia**;
+6. **dondola** contento accanto alla casetta finita, che poi si rimpicciolisce e svanisce, e il ciclo ricomincia.
 
-**Cosa cambia rispetto alla versione precedente**
+La casetta è disegnata a mano con codice, nello stile della mascotte: contorno blu scuro spesso, colori piatti e il tetto dello stesso rosso della fragola. La casetta è posizionata dove la testa del martello arriva nelle pose d'impatto, quindi il martello batte sul suo lato sinistro.
 
-| | Versione fluida (4,15 s) | Versione estesa (11,3 s) |
-|---|---|---|
-| Fotogrammi intermedi tra due pose | 2–3, ogni 30–40 ms | 6 (4 dove il flusso è meno affidabile), ogni 20 ms |
-| Colpi di martello | 2 | 4 |
-| Gesti extra dentro la storia | no | respiro, cenno di assenso, salto, dondolio |
-| Ombra a terra | no | sì, uguale in tutta la storia (nel salto si rimpicciolisce) |
-| Peso WebP | 3 MB | 6,5 MB |
+### La fragola non si muove
 
-Gli intermedi sono sempre in numero **pari**: così nessun fotogramma cade esattamente a metà tra due pose, dove la deformazione del flusso ottico sarebbe massima. Il passaggio da un frame sorgente all'altro avviene tra il terzo e il quarto intermedio, con deformazione di al massimo circa un terzo.
+> 🧩 Il problema era nei frame originali: dopo l'allineamento sui piedi, la fragola si spostava **fino a 29 px** tra una posa e l'altra (per esempio −87 px nel frame 13 e −59 nel 15), perché mentre martella il pinguino si sposta e i piedi non sono un riferimento valido. Il riferimento fisso è la fragola. La correzione ha due passi:
+>
+> 1. nei frame 5–20 si **allinea sulla fragola** (bordo sinistro e base del frutto, che il pinguino non copre);
+> 2. nei frame 6–19 la fragola viene **separata** dal pinguino e ridisegnata sempre uguale dietro di lui. Il pinguino sta in un livello a parte, quindi le scosse dell'impatto e le deformazioni dei fotogrammi intermedi non la toccano.
+
+**Verifica sui file finali**: misurando la posizione della fragola in tutti i fotogrammi della fase di costruzione (da 2,0 a 7,8 s) lo scarto del bordo sinistro è di **0–1 px** e quello della base di **0–1 px**, a scala doppia. La fragola comincia a muoversi solo quando il pinguino la raccoglie.
+
+**Cosa c'è sotto il pinguino.** Nei frame originali la fragola copre una parte del giubbotto. Tolta la fragola, quella parte manca e il livello del pinguino ha un bordo irregolare: si vede solo dietro la fragola, che sta dietro di lui e lo nasconde, quindi nel risultato finale non appare.
+
+**Le altre animazioni** (fluida, fedele ai disegni, gesti) sono rimaste come prima: in quelle la fragola si muove come nei disegni originali.
 
 ## Come è fatta (e perché è fluida)
 
@@ -89,7 +91,8 @@ Sono movimenti che ho **dedotto dalle pose esistenti** (schiacciamento, stiramen
 - **Le pose sono solo le 25 disegnate.** Non ho potuto disegnare pose nuove (salutare con la mano, pollice in su) nello stesso stile della mascotte: i gesti extra sono movimenti delle pose esistenti. Se generi altre pose con lo stesso strumento che ha prodotto la tavola, lo script può integrarle.
 - **Gli intermedi sono calcolati, non disegnati.** In alcune transizioni, per esempio quando la fragola viene sollevata (frame 21 → 22), i contorni si deformano un po' come gomma per qualche fotogramma. Ho controllato i fotogrammi uno per uno nei fogli di anteprima e non ci sono doppie immagini né strappi, ma non ho potuto **guardare l'animazione in riproduzione**: ho verificato fotogrammi, numero e durate.
 - **GIF e WebP:** il WebP ha lo sfondo trasparente, la GIF è su fondo bianco (un GIF trasparente avrebbe i bordi seghettati).
-- **Peso:** circa 33 MB in tutto. I gesti sono solo in WebP e la versione estesa è compressa (qualità 52, alpha 70, margini ritagliati): a 2× di ingrandimento i contorni restano nitidi. Per una pagina web conviene la versione fluida (3 MB) oppure l'estesa solo se il peso non è un problema.
+- **Peso:** circa 33 MB in tutto. I gesti sono solo in WebP e la versione con la casetta è compressa (qualità 52, alpha 70, margini ritagliati): a 2× di ingrandimento i contorni restano nitidi. Per una pagina web conviene la versione fluida (3 MB), oppure quella con la casetta (6,9 MB) se il peso non è un problema.
+- **La casetta è un disegno mio**, non della tavola: colori, proporzioni e stadi sono scelte da validare con il team. Si possono cambiare nelle costanti e in `disegna_casetta`.
 
 ## Rigenerare o modificare
 
@@ -98,7 +101,8 @@ Lo script [[genera_animazione_pinguino.py]] fa tutto dalla tavola:
 ```powershell
 py -3.11 output\pinguino\genera_animazione_pinguino.py output\pinguino\sorgente\tavola-25-frame.webp output\pinguino
 ```
-Servono `numpy`, `pillow` e `opencv-python-headless`. Con `--frame` salva anche i 25 frame allineati come PNG trasparenti; con `--solo-estesa` rigenera soltanto la versione estesa (circa sei minuti, quasi tutti per la compressione del WebP). I parametri (ingrandimento, durata dei fotogrammi, numero di intermedi per coppia, pose tenute) sono costanti in testa al file.
+Servono `numpy`, `pillow` e `opencv-python-headless`. Con `--frame` salva anche i 25 frame allineati come PNG trasparenti; con `--costruzione` genera la versione con la casetta e la fragola ferma (circa sei minuti, quasi tutti per la compressione del WebP), e con `--anteprima` solo un foglio di controllo a bassa risoluzione (venti secondi; si accelera con `PINGUINO_SC=1`). `--solo-estesa` genera la versione precedente, senza casetta e con la fragola che si muove. I parametri (ingrandimento, durata dei fotogrammi, numero di intermedi per coppia, pose tenute) sono costanti in testa al file.
 
 _Aggiornato: 2026-10-19 — prima stesura_
 _Aggiornato: 2026-10-19 — versione estesa (11,3 s, 50 fps)_
+_Aggiornato: 2026-10-19 — casetta che cresce a ogni colpo e fragola ferma (sostituisce la versione estesa)_

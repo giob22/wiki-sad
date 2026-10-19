@@ -3,7 +3,8 @@
 
 Uso:  python genera_animazione_pinguino.py <tavola.webp> <cartella-di-output> [--frame]
       (--frame salva anche i 25 frame allineati come PNG trasparenti;
-       --solo-estesa genera soltanto la versione estesa)
+       --solo-estesa genera soltanto la versione estesa;
+       --costruzione genera la versione con la casetta e la fragola ferma, con --anteprima solo un foglio di controllo)
 
 Cosa fa
   1. ritaglia i 25 frame dalla tavola (sfondo già trasparente) e li allinea sui piedi;
@@ -14,6 +15,7 @@ Cosa fa
 Dipendenze: numpy, pillow, opencv-python (headless).
 """
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -21,7 +23,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-SC = 2            # ingrandimento dell'output rispetto ai frame originali
+SC = int(os.environ.get("PINGUINO_SC", "2"))   # ingrandimento dell'output rispetto ai frame originali
 SIGMA = 8         # smussamento del flusso (più alto = deformazioni più morbide)
 BASE_MS = 30      # durata di un fotogramma intermedio (circa 33 fps)
 GIF_SCALE = 1.5   # dimensione della GIF rispetto ai frame originali (il WebP usa SC)
@@ -390,6 +392,516 @@ def con_ombra_fissa(seq, perno):
     return [(sopra(p, sh), d) for p, d in seq]
 
 
+# ------------------------------------------------------------------ 3c. costruzione: fragola ferma e casetta che cresce
+#
+# Nei frame originali la fragola cambia posizione (fino a 29 px) perché l'allineamento sui piedi non vale mentre
+# il pinguino martella: il punto fisso del mondo è la fragola. Quindi nei frame 5-20 si allinea sulla fragola,
+# nei frame 6-19 la si separa dal pinguino e la si ridisegna sempre uguale e immobile dietro di lui.
+
+K3 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+FASE_MARTELLO = range(5, 19)          # indici 0-based dei frame 6..19: livello del pinguino separato dalla fragola
+FASE_ALLINEATA = range(4, 20)         # frame 5..20: allineati sulla fragola
+PAD_SX, PAD_DX, PAD_SU, PAD_GIU = 34, 34, 70, 10   # margini della tela (a scala 1)
+LARG_CASA = 128
+
+
+def maschere_fragola(f):
+    """(frutto, nucleo, contorno) della fragola in un frame RGBA allineato."""
+    r, g, b, a = [f[..., i].astype(int) for i in range(4)]
+    op = a > 120
+    rosso = op & (r > 170) & (g < 120) & (b < 120)
+    foglia = op & (g > r + 20) & (g > b + 10) & (g > 90)
+    chiuso = cv2.morphologyEx(rosso.astype(np.uint8), cv2.MORPH_CLOSE,
+                              cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9)))
+    n, lab, st, _ = cv2.connectedComponentsWithStats(chiuso, connectivity=8)
+    frutto = lab == (1 + int(np.argmax(st[1:, 4])))
+    nf, labf, stf, _ = cv2.connectedComponentsWithStats(foglia.astype(np.uint8), connectivity=8)
+    vicino = cv2.dilate(frutto.astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (41, 41))).astype(bool)
+    foglie = np.zeros_like(frutto)
+    for i in range(1, nf):
+        if stf[i][4] > 25 and (vicino & (labf == i)).any():
+            foglie |= labf == i
+    nucleo = cv2.morphologyEx((frutto | foglie).astype(np.uint8), cv2.MORPH_CLOSE,
+                              cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7)))
+    cont, _ = cv2.findContours(nucleo, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    pieno = np.zeros(nucleo.shape, np.uint8)
+    cv2.drawContours(pieno, cont, -1, 1, -1)
+    nucleo = pieno.astype(bool)
+    d_t = cv2.distanceTransform((~(a < 30)).astype(np.uint8), cv2.DIST_L2, 3)
+    d_s = cv2.distanceTransform((~nucleo).astype(np.uint8), cv2.DIST_L2, 3)
+    mx = np.maximum(np.maximum(r, g), b)
+    colorato = ((r > 190) & (g > 100) & (g < 215) & (b < 120)) | (np.minimum(np.minimum(r, g), b) > 190) \
+        | ((r > 200) & (g > 170) & (b < 120)) | ((b > r + 25) & (b > 45))
+    scuro = ((mx < 120) | (a < 220)) & ~colorato
+    contorno = (a > 8) & ~nucleo & scuro & (d_s <= 5.2) & (d_t <= 5.2)
+    return frutto, nucleo, contorno
+
+
+def posizione_fragola(frutto):
+    """Bordo sinistro e base del frutto: non vengono coperti dal pinguino, che sta a destra."""
+    ys, xs = np.nonzero(frutto)
+    return float(np.percentile(xs, 2)), float(ys.max())
+
+
+def pulisci_frammenti(pen, zona):
+    """Toglie i resti scuri e staccati del contorno della fragola; scintille e linee azzurre restano."""
+    n, lab, st, _ = cv2.connectedComponentsWithStats((pen[..., 3] > 40).astype(np.uint8), connectivity=8)
+    zd = cv2.dilate(zona.astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (25, 25))).astype(bool)
+    out = pen.copy()
+    for i in range(1, n):
+        if st[i][4] < 900:
+            comp = lab == i
+            if (comp & zd).any() and pen[..., :3][comp].astype(int).max(axis=1).mean() < 130:
+                out[comp, 3] = 0
+    return out
+
+
+def separa_fragola(f):
+    """(livello del pinguino senza fragola, sprite della fragola)."""
+    frutto, nucleo, contorno = maschere_fragola(f)
+    m = nucleo | contorno
+    pen = f.copy()
+    pen[cv2.dilate(m.astype(np.uint8), K3).astype(bool), 3] = 0
+    pen = pulisci_frammenti(pen, m)
+    spr = f.copy()
+    spr[~(m | (cv2.dilate(m.astype(np.uint8), K3).astype(bool) & (f[..., 3] < 255))), 3] = 0
+    return pen, spr
+
+
+def sposta_int(img, dx, dy, shape):
+    """Copia img su una tela di forma shape spostata di (dx, dy) pixel interi."""
+    out = np.zeros(shape, img.dtype)
+    h, w = img.shape[:2]
+    H, W = shape[:2]
+    x0, y0 = int(round(dx)), int(round(dy))
+    sx0, sy0 = max(0, -x0), max(0, -y0)
+    dx0, dy0 = max(0, x0), max(0, y0)
+    ww, hh = min(w - sx0, W - dx0), min(h - sy0, H - dy0)
+    out[dy0:dy0 + hh, dx0:dx0 + ww] = img[sy0:sy0 + hh, sx0:sx0 + ww]
+    return out
+
+
+def sopra_u8(fg, bg):
+    """Compone due immagini RGBA uint8 (fg sopra bg) senza premoltiplicare."""
+    a = fg[..., 3:4].astype(np.float32) / 255
+    b = bg[..., 3:4].astype(np.float32) / 255
+    ao = a + b * (1 - a)
+    rgb = (fg[..., :3] * a + bg[..., :3] * b * (1 - a)) / np.maximum(ao, 1e-6)
+    return np.dstack([rgb, ao * 255]).clip(0, 255).astype(np.uint8)
+
+
+def prepara_costruzione(frames, ancora_xy):
+    """Allinea sulla fragola, separa i livelli e prepara la tela con lo spazio per la casetta.
+
+    Restituisce: tela (H, W), perno (piedi), livelli del pinguino, sprite della fragola, testa del martello."""
+    L, T = ancora_xy
+    pos = {i: posizione_fragola(maschere_fragola(frames[i])[0]) for i in FASE_ALLINEATA}
+    cx0 = float(np.median([pos[i][0] for i in FASE_MARTELLO]))
+    by0 = float(np.median([pos[i][1] for i in FASE_MARTELLO]))
+    H0, W0 = frames[0].shape[:2]
+    H, W = H0 + PAD_SU + PAD_GIU, W0 + PAD_SX + PAD_DX + LARG_CASA + 30
+    pen, sprite_src, orig = {}, {}, {}
+    for i, f in enumerate(frames):
+        if i in FASE_ALLINEATA:
+            dx, dy = cx0 - pos[i][0], by0 - pos[i][1]
+        else:
+            dx = dy = 0
+        sh = sposta_int(f, PAD_SX + dx, PAD_SU + dy, (H, W, 4))
+        orig[i] = sh
+        if i in FASE_MARTELLO:
+            pen[i], sprite_src[i] = separa_fragola(sh)
+        else:
+            pen[i] = sh
+    # sprite: dal frame in cui la fragola è meno coperta
+    ref = max(FASE_MARTELLO, key=lambda i: int(maschere_fragola(orig[i])[1].sum() + maschere_fragola(orig[i])[2].sum()))
+    spr = sprite_src[ref]
+    # testa del martello (grigio) nei frame d'impatto: dove la casetta viene colpita
+    teste = []
+    for i in (10, 14):
+        r, g, b, a = [orig[i][..., k].astype(int) for k in range(4)]
+        grigio = (a > 200) & (np.abs(r - g) < 22) & (np.abs(g - b) < 28) & (r > 105) & (r < 232)
+        ys, xs = np.nonzero(grigio)
+        sel = xs > np.percentile(xs, 55)
+        teste.append((xs[sel].mean(), ys[sel].mean()))
+    testa = (float(np.mean([t[0] for t in teste])), float(np.mean([t[1] for t in teste])))
+    return dict(H=H, W=W, perno=(L + PAD_SX, T + PAD_SU), pen=pen, spr=spr, testa=testa, orig=orig)
+
+
+# ---- disegno della casetta (stesso stile della mascotte: contorno scuro spesso, colori piatti)
+
+COL_CONTORNO = (22, 28, 48, 255)
+COL_LEGNO = [(238, 190, 120, 255), (219, 156, 88, 255)]
+COL_LEGNO_SCURO = (172, 106, 54, 255)
+COL_ROSSO = (226, 56, 66, 255)
+COL_ROSSO_SC = (176, 36, 52, 255)
+COL_GIALLO = (247, 197, 49, 255)
+COL_VETRO = (190, 226, 245, 255)
+COL_CHIODO = (120, 128, 142, 255)
+COL_PORTA = (150, 92, 46, 255)
+
+
+def _fx(pts):
+    return (np.asarray(pts, np.float64) * SC * 16).astype(np.int32)
+
+
+def _poligono(img, pts, fill, spessore=3.2):
+    cv2.fillPoly(img, [_fx(pts)], fill, cv2.LINE_AA, 4)
+    cv2.polylines(img, [_fx(pts)], True, COL_CONTORNO, max(1, int(round(spessore * SC))), cv2.LINE_AA, 4)
+
+
+def _linea(img, p0, p1, spessore, colore=COL_CONTORNO):
+    cv2.line(img, tuple(int(v) for v in _fx(p0)), tuple(int(v) for v in _fx(p1)), colore,
+             max(1, int(round(spessore * SC))), cv2.LINE_AA, 4)
+
+
+def _cerchio(img, c, r, colore, contorno=True):
+    centro = tuple(int(v) for v in _fx(c))
+    cv2.circle(img, centro, int(r * SC * 16), colore, -1, cv2.LINE_AA, 4)
+    if contorno:
+        cv2.circle(img, centro, int(r * SC * 16), COL_CONTORNO, max(1, SC), cv2.LINE_AA, 4)
+
+
+def _arrotondato(x0, y0, x1, y1, r=2.5):
+    pts = []
+    for cx, cy, a0 in ((x1 - r, y0 + r, -90), (x1 - r, y1 - r, 0), (x0 + r, y1 - r, 90), (x0 + r, y0 + r, 180)):
+        for k in range(5):
+            a = math.radians(a0 + 22.5 * k)
+            pts.append((cx + r * math.cos(a), cy + r * math.sin(a)))
+    return pts
+
+
+def disegna_casetta(H, W, x0, yg):
+    """Cinque livelli: 0 base, 1 pali, 2 parete bassa, 3 parete alta con porta e finestra, 4 tetto con bandierina.
+
+    Ogni livello è un'immagine premoltiplicata a scala SC, con il suo punto d'appoggio per l'effetto 'pop'."""
+    B, wall, roof = 9, 70, 52
+    top = -B - wall
+
+    def vuoto():
+        return np.zeros((H * SC, W * SC, 4), np.uint8)
+
+    Z = 1.25
+
+    def pt(u, v):
+        return (x0 + u * Z, yg + v * Z)
+
+    def rr(u0, v0, u1, v1, r=2.5):
+        return [pt(u, v) for u, v in _arrotondato(u0, v0, u1, v1, r)]
+
+    strati = {}
+    im = vuoto()                                                                   # 0: base
+    _poligono(im, rr(-4, -B, LARG_CASA + 4, 0), COL_LEGNO_SCURO)
+    for u in (14, 56, 98):
+        _cerchio(im, pt(u, -B / 2), 1.5, COL_CHIODO)
+    strati[0] = (im, pt(LARG_CASA / 2, 0))
+
+    im = vuoto()                                                                   # 1: pali
+    for u0 in (6, LARG_CASA - 24):
+        _poligono(im, rr(u0, top, u0 + 18, -B), COL_LEGNO[1])
+        _poligono(im, rr(u0 + 3, top + 3, u0 + 9, -B - 3, 1.5), COL_LEGNO[0], 1.4)
+    strati[1] = (im, pt(LARG_CASA / 2, -B))
+
+    im = vuoto()                                                                   # 2: parete bassa, tre assi
+    for k in range(3):
+        y1 = -B - k * 12.0
+        _poligono(im, rr(10, y1 - 12.0, LARG_CASA - 10, y1, 2.0), COL_LEGNO[k % 2], 2.8)
+        _cerchio(im, pt(17, y1 - 6), 1.5, COL_CHIODO)
+        _cerchio(im, pt(LARG_CASA - 17, y1 - 6), 1.5, COL_CHIODO)
+    strati[2] = (im, pt(LARG_CASA / 2, -B))
+
+    im = vuoto()                                                                   # 3: parete alta, porta, finestra
+    for k in range(3):
+        y1 = -B - 36 - k * 11.4
+        _poligono(im, rr(10, y1 - 11.4, LARG_CASA - 10, y1, 2.0), COL_LEGNO[(k + 1) % 2], 2.8)
+        _cerchio(im, pt(17, y1 - 5.7), 1.5, COL_CHIODO)
+        _cerchio(im, pt(LARG_CASA - 17, y1 - 5.7), 1.5, COL_CHIODO)
+    ux = LARG_CASA * 0.50
+    _poligono(im, rr(ux, -B - 46, ux + 28, -B, 3.0), COL_PORTA)
+    _cerchio(im, pt(ux + 22, -B - 22), 2.2, COL_GIALLO, contorno=False)
+    wx = LARG_CASA * 0.16
+    _poligono(im, rr(wx, top + 8, wx + 26, top + 30), COL_VETRO, 3.0)
+    _linea(im, pt(wx + 13, top + 8), pt(wx + 13, top + 30), 2.2)
+    _linea(im, pt(wx, top + 19), pt(wx + 26, top + 19), 2.2)
+    strati[3] = (im, pt(LARG_CASA / 2, -B - 36))
+
+    im = vuoto()                                                                   # 4: tetto rosso e bandierina
+    apx, apy = LARG_CASA / 2, top - roof
+    _poligono(im, [pt(-12, top), pt(apx, apy), pt(LARG_CASA + 12, top), pt(LARG_CASA + 12, top + 7), pt(-12, top + 7)],
+              COL_ROSSO, 3.4)
+    _poligono(im, [pt(-6, top + 1), pt(apx - 3, apy + 9), pt(apx + 10, apy + 9), pt(LARG_CASA * 0.74, top + 1)],
+              COL_ROSSO_SC, 2.0)
+    _linea(im, pt(apx, apy), pt(apx, apy - 22), 3.0)
+    _poligono(im, [pt(apx, apy - 22), pt(apx + 20, apy - 16), pt(apx, apy - 10)], COL_GIALLO, 2.6)
+    strati[4] = (im, pt(LARG_CASA / 2, top))
+    return {k: (img.astype(np.float32) / 255.0, anc) for k, (img, anc) in strati.items()}
+
+
+def pop(u):
+    """Comparsa a rimbalzo: scala da 0,55 a 1 con un leggero superamento. u in 0..1."""
+    u = min(max(u, 0.0), 1.0)
+    c1 = 1.70158
+    f = 1 + (c1 + 1) * (u - 1) ** 3 + c1 * (u - 1) ** 2
+    return 0.55 + 0.45 * f
+
+
+def casa_a_tempo(strati, t_colpi, t, t_fine):
+    """Livello premoltiplicato della casetta all'istante t (ms): la base c'è sempre, un livello per ogni colpo."""
+    out = strati[0][0].copy()
+    sparizione = 1.0 if t <= t_fine - 300 else max(0.0, (t_fine - t) / 300.0)
+    for k, t0 in enumerate(t_colpi, 1):
+        if t < t0:
+            break
+        s = pop((t - t0) / 170.0) * (0.35 + 0.65 * sparizione)
+        layer = trasforma(strati[k][0], (strati[k][1][0] * SC, strati[k][1][1] * SC), 0.85 + 0.15 * s, s, 0, 0, 0)
+        layer = layer * (min(1.0, (t - t0) / 50.0) * sparizione)
+        out = layer + out * (1 - layer[..., 3:4])
+    return out
+
+# ------------------------------------------------------------------ 3d. sequenza della costruzione
+
+ZOOM_CASA = 1.25
+ESTRATTI_COLPO_MS = 170
+
+
+def parametri_respiro(n):
+    out = []
+    for k in range(n):
+        a = 2 * math.pi * k / n
+        out.append((1 - 0.010 * math.sin(a), 1 + 0.022 * math.sin(a), 0.6 * math.sin(a), 0.0, 0.0))
+    return out
+
+
+def parametri_si(n):
+    out = []
+    for k in range(n):
+        u = k / n
+        a = max(0.0, math.sin(u * 2 * math.pi * 2)) if u < 0.8 else 0.0
+        out.append((1 + 0.030 * a, 1 - 0.055 * a, 0.0, 0.0, 0.0))
+    return out
+
+
+def parametri_dondolio(n):
+    out = []
+    for k in range(n):
+        a = 2 * math.pi * k / n
+        out.append((1 + 0.012 * math.sin(2 * a), 1 - 0.012 * math.sin(2 * a), 3.2 * math.sin(a), 2 * SC * math.sin(a), 0.0))
+    return out
+
+
+def parametri_salto(n, altezza_px):
+    """(sx, sy, rotazione, dx, dy, quota relativa) per ogni fotogramma del salto di gioia."""
+    altezza = altezza_px * SC
+    out = []
+    for k in range(n):
+        u = k / (n - 1)
+        sx = sy = 1.0
+        h = 0.0
+        rot = 0.0
+        if u < 0.16:
+            e = curva("io", u / 0.16)
+            sy, sx = 1 - 0.14 * e, 1 + 0.10 * e
+        elif u < 0.24:
+            e = curva("out", (u - 0.16) / 0.08)
+            sy, sx = 0.86 + 0.28 * e, 1.10 - 0.18 * e
+        elif u < 0.62:
+            a = (u - 0.24) / 0.38
+            h = altezza * 4 * a * (1 - a)
+            sy, sx = 1.0 + 0.10 * (1 - a) ** 2 - 0.04 * a, 1.0 - 0.06 * (1 - a) ** 2 + 0.03 * a
+            rot = 5 * math.sin(a * math.pi * 2)
+        elif u < 0.72:
+            e = curva("out", (u - 0.62) / 0.10)
+            sy, sx = 1.0 - 0.16 * e, 1.0 + 0.12 * e
+        else:
+            a = (u - 0.72) / 0.28
+            osc = math.exp(-4 * a) * math.cos(a * math.pi * 3.2)
+            sy, sx = 1.0 - 0.10 * osc, 1.0 + 0.07 * osc
+        out.append((sx, sy, rot, 0.0, -h, h / altezza))
+    return out
+
+
+def costruisci_sequenza(frames, ancora_xy):
+    """Elementi della storia con fragola ferma e casetta che cresce. Ogni elemento è un dizionario con
+    il livello (calcolato al momento: 'l' è una funzione), la durata, se serve la fragola dietro, ecc."""
+    from functools import partial
+    ctx = prepara_costruzione(frames, ancora_xy)
+    H, W = ctx["H"], ctx["W"]
+    perno = (ctx["perno"][0] * SC, ctx["perno"][1] * SC)
+    pen1, spr1 = ctx["pen"], ctx["spr"]
+    FM = set(FASE_MARTELLO)
+    P1 = {i: premult(pen1[i]) for i in range(25)}
+    B1 = {i: premult(sopra_u8(pen1[i], spr1)) for i in (5, 18)}
+    P2 = {i: premult(pen1[i], SC) for i in range(25)}
+    B2 = {i: premult(sopra_u8(pen1[i], spr1), SC) for i in (5, 18)}
+    spr2 = premult(spr1, SC)
+    flussi_cache = {}
+
+    def coppia(a, b):
+        if (a, b) == (4, 5):
+            return P1[4], B1[5], P2[4], B2[5]
+        if (a, b) == (18, 19):
+            return B1[18], P1[19], B2[18], P2[19]
+        return P1[a], P1[b], P2[a], P2[b]
+
+    def flussi(a, b):
+        if (a, b) not in flussi_cache:
+            A1, Bb1, _, _ = coppia(a, b)
+            f01, f10 = flusso(A1, Bb1), flusso(Bb1, A1)
+            flussi_cache[(a, b)] = tuple(cv2.resize(f, None, fx=SC, fy=SC, interpolation=cv2.INTER_LINEAR) * SC
+                                         for f in (f01, f10))
+        return flussi_cache[(a, b)]
+
+    def tw(a, b, n, tipo):
+        """Intermedi (funzioni da eseguire al momento) tra le pose a e b (0-based)."""
+        _, _, A2, Bb2 = coppia(a, b)
+        f01, f10 = flussi(a, b)
+        return [partial(intermedio, A2, Bb2, curva(tipo, k / (n + 1)), f01, f10) for k in range(1, n + 1)]
+
+    def el(layer, ms, fr, colpo=False, ombra_fissa=True, ombra_salto=None):
+        return {"l": layer, "ms": ms, "fr": fr, "colpo": colpo, "of": ombra_fissa, "os": ombra_salto}
+
+    def trasf(base, p):
+        return trasforma(base, perno, p[0], p[1], p[2], p[3], p[4])
+
+    def percorso_c(pose, salta_primo=False, ultima=True):
+        out = []
+        for k in range(len(pose) - 1):
+            i, j = pose[k] - 1, pose[k + 1] - 1
+            n, tipo = regola_est(pose[k], pose[k + 1])
+            passo = 30 if (pose[k], pose[k + 1]) in ((10, 11), (14, 15)) else int(round(TOT_EST / (n + 1)))
+            if not (k == 0 and salta_primo):
+                out.append(el(P2[i], passo + TENUTE_EST.get(pose[k], 0), i in FM))
+            fr = (i in FM and j in FM)
+            out += [el(f, passo, fr) for f in tw(i, j, n, tipo)]
+        if ultima:
+            u = pose[-1] - 1
+            out.append(el(P2[u], 30 + TENUTE_EST.get(pose[-1], 0), u in FM))
+        return out
+
+    def urto_c(i, tenuta=200):
+        out = []
+        for k, (sx, sy, dx) in enumerate([(1.0, 0.975, -3), (1.0, 0.985, 3), (1.0, 0.992, -2), (1.0, 0.997, 1)]):
+            out.append(el(partial(trasforma, P2[i], perno, 1 / sy ** 0.5, sy, 0, dx * SC * 0.5, 0), 24, True, colpo=(k == 0)))
+        out.append(el(P2[i], tenuta, True))
+        return out
+
+    def colpo_extra_c():
+        a13, a14, a15 = 12, 13, 14
+        r = [el(f, 26, True) for f in tw(a14, a15, 4, "io")[::-1]] + [el(P2[a14], 26, True)]
+        r += [el(f, 26, True) for f in tw(a13, a14, 4, "io")[::-1]] + [el(P2[a13], 230, True)]
+        r += [el(f, 24, True) for f in tw(a13, a14, 4, "in")] + [el(P2[a14], 24, True)]
+        r += [el(f, 30, True) for f in tw(a14, a15, 2, "in")]
+        return r + urto_c(a15)
+
+    seq = [el(partial(trasf, P2[0], p), 33, False) for p in parametri_respiro(36)]               # 1: respira
+    seq += percorso_c(list(range(1, 12)))                                                           # posa la fragola, prende il martello
+    seq += urto_c(10, 220)                                                                          # colpo 1
+    seq += percorso_c(list(range(11, 16)), salta_primo=True)
+    seq += urto_c(14, 220)                                                                          # colpo 2
+    seq += colpo_extra_c() + colpo_extra_c()                                                        # colpi 3 e 4
+    seq += percorso_c([15, 16, 17, 18], salta_primo=True)
+    seq += [el(partial(trasf, P2[17], p), 22, True) for p in parametri_si(44)]                      # annuisce
+    seq += percorso_c([18, 19, 20, 21, 22, 23], salta_primo=True)
+    for p in parametri_salto(54, 55):                                                               # salto di gioia
+        seq.append(el(partial(trasf, P2[22], p), 22, False, ombra_fissa=False,
+                      ombra_salto=(1 - 0.35 * p[5], OMBRA_ALPHA * (1 - 0.4 * p[5]))))
+    seq += percorso_c([23, 24, 25], salta_primo=True)
+    seq += [el(partial(trasf, P2[24], p), 26, False) for p in parametri_dondolio(54)]              # dondola
+    n, tipo = regola_est(25, 1)
+    seq += [el(f, 47, False) for f in tw(24, 0, n, tipo)]                                           # torna alla posa 1
+    return seq, ctx, perno, spr2
+
+
+def componi_sequenza(seq, ctx, perno, spr2, on_frame):
+    """Compone ogni fotogramma (casetta + fragola + ombra + pinguino) e lo passa a on_frame(uint8, ms)."""
+    H2, W2 = ctx["H"] * SC, ctx["W"] * SC
+    tx, ty = ctx["testa"]
+    x0 = tx - 14.0
+    yg = ctx["perno"][1] + 3.0
+    strati = disegna_casetta(ctx["H"], ctx["W"], x0, yg)
+    ombra_f = ombra((H2, W2), perno, 1.0, OMBRA_ALPHA)
+    t_colpi, t = [], 0
+    for e in seq:
+        if e["colpo"]:
+            t_colpi.append(t)
+        t += e["ms"]
+    t_fine = t
+    print(f"colpi a: {[round(x) for x in t_colpi]} ms; durata {t_fine / 1000:.2f} s; {len(seq)} fotogrammi")
+    t = 0
+    for e in seq:
+        layer = e["l"]() if callable(e["l"]) else e["l"]
+        bg = ombra_f.copy() if e["of"] else np.zeros((H2, W2, 4), np.float32)
+        if e["os"] is not None:
+            bg = ombra((H2, W2), perno, e["os"][0], e["os"][1])
+        if e["fr"]:
+            bg = spr2 + bg * (1 - spr2[..., 3:4])
+        casa = casa_a_tempo(strati, t_colpi, t, t_fine)
+        bg = casa + bg * (1 - casa[..., 3:4])
+        fr = layer + bg * (1 - layer[..., 3:4])
+        on_frame(a_rgba(fr), e["ms"])
+        t += e["ms"]
+
+
+def esporta_u8(quadri, durate, base, scala_out, qualita=52, qualita_alpha=70, colori=96, gif=True,
+               sfondo=(255, 255, 255)):
+    """Scrive <base>.webp (trasparente) e <base>.gif (su sfondo) da fotogrammi RGBA uint8, ritagliando i margini."""
+    occ = np.zeros(quadri[0].shape[:2], bool)
+    for q in quadri:
+        occ |= q[..., 3] > 8
+    yy, xx = np.nonzero(occ)
+    y0, y1, x0, x1 = max(0, yy.min() - 6), yy.max() + 7, max(0, xx.min() - 6), xx.max() + 7
+    quadri = [q[y0:y1, x0:x1] for q in quadri]
+    durate = [max(20, int(d)) for d in durate]
+    webp = [Image.fromarray(q, "RGBA") for q in quadri]
+    webp[0].save(f"{base}.webp", save_all=True, append_images=webp[1:], duration=durate, loop=0,
+                 quality=qualita, alpha_quality=qualita_alpha, method=5, exact=False)
+    if not gif:
+        return len(webp), sum(durate)
+    fattore = scala_out / SC
+    sizes = (max(1, int(round(webp[0].width * fattore))), max(1, int(round(webp[0].height * fattore))))
+    piatti = []
+    for im in webp:
+        fondo = Image.new("RGBA", im.size, sfondo + (255,))
+        fondo.alpha_composite(im)
+        piatti.append(fondo.convert("RGB").resize(sizes, Image.LANCZOS))
+    campione = Image.new("RGB", (sizes[0] * 4, sizes[1] * 2))
+    for n, idx in enumerate(np.linspace(0, len(piatti) - 1, 8).astype(int)):
+        campione.paste(piatti[idx], ((n % 4) * sizes[0], (n // 4) * sizes[1]))
+    pal = campione.quantize(colors=colori, method=Image.MEDIANCUT, dither=Image.NONE)
+    gif_q = [p.quantize(palette=pal, dither=Image.NONE) for p in piatti]
+    gif_q[0].save(f"{base}.gif", save_all=True, append_images=gif_q[1:], duration=durate, loop=0, disposal=1,
+                  optimize=False)
+    return len(webp), sum(durate)
+
+
+def genera_costruzione(tavola, out, anteprima=False):
+    frames, ancora_xy = allinea(carica_frame(tavola))
+    seq, ctx, perno, spr2 = costruisci_sequenza(frames, ancora_xy)
+    quadri, durate = [], []
+
+    def on_frame(q, ms):
+        quadri.append(q)
+        durate.append(ms)
+
+    componi_sequenza(seq, ctx, perno, spr2, on_frame)
+    if anteprima:
+        passo, t, acc, tess = 450, 0, 0, []
+        for q, d in zip(quadri, durate):
+            if acc >= t:
+                tess.append(q)
+                t += passo
+            acc += d
+        h, w = tess[0].shape[:2]
+        cols = 6
+        riga = (len(tess) + cols - 1) // cols
+        foglio = Image.new("RGB", (w * cols, h * riga), (70, 74, 90))
+        for n, q in enumerate(tess):
+            tile = Image.new("RGBA", (w, h), (70, 74, 90, 255))
+            tile.alpha_composite(Image.fromarray(q, "RGBA"))
+            foglio.paste(tile.convert("RGB"), ((n % cols) * w, (n // cols) * h))
+        foglio.save(out / "anteprima-costruzione.png", optimize=True)
+        return len(quadri), sum(durate)
+    return esporta_u8(quadri, durate, str(out / "pinguino-costruzione"), 1.0)
+
 # ------------------------------------------------------------------ 4. esportazione
 
 
@@ -463,6 +975,10 @@ def main():
         f01, f10 = flusso(P1[i], P1[j]), flusso(P1[j], P1[i])
         F[(i, j)] = tuple(cv2.resize(f, None, fx=SC, fy=SC, interpolation=cv2.INTER_LINEAR) * SC for f in (f01, f10))
 
+    if "--costruzione" in sys.argv:
+        n, ms = genera_costruzione(tavola, out, anteprima="--anteprima" in sys.argv)
+        print(f"costruzione: {n} fotogrammi, {ms / 1000:.2f} s")
+        return
     risultati = {}
     # versione estesa: tela più alta per il salto, stesso flusso con il margine aggiunto
     sopra_px, lati = 70 * SC, 40 * SC
