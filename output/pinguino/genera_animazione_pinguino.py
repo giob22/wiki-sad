@@ -2,7 +2,8 @@
 """Animazione fluida della mascotte (pinguino con elmetto e fragola) da una tavola 5x5 di frame.
 
 Uso:  python genera_animazione_pinguino.py <tavola.webp> <cartella-di-output> [--frame]
-      (--frame salva anche i 25 frame allineati come PNG trasparenti)
+      (--frame salva anche i 25 frame allineati come PNG trasparenti;
+       --solo-estesa genera soltanto la versione estesa)
 
 Cosa fa
   1. ritaglia i 25 frame dalla tavola (sfondo già trasparente) e li allinea sui piedi;
@@ -205,9 +206,9 @@ def amplia(p, sopra_px, lati_px):
     return np.pad(p, ((sopra_px, 0), (lati_px, lati_px), (0, 0)))
 
 
-def gesto_salto(base, perno, n=40):
+def gesto_salto(base, perno, n=40, ms=BASE_MS, altezza_px=70, alpha0=0.30, con_ombra=True):
     """Salto di gioia: schiaccia, stira, vola, atterra con rimbalzo. Usa la posa 23 (occhi felici)."""
-    altezza = 70 * SC
+    altezza = altezza_px * SC
     out = []
     for k in range(n):
         u = k / (n - 1)
@@ -233,37 +234,39 @@ def gesto_salto(base, perno, n=40):
             osc = math.exp(-4 * a) * math.cos(a * math.pi * 3.2)
             sy, sx = 1.0 - 0.10 * osc, 1.0 + 0.07 * osc
         spr = trasforma(base, perno, sx, sy, rot, 0, -h)
-        out.append((sopra(spr, ombra(base.shape, perno, 1 - 0.35 * h / altezza, 0.30 - 0.12 * h / altezza)), BASE_MS))
+        if con_ombra:
+            spr = sopra(spr, ombra(base.shape, perno, 1 - 0.35 * h / altezza, alpha0 * (1 - 0.4 * h / altezza)))
+        out.append((spr, ms))
     return out
 
 
-def gesto_dondolio(base, perno, n=36, ms=40):
+def gesto_dondolio(base, perno, n=36, ms=40, con_ombra=True):
     out = []
     for k in range(n):
         a = 2 * math.pi * k / n
         spr = trasforma(base, perno, 1 + 0.012 * math.sin(2 * a), 1 - 0.012 * math.sin(2 * a),
                         3.2 * math.sin(a), 2 * SC * math.sin(a), 0)
-        out.append((sopra(spr, ombra(base.shape, perno, 1.0, 0.22)), ms))
+        out.append((sopra(spr, ombra(base.shape, perno, 1.0, 0.22)) if con_ombra else spr, ms))
     return out
 
 
-def gesto_respiro(base, perno, n=40, ms=48):
+def gesto_respiro(base, perno, n=40, ms=48, con_ombra=True):
     out = []
     for k in range(n):
         a = 2 * math.pi * k / n
         spr = trasforma(base, perno, 1 - 0.010 * math.sin(a), 1 + 0.022 * math.sin(a), 0.6 * math.sin(a), 0, 0)
-        out.append((sopra(spr, ombra(base.shape, perno, 1.0, 0.20)), ms))
+        out.append((sopra(spr, ombra(base.shape, perno, 1.0, 0.22)) if con_ombra else spr, ms))
     return out
 
 
-def gesto_si(base, perno, n=40):
+def gesto_si(base, perno, n=40, ms=BASE_MS, con_ombra=True):
     """Annuisce due volte (posa 18: sorride con il martello alla cintura)."""
     out = []
     for k in range(n):
         u = k / n
         a = max(0.0, math.sin(u * 2 * math.pi * 2)) if u < 0.8 else 0.0
         spr = trasforma(base, perno, 1 + 0.030 * a, 1 - 0.055 * a, 0, 0, 0)
-        out.append((sopra(spr, ombra(base.shape, perno, 1.0, 0.20)), BASE_MS))
+        out.append((sopra(spr, ombra(base.shape, perno, 1.0, 0.22)) if con_ombra else spr, ms))
     return out
 
 
@@ -301,16 +304,109 @@ def gesto_martello(P2, F, perno, giri=3):
     return ciclo * giri
 
 
+# ------------------------------------------------------------------ 3b. versione estesa (più lunga e più fluida)
+
+TOT_EST = 140        # ms per passare da una posa alla successiva: con 6 intermedi sono 20 ms l'uno (50 fps)
+REGOLE_EST = {(9, 10): (4, "in"), (13, 14): (4, "in"), (12, 13): (4, "io"), (10, 11): (2, "in"), (14, 15): (2, "in"),
+              (23, 24): (2, "io"), (24, 25): (2, "io"), (25, 1): (2, "lin")}
+TENUTE_EST = {5: 180, 6: 90, 12: 90, 13: 140, 19: 160}
+OMBRA_ALPHA = 0.22
+
+
+def regola_est(i, j):
+    return REGOLE_EST.get((i, j), (4 if (i, j) in COPPIE_DIFFICILI else 6, "io"))
+
+
+def lista_intermedi(P, F, a, b, n, tipo):
+    f01, f10 = F[(a, b)]
+    return [intermedio(P[a], P[b], curva(tipo, k / (n + 1)), f01, f10) for k in range(1, n + 1)]
+
+
+def percorso(P, F, pose, tenute=TENUTE_EST, salta_primo=False, ultima=True):
+    """Pose consecutive (numeri da 1) con i loro intermedi; l'ultima posa è inclusa se ultima=True."""
+    out = []
+    for k in range(len(pose) - 1):
+        i, j = pose[k], pose[k + 1]
+        n, tipo = regola_est(i, j)
+        passo = int(round(TOT_EST / (n + 1)))
+        if (i, j) in ((10, 11), (14, 15)):
+            passo = 30
+        if not (k == 0 and salta_primo):
+            out.append((P[i - 1], passo + tenute.get(i, 0)))
+        out += [(x, passo) for x in lista_intermedi(P, F, i - 1, j - 1, n, tipo)]
+    if ultima:
+        out.append((P[pose[-1] - 1], 30 + tenute.get(pose[-1], 0)))
+    return out
+
+
+def urto(p, perno, tenuta=200):
+    """Scossa e schiacciamento all'impatto del martello, poi la posa tenuta."""
+    out = []
+    for sx, sy, dx in [(1.0, 0.975, -3), (1.0, 0.985, 3), (1.0, 0.992, -2), (1.0, 0.997, 1)]:
+        out.append((trasforma(p, perno, 1 / sy ** 0.5, sy, 0, dx * SC * 0.5, 0), 24))
+    out.append((p, tenuta))
+    return out
+
+
+def colpo_extra(P, F, perno):
+    """Ritorno lento del martello, attesa in alto, nuovo colpo con scossa (pose 15 -> 13 -> 15)."""
+    a13, a14, a15 = 12, 13, 14
+    r = [(x, 26) for x in lista_intermedi(P, F, a14, a15, 4, "io")[::-1]]
+    r += [(P[a14], 26)]
+    r += [(x, 26) for x in lista_intermedi(P, F, a13, a14, 4, "io")[::-1]]
+    r += [(P[a13], 230)]
+    r += [(x, 24) for x in lista_intermedi(P, F, a13, a14, 4, "in")]
+    r += [(P[a14], 24)]
+    r += [(x, 30) for x in lista_intermedi(P, F, a14, a15, 2, "in")]
+    r += urto(P[a15], perno)
+    return r
+
+
+def sequenza_estesa(P, F, perno):
+    """Storia completa (circa 12 s): respira, posa la fragola, prende il martello, colpisce quattro volte,
+    lo ripone e annuisce, riprende la fragola, salta di gioia, dondola e ricomincia."""
+    ob = lambda seg: con_ombra_fissa(seg, perno)
+    seq = []
+    seq += ob(gesto_respiro(P[0], perno, n=36, ms=33, con_ombra=False))              # 1: respira
+    seq += ob(percorso(P, F, list(range(1, 12))))                                      # 1 -> 11: posa e primo colpo
+    seq += ob(urto(P[10], perno, 220))
+    seq += ob(percorso(P, F, list(range(11, 16)), salta_primo=True))                   # 11 -> 15: secondo colpo
+    seq += ob(urto(P[14], perno, 220))
+    seq += ob(colpo_extra(P, F, perno) + colpo_extra(P, F, perno))                     # altri due colpi
+    seq += ob(percorso(P, F, [15, 16, 17, 18], salta_primo=True))                      # ripone il martello
+    seq += ob(gesto_si(P[17], perno, n=44, ms=22, con_ombra=False))                    # annuisce
+    seq += ob(percorso(P, F, [18, 19, 20, 21, 22, 23], salta_primo=True))              # riprende la fragola
+    seq += gesto_salto(P[22], perno, n=54, ms=22, altezza_px=55, alpha0=OMBRA_ALPHA)   # salto (ombra propria)
+    seq += ob(percorso(P, F, [23, 24, 25], salta_primo=True))
+    seq += ob(gesto_dondolio(P[24], perno, n=54, ms=26, con_ombra=False))
+    n, tipo = regola_est(25, 1)
+    seq += ob([(x, 47) for x in lista_intermedi(P, F, 24, 0, n, tipo)])                # torna alla posa 1
+    return seq
+
+
+def con_ombra_fissa(seq, perno):
+    """Ombra a terra uguale su tutti i fotogrammi (il salto ha la sua, più chiara in volo)."""
+    sh = ombra(seq[0][0].shape, perno, 1.0, OMBRA_ALPHA)
+    return [(sopra(p, sh), d) for p, d in seq]
+
+
 # ------------------------------------------------------------------ 4. esportazione
 
 
-def esporta(seq, base, scala_out, sfondo=(255, 255, 255), gif=True):
+def esporta(seq, base, scala_out, sfondo=(255, 255, 255), gif=True, qualita=80, ritaglia=False, colori=128, qualita_alpha=100):
     """Scrive <base>.webp (trasparente, scala SC) e, se gif=True, <base>.gif (su sfondo, scala_out)."""
+    if ritaglia:                       # toglie i margini vuoti comuni a tutti i fotogrammi
+        occ = np.zeros(seq[0][0].shape[:2], bool)
+        for p, _ in seq:
+            occ |= p[..., 3] > 0.03
+        yy, xx = np.nonzero(occ)
+        y0, y1, x0, x1 = max(0, yy.min() - 6), yy.max() + 7, max(0, xx.min() - 6), xx.max() + 7
+        seq = [(p[y0:y1, x0:x1], d) for p, d in seq]
     quadri = [a_rgba(p) for p, _ in seq]
-    durate = [int(d) for _, d in seq]
+    durate = [max(20, int(d)) for _, d in seq]
     webp = [Image.fromarray(q, "RGBA") for q in quadri]
     webp[0].save(f"{base}.webp", save_all=True, append_images=webp[1:], duration=durate, loop=0,
-                 quality=80, alpha_quality=100, method=5, exact=False)
+                 quality=qualita, alpha_quality=qualita_alpha, method=5, exact=False)
     if not gif:
         return len(seq), sum(durate)
     fattore = scala_out / SC
@@ -324,7 +420,7 @@ def esporta(seq, base, scala_out, sfondo=(255, 255, 255), gif=True):
     campione = Image.new("RGB", (sizes[0] * 4, sizes[1] * 2))
     for n, idx in enumerate(np.linspace(0, len(piatti) - 1, 8).astype(int)):
         campione.paste(piatti[idx], ((n % 4) * sizes[0], (n // 4) * sizes[1]))
-    pal = campione.quantize(colors=128, method=Image.MEDIANCUT, dither=Image.NONE)
+    pal = campione.quantize(colors=colori, method=Image.MEDIANCUT, dither=Image.NONE)
     gif = [p.quantize(palette=pal, dither=Image.NONE) for p in piatti]
     gif[0].save(f"{base}.gif", save_all=True, append_images=gif[1:], duration=durate, loop=0, disposal=1,
                 optimize=False)
@@ -368,6 +464,17 @@ def main():
         F[(i, j)] = tuple(cv2.resize(f, None, fx=SC, fy=SC, interpolation=cv2.INTER_LINEAR) * SC for f in (f01, f10))
 
     risultati = {}
+    # versione estesa: tela più alta per il salto, stesso flusso con il margine aggiunto
+    sopra_px, lati = 70 * SC, 40 * SC
+    perno_e = (perno[0] + lati, perno[1] + sopra_px)
+    P2e = [amplia(p, sopra_px, lati) for p in P2]
+    Fe = {k: tuple(np.pad(f, ((sopra_px, 0), (lati, lati), (0, 0))) for f in v) for k, v in F.items()}
+    risultati["pinguino-lavoro-estesa"] = esporta(sequenza_estesa(P2e, Fe, perno_e), str(out / "pinguino-lavoro-estesa"),
+                                                  1.0, qualita=52, qualita_alpha=70, ritaglia=True, colori=96)
+    if "--solo-estesa" in sys.argv:
+        for nome, (n, ms) in risultati.items():
+            print(f"{nome}: {n} fotogrammi, {ms / 1000:.2f} s")
+        return
     risultati["pinguino-lavoro-fluida"] = esporta(sequenza_fluida(P2, F), str(out / "pinguino-lavoro-fluida"), GIF_SCALE)
     risultati["pinguino-lavoro-originale"] = esporta(sequenza_originale(P2), str(out / "pinguino-lavoro-originale"), GIF_SCALE)
 

@@ -146,3 +146,4 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - verificato: numero di fotogrammi e durate dei file riaperti, fogli di anteprima di tutti i fotogrammi; non guardata in riproduzione
 - limiti: nessuna posa nuova disegnata (i gesti extra sono movimenti delle pose esistenti)
 - aggiornati: lezioni.md (Lezione 0, voce 8), index
+- mascotte: versione estesa (pinguino-lavoro-estesa.webp/.gif) di 11,3 s, 341 fotogrammi fino a 50 fps, storia con quattro colpi, cenno, salto e dondolio, ombra uniforme; compressione WebP qualità 52/alpha 70 scelta confrontando i contorni a 2×; script con --solo-estesa
