@@ -139,3 +139,10 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - burndown.py: --inspect elenca ogni task dell'iterazione con punti, provenienza della stima (Estimate, Size o default), stato e data di aggiunta al project, e il totale dei punti
 - burndown: il project reale è dell'organizzazione Pinguini-alla-Fragola (il project 2 di CapHello era una copia); workflow con PROJECT_OWNER e OWNER_TYPE configurabili (default organizzazione); diagnosi fatta con --inspect (stati e stime letti da un project diverso)
 - burndown.py: i task aggiunti al project nel primo giorno dello sprint contano come scope iniziale (prima comparivano come salita da 0 a inizio sprint); testato con 10 task aggiunti la sera del primo giorno
+
+## [2026-10-19] progetto | animazione della mascotte del team
+- creata: [[mascotte-pinguino]] — animazione dalla tavola di 25 frame (ritaglio, allineamento a terra, intermedi con flusso ottico su un solo frame, ritmo e pose tenute), versione fedele ai 25 disegni, 5 gesti extra (salto di gioia, martellata ripetuta, dondolio, respiro, annuisce)
+- file in output/pinguino/: WebP animati (2×) e GIF (1,5×) delle due animazioni principali, WebP dei gesti, anteprima dei frame allineati, tavola sorgente, script genera_animazione_pinguino.py (~20 MB)
+- verificato: numero di fotogrammi e durate dei file riaperti, fogli di anteprima di tutti i fotogrammi; non guardata in riproduzione
+- limiti: nessuna posa nuova disegnata (i gesti extra sono movimenti delle pose esistenti)
+- aggiornati: lezioni.md (Lezione 0, voce 8), index
