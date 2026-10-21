@@ -86,6 +86,7 @@
 
 ## Progetto
 - [[progetto-di-corso]] — organizzazione, iterazioni, calendario, valutazione; decisioni: nessuna ancora
+- [[incontro-stakeholder-ba]] — appunti del primo confronto con lo stakeholder (BA.pdf): cosa è emerso e cosa cambia
 - [[domande-al-committente]] — domande da porre al direttore del Banco (Open Questions Log), in ordine di priorità, con ipotesi e documenti da chiedere
 - [[a2-stakeholder-e-contesto]] — capitolo A2 (issue S1-01): stakeholder, utenti e sistemi esterni, flussi, Context Diagram CTX-01, ipotesi e domande
 - [[mascotte-pinguino]] — animazione fluida della mascotte del team (25 frame → 77 fotogrammi), gesti extra e script per rigenerarla

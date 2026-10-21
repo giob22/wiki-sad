@@ -153,3 +153,10 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 ## [2026-10-20] progetto | domande da porre al direttore del Banco
 - creata: [[domande-al-committente]] — 18 domande in due livelli di priorità (10 alte, 8 medie), ciascuna con perché serve, ipotesi provvisoria e fonte; Q-01…Q-08 allineate al Word, Q-09…Q-11 da A2, Q-12…Q-19 nuove; documenti da chiedere e traccia per condurre l'incontro
 - aggiornati: guida-progetto-picus (attività 8), index, lezioni.md (Lezione 0, voce 9)
+
+## [2026-10-21] progetto | aggiornamento di A2 dopo il confronto con lo stakeholder
+- nuova fonte: BA.pdf copiato in wiki/progetto/riferimenti/ e riassunto in [[incontro-stakeholder-ba]] (400–450 OPT, 200 comuni, 230.000 utenti, flusso OPT → Banco → OPT, niente broadcast, richieste in ordine di arrivo, un'email per OPT, operatori delle OPT non utenti, CSV per le credenziali)
+- A2 riscritta in versione snella (una sola tabella, Definition of Done di S1-01, riferimenti a Scrum): [[a2-stakeholder-e-contesto]] e output/A2-stakeholder-e-contesto.docx (4 pagine, diagramma del gruppo in pagina orizzontale)
+- il Documentazione_SAD_2026.pdf della repo risulta identico alla bozza precedente (A2 non ancora aggiornato nel Word)
+- domande-al-committente: aggiunta la sezione «cosa ha già risposto lo stakeholder» (Q-01 risolta, Q-09 quasi, Q-08 in gran parte) e le nuove Q-20 e Q-21
+- eliminati i file della versione precedente del Context Diagram (diagramma e script) perché sostituiti dal diagramma del gruppo

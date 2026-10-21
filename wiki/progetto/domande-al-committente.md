@@ -18,6 +18,27 @@ Gli ID `Q-01…Q-08` sono quelli già nell'elenco candidato del Word (A6), `Q-09
 
 > Vincoli già dati dal committente, **da non riaprire come dubbi**: le persone assistite non hanno account né dati identificativi; la scheda trimestrale è distinta dal flusso delle richieste; l'integrazione con il portale ministeriale non è richiesta; audit completo e biometria non sono richiesti. [[01-PICUS_richieste_informali_del_committente (1).pdf#page=1]] (§1, §3), §5.5.
 
+## Aggiornamento del 21/10: cosa ha già risposto lo stakeholder
+
+Dopo il primo confronto ([[incontro-stakeholder-ba]], [[BA.pdf#page=1]]) alcune domande sono chiuse o ridotte. Le altre restano aperte e vanno portate al prossimo incontro.
+
+| Q | Stato | Cosa sappiamo ora |
+|---|---|---|
+| Q-01 | **risolta per l'MVP** | una sola email per OPT, confermato: un account per OPT |
+| Q-09 | **quasi risolta** | gli operatori delle OPT non sono utenti e il Banco non li contatta. Restano da chiarire gli operatori interni e i professionisti esterni |
+| Q-08 | **in gran parte risolta** | niente broadcast: notizie alle OPT con conferma di ricezione, anche a un sottogruppo. Restano formato degli allegati e canale |
+| Q-05 | **in parte** | le credenziali non scadono e il Banco rimuove a mano le OPT scadute; restano la conservazione dei dati e il responsabile privacy |
+| Q-04 | **in parte** | il Banco deve monitorare le transazioni OPT 1 → Banco → OPT 2; restano stati e casi limite |
+| Q-07 | **numeri nuovi** | 400–450 OPT e 230.000 utenti, non circa 200 OPT. Restano richieste al mese, picchi e dispositivi |
+| Q-03 | aperta | |
+| Q-02, Q-06, Q-10…Q-19 | aperte | |
+
+Domande **nuove** dopo il confronto:
+- **Q-20:** i numeri dello stakeholder (400–450 OPT, 230.000 utenti) sostituiscono quelli dei desiderata? I 230.000 sono tutte le persone assistite o solo i destinatari delle misure di accompagnamento?
+- **Q-21:** se un'attività è svolta da un'OPT, chi inserisce i dati e la scheda trimestrale, visto che gli operatori delle OPT non la compilano?
+
+Le richieste non sono prioritizzate (ordine di arrivo): non serve più chiedere se servano priorità.
+
 ## Priorità alta: bloccano l'MVP, la sicurezza o l'architettura
 
 | # | Q | Domanda al direttore | Perché serve | Ipotesi provvisoria 🧩 | Fonte |

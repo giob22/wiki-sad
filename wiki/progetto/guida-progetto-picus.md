@@ -116,7 +116,7 @@ gantt
 > 📄 P: [[00-Presentazione Progetto Picus.pdf#page=15]] · 📄 R §2: [[01-PICUS_richieste_informali_del_committente (1).pdf#page=1]]
 
 - PICUS sostiene un **programma di aiuti** che comprende, oltre alla **distribuzione di beni**, alcune **misure di accompagnamento**.
-- Il **Banco** gestisce il **centro operativo regionale** e coordina **circa 200 Organizzazioni Partner Territoriali (OPT)**, distribuite in **circa 200 comuni**.
+- Il **Banco** gestisce il **centro operativo regionale** e coordina **circa 200 Organizzazioni Partner Territoriali (OPT)**, distribuite in **circa 200 comuni**. ⚠️ *Aggiornamento del 21/10:* nel confronto con lo stakeholder sono emersi **400–450 OPT** e 230.000 utenti: vedi [[incontro-stakeholder-ba]].
 - Le misure possono essere erogate da: **operatori interni al Centro PICUS**; **professionisti esterni** sul territorio; **OPT** che svolgono direttamente certe attività con propri operatori o volontari.
 - Il **Banco riceve le richieste delle OPT**, **individua un possibile erogatore**, ne **verifica la disponibilità** e **coordina l'appuntamento**. **I contatti con la persona o il nucleo assistito restano in capo all'OPT richiedente.**
 

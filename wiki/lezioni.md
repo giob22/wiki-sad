@@ -20,7 +20,8 @@ Regola: 1 PDF = 1 lezione, salvo diversa indicazione. Glossario dei termini ingl
 7. [[burndown-github-project]] — **strumento per il progetto**: burndown dello sprint sul GitHub Project pesato con le taglie dei task (richiama il burndown chart della Lezione 6, pagina «cerimonie e artefatti Agile»).
 8. [[mascotte-pinguino]] — **materiale del team**: animazione della mascotte (pinguino con elmetto e fragola) dalla tavola di 25 frame, con gesti extra.
 9. [[domande-al-committente]] — **attività 8 del progetto** (presentazione PICUS p. 25, richieste §8–9): le domande più rilevanti da porre al direttore del Banco, in ordine di priorità.
-10. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
+10. [[incontro-stakeholder-ba]] — **fonte del progetto**: appunti del primo confronto con lo stakeholder (400–450 OPT, flusso OPT → Banco → OPT, comunicazioni con conferma, operatori delle OPT non utenti).
+11. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
 
 Ordine consigliato: quello delle slide.
 
