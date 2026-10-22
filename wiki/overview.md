@@ -23,7 +23,7 @@ Elenco lezioni e percorso di lettura → [[lezioni]] · Stato dello studio → [
 | Soluzioni architetturali | interfacce e stili di interazione; XML, JSON, binario; virtualizzazione e cloud | — | da trattare |
 | Documentazione | stili di documentazione delle viste; contesto, comportamento, decisioni, interfacce; ISO/IEC 42010 | — | da trattare |
 | Processi iterativi e incrementali | iterativo vs waterfall; Unified Process | [[sviluppo-agile]] (sezione sviluppo iterativo) | iterativo vs waterfall trattato (Lez. 6); Unified Process da trattare |
-| Agile | principi, manifesto, TDD, refactoring, CI; Scrum | [[cerimonie-e-artefatti-agile]], [[user-stories]], [[criteri-di-accettazione-e-bdd]], [[progetto-di-corso]] | manifesto, principi, ruoli, cerimonie, artefatti, user story, BDD (Lez. 6); TDD, refactoring, CI e stima delle storie da trattare |
+| Agile | principi, manifesto, TDD, refactoring, CI; Scrum | [[cerimonie-e-artefatti-agile]], [[user-stories]], [[criteri-di-accettazione-e-bdd]], [[scrum]], [[product-backlog-e-sprint-backlog]], [[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]], [[daily-scrum-review-retrospective]], [[progetto-di-corso]] | manifesto, principi, ruoli, cerimonie, artefatti, user story, BDD (Lez. 6); framework Scrum completo con backlog, Sprint Planning, stima in Story Point, velocity e capacity, Daily Scrum, Review e Retrospective (Lez. 7); TDD, refactoring e CI da trattare |
 | Gestione della configurazione | version control, build, CI, DevOps, change request, release | — | da trattare |
 | Architetture di nuova generazione (cenni) | IoT, cloud-native, edge–cloud, IA, sistemi autonomi, ML e LLM | — | da trattare |
 
@@ -39,6 +39,8 @@ La Lez. 5 completa i pattern. Il **middleware** collega i tier e i sistemi ester
 
 La Lez. 6 passa al **processo**: lo sviluppo **Agile** consegna valore per piccoli incrementi in iterazioni brevi, guidato dai valori e principi del Manifesto. Ruoli (Product Owner, Scrum Master, team), **cerimonie** (planning, daily, demo, retrospettiva) e **artefatti** (backlog, burndown) organizzano il lavoro; i requisiti si scrivono come **user story** che rispettano INVEST, completate da **criteri di accettazione** che il **BDD** trasforma in scenari Given–When–Then eseguibili. È il metodo con cui si sviluppa il progetto di corso.
 
+La Lez. 7 completa il quadro con **Scrum** ([[scrum]]): fondato sull'empirismo e su tre pilastri (trasparenza, ispezione, adattamento), organizza il lavoro in **Sprint** a durata fissa, con tre ruoli e un **Product Backlog** raffinato fino a storie «Ready» ([[product-backlog-e-sprint-backlog]]). Lo **Sprint Planning** sceglie le storie in base allo **Sprint Goal**, alle **stime in Story Point** e alla **velocity** corretta dalla **capacity** ([[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]]); **Daily Scrum**, **Sprint Review** e **Sprint Retrospective** ispezionano progresso, prodotto e processo ([[daily-scrum-review-retrospective]]).
+
 ## Argomenti mancanti / da ingerire
 
 - Altri attributi di qualità: performance, security, functionality, usability, reusability, integrability, testability, deployability, energy efficiency, safety — TODO
@@ -46,16 +48,17 @@ La Lez. 6 passa al **processo**: lo sviluppo **Agile** consegna valore per picco
 - Pattern per microservizi e stili architetturali (annunciati nelle conclusioni della Lez. 5 per le prossime lezioni) — TODO
 - Soluzioni architetturali (interfacce, REST, formati, cloud) — TODO
 - Documentazione delle architetture (*Views and Beyond*, ISO/IEC 42010) — TODO
-- UP, Agile, Scrum, TDD, CI, SCM, DevOps — TODO
+- UP, TDD, refactoring, CI, SCM, DevOps — TODO (Agile e Scrum trattati nelle Lez. 6–7)
 - Architetture di nuova generazione — TODO
 - Stile di allocazione *work assignment*, viste di concorrenza — TODO (solo nominati nella Lez. 1)
 
 ## Fonti ingerite
 
-8 — [[presentazione-corso]], [[introduzione-architettura-software]], [[attributi-di-qualita-e-importanza-architettura]], [[quality-attributes-availability]], [[quality-attributes-modifiability]], [[approcci-riuso-progettazione-architettura]], [[architectural-patterns-mvc-scc]], [[agile-project-management]]; programma ufficiale in [[Programma Syllabus]]
+9 — [[presentazione-corso]], [[introduzione-architettura-software]], [[attributi-di-qualita-e-importanza-architettura]], [[quality-attributes-availability]], [[quality-attributes-modifiability]], [[approcci-riuso-progettazione-architettura]], [[architectural-patterns-mvc-scc]], [[agile-project-management]], [[agile-scrum-framework]]; programma ufficiale in [[Programma Syllabus]]
 
 _Aggiornato: 2026-09-26 — ingest di 00_IntroduzioneAlCorso_SAD.pdf e delle due parti di 01-IntroductionOnSoftwareArchitecture_
 _Aggiornato: 2026-09-30 — ingest di 02-Availability.pdf e 03-Modifiability.pdf; programma allineato a Programma Syllabus.md_
 _Aggiornato: 2026-10-01 — ingest di 04-Architectural Patterns.pdf_
 _Aggiornato: 2026-10-06 — ingest della parte nuova di 3-Architectural Patterns-complete.pdf_
 _Aggiornato: 2026-10-10 — ingest di 04_Agile_01.pdf_
+_Aggiornato: 2026-10-22 — ingest di 04_Agile_02 (1).pdf (Scrum)_

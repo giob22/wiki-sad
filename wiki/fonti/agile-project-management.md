@@ -42,7 +42,7 @@ Lezione della prof. Fasolino sulla gestione Agile dei progetti. Parte da un sond
 
 ## Domande aperte
 
-- L'agenda annuncia **Definition of Done**, **Iteration Demo** e **Information Radiator** come argomenti, ma il PDF termina prima: verranno nella prossima lezione? La **stima delle user story** è esplicitamente rimandata alla lezione successiva ([[04_Agile_01.pdf#page=49]]).
+- L'agenda annuncia **Definition of Done**, **Iteration Demo** e **Information Radiator** come argomenti, ma il PDF termina prima: verranno nella prossima lezione? La **stima delle user story** è esplicitamente rimandata alla lezione successiva ([[04_Agile_01.pdf#page=49]]). *Risolto nella Lezione 7* ([[agile-scrum-framework]]): stima, Definition of Done, Sprint Review e scrum board (information radiator) sono trattati lì.
 - A [[04_Agile_01.pdf#page=54]] la user story è quella del login ma i criteri riguardano la ricerca di prodotti: errore di copia (segnalato in [[criteri-di-accettazione-e-bdd]]).
 - A [[04_Agile_01.pdf#page=14]] la frase «Ask your customer to prioritize their list so you get the most important» è troncata.
 - INVEST: la slide 43 dice *Testable*, la slide 44 *Verifiable*.
@@ -60,3 +60,4 @@ Lezione della prof. Fasolino sulla gestione Agile dei progetti. Parte da un sond
 - Cos'è il BDD? Come si passa da un criterio di accettazione a uno scenario Given–When–Then?
 
 _Aggiornato: 2026-10-10 — ingest_
+_Aggiornato: 2026-10-22 — domande aperte risolte dalla Lezione 7_

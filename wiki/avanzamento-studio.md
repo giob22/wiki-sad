@@ -320,7 +320,7 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 - [ ] studiato
 - [ ] consolidato
 
-**J4. Framework Scrum: ruoli, backlog, pratiche** — Lez. 6: ruoli (PO, Scrum Master, team), product e sprint backlog, cerimonie, burndown; presentati in forma Agile generale, non ancora come framework Scrum completo → [[cerimonie-e-artefatti-agile]]
+**J4. Framework Scrum: ruoli, backlog, pratiche** — Lez. 6 (forma Agile generale: ruoli, backlog, cerimonie, burndown) e Lez. 7 (framework Scrum completo: pilastri, ruoli, sprint, backlog e refinement, Sprint Planning, stima, velocity e capacity, Daily Scrum, Review, Retrospective) → [[cerimonie-e-artefatti-agile]], [[gestione-progetto-plan-driven-vs-agile]], [[scrum]], [[ciclo-di-vita-scrum]], [[product-backlog-e-sprint-backlog]], [[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]], [[planning-poker]], [[daily-scrum-review-retrospective]], [[pianificare-uno-sprint]], [[condurre-una-retrospettiva]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato
@@ -447,3 +447,4 @@ _Aggiornato: 2026-09-30 — riallineata al programma ufficiale (raw/Programma Sy
 _Aggiornato: 2026-10-01 — «da fare» spuntato per D1 e Y3 (Lez. 4); aggiunto X2 (linee di prodotto)_
 _Aggiornato: 2026-10-06 — «da fare» spuntato per D2 (Sense–Compute–Control) e D3 (MVC); aggiunto X3 (Spring)_
 _Aggiornato: 2026-10-10 — «da fare» spuntato per I1, J1, J4 (Lez. 6); aggiunto X4 (criteri di accettazione e BDD)_
+_Aggiornato: 2026-10-22 — Lez. 7: aggiornati i link di J4 (casella «da fare» già spuntata); nessun nuovo argomento fuori programma_

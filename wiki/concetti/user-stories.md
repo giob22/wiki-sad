@@ -117,7 +117,7 @@ Gli esercizi sulla valutazione INVEST (PayPal, gestione utenti) sono svolti in [
 > 📄 Fonte: [[04_Agile_01.pdf#page=46]], [[04_Agile_01.pdf#page=49]]
 
 - **User stories review**: attività per verificare la qualità delle user story (o dei requisiti) già definite nel progetto. Sono scritte bene? Rispettano INVEST? Come si possono riscrivere?
-- **Stima delle user story**: le stime sono **ipotesi basate sulle informazioni disponibili**. L'argomento è rimandato **alla lezione successiva**. TODO: da espandere.
+- **Stima delle user story**: le stime sono **ipotesi basate sulle informazioni disponibili**. L'argomento è rimandato **alla lezione successiva**: la stima in **Story Point** (Planning Poker, Fibonacci, velocity, capacity) è nella Lezione 7 → [[stima-story-points-velocity-capacity]], [[planning-poker]]; quando una storia è «Ready» → [[product-backlog-e-sprint-backlog]].
 
 ## Quando una storia è completa
 
@@ -131,7 +131,7 @@ Gli esercizi sulla valutazione INVEST (PayPal, gestione utenti) sono svolti in [
 
 Approfondimento sui criteri di accettazione e sul loro passaggio a test BDD → [[criteri-di-accettazione-e-bdd]].
 
-> ❓ Salto non ricostruito: l'agenda ([[04_Agile_01.pdf#page=2]]) annuncia anche **Definition of Done**, **Iteration Demo** e **Information Radiator** come argomenti a sé, ma il PDF si chiude alla slide 60 con i test BDD: la DoD compare solo a p. 30 e p. 50, la demo a p. 26, l'information radiator mai. Probabilmente saranno nella prossima lezione.
+> ❓ Salto non ricostruito: l'agenda ([[04_Agile_01.pdf#page=2]]) annuncia anche **Definition of Done**, **Iteration Demo** e **Information Radiator** come argomenti a sé, ma il PDF si chiude alla slide 60 con i test BDD: la DoD compare solo a p. 30 e p. 50, la demo a p. 26, l'information radiator mai. Risolto nella Lezione 7 ([[agile-scrum-framework]]): la DoD è collegata all'Incremento ([[04_Agile_02 (1).pdf#page=36]], [[product-backlog-e-sprint-backlog]]); la demo diventa la **Sprint Review** ([[daily-scrum-review-retrospective]]); l'*information radiator* è la scrum board ([[04_Agile_02 (1).pdf#page=58]]).
 
 ## Perché importa
 
@@ -152,3 +152,4 @@ Le user story sono il modo in cui si scrivono i requisiti nel [[progetto-di-cors
 - [[agile-project-management]] — [[04_Agile_01.pdf#page=32]]–[[04_Agile_01.pdf#page=50]]
 
 _Aggiornato: 2026-10-10 — ingest 04_Agile_01.pdf_
+_Aggiornato: 2026-10-22 — rinvii alla Lezione 7 per stima, «Ready» e DoD_

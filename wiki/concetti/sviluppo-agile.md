@@ -177,6 +177,7 @@ Le **tre responsabilità fondamentali** ([[04_Agile_01.pdf#page=21]]):
 - [[cerimonie-e-artefatti-agile]]: cerimonie (planning, daily, demo, retrospettiva) e artefatti (backlog, burndown).
 - [[user-stories]]: come si scrivono i requisiti in Agile.
 - [[progetto-di-corso]]: Agile applicato al progetto.
+- [[scrum]] e [[gestione-progetto-plan-driven-vs-agile]]: il framework Scrum completo e perché serve una gestione di progetto (Lez. 7).
 - [[importanza-architettura-software]]: §3.7, l'architettura abilita lo sviluppo incrementale.
 
 ## Fonti
@@ -184,3 +185,4 @@ Le **tre responsabilità fondamentali** ([[04_Agile_01.pdf#page=21]]):
 - [[agile-project-management]] — [[04_Agile_01.pdf#page=1]]–[[04_Agile_01.pdf#page=21]]
 
 _Aggiornato: 2026-10-10 — ingest 04_Agile_01.pdf_
+_Aggiornato: 2026-10-22 — rinvio alla Lezione 7 (Scrum)_

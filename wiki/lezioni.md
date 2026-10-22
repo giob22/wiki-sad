@@ -258,5 +258,42 @@ _Aggiornato: 2026-10-06 — aggiunta Lezione 5 (parte nuova di 3-Architectural P
 
 Ordine consigliato: quello delle slide.
 
-_Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01.pdf)_
+---
 
+## Lezione 7 — Agile Project Management (Parte 2): il framework Scrum
+**PDF:** [[04_Agile_02 (1).pdf]] (pp. 1–70, slide = pagina). È la seconda parte della lezione sulla gestione Agile; il file si chiama «04_Agile_02 (1)».
+**Riepilogo della lezione:** [[agile-scrum-framework]] (con la tabella pagina per pagina)
+
+### Percorso di lettura (ordine delle slide)
+
+1. [[gestione-progetto-plan-driven-vs-agile]] — pp. 3–10: piano dettagliato vs Agile, quando funziona il piano, perché serve un framework di gestione, domande sui progetti passati.
+2. [[scrum]] — pp. 11–19, 69–70: definizione, empirismo e tre pilastri, elementi del framework, Scrum Team e tre ruoli (con le figure), Sprint, ciclo Scrum a colpo d'occhio, avvio del workshop.
+3. [[ciclo-di-vita-scrum]] — pp. 20–24: inception, construction, transition; product vision con l'esempio e-commerce; formazione del team e scelta del PO.
+4. [[product-backlog-e-sprint-backlog]] — pp. 25–37: artefatti, backlog di esempio, refinement («Login»), storia «Ready», flusso complessivo, Sprint Backlog con task in ore, Incremento e Definition of Done.
+5. [[pianificare-uno-sprint]] *(esercizio)* — pp. 31–35, 41–46, 51–54: obiettivo dello sprint, stati delle storie, velocity e capacity applicate al backlog.
+6. [[sprint-e-sprint-planning]] — pp. 38–46, 68: eventi Scrum, Sprint (previsione e timebox), Sprint Goal con esempi, Sprint Planning, panoramica delle quattro cerimonie.
+7. [[stima-story-points-velocity-capacity]] — pp. 47–48, 50–54: chi e quando stima, Story Point, perché Fibonacci, velocity (media dei quattro sprint), primo sprint, capacity (derivazione del −10 %).
+8. [[planning-poker]] — pp. 48–49: tecnica di stima in sette passi, esempio della password.
+9. [[daily-scrum-review-retrospective]] — pp. 55–65: Daily Scrum e scrum board, miti, Sprint Review (non è una demo), Sprint Retrospective e tre domande.
+10. [[condurre-una-retrospettiva]] *(esercizio)* — pp. 65–67: tabella osservazione → causa → azione, esercizio su un progetto passato.
+
+### Ordine di lettura consigliato
+
+Le slide propongono l'esercizio sulla pianificazione (stati delle storie, p. 33) prima di aver visto Sprint Planning, velocity e capacity; conviene leggerlo dopo la stima (numeri del percorso sopra):
+
+| # | Pagina | Perché in questa posizione |
+|---|---|---|
+| 1 | gestione di progetto plan-driven vs Agile | |
+| 2 | Scrum | |
+| 3 | ciclo di vita Scrum | |
+| 4 | Product Backlog e Sprint Backlog | |
+| 6 | Sprint e Sprint Planning | serve per capire cosa si seleziona |
+| 7 | Story Point, velocity, capacity | i numeri della selezione |
+| 8 | Planning Poker | come si ottengono le stime |
+| 5 | pianificare uno Sprint *(esercizio)* | usa Sprint Goal, velocity e capacity: dopo le pagine 6–8 |
+| 9 | Daily Scrum, Review, Retrospective | |
+| 10 | condurre una retrospettiva *(esercizio)* | |
+
+
+_Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01.pdf)_
+_Aggiornato: 2026-10-22 — aggiunta Lezione 7 (04_Agile_02 (1).pdf)_

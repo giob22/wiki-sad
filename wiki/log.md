@@ -160,3 +160,13 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - il Documentazione_SAD_2026.pdf della repo risulta identico alla bozza precedente (A2 non ancora aggiornato nel Word)
 - domande-al-committente: aggiunta la sezione «cosa ha già risposto lo stakeholder» (Q-01 risolta, Q-09 quasi, Q-08 in gran parte) e le nuove Q-20 e Q-21
 - eliminati i file della versione precedente del Context Diagram (diagramma e script) perché sostituiti dal diagramma del gruppo
+
+## [2026-10-22] ingest | Agile Project Management (Part 2) (04_Agile_02 (1).pdf) | pagine coperte: 1-70
+- fonte: [[agile-scrum-framework]] (con tabella di copertura pagina per pagina); il file `04_Agile_02.pdf` caricato prima era troncato (senza indice finale, font perduti, mancavano le pagine dopo la 55) e non è stato ingerito: l'utente ha caricato la versione completa
+- concetti nuovi: [[gestione-progetto-plan-driven-vs-agile]], [[scrum]], [[ciclo-di-vita-scrum]], [[product-backlog-e-sprint-backlog]], [[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]], [[daily-scrum-review-retrospective]]; entità [[planning-poker]]; esercizi [[pianificare-uno-sprint]], [[condurre-una-retrospettiva]]
+- calcoli ricostruiti: velocity media dei quattro sprint (29,5 ≈ 30 SP), riduzione della capacity (7 su 70 giorni-persona = 10 %), carico di 27 SP; esempi espansi: backlog e-commerce, refinement di «Login», criteri «Ready», sprint backlog in ore, Sprint Goal, Fibonacci, Planning Poker, scrum board, Sprint Review, tabella della retrospettiva
+- 16 figure estratte in raw/assets (lez07-ag2-pN-*.png)
+- non ricostruito (❓): durata dello sprint incoerente tra pp. 19, 25, 69; cella «192 ore ideali» (p. 35); «spike» non definito; contenuto del workshop (solo il titolo a p. 70); due voci del backlog assenti in p. 33
+- risolte le domande aperte della Lezione 6: stima delle storie, DoD, demo, information radiator ([[user-stories]], [[agile-project-management]]); rinvii aggiunti in [[sviluppo-agile]] e [[cerimonie-e-artefatti-agile]]
+- aggiornati: lezioni.md (Lezione 7), avanzamento-studio (link di J4), glossario (+29 termini), index, overview
+

@@ -98,9 +98,11 @@ Sono gli strumenti del metodo Agile usato nel [[progetto-di-corso]]: sprint di 2
 - [[sviluppo-agile]]: valori, principi, ruoli.
 - [[user-stories]]: l'artefatto che riempie i backlog.
 - [[progetto-di-corso]]: sprint e iteration review del progetto.
+- Versione Scrum completa (Lez. 7): [[scrum]], [[sprint-e-sprint-planning]], [[daily-scrum-review-retrospective]], [[product-backlog-e-sprint-backlog]], [[stima-story-points-velocity-capacity]].
 
 ## Fonti
 
 - [[agile-project-management]] — [[04_Agile_01.pdf#page=22]]–[[04_Agile_01.pdf#page=31]]
 
 _Aggiornato: 2026-10-10 — ingest 04_Agile_01.pdf_
+_Aggiornato: 2026-10-22 — rinvii alla Lezione 7_
