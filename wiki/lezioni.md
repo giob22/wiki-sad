@@ -21,7 +21,8 @@ Regola: 1 PDF = 1 lezione, salvo diversa indicazione. Glossario dei termini ingl
 8. [[mascotte-pinguino]] — **materiale del team**: animazione della mascotte (pinguino con elmetto e fragola) dalla tavola di 25 frame, con gesti extra.
 9. [[domande-al-committente]] — **attività 8 del progetto** (presentazione PICUS p. 25, richieste §8–9): le domande più rilevanti da porre al direttore del Banco, in ordine di priorità.
 10. [[incontro-stakeholder-ba]] — **fonte del progetto**: appunti del primo confronto con lo stakeholder (400–450 OPT, flusso OPT → Banco → OPT, comunicazioni con conferma, operatori delle OPT non utenti).
-11. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
+11. [[epic-da-lezione-progetto]] — **attività 4 del progetto** (presentazione PICUS p. 21): sette epic candidate ricavate dalla trascrizione della lezione sul progetto ([[trascrizione-lezione-progetto-1]]), con semi di user story, punti aperti e contraddizioni con le fonti.
+12. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
 
 Ordine consigliato: quello delle slide.
 

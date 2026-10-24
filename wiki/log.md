@@ -170,3 +170,9 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - risolte le domande aperte della Lezione 6: stima delle storie, DoD, demo, information radiator ([[user-stories]], [[agile-project-management]]); rinvii aggiunti in [[sviluppo-agile]] e [[cerimonie-e-artefatti-agile]]
 - aggiornati: lezioni.md (Lezione 7), avanzamento-studio (link di J4), glossario (+29 termini), index, overview
 
+## [2026-10-24] progetto | epic dalla trascrizione della lezione sul progetto
+- fonte: trascrizione automatica «primaParteLezione» copiata in wiki/progetto/riferimenti/ ([[trascrizione-lezione-progetto-1]]), con i cinque blocchi T1–T5 e i loro orari
+- creata: [[epic-da-lezione-progetto]] — 7 epic candidate (EP-01…EP-07: accesso e ruoli, catalogo e offerta delle OPT, richiesta di misura, ricerca dell'erogatore e assegnazione, appuntamenti, comunicazioni, monitoraggio trimestrale), diagramma dei casi d'uso costruito in aula, 34 semi di storie, cosa è fissato/da validare/aperto, quattro contraddizioni con le fonti già nel wiki, nove dubbi DL-1…DL-9 collegati alle domande Q-xx
+- non ricostruito (❓): ordine di ricerca dell'erogatore, chi riceve la richiesta di appuntamento, registrazione e scheda degli operatori esterni, dati quantitativi delle OPT; la lavagna del diagramma non è nella trascrizione (ricostruito in Mermaid)
+- aggiornati: lezioni.md (Lezione 0, voce 11), index, guida-progetto-picus (attività 4)
+

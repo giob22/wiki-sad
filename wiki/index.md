@@ -102,6 +102,7 @@
 - [[a2-stakeholder-e-contesto]] — capitolo A2 (issue S1-01): stakeholder, utenti e sistemi esterni, flussi, Context Diagram CTX-01, ipotesi e domande
 - [[mascotte-pinguino]] — animazione fluida della mascotte del team (25 frame → 77 fotogrammi), gesti extra e script per rigenerarla
 - [[burndown-github-project]] — burndown dello sprint sul GitHub Project del team, pesato con le taglie; script e workflow
+- [[epic-da-lezione-progetto]] — sette epic candidate (attività 4) dalla trascrizione della lezione sul progetto, con semi di storie, dubbi DL-1…DL-9 e contraddizioni con le fonti; fonte: [[trascrizione-lezione-progetto-1]]
 - [[guida-progetto-picus]] — guida completa al progetto d'esame PICUS (presentazione, desiderata del committente, AGENTS.md del team, iterazione preparatoria, ruoli Scrum in 8)
 
 ## Esame
