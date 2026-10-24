@@ -22,7 +22,8 @@ Regola: 1 PDF = 1 lezione, salvo diversa indicazione. Glossario dei termini ingl
 9. [[domande-al-committente]] — **attività 8 del progetto** (presentazione PICUS p. 25, richieste §8–9): le domande più rilevanti da porre al direttore del Banco, in ordine di priorità.
 10. [[incontro-stakeholder-ba]] — **fonte del progetto**: appunti del primo confronto con lo stakeholder (400–450 OPT, flusso OPT → Banco → OPT, comunicazioni con conferma, operatori delle OPT non utenti).
 11. [[epic-da-lezione-progetto]] — **attività 4 del progetto** (presentazione PICUS p. 21): sette epic candidate ricavate dalla trascrizione della lezione sul progetto ([[trascrizione-lezione-progetto-1]]), con semi di user story, punti aperti e contraddizioni con le fonti.
-12. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
+12. [[epic-per-github]] — le stesse sette epic nei campi del template GitHub del repository (testi in inglese pronti da incollare), riconciliate con il diagramma dei casi d'uso della docente.
+13. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
 
 Ordine consigliato: quello delle slide.
 

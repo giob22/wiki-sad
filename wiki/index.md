@@ -103,6 +103,7 @@
 - [[mascotte-pinguino]] — animazione fluida della mascotte del team (25 frame → 77 fotogrammi), gesti extra e script per rigenerarla
 - [[burndown-github-project]] — burndown dello sprint sul GitHub Project del team, pesato con le taglie; script e workflow
 - [[epic-da-lezione-progetto]] — sette epic candidate (attività 4) dalla trascrizione della lezione sul progetto, con semi di storie, dubbi DL-1…DL-9 e contraddizioni con le fonti; fonte: [[trascrizione-lezione-progetto-1]]
+- [[epic-per-github]] — le epic nei campi del template GitHub (testi pronti da incollare), riconciliate con il diagramma dei casi d'uso della docente ([[PICUS-casi-d-uso.pdf]])
 - [[guida-progetto-picus]] — guida completa al progetto d'esame PICUS (presentazione, desiderata del committente, AGENTS.md del team, iterazione preparatoria, ruoli Scrum in 8)
 
 ## Esame

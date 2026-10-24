@@ -176,3 +176,11 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - non ricostruito (❓): ordine di ricerca dell'erogatore, chi riceve la richiesta di appuntamento, registrazione e scheda degli operatori esterni, dati quantitativi delle OPT; la lavagna del diagramma non è nella trascrizione (ricostruito in Mermaid)
 - aggiornati: lezioni.md (Lezione 0, voce 11), index, guida-progetto-picus (attività 4)
 
+## [2026-10-24] progetto | epic riconciliate con il diagramma dei casi d'uso della docente
+- nuova fonte: PICUS-casi-d-uso.pdf (diagramma della docente, 24/10/2026) copiato in wiki/progetto/riferimenti/; figura `prog-picus-casi-d-uso-p1.png` in raw/assets
+- confronto in [[epic-da-lezione-progetto]] § 2: i dieci casi d'uso trovano tutti posto nelle sette epic; quattro attori (OPT, Banco, Operatore Interno al Banco, Operatore Esterno), gli operatori delle OPT non compaiono
+- fusione: EP-05 ridefinita «Risposta degli erogatori e appuntamenti» (include «Accettare Richiesta Ricevuta», spostato da EP-03); EP-07 con operatori interni ed esterni; esclusione dei dati quantitativi e del profilo OPT confermata; DL-1…DL-9 con stato (DL-2 e DL-3 risolti, DL-1 in parte, DL-4/5/6/8 aperti); sette lacune del diagramma elencate
+- creata: [[epic-per-github]] — le sette epic nei sei campi del template `epic.yml` del repository Progetto-SAD (letto da origin/main: Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints), in inglese, con marcatori [Agreed]/[Proposal]/[Open]
+- aggiornati: lezioni.md (Lezione 0, voce 12), index
+- le issue non sono state create su GitHub
+
