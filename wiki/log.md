@@ -184,3 +184,6 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - aggiornati: lezioni.md (Lezione 0, voce 12), index
 - le issue non sono state create su GitHub
 
+
+## [2026-10-24] progetto | epic tradotte in italiano
+- [[epic-per-github]]: i testi dei campi del template (Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints) e i titoli delle sette issue sono ora in italiano; etichette del modulo invariate; marcatori [Concordato]/[Proposta]/[Aperto]; la versione inglese resta nella cronologia di Git
