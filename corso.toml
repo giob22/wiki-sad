@@ -45,3 +45,11 @@ note = ["La presentazione del corso e il progetto PICUS non sono teoria e non co
 # lezione = 3
 # sezione = "Quantizzazione ottima: Lloyd-Max"   # inizio del titolo della sezione (senza i riferimenti ai PDF)
 # disegni = ["esempio"]
+
+# =========================================================================================================
+# Lezioni del corso Software Architecture Design
+
+[[lezioni]]
+n = 1
+breve = "Cos'è un'architettura software (Bass, Clements, Kazman): strutture di modulo, componenti e connettori e di allocazione, con l'Exam Booking System come esempio guida; attributi di qualità, scenari, tattiche e pattern; le undici ragioni per cui l'architettura è importante."
+concetti = ["architettura-software", "strutture-e-viste", "strutture-di-modulo", "strutture-componenti-e-connettori", "strutture-di-allocazione", "attributi-di-qualita", "scenari-di-qualita", "valutazione-attributi-di-qualita", "tattiche-architetturali", "importanza-architettura-software", "buone-pratiche-architetturali", "entità/exam-booking-system", "entità/uml", "entità/attribute-driven-design"]

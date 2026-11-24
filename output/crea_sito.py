@@ -335,6 +335,12 @@ def concetto_html(nome, out, usati, cartella="concetti"):
         return ""
     titolo = (re.search(r"(?m)^# (.+)$", md) or re.match(r"(.*)", nome.replace("-", " "))).group(1).strip()
     pezzi = []
+    if cartella != "concetti":      # entità, esercizi…: tutte le sezioni «##» tranne Connessioni, Fonti
+        for tit, corpo in re.findall(r"(?ms)^## ([^\n]+)\n(.*?)(?=^## |\Z)", md):
+            nome_sez = re.sub(r"\s*·.*$", "", tit).strip()
+            if nome_sez in ("Connessioni", "Fonti") or not corpo.strip():
+                continue
+            pezzi.append(f"#### {nome_sez}\n\n" + demota(corpo.strip(), 1))
     sp = sezione(md, "Spiegazione")
     if sp:
         pezzi.append("#### Spiegazione\n\n" + demota(sp, 1))
@@ -410,7 +416,10 @@ def pagina_lezione(cfg, corso, out, precedente, successiva):
     corpo, numeri = numera_equazioni(corpo, cfg["n"])
     corpo = collega_riferimenti(corpo, numeri, cfg["n"])
     corpo = con_id(corpo, usati, toc)
-    conc = "\n".join(concetto_html(c, out, usati) for c in cfg["concetti"])
+    def _voce(c):
+        cart, _, nome = c.rpartition("/")
+        return concetto_html(nome, out, usati, cartella=cart or "concetti")
+    conc = "\n".join(_voce(c) for c in cfg["concetti"])
     for e in cfg["esercizi"]:
         conc += "\n" + esercizio_html(e, out, usati)
     conc = conc.strip()
@@ -419,7 +428,7 @@ def pagina_lezione(cfg, corso, out, precedente, successiva):
     for liv, i, t in toc:
         voci.append(f'<li class="l{liv}"><a href="#{i}">{t}</a></li>')
     if conc:
-        voci.append('<li class="l3"><a href="#approfondimenti">Spiegazioni e dimostrazioni passo-passo</a></li>')
+        voci.append('<li class="l3"><a href="#approfondimenti">Spiegazioni e approfondimenti</a></li>')
     if dom:
         voci.append('<li class="l3"><a href="#domande">Domande da esame</a></li>')
     indice = f'<details class="toc"><summary>Indice della lezione</summary><ul>{"".join(voci)}</ul></details>' if voci else ""
@@ -428,9 +437,9 @@ def pagina_lezione(cfg, corso, out, precedente, successiva):
     nav += f'<a href="{successiva["slug"]}.html">Lezione {successiva["n"]} →</a>' if successiva else "<span></span>"
     nav += "</nav>"
     breve = f'<p class="breve">{render_inline(cfg["breve"])}</p>' if cfg["breve"] else ""
-    sez_conc = (f'<section id="approfondimenti"><h2 class="ps">Spiegazioni e dimostrazioni passo-passo</h2>\n'
-                f'<p class="nota">Apri una voce per leggere la spiegazione in parole semplici e le dimostrazioni svolte riga '
-                f'per riga (🧩 = passaggio ricostruito da me).</p>\n{conc}\n</section>') if conc else ""
+    sez_conc = (f'<section id="approfondimenti"><h2 class="ps">Spiegazioni e approfondimenti</h2>\n'
+                f'<p class="nota">Apri una voce per leggere la spiegazione in parole semplici e gli esempi delle slide spiegati '
+                f'(🧩 = elaborazione mia).</p>\n{conc}\n</section>') if conc else ""
     sez_dom = f'<section id="domande"><h2 class="ps">Domande da esame</h2>\n{dom}\n</section>' if dom else ""
     corpo_pagina = f"""
 <p class="crumb"><a href="index.html">{html.escape(SITO['briciola'])}</a> · Lezione {cfg['n']}</p>
