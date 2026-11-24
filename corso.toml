@@ -63,3 +63,13 @@ concetti = ["availability", "tattiche-availability", "entità/circuit-breaker"]
 n = 3
 breve = "La modificabilità: le quattro domande per pianificarla, il costo del cambiamento e il debito tecnico; scalabilità, variabilità, portabilità e indipendenza dalla posizione; tattiche (coesione, accoppiamento, binding) e pattern client-server, plug-in, layers, publish-subscribe."
 concetti = ["modifiability", "tattiche-modifiability", "pattern-modifiability", "entità/client-server", "entità/plug-in", "entità/layered", "entità/publish-subscribe", "linee-di-prodotto-software"]
+
+[[lezioni]]
+n = 4
+breve = "Progettare riusando l'esperienza: strategie e metodi, DSSA e architetture di riferimento, linee di prodotto software, pattern architetturali; State-Logic-Display e architetture 1, 2 e 3 tier con i loro attributi di qualità, middleware, pattern di deployment a 4 tier e load-balanced cluster."
+concetti = ["progettazione-basata-sul-riuso", "dssa", "linee-di-prodotto-software", "pattern-architetturali", "architetture-multi-tier", "entità/state-logic-display"]
+
+[[lezioni]]
+n = 5
+breve = "Il Model-View-Controller e le sue varianti (classico con pull e observer, web lato server, UI reattiva) con Observer e Strategy; Front Controller, Spring MVC e Spring Boot con un esempio completo; il pattern Sense-Compute-Control a tre e quattro stadi, IoT, Lunar Lander e guida autonoma."
+concetti = ["entità/mvc", "entità/spring-mvc", "entità/sense-compute-control"]

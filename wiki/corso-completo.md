@@ -11,6 +11,8 @@ Testo unico di studio del corso (LM Ingegneria Informatica, UNINA, DIETI, prof.s
 | 1 | [[#Lezione 1 — Introduzione all'architettura software\|Introduzione all'architettura software]] | 01-IntroductionOnSoftwareArchitecture.pdf, 01-IntroductionOnSoftwareArchitecture-2 parte.pdf |
 | 2 | [[#Lezione 2 — Attributi di qualità: disponibilità\|Attributi di qualità: disponibilità]] | 02-Availability.pdf |
 | 3 | [[#Lezione 3 — Attributi di qualità: modificabilità\|Attributi di qualità: modificabilità]] | 03-Modifiability.pdf |
+| 4 | [[#Lezione 4 — Progettazione basata sul riuso: DSSA, pattern e architetture multi-tier\|Progettazione basata sul riuso: DSSA, pattern e architetture multi-tier]] | 3-Architectural Patterns-complete.pdf |
+| 5 | [[#Lezione 5 — Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control\|Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control]] | 3-Architectural Patterns-complete.pdf |
 
 ## Lezione 1 — Introduzione all'architettura software
 
@@ -788,3 +790,609 @@ L'**accoppiamento** (*coupling*) è il grado in cui un modulo dipende da un altr
 - **Trade-off:** **latenza**; **non determinismo** nell'ordine di invocazione dei metodi; **testabilità**: un cambiamento nei componenti associati agli eventi può avere un impatto ampio su comportamento e qualità del servizio.
 
 *Approfondimenti nel wiki: [[modifiability]], [[tattiche-modifiability]], [[pattern-modifiability]], [[client-server]], [[plug-in]], [[layered]], [[publish-subscribe]], [[linee-di-prodotto-software]]*
+
+## Lezione 4 — Progettazione basata sul riuso: DSSA, pattern e architetture multi-tier
+
+*Fonte: 3-Architectural Patterns-complete.pdf (pp. 1–38 di 96). Cap. 4 di Taylor, Medvidovic, Dashofy, «Software Architecture: Foundations, Theory and Practice». La lezione era in origine un PDF più corto (04-Architectural Patterns), poi esteso dalla docente.*
+
+### Progettare un'architettura: metodi e strategie · [[3-Architectural Patterns-complete.pdf#page=2|p. 2]]–[[3-Architectural Patterns-complete.pdf#page=5|5]]
+
+- Contenuti: metodi di progettazione architetturale; riuso dell'esperienza di progetto; Domain-Specific Software Architectures (DSSA); pattern architetturali; stili architetturali.
+- L'architettura rappresenta la **struttura a grana grossa** del sistema: un insieme di strutture, di tre tipi principali (C&C, modulare, allocazione). Ma **come si progetta un'architettura?**
+- **Strategie di progettazione** (*design strategies*): approccio generale al progetto: divide-et-impera e raffinamento per passi; top-down vs bottom-up; astrazione dei dati e information hiding; uso di pattern e linguaggi di pattern; approccio iterativo e incrementale.
+- **Metodi di progettazione** (*design methods*): più specifici delle strategie; forniscono una notazione, una descrizione del processo da seguire, linee guida per applicare il metodo. Esempi: progettazione funzionale (strutturata, basata su DFD), orientata agli oggetti, basata sui componenti, orientata ai servizi, basata su modelli…
+
+![[lez04-ap-p5-metodi-di-progettazione.png]]
+*Elenco di libri sui metodi di progettazione architetturale: The Unified Software Development Process, A System of Patterns (Buschmann et al.), Object-Oriented Modeling and Design (Rumbaugh), Design and use of software architectures (Bosch), ecc.*
+
+### Il riuso dell'esperienza · [[3-Architectural Patterns-complete.pdf#page=6|p. 6]]–[[3-Architectural Patterns-complete.pdf#page=9|9]]
+
+- Un importante strumento di progetto è il **riuso dell'esperienza**: l'esperienza passata va analizzata e raffinata; è cruciale imparare sia dai successi sia dagli insuccessi degli altri ingegneri (letteratura, conferenze). L'esperienza può fornire l'insieme iniziale di «possibili alternative di progetto».
+- **Attribute-Driven Design** (p. 7): il metodo di progetto guidato dagli attributi di qualità (vedi Lezione 1).
+- **Alternative da considerare** (p. 8):
+  - progettare l'architettura **da zero**: possono emergere soluzioni nuove, ma è costoso (laborioso) e rischioso;
+  - applicare una **soluzione o strategia generica** (stile o pattern) e adattarla al problema: riuso, meno lavoro, meno errori; ma la soluzione generica può non adattarsi perfettamente e richiedere molto rifacimento;
+  - applicare una **soluzione specifica del dominio (DSSA)**: più riuso; ma cosa succede se non esiste una DSSA?
+- **DSSA, pattern, stili e design pattern** si distinguono per **ambito di applicabilità** (p. 9).
+
+![[lez04-ap-p9-ambito-applicabilita.png]]
+*Asse verticale: conoscenza del dominio applicativo (da superficiale a profonda); asse orizzontale: ambito (livello di linguaggio di programmazione, struttura dell'applicazione, struttura del sistema). Dal basso a sinistra all'alto a destra: design pattern, stili, pattern architetturali, DSSA.*
+
+### Domain-Specific Software Architecture (DSSA) · [[3-Architectural Patterns-complete.pdf#page=10|p. 10]]–[[3-Architectural Patterns-complete.pdf#page=14|14]]
+
+- Una **DSSA** è un'architettura software raccomandata per i sistemi di un **dominio specifico** (detta anche **architettura di riferimento**). Esempi di domini: compilatori per linguaggi di programmazione, elettronica di consumo, avionica, sistemi di e-commerce/negozi web, videogiochi…
+- Una DSSA è un insieme di componenti software che sono: **specializzati** per un tipo di compito (nel dominio); **generalizzati**, così da poter essere usati efficacemente nel dominio; **composti in una struttura (topologia) standardizzata** efficace per costruire buone architetture.
+
+![[lez04-ap-p11-architettura-riferimento-web-microsoft.png]]
+*Esempio: architettura di riferimento per applicazioni web (Microsoft Application Architecture Guide): browser lato client; lato server strati Presentation, Business e Data, con una colonna trasversale (cross-cutting).*
+
+![[lez04-ap-p12-architettura-riferimento-tv.png]]
+*Altro esempio: architettura di riferimento per una piattaforma TV (diagramma a componenti `CTvPlatform`: front-end, back-end, driver del sintonizzatore e altri).*
+
+- **Vantaggi:** le DSSA massimizzano il **riuso di conoscenza e sviluppi precedenti** nella creazione di nuove architetture. **Limiti:** possono essere usate solo per costruire nuove applicazioni **dello stesso dominio**.
+- **Esempi di architetture di riferimento per dominio** (p. 14): Automotive: AUTOSAR; IoT: ISO/IEC 30141; Industry 4.0: RAMI 4.0; IoT industriale: IIRA; Smart Grid: SGAM; Cloud Computing: NIST Cloud Computing Reference Architecture; Telecomunicazioni: TM Forum ODA; Sanità: openEHR. Le architetture di riferimento forniscono strutture riusabili, punti di vista, responsabilità e interfacce per una famiglia di sistemi in un dominio; **devono essere specializzate** in base ai requisiti del sistema e agli scenari di qualità.
+
+### Esempi di architetture di riferimento · [[3-Architectural Patterns-complete.pdf#page=15|p. 15]]–[[3-Architectural Patterns-complete.pdf#page=17|17]]
+
+![[lez04-ap-p15-autosar.png]]
+*AUTOSAR, piattaforme e architetture software standardizzate per i sistemi elettronici automotive: Application Layer, AUTOSAR Runtime Environment (RTE), Basic Software a strati (Services, ECU Abstraction, Microcontroller Abstraction).*
+
+![[lez04-ap-p16-architettura-riferimento-iot.png]]
+*Architettura di riferimento IoT: a sinistra il modello per domini (User, Operations & Management, Application & Service, Access & Communication, Sensing & Controlling, Physical Entity); a destra la vista a livelli.*
+
+![[lez04-ap-p17-cloud-computing-reference-model.png]]
+*Modello concettuale di riferimento NIST per il cloud: attori Cloud Consumer, Cloud Auditor, Cloud Provider (con Service Orchestration SaaS/PaaS/IaaS), Cloud Broker, Cloud Carrier.*
+
+### Software Product Line · [[3-Architectural Patterns-complete.pdf#page=18|p. 18]]–[[3-Architectural Patterns-complete.pdf#page=20|20]]
+
+- Una **linea di prodotto software** (*Software Product Line*, SPL) è una famiglia di prodotti software-intensive collegati che: rispondono alle esigenze di uno specifico segmento di mercato o missione; **condividono un insieme gestito di funzionalità comuni**; **differiscono per variazioni esplicitamente pianificate**; sono sviluppati da un **insieme comune di risorse di base riusabili** (*core assets*).
+- Idea di fondo: **sviluppare per il riuso, poi derivare i prodotti tramite configurazione.**
+- Una SPL **riusa sistematicamente ciò che è comune e gestisce esplicitamente ciò che è variabile**:
+
+| Comunanza: risorse di base condivise | Variabilità: differenze pianificate |
+|---|---|
+| architettura della linea di prodotto | funzionalità opzionali o alternative |
+| componenti e servizi riusabili | implementazioni alternative dei componenti |
+| requisiti comuni | requisiti specifici del prodotto |
+| test e ambienti di test condivisi | test specifici del prodotto |
+| strumenti comuni di build e deployment | opzioni di configurazione e deployment |
+
+![[lez04-ap-p18-linee-di-prodotto.png]]
+*Tre cerchi «Common», ciascuno con due cerchietti A e B: Product A = Common + A; Product B = Common + B.*
+
+**Esempi di linee di prodotto in vari domini** (p. 20)
+
+| Dominio | Linea di prodotto | Elementi comuni | Variabilità pianificata |
+|---|---|---|---|
+| Automotive | sistemi di infotainment | navigazione, interfaccia utente, connettività | display, comandi vocali, servizi online, lingue |
+| Avionica | software per una famiglia di aerei | controllo di volo, diagnostica, comunicazioni | sensori, configurazioni dei motori, varianti di velivolo |
+| Smart TV | famiglia di modelli di televisori | sistema operativo, streaming, aggiornamenti | schermo, sintonizzatore, impianto audio, applicazioni, mercato di destinazione |
+| Smartphone | famiglia di dispositivi dello stesso produttore | sistema operativo, sicurezza, servizi cloud | fotocamere, display, sensori, memoria |
+| Stampanti | famiglia di stampanti multifunzione | gestione della stampa, driver, diagnostica | scanner, stampa a colori, duplex, velocità |
+| Dispositivi medici | famiglia di monitor per pazienti | acquisizione dati, allarmi, visualizzazione | segni vitali, sensori, interfacce, contesti clinici |
+| IoT industriale | famiglia di sistemi di monitoraggio | raccolta dati, comunicazione, gestione dei dispositivi | sensori, protocolli, frequenza di campionamento, analytics |
+| E-commerce | piattaforma per diversi negozi online | catalogo, carrello, ordini, autenticazione | pagamenti, valute, promozioni, branding, spedizioni |
+| Home banking | soluzioni bancarie configurabili | conti, transazioni, autenticazione, auditing | prodotti finanziari, normative nazionali, regole di autorizzazione |
+| Sistemi ERP | suite per organizzazioni diverse | utenti, contabilità, reportistica, «master da…» (testo troncato nella slide) | (cella vuota nella slide) |
+
+![[lez04-ap-p20-esempi-linee-di-prodotto.png]]
+*La tabella originale con tutti gli esempi.*
+
+### Pattern architetturali · [[3-Architectural Patterns-complete.pdf#page=21|p. 21]]–[[3-Architectural Patterns-complete.pdf#page=23|23]]
+
+- Un **pattern architetturale** è un insieme riusabile di decisioni di progetto architetturale che affronta un problema ricorrente; definisce una soluzione generale adattabile a contesti diversi.
+- Pattern e DSSA catturano entrambi conoscenza architetturale riusabile, ma con **ambiti diversi**: una **DSSA** fornisce un quadro architetturale complessivo per una famiglia di sistemi di un dominio applicativo; un **pattern architetturale** affronta un problema architetturale ricorrente e di solito si applica in domini diversi; **più pattern** possono essere combinati nella stessa DSSA o architettura.
+- Esempi: **State-Logic-Display** (o pattern a tre livelli, *three-tiered*), **Model-View-Controller**, **Sense-Compute-Control**.
+
+### State-Logic-Display e architetture multi-tier · [[3-Architectural Patterns-complete.pdf#page=24|p. 24]]–[[3-Architectural Patterns-complete.pdf#page=27|27]]
+
+- **State-Logic-Display (three-tiered)** è un tipo particolare di **architettura multi-tier**. Un'architettura multi-tier **partiziona il sistema in unità separatamente distribuibili ed eseguibili, i tier**. Ogni tier fornisce un insieme di servizi correlati e comunica con gli altri tramite interfacce esplicite. I tier possono essere eseguiti: su macchine o nodi virtuali diversi; in processi o container diversi; oltre confini di rete o organizzativi.
+- **Non confondere tier e layer**: i **layer** rappresentano una **decomposizione logica** delle responsabilità del software; i **tier** rappresentano la **distribuzione fisica o di runtime** degli elementi software.
+- **Esempi di applicazioni:** applicazioni aziendali, giochi multigiocatore, applicazioni web. Logiche di business possibili: sistema assicurativo, logica di gioco, sistema di calcolo delle tasse.
+
+![[lez04-ap-p25-state-logic-display.png]]
+*Tre riquadri impilati: Display (interfaccia utente), Business Logic, State (database); fra Display e Business Logic «Sends data; Requests services» verso il basso e «Returns values for display» verso l'alto; fra Business Logic e State «Requests values be retrieved or stored» e il ritorno dei valori.*
+
+- **Multi-tier — esempi tipici** (p. 26): **two-tier** (client e database server); **three-tier** (client, application server e database server); **n-tier** (tier aggiuntivi per integrazione, messaggistica, caching o servizi esterni).
+
+![[lez04-ap-p27-evoluzione-tier.png]]
+*«From Centralised Deployment to Distributed Services» (p. 27): le stesse responsabilità logiche — presentazione, logica applicativa, integrazione, dati — assegnate a un numero crescente di unità installabili in modo indipendente, dal sistema centralizzato (one tier) ai servizi distribuiti.*
+
+### Architettura a un livello (1-tier) · [[3-Architectural Patterns-complete.pdf#page=28|p. 28]]–[[3-Architectural Patterns-complete.pdf#page=29|29]]
+
+- Presentazione, logica applicativa e gestione delle risorse sono **distribuite ed eseguite su un unico sistema centralizzato**. Gli utenti o i programmi esterni accedono tramite **terminali stupidi** (*dumb terminals*) gestiti dal sistema informativo centrale: i terminali forniscono input e output, mentre calcolo e gestione dei dati sono fatti dal sistema centrale. È tipica dei sistemi **mainframe**.
+- L'assenza di tier separati non implica assenza di modularità logica: significa che tutti gli elementi software stanno nello stesso ambiente di esecuzione.
+
+![[lez04-ap-p28-one-tier.png]]
+*Due terminali utente (input/output) collegati a un Centralised Information System con tre strati: Presentation, Application Logic, Resource Management.*
+
+**E gli attributi di qualità?** (p. 29)
+
+| Attributo | Potenziali benefici | Potenziali limiti |
+|---|---|---|
+| Prestazioni | la comunicazione locale tra componenti evita l'overhead di rete | il sistema centrale può diventare un collo di bottiglia di calcolo e I/O |
+| Disponibilità | meno componenti distribuiti e collegamenti semplificano la gestione dei guasti | il sistema centrale può essere un singolo punto di guasto |
+| Scalabilità | le risorse centralizzate si possono potenziare in verticale | difficile la scalatura orizzontale e la scalatura indipendente delle funzioni |
+| Sicurezza | dati e controllo di accesso gestiti centralmente | un attacco riuscito al sistema centrale può compromettere l'intero sistema |
+| Modificabilità | il deployment centralizzato può semplificare il rilascio | l'accoppiamento stretto può aumentare l'impatto dei cambiamenti e impedire il deployment indipendente |
+| Deployability | va gestito un solo ambiente di esecuzione | anche piccoli cambiamenti possono richiedere il rideployment dell'intera applicazione |
+| Testabilità | l'intero sistema è collaudabile in un solo ambiente | i componenti possono essere difficili da isolare e collaudare indipendentemente |
+| Interoperabilità | non serve integrazione tra tier distribuiti interni | l'integrazione con sistemi esterni o moderni può richiedere adattatori specializzati |
+
+### Architettura a due livelli (2-tier): Client/Server · [[3-Architectural Patterns-complete.pdf#page=30|p. 30]]–[[3-Architectural Patterns-complete.pdf#page=32|32]]
+
+- **Fat client:** presentazione e parte della logica applicativa passano dal sistema centrale al **client**. Il client invoca direttamente i servizi offerti da un server di risorse o di database.
+- Client e server sono **unità di esecuzione separate**, possibilmente su macchine diverse. La loro interazione richiede una **API remota o un protocollo di comunicazione esplicito**, che definisce operazioni, dati scambiati, errori e regole di interazione: stabilisce un **contratto esplicito** attraverso il confine client–server e nasconde l'implementazione interna del server.
+
+![[lez04-ap-p31-two-tier.png]]
+*Two-Tier Client–Server: il Client Tier (fat client) esegue Presentation e Application Logic, installate su ogni client; il Server Tier gestisce le risorse condivise.*
+
+| Attributo | Benefici | Limiti |
+|---|---|---|
+| Prestazioni | l'esecuzione locale di presentazione e logica dà interazione reattiva e riduce il carico del server | molte chiamate remote o accesso diretto al database possono creare colli di bottiglia di rete e database |
+| Scalabilità | le risorse del client contribuiscono alla capacità di elaborazione | un server o database condiviso può limitare la scalabilità al crescere dei client |
+| Disponibilità | i client possono continuare alcune operazioni locali durante disconnessioni temporanee | il server condiviso resta un potenziale singolo punto di guasto |
+| Modificabilità | la logica di presentazione evolve indipendentemente dal server se l'API è stabile | cambiare le regole di business può richiedere di aggiornare ogni client |
+| Deployability | le modifiche lato server si distribuiscono centralmente | installare, configurare e aggiornare molti fat client è costoso |
+| Sicurezza | il server può centralizzare autenticazione e accesso alle risorse | il codice client non è del tutto affidabile; l'accesso diretto al database aumenta la superficie di attacco |
+| Interoperabilità | un'API esplicita permette a client di tipi diversi di accedere ai servizi | i client possono dipendere fortemente da una specifica API, protocollo o schema di database |
+| Manutenibilità | le responsabilità sono divise tra client e server | la logica di business può essere duplicata o diventare incoerente tra versioni diverse dei client |
+
+### Architettura a tre livelli (3-tier) · [[3-Architectural Patterns-complete.pdf#page=33|p. 33]]–[[3-Architectural Patterns-complete.pdf#page=34|34]]
+
+- L'**interfaccia utente** gira su un desktop o workstation e fornisce una GUI standard (**thin client**). La **logica di business** è fatta di uno o più moduli su un **application server** (o, in alcune configurazioni, su una workstation). Un **RDBMS**, su un database server o mainframe, fornisce memorizzazione, elaborazione delle query, gestione delle transazioni e controllo della concorrenza.
+- È una delle specializzazioni più usate del modello **n-tier**.
+
+![[lez04-ap-p33-three-tier.png]]
+*Three-Tier Client–Server: Client Tier (browser/app mobile, thin client) → HTTPS API → Application Tier (application server con la logica applicativa, installata centralmente) → SQL/JDBC → Data Tier (database).*
+
+| Attributo | Benefici | Limiti |
+|---|---|---|
+| Modificabilità | i cambiamenti si localizzano in uno strato | i cambiamenti possono propagarsi se le interfacce tra strati sono instabili |
+| Manutenibilità | la chiara separazione delle responsabilità semplifica la comprensione | troppi strati possono introdurre complessità inutile |
+| Testabilità | gli strati si testano indipendentemente con mock o stub | le interazioni end-to-end richiedono comunque test di integrazione |
+| Riusabilità | servizi di business e di persistenza possono supportare interfacce diverse | i componenti possono restare accoppiati a ipotesi specifiche dello strato |
+| Sicurezza | controlli di accesso applicabili a confini ben definiti | saltare gli strati può aggirare i controlli di sicurezza |
+| Prestazioni | gli strati permettono ottimizzazioni come il caching | le richieste che attraversano più strati introducono overhead |
+| Deployability | gli strati possono essere assegnati a tier di deployment diversi | gli strati logici non sono necessariamente distribuibili in modo indipendente |
+| Scalabilità | i singoli tier si possono replicare se gli strati sono distribuiti separatamente | un data tier condiviso può restare un collo di bottiglia |
+
+### Middleware · [[3-Architectural Patterns-complete.pdf#page=35|p. 35]]–[[3-Architectural Patterns-complete.pdf#page=36|36]]
+
+- Il **middleware** è uno **strato infrastrutturale trasversale** (*cross-cutting*) che supporta le interazioni tra i diversi tier; verso i **sistemi esterni** può realizzare adattamento, trasformazione dei dati, mediazione di protocollo e instradamento.
+
+![[lez05-ap-p35-middleware-three-tier.png]]
+*Dentro la «Three-tier application»: Presentation Tier → Communication Middleware (chiamate remote, serializzazione, sicurezza) → Business Tier → Data and Integration Middleware (adapter, mediazione di protocollo, trasformazione dei dati) → sistemi esterni e dati.*
+
+- **Il middleware come abilitatore di integrazione:** un'interfaccia comune per accedere a sistemi diversi; adapter e wrapper che nascondono i dettagli specifici dei sistemi; mediazione di protocollo tra tecnologie diverse; trasformazione dei dati tra formati diversi; instradamento e orchestrazione delle richieste.
+- **Beneficio:** i client non devono conoscere l'architettura interna o la tecnologia dei sistemi integrati. **Trade-off:** il middleware introduce complessità aggiuntiva, latenza e un potenziale singolo punto di guasto.
+- **N-tier definisce come si separano le responsabilità applicative; il middleware fornisce i meccanismi di comunicazione e integrazione necessari per collegare i tier e i sistemi esterni.**
+
+### Pattern di deployment · [[3-Architectural Patterns-complete.pdf#page=37|p. 37]]–[[3-Architectural Patterns-complete.pdf#page=38|38]]
+
+![[lez04-ap-p36-four-tier-deployment.png]]
+*Il pattern di deployment a 4 tier (per applicazioni web), dalla Microsoft Application Architecture Guide: Client Tier → Web Tier (web server) → Business Logic Tier (app server) → Database Tier.*
+
+![[lez04-ap-p37-load-balanced-cluster.png]]
+*Altro pattern di deployment per garantire le prestazioni, il «Load-Balanced Cluster»: Client → firewall opzionale → Load Balancer → Application Tier con più istanze replicate di AppServer → firewall opzionale → Data Tier.*
+
+*Approfondimenti nel wiki: [[progettazione-basata-sul-riuso]], [[dssa]], [[linee-di-prodotto-software]], [[pattern-architetturali]], [[state-logic-display]], [[architetture-multi-tier]], [[attribute-driven-design]], [[autosar]]*
+
+## Lezione 5 — Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control
+
+*Fonte: 3-Architectural Patterns-complete.pdf (pp. 39–96 di 96). Cap. 4 di Taylor, Medvidovic, Dashofy, «Software Architecture: Foundations, Theory and Practice».*
+
+### Model-View-Controller: origini e motivazione · [[3-Architectural Patterns-complete.pdf#page=39|p. 39]]–[[3-Architectural Patterns-complete.pdf#page=41|41]]
+
+- Un esempio classico di pattern architetturale è il **Model-View-Controller** (MVC). Introdotto con **Smalltalk** allo Xerox PARC alla fine degli anni '70; si può considerare una **composizione di pattern che collaborano**. Oggi è molto adottato nei framework web come Spring MVC, ASP.NET Core MVC, Ruby on Rails, Apache Struts.
+- **Obiettivo principale:** separare la **logica di dominio** dalla **presentazione e dall'interazione con l'utente**.
+- **Motivazione:** gli stessi dati applicativi possono richiedere più presentazioni. MVC nasce dall'esigenza di mostrare e manipolare gli stessi dati con diverse rappresentazioni grafiche: lo stesso Model può supportare più View senza incorporare logica di presentazione nei componenti di gestione dei dati.
+
+![[lez05-ap-p41-mvc-motivazione.png]]
+*Un unico Model («Numerical data») collegato a tre View: un grafico a torta, un grafico ad aree, un istogramma 3D. Gli stessi numeri, tre presentazioni.*
+
+### Il pattern MVC · [[3-Architectural Patterns-complete.pdf#page=42|p. 42]]–[[3-Architectural Patterns-complete.pdf#page=44|44]]
+
+- Separa l'applicazione in tre elementi che cooperano: **Model** (gestisce dati applicativi, stato e logica di dominio), **View** (presenta il model all'utente), **Controller** (interpreta l'input utente e coordina model e view).
+- Separare presentazione e stato riduce l'impatto dei cambiamenti dell'interfaccia sul comportamento di base. MVC è un pattern architetturale classico per applicazioni interattive.
+- **Relazioni strutturali del MVC classico:** più Controller possono operare sullo stesso Model e più View possono presentarlo; i Controller avviano operazioni sul Model; le View si iscrivono ai cambiamenti del Model e aggiornano la presentazione quando vengono notificate; un solo Model può supportare più Controller e più View.
+
+![[lez05-ap-p43-mvc-relazioni-strutturali.png]]
+*Relazioni strutturali: Controller (ruolo initiator, molteplicità *) → Model (repository, 1); View (subscriber, *) ← Model (notifier).*
+
+![[lez05-ap-p44-mvc-interazioni-classico.png]]
+*Interazioni tra moduli nel MVC classico, sull'esempio della prenotazione di una sessione d'esame: lo studente seleziona una sessione sulla View; la View passa al Controller la richiesta; il Controller invoca il Model; il Model notifica la View, che aggiorna la visualizzazione.*
+
+### Tre responsabilità, interazioni diverse · [[3-Architectural Patterns-complete.pdf#page=45|p. 45]]
+
+- **Model** = stato applicativo e comportamento di dominio; **View** = presentazione delle informazioni; **Controller** = interpretazione delle azioni dell'utente.
+- MVC **non prescrive un unico flusso di interazione**: dipende dal tipo di applicazione, dall'ambiente di esecuzione, dal modello di comunicazione, dall'implementazione o dal framework. **Le responsabilità restano stabili, le interazioni possono variare.**
+
+### 1. MVC classico: la View tira dal Model (pull) · [[3-Architectural Patterns-complete.pdf#page=46|p. 46]]
+
+La View inoltra le azioni dell'utente al Controller; il Controller le interpreta e aggiorna il Model; la View interroga direttamente il Model per i dati da mostrare (*pull*). Si usa quando la View sa da sola quando aggiornarsi.
+
+![[lez05-ap-p46-mvc-pull.png]]
+*User → View → user event → Controller → update → Model; la View invia anche query state al Model, che risponde con i dati.*
+
+### 2. MVC classico: interazione basata su Observer · [[3-Architectural Patterns-complete.pdf#page=47|p. 47]]
+
+La View si iscrive ai cambiamenti del Model; il Controller aggiorna il Model; il Model **notifica** le View registrate; ogni View **recupera** lo stato aggiornato dal Model: **notifica, poi pull**. Qui entra il design pattern **Observer**: Model = Subject; View = Observer.
+
+![[lez05-ap-p47-mvc-observer.png]]
+*Come la precedente, con in più la freccia change notification dal Model alla View.*
+
+### Un'interazione completa del MVC classico · [[3-Architectural Patterns-complete.pdf#page=48|p. 48]]
+
+View → Controller: **Strategy**; Model → View: **Observer**; View → Model: pull dello stato aggiornato.
+
+![[lez05-ap-p48-mvc-sequenza-completa.png]]
+*Sequenza: User perform action → View; View delega l'input → Controller; Controller esegue l'operazione → Model; Model notifica il cambio di stato → View; View interroga lo stato aggiornato → Model; Model restituisce i dati → View; View aggiorna la visualizzazione → User.*
+
+### MVC e design pattern: Observer e Strategy · [[3-Architectural Patterns-complete.pdf#page=49|p. 49]]–[[3-Architectural Patterns-complete.pdf#page=52|52]]
+
+- **Observer** gestisce l'interazione tra Model e View: le View si iscrivono al Model e sono notificate quando il suo stato cambia. Le **View** sono gli *Observer*, i **Model** i *Subject*.
+- **Strategy** permette di cambiare il comportamento di interazione associato a una View: la View delega la gestione dell'input a un Controller, e Controller diversi possono dare strategie di interazione diverse.
+
+![[lez05-ap-p49-observer.png]]
+*Observer: l'interfaccia Subject (attach, detach, notify) aggrega più Observer (update); ConcreteSubject ha lo stato (getState, setState); ConcreteObserver implementa update.*
+
+![[lez05-ap-p50-strategy.png]]
+*Strategy: la View (contesto, con un controller e `handleUserAction`) delega a un'interfaccia Controller (`processAction`), realizzata da controller concreti (per esempio per lo studente e per l'amministratore).*
+
+**Una View in Java senza Strategy** (p. 51): ogni nuovo comportamento di interazione richiede di modificare la View.
+
+```java
+void onExamSelected(ExamSession exam) {
+    if (mode == BROWSE) { showDetails(exam); }
+    else if (mode == BOOKING) { bookingService.book(exam); }
+    else if (mode == ADMINISTRATION) { openEditForm(exam); }
+}
+```
+
+**Lo stesso esempio con il design pattern Strategy** (p. 52): la View conosce solo l'interfaccia del controller; il `main` decide quali controller associare alla view.
+
+```java
+interface Controller { void processAction(UserAction action); }
+class BrowseController implements Controller {
+    public void processAction(UserAction action) { /* Show exam details */ }
+}
+class BookingController implements Controller {
+    public void processAction(UserAction action) { /* Request an exam booking */ }
+}
+class AdministrationController implements Controller {
+    public void processAction(UserAction action) { /* Modify the exam session */ }
+}
+class ExamCalendarView {
+    private Controller controller;
+    void onUserAction(UserAction action) { controller.processAction(action); }
+}
+
+public static void main(String[] args) {
+    ExamService examService = new ExamService();
+    Controller controller = new BookingController(examService);
+    Controller cancellationController = new CancellationController(examService);
+    ExamCalendarView view = new ExamCalendarView();
+    view.setController(controller);
+    view.show();
+    // After an event…
+    view.setController(cancellationController);
+    view.show();
+}
+```
+
+### Due ulteriori modelli di interazione MVC · [[3-Architectural Patterns-complete.pdf#page=53|p. 53]]–[[3-Architectural Patterns-complete.pdf#page=57|57]]
+
+**3. Web MVC lato server: il Controller fornisce la View** (p. 54)
+- Il browser invia una richiesta HTTP al Controller; il Controller invoca il Domain Model o i servizi applicativi; prepara i dati necessari alla presentazione; sceglie una View e le passa un **View Model**; la View produce la risposta HTML. La View di norma riceve i dati dal Controller e **non osserva direttamente** il Domain Model.
+
+![[lez05-ap-p54-server-side-web-mvc.png]]
+*Browser → HTTP request → Controller → operation/query → Domain Model → result → Controller → View Model → View → HTML response → Browser.*
+
+**4. Applicazione web lato client: UI reattiva** (p. 55)
+- Il server espone dati e operazioni tramite un'API; il browser mantiene uno **stato locale lato client**; i componenti UI **reagiscono ai cambiamenti di stato**; la comunicazione con il server è asincrona. I framework possono usare architetture **ispirate a MVC** più che MVC rigoroso: componenti, MVVM, Flux, Redux, architetture reattive. Il server restituisce i dati, il client si occupa di rendering e aggiornamento della UI.
+
+![[lez05-ap-p55-client-side-reactive.png]]
+*Server → JSON data → Client State → state change → Client UI → user event → Client Logic → HTTP API → Server.*
+
+**Confronto dei modelli di interazione** (p. 56)
+
+| Variante | Chi fornisce i dati alla View? | Come si aggiorna la View? | Contesto tipico |
+|---|---|---|---|
+| Classic MVC — Pull | la View interroga il Model | refresh esplicito | GUI desktop |
+| Classic MVC — Observer | la View interroga il Model dopo la notifica | notifica di cambiamento del Model | GUI interattive |
+| Web MVC lato server | il Controller passa un View Model | nuovo ciclo HTTP richiesta–risposta | Spring MVC, ASP.NET MVC, Struts |
+| UI reattiva lato client | lo stato client riceve i dati dal server | aggiornamento reattivo dello stato | single-page application |
+
+**Riepilogo: MVC è una famiglia di varianti** (p. 57)
+
+| Classic MVC | Web MVC lato server |
+|---|---|
+| interazione continua all'interno dell'applicazione | cicli HTTP richiesta–risposta |
+| la View può osservare il Model | la View normalmente non osserva il Domain Model |
+| la View può interrogare il Model | il Controller fornisce i dati alla View |
+| il Controller gestisce eventi della UI | il Controller gestisce richieste HTTP |
+| la View è un componente UI persistente | la View è generata per una risposta |
+
+### Il pattern Front Controller · [[3-Architectural Patterns-complete.pdf#page=58|p. 58]]
+
+- Nel Web MVC lato server, un **unico punto di ingresso** riceve tutte le richieste HTTP e le smista al Controller applicativo appropriato; il risultato è usato per generare la risposta tramite una View.
+
+![[lez05-ap-p58-front-controller.png]]
+*Dentro il servlet engine (per esempio Tomcat): la richiesta in arrivo va al Front controller, che la delega al Controller; il Controller la gestisce e crea il model; il Front controller delega la generazione della risposta al View template passandogli il model; il template genera la risposta.*
+
+### Spring MVC e Spring Boot
+
+### Panoramica · [[3-Architectural Patterns-complete.pdf#page=59|p. 59]]–[[3-Architectural Patterns-complete.pdf#page=62|62]]
+
+**Spring MVC** è un framework Java per sviluppare applicazioni web lato server secondo l'approccio Model–View–Controller. Si basa sulla **Servlet API** e fa parte dello **Spring Framework**.
+- **Spring Framework** fornisce il container e le funzionalità di base; **Spring MVC** realizza lo strato web; **Spring Boot** semplifica configurazione, avvio e deployment.
+
+![[lez05-ap-p60-spring-framework-mvc-boot.png]]
+*Tre strati: Spring Boot (starter, auto-configuration, server incorporato, packaging) configura e avvia → Spring MVC (strato web) → Spring Framework (fondamenta).*
+
+- **Spring Framework** gestisce i componenti applicativi e le loro dipendenze. Il cuore è il **container IoC**, rappresentato principalmente da `ApplicationContext`. Il container IoC: **crea gli oggetti applicativi, detti bean**; risolve le loro dipendenze; collega Controller, Service e Repository; gestisce il ciclo di vita dei componenti; offre funzionalità trasversali come gestione di transazioni e configurazione.
+- **Spring MVC** è il modulo specializzato nella **gestione delle richieste HTTP**: traduce le richieste HTTP in chiamate a componenti applicativi e coordina la risposta. Offre: instradamento delle richieste (*request routing*); Controller annotati; binding e validazione dei dati di input; integrazione con i servizi applicativi; preparazione dei dati per la View; *view resolution* e rendering HTML.
+
+### Il DispatcherServlet · [[3-Architectural Patterns-complete.pdf#page=63|p. 63]]–[[3-Architectural Patterns-complete.pdf#page=64|64]]
+
+- Spring MVC realizza il Front Controller con il **DispatcherServlet**: un servlet fornito da Spring MVC che rappresenta l'**unico punto d'ingresso dello strato web**. Il browser non deve sapere quale classe Java gestirà la richiesta: conosce solo un URL, per esempio `GET /exam-sessions`. Il DispatcherServlet riceve la richiesta e stabilisce quale controller applicativo la gestirà.
+
+![[lez05-ap-p63-dispatcherservlet.png]]
+*Il browser invia tutte le richieste HTTP al DispatcherServlet (Front Controller), che smista verso ExamSessionController, BookingController, StudentController.*
+
+- **Flusso di elaborazione di una richiesta**: il DispatcherServlet coordina instradamento della richiesta, invocazione del Controller, risoluzione della View e rendering della risposta.
+
+![[lez05-ap-p64-spring-mvc-flusso.png]]
+*Browser → HTTP request → DispatcherServlet → route request → Controller → invoke → Application Service → result → Controller → view name + data → DispatcherServlet → resolve view name → ViewResolver → View → render View with data → HTML view → HTTP response → Browser.*
+
+### HandlerMapping, Controller e View · [[3-Architectural Patterns-complete.pdf#page=65|p. 65]]–[[3-Architectural Patterns-complete.pdf#page=68|68]]
+
+- Il DispatcherServlet consulta un **HandlerMapping**, che conosce le corrispondenze tra URL e metodi Java (definite con annotazioni). L'annotazione `@GetMapping("/exam-sessions")` indica che il metodo deve gestire le richieste GET dirette a `/exam-sessions`.
+
+```java
+@Controller
+public class ExamSessionController {
+    @GetMapping("/exam-sessions")
+    public String listAvailableSessions(Model model) {
+        // ...
+    }
+}
+```
+
+- **Il Controller esegue la logica di coordinamento**: invoca il servizio applicativo; inserisce i dati nel Model; restituisce il **nome logico** della View; **non genera direttamente la pagina HTML**. `exam-sessions` non è il nome completo di un file: è un nome logico di vista, che il **ViewResolver** associa, per esempio, al template `src/main/resources/templates/exam-sessions.html`.
+
+```java
+@GetMapping("/exam-sessions")
+public String listAvailableSessions(Model model) {
+    var sessions = service.findAvailableSessions();
+    model.addAttribute("examSessions", sessions);
+    return "exam-sessions";
+}
+```
+
+```html
+<!-- Template Thymeleaf che genera la View -->
+<tr th:each="session : ${examSessions}">
+  <td th:text="${session.examName}"></td>
+  <td th:text="${session.date}"></td>
+</tr>
+```
+
+![[lez05-ap-p67-sequenza-show-exam-sessions.png]]
+*Flusso completo per il requisito ShowExamSessions: `GET /exam-sessions` → il DispatcherServlet trova l'handler con HandlerMapping → invoca `listAvailableSessions()` → il servizio restituisce `findAvailableSessions()` → il controller ritorna "exam-sessions" + Model → il ViewResolver risolve il nome → la View Thymeleaf produce la pagina.*
+
+**Corrispondenza tra Front Controller e Spring MVC** (p. 68)
+
+| Elemento del pattern | Spring MVC |
+|---|---|
+| Front Controller | `DispatcherServlet` |
+| Application Controller / Handler | classe annotata con `@Controller` |
+| Request mapping | `HandlerMapping` |
+| Application operation | metodo annotato con `@GetMapping` o `@PostMapping` |
+| Model data | attributi dell'oggetto `Model` |
+| View selection | `ViewResolver` |
+| View template | Thymeleaf, JSP ecc. |
+
+### Spring Boot · [[3-Architectural Patterns-complete.pdf#page=69|p. 69]]–[[3-Architectural Patterns-complete.pdf#page=71|71]]
+
+- **Spring Boot non sostituisce Spring Framework né Spring MVC:** li configura e avvia con convenzioni e **auto-configuration**. In presenza di dipendenze web, Spring Boot può: avviare un container servlet incorporato (di solito Tomcat); creare l'`ApplicationContext`; abilitare il component scanning; registrare il `DispatcherServlet`; configurare Spring MVC; impostare la view resolution; creare un eseguibile come file JAR.
+
+```java
+@SpringBootApplication
+public class ExamBookingApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ExamBookingApplication.class, args);
+    }
+}
+```
+
+`@SpringBootApplication` abilita, in forma semplificata: configurazione Spring, component scanning, auto-configuration.
+
+![[lez05-ap-p71-context-hierarchy.png]]
+*Gerarchia dei contesti in Spring Web MVC: il DispatcherServlet usa un WebApplicationContext con i bean web (Controller, HandlerMapping, ViewResolver…), collegato a un WebApplicationContext radice con i bean dello strato intermedio (service, datasource…).*
+
+### Un esempio in Spring MVC: gestione delle spese personali · [[3-Architectural Patterns-complete.pdf#page=72|p. 72]]–[[3-Architectural Patterns-complete.pdf#page=82|82]]
+
+- Applicazione per la gestione delle spese personali. **Model**: gestisce i dati delle spese (importo, data, categoria), le salva e le recupera da un database. **View**: mostra la lista delle spese e permette di aggiungerne di nuove. **Controller**: quando l'utente inserisce una nuova spesa riceve l'input, lo valida, invia i dati al modello per salvarli e aggiorna la vista.
+
+**Classe Model** (`Expense.java`, getter e setter omessi)
+
+```java
+package com.example.expensemanager.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.time.LocalDate;
+
+@Entity
+public class Expense {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String category;
+    private double amount;
+    private LocalDate date;
+
+    public Expense() {}
+    public Expense(String category, double amount, LocalDate date) {
+        this.category = category; this.amount = amount; this.date = date;
+    }
+    // getter e setter di id, category, amount, date
+}
+```
+
+**Repository** (`ExpenseRepository.java`, per interagire con il database H2)
+
+```java
+@Repository
+public interface ExpenseRepository extends JpaRepository<Expense, Long> { }
+```
+
+**Controller** (`ExpenseController.java`)
+
+```java
+@Controller
+public class ExpenseController {
+    @Autowired
+    private ExpenseRepository expenseRepository;
+
+    @GetMapping("/")
+    public String viewExpenses(Model model) {
+        List<Expense> expenses = expenseRepository.findAll();
+        model.addAttribute("expenses", expenses);
+        model.addAttribute("expense", new Expense());
+        return "expenses";
+    }
+
+    @PostMapping("/addExpense")
+    public String addExpense(@ModelAttribute("expense") Expense expense) {
+        expense.setDate(LocalDate.now());       // imposta la data corrente
+        expenseRepository.save(expense);
+        return "redirect:/";
+    }
+}
+```
+
+**View** (`src/main/resources/templates/expenses.html`, con Thymeleaf come motore di template)
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Gestione Spese</title></head>
+<body>
+  <h1>Lista Spese</h1>
+  <table>
+    <thead><tr><th>ID</th><th>Categoria</th><th>Importo</th><th>Data</th></tr></thead>
+    <tbody>
+      <tr th:each="expense : ${expenses}">
+        <td th:text="${expense.id}"></td>
+        <td th:text="${expense.category}"></td>
+        <td th:text="${expense.amount}"></td>
+        <td th:text="${expense.date}"></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Aggiungi una nuova spesa</h2>
+  <form th:action="@{/addExpense}" th:object="${expense}" method="post">
+    <label>Categoria:</label> <input type="text" th:field="*{category}" /><br>
+    <label>Importo:</label> <input type="number" th:field="*{amount}" /><br>
+    <button type="submit">Aggiungi Spesa</button>
+  </form>
+</body>
+</html>
+```
+
+![[lez05-ap-p80-view-generata.png]]
+*Una possibile View generata: «Lista Spese», tabella con tre righe di esempio (Trasporti, Alimentari, Libri) e sotto il form «Aggiungi una nuova spesa» (Categoria, Importo, pulsante «Aggiungi Spesa»).*
+
+**Configurazione del database** (`src/main/resources/application.properties`, database H2)
+
+```properties
+# H2 Database configuration
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.hibernate.ddl-auto=update
+spring.h2.console.enabled=true
+```
+
+**Applicazione principale** (`ExpenseManagerApplication.java`): una volta completata l'implementazione si esegue l'applicazione da terminale o IDE (IntelliJ, Eclipse) e si va su `http://localhost:8080/` per vedere la lista delle spese e aggiungerne di nuove.
+
+```java
+@SpringBootApplication
+public class ExpenseManagerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ExpenseManagerApplication.class, args);
+    }
+}
+```
+
+### Il pattern Sense-Compute-Control
+
+### Il pattern · [[3-Architectural Patterns-complete.pdf#page=83|p. 83]]–[[3-Architectural Patterns-complete.pdf#page=86|86]]
+
+- Il pattern **Sense–Compute–Control** supporta applicazioni che **interagiscono con un ambiente esterno e lo controllano**; è comune in telecomunicazioni, domotica e building automation, robotica, avionica, sistemi industriali ed embedded.
+- L'interazione segue tre stadi: **Sense** — i sensori raccolgono dati dall'ambiente esterno; **Compute** — i componenti di elaborazione del contesto aggregano e interpretano i dati dei sensori per determinare la situazione attuale; **Control** — i componenti di controllo decidono quali azioni compiere e inviano i comandi agli **attuatori**.
+- **Obiettivo:** strutturare le applicazioni di controllo embedded.
+
+![[lez05-ap-p85-scc-architettura.png]]
+*Architettura Sense–Compute–Control: la fascia SENSE (sensori 1–4) converge sul blocco COMPUTE «Compute and Control», da cui partono frecce verso la fascia CONTROL (attuatori A, B, C); riquadro «Control loop»: leggi i sensori, calcola le uscite, invia i comandi agli attuatori, ripeti.*
+
+- **Esempio: applicazione di sicurezza domestica (Home Inclusion Detection):** *sense* — rileva movimento con sensori di movimento; *compute* — stabilisce se i dati indicano una possibile intrusione; *control* — agisce sull'ambiente attivando un allarme o inviando una notifica.
+
+![[lez05-ap-p86-scc-home-security.png]]
+*Ambiente esterno → fenomeni fisici → sensori → dati grezzi → elaborazione del contesto → contesto interpretato → logica di controllo → comando → attuatori → cambiano l'ambiente.*
+
+### Varianti a tre e a quattro stadi · [[3-Architectural Patterns-complete.pdf#page=87|p. 87]]–[[3-Architectural Patterns-complete.pdf#page=89|89]]
+
+- **Variante a tre stadi:** *Sense* acquisisce i dati dall'ambiente; *Compute* combina interpretazione del contesto e decisione; *Control* invia i comandi agli attuatori. Adatta quando elaborazione e logica di controllo sono relativamente semplici.
+- **Variante a quattro stadi:** separa l'**interpretazione del contesto** dalle **decisioni di controllo**; i componenti di elaborazione del contesto possono servire politiche di controllo diverse. Adatta a sistemi complessi, riusabili o distribuiti.
+- La variante a tre stadi mette in risalto il ciclo di controllo; quella a quattro stadi migliora **modificabilità e riuso** separando interpretazione del contesto e decisione.
+
+![[lez05-ap-p88-scc-tre-quattro-stadi.png]]
+*Tre stadi (Sense → Compute → Control) a confronto con quattro (Sensing → Context Processing → Control Logic → Actuation).*
+
+![[lez05-ap-p89-scc-access-control.png]]
+*Variante a quattro stadi: sistema di controllo accessi e rilevamento intrusioni. Fasce separate da linee tratteggiate: entità (camera, rilevatore di movimento, serratura, database delle autorizzazioni, identificatore), contesto, controllo e attuatori.*
+
+### Dal Sense-Compute-Control all'IoT · [[3-Architectural Patterns-complete.pdf#page=90|p. 90]]–[[3-Architectural Patterns-complete.pdf#page=91|91]]
+
+- L'**IoT** estende il ciclo Sense–Compute–Control **distribuendo** rilevazione, calcolo e attuazione tra dispositivi connessi, **nodi edge** e **servizi cloud**.
+- **Controllo locale:** sensori → logica di controllo locale all'edge → attuatori; permette risposte rapide e funzionamento anche senza connessione al cloud.
+- **Controllo remoto/centrale:** sensori → edge → cloud → logica di controllo remota → edge → attuatori; permette decisioni basate su dati aggregati, regole centralizzate e analisi più complesse.
+
+![[lez05-ap-p90-scc-iot.png]]
+*Architettura IoT e ciclo SCC: ambiente fisico osservato dai sensori (dispositivi connessi, SENSE) → telemetria ed eventi → edge/gateway (filtraggio, aggregazione, decisioni locali; COMPUTE, con logica di controllo locale) → piattaforma IoT/cloud (memorizzazione, analytics, gestione dei dispositivi) → applicazioni.*
+
+- **Attributi di qualità:** la separazione di sensing, elaborazione del contesto, controllo e attuazione migliora **modificabilità, testabilità e riuso**; le implementazioni distribuite (IoT) introducono problemi di **latenza, disponibilità, safety e sicurezza**.
+
+### Esempio: Lunar Lander · [[3-Architectural Patterns-complete.pdf#page=92|p. 92]]–[[3-Architectural Patterns-complete.pdf#page=94|94]]
+
+- **Lunar Lander (LL)** è un semplice videogioco sviluppato alla fine degli anni '60. **Obiettivo:** far atterrare in sicurezza una navicella sulla superficie lunare.
+- **Meccanica base:** il giocatore controlla la navicella durante la discesa; la manetta controlla la spinta del motore e quindi la velocità di discesa; il carburante disponibile è limitato; quota e velocità iniziali sono predefinite; si vince atterrando con velocità verticale inferiore a **5 piedi al secondo**, con o senza carburante residuo. **Versioni avanzate:** un joystick per controllare movimento orizzontale, orientamento e spinta del motore.
+
+**LL con il pattern Sense-Compute-Control** (p. 93)
+
+| Fase | Lunar Lander |
+|---|---|
+| Sense | leggere quota, velocità, orientamento e carburante residuo |
+| Compute | determinare la spinta necessaria e la correzione di assetto |
+| Control | attivare il motore e i propulsori di manovra |
+| Ambiente | la gravità lunare cambia posizione e velocità della navicella |
+
+![[lez05-ap-p94-scc-lunar-lander.png]]
+*Architettura SCC del Lunar Lander: ambiente lunare e dinamica della navicella → stato fisico → sensing (altimetro, giroscopio, velocità verticale, livello di carburante) → misure → Flight Control Computer (stima dello stato, logica di controllo), che riceve anche i comandi del pilota → attuatori.*
+
+### L'architettura dei sistemi di guida autonoma (ADS) · [[3-Architectural Patterns-complete.pdf#page=95|p. 95]]
+
+![[lez05-ap-p95-ads.png]]
+*Architettura tipica di un sistema di guida autonoma: Sensing (GPS/IMU, camera, LiDAR, radar) → Perception (localizzazione, rilevamento) → Planning (previsione, pianificazione) → Control (algoritmi e funzioni di controllo).*
+
+### Conclusioni · [[3-Architectural Patterns-complete.pdf#page=96|p. 96]]
+
+- Sono state analizzate **due strategie di progettazione basate sul riuso**: le **DSSA** e i **pattern architetturali** (Three-Tier, MVC, Sense Compute Control). Nelle prossime lezioni si introdurranno gli **stili architetturali**.
+
+*Approfondimenti nel wiki: [[mvc]], [[spring-mvc]], [[sense-compute-control]], [[applicare-sense-compute-control]], [[implementare-mvc]]*
