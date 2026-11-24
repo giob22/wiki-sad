@@ -1,0 +1,9 @@
+# Sito di studio e PDF delle lezioni
+markdown-it-py
+mdit-py-plugins
+pillow
+numpy
+# Controllo di corso-completo.md (numero di pagine dei PDF)
+pymupdf
+# Grafici di funzione (output/grafici/)
+matplotlib

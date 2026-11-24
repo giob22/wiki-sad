@@ -13,25 +13,42 @@ Ogni sessione inizia leggendo `wiki/log.md` (ultimi 5 entry) per capire lo stato
 
 ```
 wiki-sad/
-├── CLAUDE.md              ← questo file (non modificare)
+├── CLAUDE.md              ← questo file (schema del wiki: si modifica su richiesta dell'utente)
+├── README.md              ← presentazione della repo
+├── corso.toml             ← dati del corso e configurazione del sito di studio
+├── requirements.txt       ← dipendenze Python degli script (pip install -r requirements.txt)
+├── modelli/               ← modelli delle pagine (Obsidian: «Inserisci modello»)
 ├── raw/                   ← fonti immutabili — leggi, non scrivere mai qui
-│   └── assets/            ← immagini estratte dai PDF (figure, diagrammi delle slide)
+│   ├── assets/            ← immagini estratte dai PDF (figure, diagrammi delle slide)
+│   └── scripts/           ← codice e figure allegati al corso
 ├── wiki/
 │   ├── index.md           ← catalogo di tutto il wiki
 │   ├── log.md             ← log cronologico append-only
 │   ├── overview.md        ← panoramica del corso
 │   ├── lezioni.md         ← percorso di studio: un link per pagina, ordine delle slide + ordine consigliato
+│   ├── corso-completo.md  ← UN SOLO file con tutte le lezioni (solo teoria, solo contenuto dei PDF): sorgente del sito
 │   ├── avanzamento-studio.md ← check-list del programma: da fare (Claude) · studiato · consolidato (utente)
 │   ├── glossario.md       ← termini inglese ↔ italiano, con link alla pagina del wiki
 │   ├── concetti/          ← pagine concetto (definizioni, viste, attributi di qualità, principi, processi...)
 │   ├── entità/            ← pagine entità (stili, pattern, tattiche, standard, strumenti, framework, linguaggi...)
 │   ├── fonti/             ← un sommario per ogni fonte raw ingestita
 │   ├── esercizi/          ← esercizi di progettazione svolti e metodi ricorrenti
-│   ├── progetto/          ← progetto di corso: scelte architetturali collegate ai concetti
+│   ├── progetto/          ← progetto di corso (pagine): scelte architetturali collegate ai concetti. NON è teoria: non va sul sito
 │   └── esame/             ← materiale preparazione esame
-└── output/                ← export: tabelle comparative, slide Marp, diagrammi
-    └── diagrammi/         ← sorgenti Mermaid/SVG generati da me
+├── progetto/              ← file e script del progetto PICUS (burndown, mascotte, Word, diagrammi del team)
+├── output/
+│   ├── crea_sito.py       ← sito di studio: legge corso-completo.md e corso.toml → _site/
+│   ├── sito_disegni.py    ← disegni SVG del sito (solo su decisione dell'utente)
+│   ├── crea_pdf.py        ← PDF di studio delle lezioni → output/pdf/
+│   ├── controlla_corso.py ← controllo di integrità di corso-completo.md
+│   ├── riferimenti_nei_titoli.py ← sposta nei titoli i riferimenti ai PDF rimasti nel corpo
+│   ├── config_corso.py    ← lettura di corso.toml (usato dagli script)
+│   ├── grafici/           ← animazioni e grafici SVG generati da me, con i loro script
+│   └── pdf/               ← PDF delle lezioni (crea_pdf.py)
+└── _site/                 ← anteprima locale del sito (generata, ignorata da git)
 ```
+
+Struttura e script derivano dal template `giob22/wiki-template`. Il sito per ora **non si pubblica**: si genera e si guarda in locale (`python output/crea_sito.py`, poi `python -m http.server -d _site 8000`); la pubblicazione (Cloudflare) si deciderà più avanti.
 
 ---
 
@@ -95,7 +112,9 @@ Regole:
 12. **Revisione di copertura totale (obbligatoria, sempre)**: rileggi il PDF **pagina per pagina** (testo *e* figure) e verifica che **ogni** elemento — definizioni, bullet, esempi, citazioni, didascalie, contenuto dei diagrammi — sia riportato nel wiki. Le uniche aggiunte ammesse sono **spiegazioni che aiutano ad acquisire il concetto**: niente fatti esterni non necessari, esercizi inventati o anticipazioni di argomenti futuri. Riporta all'utente cosa mancava e cosa è stato aggiunto/rimosso
 13. **Crea/aggiorna `wiki/lezioni.md` (obbligatorio, sempre)** con la lezione: percorso di lettura aggregato (un solo link per pagina, ordine di prima comparsa nelle slide) e, se serve, ordine consigliato senza link (formato in *Corso → Lezioni*); verifica che ogni pagina creata o toccata sia raggiungibile da lì e che nessun link sia ripetuto
 14. **Aggiorna `wiki/avanzamento-studio.md`**: spunta «da fare» per ogni argomento del programma trattato dal PDF (con lezione e link alle pagine), aggiungi gli argomenti fuori programma; non toccare mai «studiato» e «consolidato»
-15. Appendi a `wiki/log.md`: `## [YYYY-MM-DD] ingest | [titolo fonte] | pagine coperte: [range]`
+15. **Testo di studio**: aggiungi la lezione (o aggiorna quella esistente) in `wiki/corso-completo.md` come sezione `## Lezione N — titolo`, **solo contenuto delle slide, nell'ordine delle slide** (regole in *Il testo di studio*); poi `python output/controlla_corso.py` e correggi ogni problema
+16. **Sito**: in `corso.toml` aggiungi/aggiorna la voce `[[lezioni]]` (`n`, `breve`, `concetti` con le pagine da mostrare a comparsa); `python output/crea_sito.py` e correggi ogni riga «attenzione»
+17. Appendi a `wiki/log.md`: `## [YYYY-MM-DD] ingest | [titolo fonte] | pagine coperte: [range]`
 
 > Una singola fonte può toccare 5–15 pagine. È normale e desiderato.
 
@@ -145,6 +164,15 @@ Il progetto di corso (sistema comune sviluppato a team, con iterazioni Scrum di 
 
 ---
 
+### SITO — `sito`, `sito intercorso [lezioni]`, `aggiungi al sito [cosa]`
+
+1. `sito`: ricostruisci con `python output/crea_sito.py`, mostra l'anteprima (`python -m http.server -d _site 8000`) e riporta le righe «attenzione»
+2. `sito intercorso 3 4 5`: in `corso.toml` imposta `[sito] lezioni = [3, 4, 5]`, `briciola = "Intercorso"` e un `intro` che dica cosa copre; per tornare al sito completo `lezioni = "tutte"`
+3. `aggiungi al sito [cosa]`: esercizi, domande da esame o disegni per una lezione, come descritto in *Sito di studio*
+4. Il sito non si pubblica finché l'utente non lo decide (Cloudflare, più avanti)
+
+---
+
 ### LINT — `lint` o `health check`
 
 Scorri tutto il wiki e riporta:
@@ -162,7 +190,42 @@ Scorri tutto il wiki e riporta:
 - **Pagine o sezioni senza link alla fonte** `raw/` (pagina/slide mancante)
 - Link `[[*.pdf#page=N]]` che puntano a file inesistenti in `raw/`
 - Salti `❓` ancora aperti
+- Esito di `python output/controlla_corso.py` e righe «attenzione» di `python output/crea_sito.py`
+- Lezioni di `corso-completo.md` senza voce `[[lezioni]]` (o senza `breve`) in `corso.toml`
+- Lezioni con contenuto non teorico (progetto, esercizi, materiale d'esame) dentro `corso-completo.md`
 - Proponi nuove domande da investigare
+
+---
+
+## Il testo di studio — `wiki/corso-completo.md`
+
+È il testo su cui l'utente studia e la **sorgente del sito**: un unico file, **schematico e senza ridondanze**, che contiene **tutta e sola la teoria**, cioè **ciò che sta nei PDF delle lezioni**, nell'ordine delle slide: definizioni, elenchi, tabelle, esempi, diagrammi (con una frase che dice cosa mostrano), codice.
+
+- Ogni lezione è una sezione `## Lezione N — titolo` (trattino lungo `—`), seguita da `*Fonte: file.pdf, pp. a–b.*` e dalle sottosezioni `###`/`####` nell'ordine delle slide
+- **Non è teoria**, quindi **non entra**: la Lezione 0 (presentazione del corso), il progetto PICUS (`wiki/progetto/`), gli esercizi svolti, le domande d'esame, le elaborazioni 🧩 e le fonti esterne 📚. Restano nelle loro pagine; la sezione può chiudere con `*Approfondimenti nel wiki: [[...]], [[...]]*`
+- Un esempio o un diagramma delle slide si riporta con una riga che lo spiega (non si copia senza spiegazione); le spiegazioni lunghe stanno nelle pagine concetto
+- Ogni definizione compare una volta sola; i richiami tra lezioni sono una frase, non una ripetizione
+- I **riferimenti ai PDF stanno solo nei titoli** (`### Titolo · [[file.pdf#page=2|p. 2]], [[file.pdf#page=3|3]]`; pagine consecutive compattate `p. 2–6`); mai nel corpo. Le immagini si incorporano con `![[nome-in-raw-assets.png]]` seguito da una didascalia in corsivo
+- In testa al file la tabella **Indice** ha una riga per lezione (`| N | [[#Lezione N — titolo\|titolo]] | file.pdf |`)
+- Se un PDF contiene più lezioni, ogni lezione cita il suo intervallo di pagine; se più PDF formano una lezione, nel titolo di ogni sezione il nome corto del file precede le pagine (`[pdf_corti]` in `corso.toml`)
+
+---
+
+## Sito di studio (locale)
+
+È la versione da leggere di `wiki/corso-completo.md`: HTML statico generato da `output/crea_sito.py`, con formule KaTeX, tema sistema/chiaro/scuro, dimensione del testo regolabile, immagini ingrandibili e indice della lezione. **Per ora non si pubblica**: anteprima con `python output/crea_sito.py` (scrive `_site/`) e `python -m http.server -d _site 8000`.
+
+**Cosa contiene.** Una pagina `lezione-N.html` per ogni sezione `## Lezione N — titolo`, più l'indice con una scheda per lezione. Ogni pagina ha:
+1. **Il corso, slide per slide**: la sezione della lezione (solo il contenuto dei PDF). I riferimenti alle pagine e le righe «Fonte:» vengono tolti in automatico
+2. **Spiegazioni e approfondimenti a comparsa**: le sezioni *Spiegazione*, *Esempi espansi*, *Perché importa* delle pagine concetto elencate in `concetti` nella voce `[[lezioni]]` di `corso.toml`
+3. *(solo se l'utente lo decide)* esercizi, domande da esame, disegni SVG
+
+**Regola:** il sito contiene **tutta e sola la teoria**. Il progetto, gli esercizi e le domande d'esame compaiono solo su decisione esplicita dell'utente.
+
+**Configurazione** — `corso.toml`:
+- `[corso]` nome, sigla, descrizione; `[sito]` `intro`, `briciola`, `lezioni` (`"tutte"` o un elenco), `note`
+- `[[lezioni]]` per lezione: `n`, `breve`, e se servono `titolo`, `inizio`, `sito = false`, `concetti`, `esercizi`, `fonte`, `domande`, `domande_filtro`
+- `[[figure]]`: `lezione`, `sezione`, `disegni` (funzioni `fig_<chiave>` di `output/sito_disegni.py`), con didascalia 🧩
 
 ---
 
@@ -326,7 +389,7 @@ I PDF stanno in `raw/`, dentro il vault Obsidian, quindi il link a pagina funzio
 
 Regole:
 - Il numero di pagina è quello **del PDF** (contatore del viewer), non quello stampato sulla slide. Se differiscono, annota entrambi: `[[file.pdf#page=3]] (slide 53)`. Attenzione: `01-IntroductionOnSoftwareArchitecture-2 parte.pdf` riparte da pagina 1 ma la numerazione stampata prosegue dalla prima parte, con due salti: slide = p. + 50 (pp. 1–3), p. + 51 (pp. 4–35), p. + 52 (pp. 36–45). La tabella completa è in `wiki/fonti/attributi-di-qualita-e-importanza-architettura.md`
-- **PDF aggiornati con lo stesso argomento** (es. `3-Architectural Patterns-complete.pdf`, versione estesa di `04-Architectural Patterns.pdf`): si ingeriscono solo le slide nuove, come nuova lezione; le slide identiche restano linkate al PDF già ingerito. La pagina fonte della nuova lezione contiene la tabella «cosa è nuovo» pagina per pagina
+- **PDF aggiornati con lo stesso argomento**: la docente aggiorna i PDF invece di caricarne di nuovi, quindi in `raw/` ci sono versioni vecchie e nuove della stessa lezione. **Si tiene solo la versione più completa** (quella che contiene tutte le slide della precedente): le versioni vecchie si eliminano e i link `[[vecchio.pdf#page=N]]` del wiki si riscrivono sulla pagina corrispondente del PDF nuovo. Le lezioni del wiki restano numerate come all'ingest; quando un PDF nuovo copre più lezioni, ogni lezione cita il suo intervallo di pagine
 - Ogni **sezione** di una pagina concetto/entità porta il suo riferimento, non basta un riferimento unico in fondo alla pagina
 - Ogni **definizione** porta la pagina dove compare per la prima volta
 - Ogni **citazione d'autore** porta la pagina della slide e l'autore/libro citato
@@ -349,7 +412,7 @@ Una pagina senza nemmeno un riferimento a `raw/` è sospetta: LINT la segnala.
 
 ## Diagrammi e notazione
 
-- Diagrammi in **Mermaid** dentro la nota (```mermaid): `flowchart` per componenti e connettori, `classDiagram` per viste di modulo/UML, `sequenceDiagram` per interazioni, `C4Context`/`flowchart` con subgraph per deployment. Sorgenti riusabili o grandi in `output/diagrammi/`
+- Diagrammi in **Mermaid** dentro la nota (```mermaid): `flowchart` per componenti e connettori, `classDiagram` per viste di modulo/UML, `sequenceDiagram` per interazioni, `C4Context`/`flowchart` con subgraph per deployment. Sorgenti riusabili o grandi in `output/grafici/`
 - Figure originali delle slide: estrai in `raw/assets/` ed embedda con `![[...]]`, sempre con didascalia che spiega cosa si vede
 - Formule (poche in questo corso) in LaTeX Obsidian: `$...$` inline, `$$...$$` display; ogni simbolo definito, unità sempre scritte
 - Nomi di stili/pattern con la grafia della fonte (es. *Pipe-and-Filter*, *Publish-Subscribe*, *State-Logic-Display*)

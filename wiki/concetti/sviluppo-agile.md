@@ -105,7 +105,7 @@ Il flusso è **Backlog → Priorità → Iterazione → Feedback → Miglioramen
 *Figura di [[04_Agile_01.pdf#page=15]]: a sinistra il blocco **Work** (Minimum Business Increments e Release Roadmap) — ① entra nel **Product Backlog**, alimentato anche dal **Business Backlog** (criteri, priorità, dimensionamento, sequenza). ② **Iteration Planning** sceglie «la giusta quantità di lavoro» che diventa ③ l'**Iteration Backlog** dentro il ciclo dell'**Iteration** (con il **Coordination Meeting**, la riunione giornaliera). A fine iterazione: **Demo**, **Retrospective** e **Iteration Review**, la cui freccia torna al Product Backlog.*
 
 ![[anim-ciclo-iterazione-agile.svg]]
-*🧩 Animazione mia del ciclo di [[04_Agile_01.pdf#page=13]] e [[04_Agile_01.pdf#page=15]] (generata con `output/diagrammi/genera_grafici_lez06.py`): backlog ordinato → planning → lavoro con daily meeting → software funzionante → demo → retrospettiva e feedback che tornano nel backlog. Le singole cerimonie sono in [[cerimonie-e-artefatti-agile]].*
+*🧩 Animazione mia del ciclo di [[04_Agile_01.pdf#page=13]] e [[04_Agile_01.pdf#page=15]] (generata con `output/grafici/genera_grafici_lez06.py`): backlog ordinato → planning → lavoro con daily meeting → software funzionante → demo → retrospettiva e feedback che tornano nel backlog. Le singole cerimonie sono in [[cerimonie-e-artefatti-agile]].*
 
 ## Sviluppo iterativo ed evolutivo
 

@@ -2,3 +2,17 @@
 .obsidian/workspace.json
 .DS_Store
 .trash/
+.obsidian/workspace-*.json
+.obsidian/plugins/obsidian-spaced-repetition/data-*.json
+
+# Sito generato in locale
+_site/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Clone temporaneo del repository di progetto
+tmp-progetto-sad/

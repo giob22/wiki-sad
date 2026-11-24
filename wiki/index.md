@@ -113,7 +113,7 @@ _nessun materiale ancora — lancia `prepara esame`_
 Figure in `raw/assets/`: 2 dalla presentazione (`lez00-intro-pN-*.png`), 24 da 01-IntroductionOnSoftwareArchitecture (`lez01-intro-pN-*.png`), 10 dalla parte 2 (`lez01b-qa-pN-*.png`; N = pagina del PDF, non numero di slide).
 Progetto: 1 figura `prog-picus-p12-piano-iterazioni.png` (p. 12 di 00-Presentazione Progetto Picus.pdf).
 Lez. 2: 13 figure `lez02-av-pN-*.png`; Lez. 3: 14 figure `lez03-mo-pN-*.png`; Lez. 4: 20 figure `lez04-ap-pN-*.png`; Lez. 5: 32 figure `lez05-ap-pN-*.png` (N = pagina di 3-Architectural Patterns-complete.pdf).
-Animazioni SVG e grafico della Lez. 5 in `output/diagrammi/` (script [[genera_animazioni_lez05.py]]): [[anim-mvc-classico.svg]], [[anim-spring-mvc-richiesta.svg]], [[anim-sense-compute-control.svg]], [[grafico-lunar-lander-controllo.svg]].
+Animazioni SVG e grafico della Lez. 5 in `output/grafici/` (script [[genera_animazioni_lez05.py]]): [[anim-mvc-classico.svg]], [[anim-spring-mvc-richiesta.svg]], [[anim-sense-compute-control.svg]], [[grafico-lunar-lander-controllo.svg]].
 Lez. 6: 25 figure `lez06-ag-pN-*.png`; animazione [[anim-ciclo-iterazione-agile.svg]] e grafico [[grafico-burndown-sprint.svg]] (script [[genera_grafici_lez06.py]]).
 Lez. 7: 16 figure `lez07-ag2-pN-*.png` (N = pagina di 04_Agile_02 (1).pdf, render dell'intera slide).
 Diagrammi Mermaid ricostruiti (🧩) direttamente nelle pagine: vista dei moduli e versione event-based, vista runtime, deployment iniziale, tattiche di prestazioni e modificabilità, ADD, catena fault→error→failure, stati del circuit breaker, reduce coupling, plug-in, publish-subscribe, sequenza client-server.

@@ -146,7 +146,7 @@ Il workflow ([[burndown.yml]]) fa, ogni giorno alle 23:50 UTC e a richiesta:
 Prova in locale **senza API** (per vedere il grafico di esempio; per i dati reali vedi la sezione successiva):
 
 ```bash
-python output/burndown/burndown.py --demo
+python progetto/burndown/burndown.py --demo
 ```
 
 ## Provarlo in locale con dati reali (senza Actions)
@@ -164,7 +164,7 @@ $env:PROJECT_TOKEN  = (gh auth token)     # oppure il token incollato qui, solo 
 $env:PROJECT_OWNER  = "Pinguini-alla-Fragola"
 $env:OWNER_TYPE     = "organization"
 $env:PROJECT_NUMBER = "<numero>"
-py -3.11 output/burndown/burndown.py --inspect
+py -3.11 progetto/burndown/burndown.py --inspect
 ```
 
    `--inspect` stampa il project, il numero di item e, per ogni campo trovato, i suoi valori: devono comparire **Status** (con Done), **Iteration** (con *S1 - Preparazione* e i suoi giorni) e, se c'è, **Size**. Se un nome è diverso, impostalo con `ITERATION_FIELD`, `STATUS_FIELD`, `SIZE_FIELD`, `DONE_VALUE`.
@@ -172,7 +172,7 @@ py -3.11 output/burndown/burndown.py --inspect
 
 ```powershell
 $env:OUT_DIR = "out"
-py -3.11 output/burndown/burndown.py
+py -3.11 progetto/burndown/burndown.py
 ```
 
    Compare `out/burndown-s1-preparazione.svg` (aprilo nel browser) e il `.csv` con i numeri giorno per giorno.

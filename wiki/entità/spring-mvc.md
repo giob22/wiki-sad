@@ -123,7 +123,7 @@ public String listAvailableSessions(Model model) {
 *Figura di [[3-Architectural Patterns-complete.pdf#page=67]], diagramma di sequenza con Student, DispatcherServlet, HandlerMapping, ExamSessionController, ExamSessionService, ViewResolver, Thymeleaf View: `GET /exam-sessions` → *Find handler* → (*ExamSessionController method*) → `listAvailableSessions()` → `findAvailableSessions()` → (*List of sessions*) → (`"exam-sessions"` + Model) → *Resolve "exam-sessions"* → (*View template*) → *Render Model* → (*Generated HTML*) → *HTTP response*.*
 
 ![[anim-spring-mvc-richiesta.svg]]
-*🧩 Animazione mia degli undici passi di [[3-Architectural Patterns-complete.pdf#page=67]] (generata con `output/diagrammi/genera_animazioni_lez05.py`): segui il pallino e la didascalia del passo.*
+*🧩 Animazione mia degli undici passi di [[3-Architectural Patterns-complete.pdf#page=67]] (generata con `output/grafici/genera_animazioni_lez05.py`): segui il pallino e la didascalia del passo.*
 
 > 💡 Connessione: il DispatcherServlet è un **intermediario** (tattica *use an intermediary*, [[tattiche-modifiability]]): il browser dipende solo dagli URL, il Controller solo dal nome logico della vista. Si può cambiare la classe che gestisce un URL o il template di una vista senza toccare l'altra parte.
 

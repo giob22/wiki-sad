@@ -76,7 +76,7 @@ MVC fissa **tre responsabilità** (Model = stato applicativo e comportamento di 
 ![[lez05-ap-p44-mvc-interazioni-classico.png]]
 *Figura di [[3-Architectural Patterns-complete.pdf#page=44]], «Model–View–Controller: Module Interactions (Classic MVC)» — esempio guida: prenotare una sessione d'esame. ① lo **Student** seleziona una sessione sulla **View** (Exam Booking UI: mostra le sessioni, raccoglie l'input); ② la View passa al **Controller** (Booking Controller: interpreta le azioni, invoca le operazioni del Model) la richiesta `bookExam(sessionId)`; ③ il Controller chiama `createBooking(...)` sul **Model** (Exam Booking Domain: Exam Sessions, Bookings, Eligibility and Booking Rules; indipendente da View e Controller); ④ il Model emette un *change event* (notifica publish/subscribe, freccia tratteggiata) verso la View; ⑤ la View legge lo stato del Model (*Read Model state*); ⑥ la View mostra il risultato allo studente. Riquadro «Dependency principle»: **il Model pubblica un evento; non conosce la View concreta**. Nota: i framework web MVC possono usare una variante request/response.*
 
-Animazione degli stessi sei passi (🧩, generata con `output/diagrammi/genera_animazioni_lez05.py`):
+Animazione degli stessi sei passi (🧩, generata con `output/grafici/genera_animazioni_lez05.py`):
 
 ![[anim-mvc-classico.svg]]
 *🧩 Animazione mia della figura di [[3-Architectural Patterns-complete.pdf#page=44]]: il pallino percorre i passi 1→6 in ordine e la didascalia sotto dice cosa succede; poi il ciclo riparte.*

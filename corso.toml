@@ -1,0 +1,47 @@
+# corso.toml — dati del corso e configurazione del sito di studio.
+#
+# Lo leggono gli script in output/ (crea_sito.py, crea_pdf.py, riferimenti_nei_titoli.py).
+# Le lezioni del sito si ricavano da sole da wiki/corso-completo.md (ogni "## Lezione N — titolo");
+# qui sotto si aggiungono solo i dati in più (descrizione breve, approfondimenti, esclusioni).
+
+[corso]
+nome = "Software Architecture Design"           # es. "Trasmissione dei Segnali Digitali"
+sigla = "sad"               # es. "tsd": nome della repo (wiki-tsd) e prefisso delle preferenze del sito
+descrizione = "LM Ingegneria Informatica, UNINA, DIETI, a.a. 2026/27, 6 CFU, prof.ssa Anna Rita Fasolino; esame: progetto di gruppo Agile e prova orale"   # es. "LM Ingegneria Informatica, UNINA, docente ..., esame orale"
+
+[sito]
+# Testo introduttivo dell'indice (Markdown, formule ammesse).
+intro = "Teoria del corso, lezione per lezione. Ogni pagina riporta solo ciò che c'è nelle slide, nell'ordine delle slide; sotto, a comparsa, le spiegazioni e gli esempi espansi."
+# Etichetta del primo elemento delle «briciole» (es. "Intercorso", "Esame", "Corso").
+briciola = "Corso"
+# Lezioni da pubblicare: "tutte", oppure un elenco di numeri (es. [3, 4, 5, 7] per un sito d'intercorso).
+lezioni = "tutte"
+# Righe in più nella legenda «Come si legge» dell'indice (Markdown), es. lezioni escluse e perché.
+note = ["La presentazione del corso e il progetto PICUS non sono teoria e non compaiono qui."]
+
+# Nome corto di ogni PDF, usato nei titoli quando una sezione cita più file (riferimenti_nei_titoli.py).
+# [pdf_corti]
+# "Campionamento_AD_DA.pdf" = "Campionamento"
+
+# ---------------------------------------------------------------------------------------------------------
+# Una voce [[lezioni]] per ogni lezione che ha dati in più. Tutti i campi tranne n sono facoltativi.
+#
+# [[lezioni]]
+# n = 3                                   # numero della lezione in corso-completo.md
+# breve = "Una riga che riassume la lezione (compare nella scheda dell'indice e sotto il titolo)."
+# titolo = ""                             # per sovrascrivere il titolo preso da corso-completo.md
+# inizio = ""                             # pubblica la lezione a partire da questo titolo (es. "### Limiti della quantizzazione uniforme")
+# sito = true                             # false = la lezione non compare sul sito
+# --- approfondimenti: SOLO se l'utente lo decide (di default il sito contiene solo il contenuto dei PDF) ---
+# concetti = ["quantizzazione-non-uniforme", "companding"]   # pagine wiki/concetti/: spiegazione e dimostrazioni a comparsa
+# esercizi = []                                              # pagine wiki/esercizi/ (a comparsa)
+# fonte = "campionamento-conversione-ad-da"                  # pagina wiki/fonti/ da cui prendere le «Domande da esame»
+# domande = false                                            # true = mostra le domande da esame della fonte
+# domande_filtro = []                                        # tieni solo le domande che contengono una di queste parole
+#
+# Disegni SVG (output/sito_disegni.py, funzioni fig_<chiave>): vanno in fondo alla sezione indicata.
+# Anche questi SOLO su decisione dell'utente.
+# [[figure]]
+# lezione = 3
+# sezione = "Quantizzazione ottima: Lloyd-Max"   # inizio del titolo della sezione (senza i riferimenti ai PDF)
+# disegni = ["esempio"]

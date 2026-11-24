@@ -78,7 +78,7 @@ Fonti per riga: [[04_Agile_01.pdf#page=24]], [[04_Agile_01.pdf#page=25]], [[04_A
 *Figura di [[04_Agile_01.pdf#page=31]], infografica «Il grafico burndown Agile — visualizzazione del progresso dello sprint» (in italiano). Al centro il grafico: asse x giorni dello sprint (1–15), asse y Story Point rimanenti (0–80); linea tratteggiata del progresso ideale da 70 a 0; linea viola del progresso reale, a gradini, che risale intorno al giorno 8; linea blu dell'ambito a 70, con un picco al giorno 8 («modifica dell'ambito: aggiunta di Story Point»). Riquadri laterali: **valore del burndown** (identifica ritardi, gestisce le aspettative, mostra il progresso); **dati chiave** (story point di partenza, lavoro completato ogni giorno); **risposta al cambiamento** (mostra l'aggiunta di scope, permette una ri-pianificazione informata); **trasparenza** (condivide lo stato del progetto, allinea gli stakeholder).*
 
 ![[grafico-burndown-sprint.svg]]
-*🧩 Grafico mio con valori illustrativi costruiti sulla forma della figura di [[04_Agile_01.pdf#page=31]] (script `output/diagrammi/genera_grafici_lez06.py`): sprint di 15 giorni, 70 Story Point iniziali, 7 SP aggiunti al giorno 8.*
+*🧩 Grafico mio con valori illustrativi costruiti sulla forma della figura di [[04_Agile_01.pdf#page=31]] (script `output/grafici/genera_grafici_lez06.py`): sprint di 15 giorni, 70 Story Point iniziali, 7 SP aggiunti al giorno 8.*
 
 > 🧩 Elaborazione mia — come leggerlo:
 > - **pendenza della linea ideale**: $70\ \text{SP} / 14\ \text{intervalli} = 5\ \text{SP al giorno}$ (dal giorno 1 al giorno 15 ci sono 14 intervalli);

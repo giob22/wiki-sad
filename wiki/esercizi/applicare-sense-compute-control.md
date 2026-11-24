@@ -77,7 +77,7 @@ difficoltà: bassa
 
 🧩 Il Flight Control Computer ha due parti — *State estimation* e *Control logic* — quindi la figura è in realtà la **variante a quattro stadi**: Sensing → stima dello stato (contesto) → logica di controllo → attuazione.
 
-**Simulazione (🧩 elaborazione mia).** Per vedere cosa fa il ciclo di controllo, ho simulato la discesa con le unità della slide (piedi, secondi), con lo script `output/diagrammi/genera_animazioni_lez05.py`.
+**Simulazione (🧩 elaborazione mia).** Per vedere cosa fa il ciclo di controllo, ho simulato la discesa con le unità della slide (piedi, secondi), con lo script `output/grafici/genera_animazioni_lez05.py`.
 
 $$
 \begin{aligned}
