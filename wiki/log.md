@@ -114,19 +114,19 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - revisione di copertura totale: tutte le 60 pagine citate, tutte le 25 figure usate, 0 orfani, 0 link irrisolti, 0 duplicati in lezioni.md
 
 ## [2026-10-18] progetto | guida al progetto PICUS dai documenti in wiki/progetto/riferimenti
-- creata: [[guida-progetto-picus]] — un'unica pagina con tutto il contenuto di 00-Presentazione Progetto Picus.pdf (pp. 1–29), 01-PICUS_richieste_informali_del_committente (1).pdf (pp. 1–7, appendici A e B) e AGENTS.md (§1–10), con tabella di copertura pagina → sezione
+- creata: `guida-progetto-picus` — un'unica pagina con tutto il contenuto di 00-Presentazione Progetto Picus.pdf (pp. 1–29), 01-PICUS_richieste_informali_del_committente (1).pdf (pp. 1–7, appendici A e B) e AGENTS.md (§1–10), con tabella di copertura pagina → sezione
 - figura: raw/assets/prog-picus-p12-piano-iterazioni.png (piano delle iterazioni, p. 12)
 - 🧩 aggiunti: diagramma dei flussi tra attori, gantt delle iterazioni, catena di tracciabilità, proposta di rotazione dei ruoli Scrum in un team di 8 e checklist della preparatoria
 - aggiornati: progetto-di-corso (rimando), index, lezioni.md (Lezione 0, voce 5)
 
 ## [2026-10-18] progetto | A2 Stakeholder e contesto (issue S1-01)
-- creata: [[a2-stakeholder-e-contesto]] — stakeholder SH-01…08, tabella stakeholder/utenti/sistemi esterni, confini, 14 flussi IF-xx, Context Diagram CTX-01 (Mermaid), ipotesi IP-01…05, domande Q-01/05/08/09/10/11, verifica dei 7 criteri dell'issue
+- creata: `a2-stakeholder-e-contesto` — stakeholder SH-01…08, tabella stakeholder/utenti/sistemi esterni, confini, 14 flussi IF-xx, Context Diagram CTX-01 (Mermaid), ipotesi IP-01…05, domande Q-01/05/08/09/10/11, verifica dei 7 criteri dell'issue
 - fonte della bozza: Documentazione_SAD_2026.pdf del team (v0.2); differenze elencate nella pagina
 - aggiornati: guida-progetto-picus (attività 1), index, lezioni.md (Lezione 0, voce 6)
 - esportato: output/A2-stakeholder-e-contesto.docx (5 pagine, modificabile) con il diagramma CTX-01 in PNG; script genera_docx_a2.py e genera_context_diagram_a2.py in output/
 
 ## [2026-10-18] progetto | burndown dello sprint sul GitHub Project
-- creata: [[burndown-github-project]] — come calcolare e mostrare il burndown pesato con le taglie; adattamenti al project Progetto-SAD (Iteration, Status, Workflows, durata 21 giorni di S1)
+- creata: `burndown-github-project` — come calcolare e mostrare il burndown pesato con le taglie; adattamenti al project Progetto-SAD (Iteration, Status, Workflows, durata 21 giorni di S1)
 - script in output/burndown/: burndown.py (solo libreria standard, `--demo` senza API), burndown.yml (workflow schedulato, pubblica sul branch burndown-data), esempio-burndown-demo.svg
 - non testato su un project reale: verificati solo calcolo e grafico con dati finti
 - aggiornati: lezioni.md (Lezione 0, voce 7), index, guida-progetto-picus
@@ -141,7 +141,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - burndown.py: i task aggiunti al project nel primo giorno dello sprint contano come scope iniziale (prima comparivano come salita da 0 a inizio sprint); testato con 10 task aggiunti la sera del primo giorno
 
 ## [2026-10-19] progetto | animazione della mascotte del team
-- creata: [[mascotte-pinguino]] — animazione dalla tavola di 25 frame (ritaglio, allineamento a terra, intermedi con flusso ottico su un solo frame, ritmo e pose tenute), versione fedele ai 25 disegni, 5 gesti extra (salto di gioia, martellata ripetuta, dondolio, respiro, annuisce)
+- creata: `mascotte-pinguino` — animazione dalla tavola di 25 frame (ritaglio, allineamento a terra, intermedi con flusso ottico su un solo frame, ritmo e pose tenute), versione fedele ai 25 disegni, 5 gesti extra (salto di gioia, martellata ripetuta, dondolio, respiro, annuisce)
 - file in output/pinguino/: WebP animati (2×) e GIF (1,5×) delle due animazioni principali, WebP dei gesti, anteprima dei frame allineati, tavola sorgente, script genera_animazione_pinguino.py (~20 MB)
 - verificato: numero di fotogrammi e durate dei file riaperti, fogli di anteprima di tutti i fotogrammi; non guardata in riproduzione
 - limiti: nessuna posa nuova disegnata (i gesti extra sono movimenti delle pose esistenti)
@@ -151,12 +151,12 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - script: nuove opzioni --costruzione e --anteprima, variabile PINGUINO_SC; eliminati i file della versione estesa
 
 ## [2026-10-20] progetto | domande da porre al direttore del Banco
-- creata: [[domande-al-committente]] — 18 domande in due livelli di priorità (10 alte, 8 medie), ciascuna con perché serve, ipotesi provvisoria e fonte; Q-01…Q-08 allineate al Word, Q-09…Q-11 da A2, Q-12…Q-19 nuove; documenti da chiedere e traccia per condurre l'incontro
+- creata: `domande-al-committente` — 18 domande in due livelli di priorità (10 alte, 8 medie), ciascuna con perché serve, ipotesi provvisoria e fonte; Q-01…Q-08 allineate al Word, Q-09…Q-11 da A2, Q-12…Q-19 nuove; documenti da chiedere e traccia per condurre l'incontro
 - aggiornati: guida-progetto-picus (attività 8), index, lezioni.md (Lezione 0, voce 9)
 
 ## [2026-10-21] progetto | aggiornamento di A2 dopo il confronto con lo stakeholder
-- nuova fonte: BA.pdf copiato in wiki/progetto/riferimenti/ e riassunto in [[incontro-stakeholder-ba]] (400–450 OPT, 200 comuni, 230.000 utenti, flusso OPT → Banco → OPT, niente broadcast, richieste in ordine di arrivo, un'email per OPT, operatori delle OPT non utenti, CSV per le credenziali)
-- A2 riscritta in versione snella (una sola tabella, Definition of Done di S1-01, riferimenti a Scrum): [[a2-stakeholder-e-contesto]] e output/A2-stakeholder-e-contesto.docx (4 pagine, diagramma del gruppo in pagina orizzontale)
+- nuova fonte: BA.pdf copiato in wiki/progetto/riferimenti/ e riassunto in `incontro-stakeholder-ba` (400–450 OPT, 200 comuni, 230.000 utenti, flusso OPT → Banco → OPT, niente broadcast, richieste in ordine di arrivo, un'email per OPT, operatori delle OPT non utenti, CSV per le credenziali)
+- A2 riscritta in versione snella (una sola tabella, Definition of Done di S1-01, riferimenti a Scrum): `a2-stakeholder-e-contesto` e output/A2-stakeholder-e-contesto.docx (4 pagine, diagramma del gruppo in pagina orizzontale)
 - il Documentazione_SAD_2026.pdf della repo risulta identico alla bozza precedente (A2 non ancora aggiornato nel Word)
 - domande-al-committente: aggiunta la sezione «cosa ha già risposto lo stakeholder» (Q-01 risolta, Q-09 quasi, Q-08 in gran parte) e le nuove Q-20 e Q-21
 - eliminati i file della versione precedente del Context Diagram (diagramma e script) perché sostituiti dal diagramma del gruppo
@@ -171,22 +171,22 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - aggiornati: lezioni.md (Lezione 7), avanzamento-studio (link di J4), glossario (+29 termini), index, overview
 
 ## [2026-10-24] progetto | epic dalla trascrizione della lezione sul progetto
-- fonte: trascrizione automatica «primaParteLezione» copiata in wiki/progetto/riferimenti/ ([[trascrizione-lezione-progetto-1]]), con i cinque blocchi T1–T5 e i loro orari
-- creata: [[epic-da-lezione-progetto]] — 7 epic candidate (EP-01…EP-07: accesso e ruoli, catalogo e offerta delle OPT, richiesta di misura, ricerca dell'erogatore e assegnazione, appuntamenti, comunicazioni, monitoraggio trimestrale), diagramma dei casi d'uso costruito in aula, 34 semi di storie, cosa è fissato/da validare/aperto, quattro contraddizioni con le fonti già nel wiki, nove dubbi DL-1…DL-9 collegati alle domande Q-xx
+- fonte: trascrizione automatica «primaParteLezione» copiata in wiki/progetto/riferimenti/ (`trascrizione-lezione-progetto-1`), con i cinque blocchi T1–T5 e i loro orari
+- creata: `epic-da-lezione-progetto` — 7 epic candidate (EP-01…EP-07: accesso e ruoli, catalogo e offerta delle OPT, richiesta di misura, ricerca dell'erogatore e assegnazione, appuntamenti, comunicazioni, monitoraggio trimestrale), diagramma dei casi d'uso costruito in aula, 34 semi di storie, cosa è fissato/da validare/aperto, quattro contraddizioni con le fonti già nel wiki, nove dubbi DL-1…DL-9 collegati alle domande Q-xx
 - non ricostruito (❓): ordine di ricerca dell'erogatore, chi riceve la richiesta di appuntamento, registrazione e scheda degli operatori esterni, dati quantitativi delle OPT; la lavagna del diagramma non è nella trascrizione (ricostruito in Mermaid)
 - aggiornati: lezioni.md (Lezione 0, voce 11), index, guida-progetto-picus (attività 4)
 
 ## [2026-10-24] progetto | epic riconciliate con il diagramma dei casi d'uso della docente
 - nuova fonte: PICUS-casi-d-uso.pdf (diagramma della docente, 24/10/2026) copiato in wiki/progetto/riferimenti/; figura `prog-picus-casi-d-uso-p1.png` in raw/assets
-- confronto in [[epic-da-lezione-progetto]] § 2: i dieci casi d'uso trovano tutti posto nelle sette epic; quattro attori (OPT, Banco, Operatore Interno al Banco, Operatore Esterno), gli operatori delle OPT non compaiono
+- confronto in `epic-da-lezione-progetto` § 2: i dieci casi d'uso trovano tutti posto nelle sette epic; quattro attori (OPT, Banco, Operatore Interno al Banco, Operatore Esterno), gli operatori delle OPT non compaiono
 - fusione: EP-05 ridefinita «Risposta degli erogatori e appuntamenti» (include «Accettare Richiesta Ricevuta», spostato da EP-03); EP-07 con operatori interni ed esterni; esclusione dei dati quantitativi e del profilo OPT confermata; DL-1…DL-9 con stato (DL-2 e DL-3 risolti, DL-1 in parte, DL-4/5/6/8 aperti); sette lacune del diagramma elencate
-- creata: [[epic-per-github]] — le sette epic nei sei campi del template `epic.yml` del repository Progetto-SAD (letto da origin/main: Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints), in inglese, con marcatori [Agreed]/[Proposal]/[Open]
+- creata: `epic-per-github` — le sette epic nei sei campi del template `epic.yml` del repository Progetto-SAD (letto da origin/main: Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints), in inglese, con marcatori [Agreed]/[Proposal]/[Open]
 - aggiornati: lezioni.md (Lezione 0, voce 12), index
 - le issue non sono state create su GitHub
 
 
 ## [2026-10-24] progetto | epic tradotte in italiano
-- [[epic-per-github]]: i testi dei campi del template (Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints) e i titoli delle sette issue sono ora in italiano; etichette del modulo invariate; marcatori [Concordato]/[Proposta]/[Aperto]; la versione inglese resta nella cronologia di Git
+- `epic-per-github`: i testi dei campi del template (Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints) e i titoli delle sette issue sono ora in italiano; etichette del modulo invariate; marcatori [Concordato]/[Proposta]/[Aperto]; la versione inglese resta nella cronologia di Git
 
 ## [2026-11-24] ingest | Architectural Styles (05_Architectural_Styles_Complete.pdf) | pagine coperte: 1–157
 - Lezione 8 aggiunta a `corso-completo.md` (stili, con 43 figure in `raw/assets/lez08-stili-*`) e a `corso.toml`.

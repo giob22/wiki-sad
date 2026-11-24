@@ -1,0 +1,52 @@
+# Ricostruisce il sito di studio (output/crea_sito.py) e lo pubblica su GitHub Pages a ogni push su main.
+# Una tantum, nella repo del corso:  gh api -X POST repos/<owner>/<repo>/pages -f build_type=workflow
+# (sul piano Free di GitHub, Pages funziona solo con repo pubbliche). Nella repo del template non parte.
+name: Sito di studio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "wiki/**"
+      - "raw/assets/**"
+      - "raw/scripts/**"
+      - "output/**"
+      - "corso.toml"
+      - "requirements.txt"
+      - ".github/workflows/sito.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python output/crea_sito.py _site
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

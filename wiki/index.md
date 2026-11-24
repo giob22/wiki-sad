@@ -127,21 +127,12 @@
 
 ## Progetto
 - [[progetto-di-corso]] — organizzazione, iterazioni, calendario, valutazione; decisioni: nessuna ancora
-- [[incontro-stakeholder-ba]] — appunti del primo confronto con lo stakeholder (BA.pdf): cosa è emerso e cosa cambia
-- [[domande-al-committente]] — domande da porre al direttore del Banco (Open Questions Log), in ordine di priorità, con ipotesi e documenti da chiedere
-- [[a2-stakeholder-e-contesto]] — capitolo A2 (issue S1-01): stakeholder, utenti e sistemi esterni, flussi, Context Diagram CTX-01, ipotesi e domande
-- [[mascotte-pinguino]] — animazione fluida della mascotte del team (25 frame → 77 fotogrammi), gesti extra e script per rigenerarla
-- [[burndown-github-project]] — burndown dello sprint sul GitHub Project del team, pesato con le taglie; script e workflow
-- [[epic-da-lezione-progetto]] — sette epic candidate (attività 4) dalla trascrizione della lezione sul progetto, con semi di storie, dubbi DL-1…DL-9 e contraddizioni con le fonti; fonte: [[trascrizione-lezione-progetto-1]]
-- [[epic-per-github]] — le epic nei campi del template GitHub (testi pronti da incollare), riconciliate con il diagramma dei casi d'uso della docente ([[PICUS-casi-d-uso.pdf]])
-- [[guida-progetto-picus]] — guida completa al progetto d'esame PICUS (presentazione, desiderata del committente, AGENTS.md del team, iterazione preparatoria, ruoli Scrum in 8)
 
 ## Esame
 _nessun materiale ancora — lancia `prepara esame`_
 
 ## Asset
 Figure in `raw/assets/`: 2 dalla presentazione (`lez00-intro-pN-*.png`), 24 da 01-IntroductionOnSoftwareArchitecture (`lez01-intro-pN-*.png`), 10 dalla parte 2 (`lez01b-qa-pN-*.png`; N = pagina del PDF, non numero di slide).
-Progetto: 1 figura `prog-picus-p12-piano-iterazioni.png` (p. 12 di 00-Presentazione Progetto Picus.pdf).
 Lez. 2: 13 figure `lez02-av-pN-*.png`; Lez. 3: 14 figure `lez03-mo-pN-*.png`; Lez. 4: 20 figure `lez04-ap-pN-*.png`; Lez. 5: 32 figure `lez05-ap-pN-*.png` (N = pagina di 3-Architectural Patterns-complete.pdf).
 Animazioni SVG e grafico della Lez. 5 in `output/grafici/` (script [[genera_animazioni_lez05.py]]): [[anim-mvc-classico.svg]], [[anim-spring-mvc-richiesta.svg]], [[anim-sense-compute-control.svg]], [[grafico-lunar-lander-controllo.svg]].
 Lez. 6: 25 figure `lez06-ag-pN-*.png`; animazione [[anim-ciclo-iterazione-agile.svg]] e grafico [[grafico-burndown-sprint.svg]] (script [[genera_grafici_lez06.py]]).

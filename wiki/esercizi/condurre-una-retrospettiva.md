@@ -49,7 +49,7 @@ Quando: alla **fine di ogni Sprint**, dopo la Sprint Review, con PO, Scrum Maste
 3. formula **un'azione per lo sprint successivo**, con numero o data («limite di due storie in corso», «refinement ogni martedì»);
 4. controlla che l'azione sia **verificabile** alla retrospettiva successiva.
 
-> 🧩 Elaborazione mia — questo caso va svolto **in modo personale**: l'esame valuta il contributo individuale e la capacità di giustificare le scelte ([[00_IntroduzioneAlCorso_SAD.pdf#page=29]]). Nel progetto di corso la retrospettiva segue ogni review e deve produrre **1–3 azioni** ([[guida-progetto-picus]]); questa tabella è un buon modello per annotarle.
+> 🧩 Elaborazione mia — questo caso va svolto **in modo personale**: l'esame valuta il contributo individuale e la capacità di giustificare le scelte ([[00_IntroduzioneAlCorso_SAD.pdf#page=29]]). Nel progetto di corso la retrospettiva segue ogni review e deve produrre **1–3 azioni**; questa tabella è un buon modello per annotarle.
 
 ## Trappole
 

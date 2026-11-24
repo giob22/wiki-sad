@@ -25,7 +25,7 @@ Scrum, in senso stretto, è **solo una successione di Sprint**; il ciclo di vita
 ![[lez07-ag2-p20-ciclo-di-vita-progetto.png]]
 *Figura di [[04_Agile_02.pdf#page=20]]. Una freccia curva «Next Release» attraversa otto cerchi a freccia (otto Sprint). Sotto, una barra divisa in tre tratti: **Inception** («Envision and plan», cioè immaginare e pianificare) sul primo cerchio, **Construction** («Incrementally build a consumable solution», costruire per incrementi una soluzione utilizzabile) sui cerchi centrali, **Transition** («Release solution», rilasciare la soluzione) sugli ultimi. Il messaggio: tutti i cerchi sono Sprint, ma non tutti hanno lo stesso scopo; la maggior parte del lavoro è costruzione, con un inizio di preparazione e una fine di rilascio.*
 
-> 🧩 Elaborazione mia — perché le tre fasi sono compatibili con «Scrum = solo Sprint»: la preparazione e la chiusura sono comunque eseguite in iterazioni a durata fissa (nel progetto di corso la prima iterazione è proprio quella *preparatoria* di 3 settimane, [[guida-progetto-picus]]). Inoltre l'inception comprende **la progettazione dell'architettura**: è il punto in cui questo corso incontra Scrum (→ [[attribute-driven-design]], [[buone-pratiche-architetturali]]).
+> 🧩 Elaborazione mia — perché le tre fasi sono compatibili con «Scrum = solo Sprint»: la preparazione e la chiusura sono comunque eseguite in iterazioni a durata fissa (nel progetto di corso la prima iterazione è proprio quella *preparatoria* di 3 settimane). Inoltre l'inception comprende **la progettazione dell'architettura**: è il punto in cui questo corso incontra Scrum (→ [[attribute-driven-design]], [[buone-pratiche-architetturali]]).
 
 > 💡 Connessione: il ciclo inception → costruzione → transizione richiama le fasi dell'Unified Process (ideazione, elaborazione, costruzione, transizione) previste dal programma ([[Programma Syllabus]]); la slide non fa il confronto, e UP non è ancora stato ingerito.
 
@@ -62,7 +62,7 @@ Nell'inception si forma il team. Un **Scrum Team deve essere cross-funzionale**:
 
 **Chi fa il Product Owner?** Lo si sceglie tra: il **cliente**; un **Business Analyst**; un **Product Manager**; un **istruttore** (nel vostro laboratorio); un **senior developer con profonda conoscenza del dominio**. Il PO **comprende i bisogni degli stakeholder, decide le priorità, mantiene il Product Backlog e massimizza il valore del prodotto**.
 
-> 🧩 Elaborazione mia — «tutte le competenze necessarie» significa che il team non dipende da altri per completare una storia: un team di soli programmatori non potrebbe portare a «fatto» una storia che richiede test, database e deployment (cfr. la Definition of Done in [[product-backlog-e-sprint-backlog]]). Il caso PICUS: il PO ruota tra i membri del gruppo a ogni iterazione ([[guida-progetto-picus]]), mentre la slide elenca figure che di solito stanno fuori dal team; la rotazione è una scelta didattica del corso, non una pratica di Scrum.
+> 🧩 Elaborazione mia — «tutte le competenze necessarie» significa che il team non dipende da altri per completare una storia: un team di soli programmatori non potrebbe portare a «fatto» una storia che richiede test, database e deployment (cfr. la Definition of Done in [[product-backlog-e-sprint-backlog]]). Nel progetto di corso il PO ruota tra i membri del gruppo a ogni iterazione, mentre la slide elenca figure che di solito stanno fuori dal team: la rotazione è una scelta didattica del corso, non una pratica di Scrum.
 
 ## Perché importa
 

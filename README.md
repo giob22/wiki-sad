@@ -11,7 +11,6 @@ Struttura derivata dal template `giob22/wiki-template`.
 | `raw/` | PDF delle lezioni (una sola versione, la più completa), figure estratte in `raw/assets/` |
 | `wiki/corso-completo.md` | testo di studio: tutte le lezioni, solo teoria, solo contenuto delle slide; **sorgente del sito** |
 | `wiki/` | indice, log, panoramica, lezioni, glossario, avanzamento; pagine concetto / entità / fonte / esercizio |
-| `wiki/progetto/` e `progetto/` | il progetto PICUS (pagine e file): **non è teoria**, non va sul sito |
 | `corso.toml` | dati del corso e configurazione del sito |
 | `output/` | script del sito (`crea_sito.py`), PDF di studio, controlli, animazioni e grafici |
 

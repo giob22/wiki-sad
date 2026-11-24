@@ -15,15 +15,7 @@ Regola: 1 PDF = 1 lezione, salvo diversa indicazione. Glossario dei termini ingl
 2. *Perché conta l'architettura, stili e qualità* (pp. 4–11) — si legge nella Lezione 1: pagine «architettura software», «layered», «microservices».
 3. [[overview]] — pp. 12, 15–17, 30: obiettivi formativi, **programma** del corso e stato di copertura, dati del corso.
 4. [[progetto-di-corso]] — pp. 18–29: metodi didattici, progetto di classe, iterazioni, Scrum, tecnologie, calendario, **valutazione d'esame**.
-5. [[guida-progetto-picus]] — **progetto d'esame PICUS**, dai documenti in `wiki/progetto/riferimenti/`: presentazione PICUS pp. 1–29, richieste informali del committente pp. 1–7, AGENTS.md del team §1–10. Cosa fare, calendario delle iterazioni, dominio e desiderata, attività e deliverable dell'iterazione preparatoria, decisioni del team, come lavorare in 8 ruotando i ruoli Scrum.
-6. [[a2-stakeholder-e-contesto]] — **attività 1 del progetto** (presentazione PICUS p. 18, richieste §2–3): analisi degli stakeholder, confini del sistema, flussi, Context Diagram (nota del gruppo: [[Context Diagram]]), ipotesi e domande aperte.
-7. [[burndown-github-project]] — **strumento per il progetto**: burndown dello sprint sul GitHub Project pesato con le taglie dei task (richiama il burndown chart della Lezione 6, pagina «cerimonie e artefatti Agile»).
-8. [[mascotte-pinguino]] — **materiale del team**: animazione della mascotte (pinguino con elmetto e fragola) dalla tavola di 25 frame, con gesti extra.
-9. [[domande-al-committente]] — **attività 8 del progetto** (presentazione PICUS p. 25, richieste §8–9): le domande più rilevanti da porre al direttore del Banco, in ordine di priorità.
-10. [[incontro-stakeholder-ba]] — **fonte del progetto**: appunti del primo confronto con lo stakeholder (400–450 OPT, flusso OPT → Banco → OPT, comunicazioni con conferma, operatori delle OPT non utenti).
-11. [[epic-da-lezione-progetto]] — **attività 4 del progetto** (presentazione PICUS p. 21): sette epic candidate ricavate dalla trascrizione della lezione sul progetto ([[trascrizione-lezione-progetto-1]]), con semi di user story, punti aperti e contraddizioni con le fonti.
-12. [[epic-per-github]] — le stesse sette epic nei campi del template GitHub del repository (testi in italiano pronti da incollare), riconciliate con il diagramma dei casi d'uso della docente.
-13. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
+5. [[software-architecture-in-practice]] — pp. 34–35: testi del corso (è anche il libro della Lezione 1).
 
 Ordine consigliato: quello delle slide.
 

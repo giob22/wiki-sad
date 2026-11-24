@@ -33,9 +33,7 @@ wiki-sad/
 │   ├── entità/            ← pagine entità (stili, pattern, tattiche, standard, strumenti, framework, linguaggi...)
 │   ├── fonti/             ← un sommario per ogni fonte raw ingestita
 │   ├── esercizi/          ← esercizi di progettazione svolti e metodi ricorrenti
-│   ├── progetto/          ← progetto di corso (pagine): scelte architetturali collegate ai concetti. NON è teoria: non va sul sito
 │   └── esame/             ← materiale preparazione esame
-├── progetto/              ← file e script del progetto PICUS (burndown, mascotte, Word, diagrammi del team)
 ├── output/
 │   ├── crea_sito.py       ← sito di studio: legge corso-completo.md e corso.toml → _site/
 │   ├── sito_disegni.py    ← disegni SVG del sito (solo su decisione dell'utente)
@@ -85,7 +83,7 @@ LM Ingegneria Informatica (Master's Degree in Computer Engineering), UNINA — D
 
 Regole:
 - **Un solo link per pagina in tutto `lezioni.md`**: l'utente, quando apre una pagina, la legge tutta. Una pagina che riguarda più lezioni si linka nella lezione in cui si legge; nelle altre si cita in testo semplice («si legge nella Lezione N»). Niente elenchi pagina-per-pagina del PDF con link ripetuti: la corrispondenza slide → pagina sta nelle pagine `fonti/`.
-- **Ogni** pagina in `concetti/`, `entità/`, `esercizi/`, `fonti/`, `progetto/` deve essere raggiungibile da `lezioni.md`; se una pagina nasce da una query o da un esercizio non legato a una lezione, va comunque aggiunta alla lezione più pertinente.
+- **Ogni** pagina in `concetti/`, `entità/`, `esercizi/`, `fonti/` deve essere raggiungibile da `lezioni.md`; se una pagina nasce da una query o da un esercizio non legato a una lezione, va comunque aggiunta alla lezione più pertinente.
 
 **Avanzamento dello studio:** `wiki/avanzamento-studio.md` è la check-list degli argomenti del **programma ufficiale** `raw/Programma Syllabus.md` (più dettagliato del programma delle slide, [[00_IntroduzioneAlCorso_SAD.pdf#page=15]]–[[00_IntroduzioneAlCorso_SAD.pdf#page=17]]; gli argomenti delle slide assenti dal programma ufficiale stanno in una sezione a parte). Ogni argomento ha tre caselle: **da fare** · **studiato** · **consolidato**.
 - **Io spunto solo «da fare»**: la spunto quando un PDF ingerito tratta l'argomento (non per semplici cenni) e aggiungo accanto la lezione e i link alle pagine wiki che lo coprono. Anche in questo file ogni pagina wiki si linka una sola volta.
@@ -141,17 +139,6 @@ Esercizi tipici del corso: scrivere scenari di qualità, scegliere stile/pattern
 
 ---
 
-### PROGETTO — `progetto [argomento]` o `annota decisione [...]`
-
-Il progetto di corso (sistema comune sviluppato a team, con iterazioni Scrum di 2 settimane, [[00_IntroduzioneAlCorso_SAD.pdf#page=23]]–[[00_IntroduzioneAlCorso_SAD.pdf#page=27]]) vive nel suo repository GitHub; qui si annota solo il **collegamento tra le scelte del progetto e i concetti del corso**, che serve all'orale.
-
-1. Chiedi all'utente il contesto (sottosistema del team, requisito, alternativa scartata) — non inventare dettagli del progetto
-2. Salva in `wiki/progetto/[nome-decisione].md` nel formato *Decisione architetturale* (sotto)
-3. Linka i concetti/entità del corso che giustificano la scelta, aggiorna `wiki/progetto/` in `wiki/index.md` e aggiungi la decisione in `wiki/lezioni.md` sotto la lezione del concetto principale
-4. Appendi a `wiki/log.md`: `## [YYYY-MM-DD] progetto | [decisione]`
-
----
-
 ### ESAME — `esame` o `prepara esame`
 
 1. Leggi **tutto** il wiki
@@ -159,8 +146,7 @@ Il progetto di corso (sistema comune sviluppato a team, con iterazioni Scrum di 
 3. Genera `wiki/esame/riepilogo-rapido.md` — punti più importanti in forma compressa
 4. Genera `wiki/esame/confronto-stili.md` — tabella stili/pattern × attributi di qualità favoriti/penalizzati, con fonte per ogni cella
 5. Genera `wiki/esame/mappa-concetti.md` — connessioni tra concetti del corso
-6. Genera `wiki/esame/difesa-progetto.md` — per ogni decisione in `wiki/progetto/`, la domanda probabile e la giustificazione con i concetti del corso
-7. Segnala esplicitamente gap di copertura (argomenti del programma senza pagine wiki)
+6. Segnala esplicitamente gap di copertura (argomenti del programma senza pagine wiki)
 
 ---
 
@@ -179,7 +165,7 @@ Scorri tutto il wiki e riporta:
 - Contraddizioni tra pagine
 - Pagine orfane (nessun link in entrata): **non ne è ammessa nessuna**, nemmeno `index`, `log`, `CLAUDE.md`, i PDF in `raw/` o le immagini in `raw/assets/` — ogni nuova pagina va linkata almeno da `index.md` e da una pagina correlata
 - Link irrisolti (`[[...]]` verso file inesistenti), esclusi gli esempi dentro blocchi di codice
-- Pagine di `concetti/`, `entità/`, `esercizi/`, `fonti/`, `progetto/` **non raggiungibili da `lezioni.md`** (non linkate nel percorso di lettura di nessuna lezione) e link **ripetuti** dentro `lezioni.md`
+- Pagine di `concetti/`, `entità/`, `esercizi/`, `fonti/` **non raggiungibili da `lezioni.md`** (non linkate nel percorso di lettura di nessuna lezione) e link **ripetuti** dentro `lezioni.md`
 - Argomenti già trattati nelle lezioni ingerite ma senza «da fare» spuntato in `avanzamento-studio.md`, o spuntati senza link alle pagine wiki
 - Concetti citati ma senza pagina propria
 - Link interni rotti
@@ -202,7 +188,7 @@ Scorri tutto il wiki e riporta:
 È il testo su cui l'utente studia e la **sorgente del sito**: un unico file, **schematico e senza ridondanze**, che contiene **tutta e sola la teoria**, cioè **ciò che sta nei PDF delle lezioni**, nell'ordine delle slide: definizioni, elenchi, tabelle, esempi, diagrammi (con una frase che dice cosa mostrano), codice.
 
 - Ogni lezione è una sezione `## Lezione N — titolo` (trattino lungo `—`), seguita da `*Fonte: file.pdf, pp. a–b.*` e dalle sottosezioni `###`/`####` nell'ordine delle slide
-- **Non è teoria**, quindi **non entra**: la Lezione 0 (presentazione del corso), il progetto PICUS (`wiki/progetto/`), gli esercizi svolti, le domande d'esame, le elaborazioni 🧩 e le fonti esterne 📚. Restano nelle loro pagine; la sezione può chiudere con `*Approfondimenti nel wiki: [[...]], [[...]]*`
+- **Non è teoria**, quindi **non entra**: la Lezione 0 (presentazione del corso), il progetto di corso, gli esercizi svolti, le domande d'esame, le elaborazioni 🧩 e le fonti esterne 📚. Restano nelle loro pagine; la sezione può chiudere con `*Approfondimenti nel wiki: [[...]], [[...]]*`
 - Un esempio o un diagramma delle slide si riporta con una riga che lo spiega (non si copia senza spiegazione); le spiegazioni lunghe stanno nelle pagine concetto
 - Ogni definizione compare una volta sola; i richiami tra lezioni sono una frase, non una ripetizione
 - I **riferimenti ai PDF stanno solo nei titoli** (`### Titolo · [[file.pdf#page=2|p. 2]], [[file.pdf#page=3|3]]`; pagine consecutive compattate `p. 2–6`); mai nel corpo. Le immagini si incorporano con `![[nome-in-raw-assets.png]]` seguito da una didascalia in corsivo
@@ -319,10 +305,6 @@ Sezioni obbligatorie:
 
 ---
 
-### Decisione architetturale — `wiki/progetto/[nome].md`
-
-```yaml
----
 tipo: decisione
 stato: proposta | accettata | superata
 data: YYYY-MM-DD

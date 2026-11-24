@@ -7,7 +7,7 @@ sprint: ""
 
 # Progetto di corso
 
-Pagina di riferimento sul progetto software della classe, da quanto detto nella presentazione del corso. Le decisioni architetturali del team andranno in pagine separate di questa cartella (formato ADR, vedi CLAUDE.md).
+Pagina di riferimento sul progetto software della classe, da quanto detto nella presentazione del corso. Le decisioni architetturali del team non sono tenute in questo wiki (formato ADR, vedi CLAUDE.md).
 
 ## Organizzazione
 
@@ -86,10 +86,10 @@ La Lez. 2 chiude con una tabella di **otto gruppi**, ognuno con un problema di d
 
 ## Decisioni architetturali
 
-_nessuna ancora in formato ADR. Il progetto assegnato è **PICUS**: tutto quello che serve sapere (desiderata, iterazioni, deliverable, scelte tecniche già fissate dal team in AGENTS.md) è in [[guida-progetto-picus]]. Usa `annota decisione [...]`._
+_Le decisioni di progetto non sono tracciate in questo wiki._
 
 _Aggiornato: 2026-09-26 — ingest 00_IntroduzioneAlCorso_SAD.pdf_
 _Aggiornato: 2026-09-30 — tabella dei gruppi di 02-Availability.pdf p. 23_
 _Aggiornato: 2026-10-06 — collegamento a Spring MVC_
 _Aggiornato: 2026-10-10 — metodo Agile nel progetto_
-_Aggiornato: 2026-10-18 — rimando alla guida del progetto PICUS_
+_Aggiornato: 2026-11-24 — pagina spostata tra i concetti; rimossi i rimandi ai materiali del progetto_

@@ -128,7 +128,7 @@ flowchart LR
 ```
 *🧩 Ricostruzione in Mermaid della figura di p. 69. La freccia tratteggiata finale (dalla retrospettiva di nuovo al backlog/planning) non è nel disegno: l'ho aggiunta perché a fine sprint ne comincia subito un altro ([[04_Agile_02.pdf#page=19]]).*
 
-> ❓ Nota sulla durata: la durata dello sprint è «un mese o meno» a p. 19, «2–4 settimane» nella figura di p. 25 e «1–4 settimane» nella figura di p. 69. Le slide non le conciliano; per il progetto di corso gli sprint durano 2 settimane (3 la preparatoria, [[guida-progetto-picus]]).
+> ❓ Nota sulla durata: la durata dello sprint è «un mese o meno» a p. 19, «2–4 settimane» nella figura di p. 25 e «1–4 settimane» nella figura di p. 69. Le slide non le conciliano; per il progetto di corso gli sprint durano 2 settimane (3 la preparatoria).
 
 ### «Ora usiamo Scrum nel nostro progetto!»
 
@@ -140,7 +140,6 @@ L'ultima slide è solo un titolo — «Now let's use Scrum in our project!» —
 
 Gli esempi del PDF su ruoli e sprint sono le figure di pp. 15–19 e 69, spiegate sopra. Un esempio di applicazione al progetto di corso:
 
-> 🧩 Elaborazione mia — nel progetto PICUS il gruppo lavora **in 8 ruotando i ruoli Scrum** e il PO cambia a ogni iterazione ([[guida-progetto-picus]]); con 8 persone totali il vincolo «massimo 10» è rispettato. Le date di review (5/11, 19/11, 3/12, 17/12) sono le chiusure degli sprint; l'iterazione preparatoria dura 3 settimane e le altre 2 ([[guida-progetto-picus]]), mentre la durata costante vale per le iterazioni di costruzione.
 
 ## Perché importa
 

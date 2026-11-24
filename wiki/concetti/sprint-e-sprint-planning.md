@@ -81,7 +81,7 @@ Gli esempi (insiemi di storie a p. 42, criteri di selezione a p. 45, tabella deg
 
 ## Perché importa
 
-Lo Sprint Planning è il punto in cui **backlog, stime, capacità e obiettivo** si incontrano: è dove un team Scrum decide che cosa promettere. Nel progetto di corso c'è un planning all'inizio di ogni iterazione (5/11, 19/11, 3/12) con obiettivo dello sprint e storie selezionate ([[guida-progetto-picus]]).
+Lo Sprint Planning è il punto in cui **backlog, stime, capacità e obiettivo** si incontrano: è dove un team Scrum decide che cosa promettere. Nel progetto di corso c'è un planning all'inizio di ogni iterazione (5/11, 19/11, 3/12) con obiettivo dello sprint e storie selezionate.
 
 > 🎯 Esame: cinque eventi; timebox; «il lavoro è una previsione, il timebox è fisso»; cos'è lo Sprint Goal e perché non basta «un insieme di storie»; chi partecipa al Planning e come si selezionano le storie.
 

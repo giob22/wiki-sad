@@ -115,7 +115,7 @@ Le figure di pp. 55, 58, 61 sono spiegate sopra; la tabella di p. 66 e l'eserciz
 
 ## Perché importa
 
-Sono i tre momenti di **ispezione e adattamento** quotidiano (Daily), di **prodotto** (Review) e di **processo** (Retrospective): senza di essi la trasparenza non produrrebbe adattamento ([[scrum]]). Nel progetto di corso la Sprint Review in aula alle date di review e la retrospettiva subito dopo sono richieste ([[guida-progetto-picus]]); l'esame valuta anche il contributo individuale e il metodo Agile ([[00_IntroduzioneAlCorso_SAD.pdf#page=29]]).
+Sono i tre momenti di **ispezione e adattamento** quotidiano (Daily), di **prodotto** (Review) e di **processo** (Retrospective): senza di essi la trasparenza non produrrebbe adattamento ([[scrum]]). Nel progetto di corso la Sprint Review in aula alle date di review e la retrospettiva subito dopo sono richieste; l'esame valuta anche il contributo individuale e il metodo Agile ([[00_IntroduzioneAlCorso_SAD.pdf#page=29]]).
 
 > 🎯 Esame: scopo, partecipanti, durata e output di ciascun evento; i miti sul Daily Scrum; «la Review non è una demo»; differenza Review/Retrospective (prodotto vs processo); le tre domande della retrospettiva e la regola delle 2–3 azioni.
 

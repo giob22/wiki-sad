@@ -128,7 +128,7 @@ Fonte della distinzione: [[04_Agile_02.pdf#page=51]], [[04_Agile_02.pdf#page=54]
 
 ## Perché importa
 
-È ciò che rende la pianificazione di Scrum **realistica senza promettere date**: la stima in punti è relativa, la velocity trasforma i punti in una previsione per sprint, la capacity la corregge. Nel progetto di corso le stime (taglie) delle issue alimentano il burndown dello sprint ([[burndown-github-project]]).
+È ciò che rende la pianificazione di Scrum **realistica senza promettere date**: la stima in punti è relativa, la velocity trasforma i punti in una previsione per sprint, la capacity la corregge. Nel progetto di corso le stime (taglie) delle issue alimentano il burndown dello sprint.
 
 > 🎯 Esame: cos'è uno Story Point e cosa combina; perché Fibonacci e non il tempo; chi stima e quando; definizione di velocity e quali storie contano; esempio di media; capacity e come cambia con le assenze; velocity vs capacity.
 

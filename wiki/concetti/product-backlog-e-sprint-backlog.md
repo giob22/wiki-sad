@@ -199,7 +199,7 @@ La slide di p. 37 è **vuota** (solo lo sfondo).
 
 ## Perché importa
 
-I backlog sono lo strumento per fare **trasparenza e adattamento** ([[scrum]]): il Product Backlog dice cosa e in che ordine; il refinement lo rende pronto; lo Sprint Backlog dice cosa si fa adesso. Nel progetto di corso il Product Backlog è sul GitHub Project e i task dello sprint sono issue stimate: il burndown è costruito su questi numeri ([[burndown-github-project]]).
+I backlog sono lo strumento per fare **trasparenza e adattamento** ([[scrum]]): il Product Backlog dice cosa e in che ordine; il refinement lo rende pronto; lo Sprint Backlog dice cosa si fa adesso. Nel progetto di corso il Product Backlog è sul GitHub Project e i task dello sprint sono issue stimate: il burndown è costruito su questi numeri.
 
 > 🎯 Esame: tre artefatti con definizioni; cosa contiene un Product Backlog (storie, bug, miglioramenti, debito tecnico, spike); refinement vs planning; quando una storia è «Ready»; cos'è un incremento potenzialmente rilasciabile e come lo definisce la DoD.
 
