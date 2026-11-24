@@ -87,6 +87,57 @@ Fonti per riga: [[04_Agile_01_bis.pdf#page=24]], [[04_Agile_01_bis.pdf#page=25]]
 > - **giorno 8**: l'ambito sale da 70 a 77 SP (linea blu) e il lavoro rimanente **risale** da 38 a 44 nonostante il team abbia lavorato: è il caso «aggiunta di task non pianificati» della slide. Senza la linea blu sembrerebbe che il team sia tornato indietro;
 > - chi usa questo grafico durante il **daily meeting** vede subito se l'obiettivo dello sprint è a rischio.
 
+## Definition of Done, demo e information radiator (slide pp. 62–80)
+
+> 📄 Fonte: [[04_Agile_01_bis.pdf#page=62]]–[[04_Agile_01_bis.pdf#page=80]] (slide aggiunte nella versione aggiornata del PDF)
+
+### Definition of Done (DoD)
+
+La **DoD** è la checklist **generale per tutte le storie** di ciò che significa «fatto»; i criteri di accettazione sono invece **specifici di ogni storia** ([[04_Agile_01_bis.pdf#page=50]]). Una storia passa a Done solo quando: i criteri di accettazione sono soddisfatti; il codice è stato rivisto; i test unitari e di integrazione sono passati; nessun bug critico è aperto; la documentazione tecnica è aggiornata; la funzionalità è distribuita nell'ambiente di test; il Product Owner ha verificato la storia ([[04_Agile_01_bis.pdf#page=63]]).
+
+| Prospettiva (p. 64) | Condizioni |
+|---|---|
+| Coding | codice completato; standard rispettati; code review |
+| Quality | test unitari e di integrazione passati; nessun bug bloccante |
+| Documentation | documentazione tecnica aggiornata; API documentate |
+| Deploy | build completata; deployment nell'ambiente di test |
+| Business | criteri di accettazione soddisfatti; approvazione del Product Owner |
+
+**Uso (p. 67):** guida il team durante tutto lo Sprint; alla Sprint Review è parte dell'Incremento **solo il lavoro che soddisfa la DoD**; nella Retrospective il team può rivederla e rafforzarla; il lavoro che non la soddisfa **non è Done e torna al Product Backlog**.
+
+> 🧩 Elaborazione mia: criteri di accettazione = «questa storia fa la cosa giusta»; DoD = «questa storia è fatta nel modo giusto». Una storia può soddisfare tutti i criteri ma non la DoD (ad es. senza code review): non è Done. Vedi anche [[criteri-di-accettazione-e-bdd]].
+
+### Iteration Demo — flusso, obiettivi, partecipanti
+
+Il flusso (p. 68): verifica della DoD → demo → feedback → rilascio oppure ritorno al backlog. **Obiettivi** (p. 69): dimostrare l'incremento, verificare i criteri di accettazione, raccogliere suggerimenti, determinare le priorità del Product Backlog, valutare se il prodotto è pronto per il rilascio. **Scopo** (p. 70): non mostrare il lavoro del team ma **verificare il valore prodotto e raccogliere feedback**; partecipano Product Owner, Scrum Master, Development Team, stakeholder, utenti rappresentativi, sponsor. **Come** (p. 71): si presentano solo le storie completate (criteri + DoD), con **software funzionante dal vivo**, non slide.
+
+![[lez06-ag-p72-agenda-demo.png]]
+*Agenda della demo «Sprint Review — PayPal Checkout» ([[04_Agile_01_bis.pdf#page=72]]): introduzione (5 min, il PO ricorda lo Sprint Goal), dimostrazione (20–40 min: login, aggiunta al carrello, checkout, pagamento PayPal, conferma), feedback degli stakeholder, aggiornamento del backlog.*
+
+![[lez06-ag-p73-flusso-complessivo.png]]
+*Flusso complessivo ([[04_Agile_01_bis.pdf#page=73]]): Product Backlog → Iteration Planning → Iterazione (Iteration Backlog, Coordination Meeting) → Iteration Review (Demo) → Retrospective; il «Product feedback» torna al Product Backlog e i «Process improvements» alla pianificazione.*
+
+### Information radiator
+
+Strumenti visivi che rendono **lo stato del progetto visibile a colpo d'occhio** ([[04_Agile_01_bis.pdf#page=75]]): chiunque passi accanto alla lavagna o apra il dashboard capisce come procede il lavoro.
+
+| Strumento | A cosa serve | Quando usarlo (p. 79) |
+|---|---|---|
+| **Scrum Board** (p. 77) | il lavoro di **uno Sprint** (To Do / In Progress / Testing / Done) | lavoro pianificabile, team a Sprint, c'è un PO, nuove funzionalità (es. nuova applicazione) |
+| **Kanban Board** (p. 78) | l'**intero flusso** di lavoro, con **limiti di WIP** (work in progress) per non iniziare troppe cose senza finirle | richieste continue, Sprint difficili da pianificare, priorità che cambiano ogni giorno (Service Desk, DevOps, supporto, incident management) |
+| **Burndown chart** (p. 80) | avanzamento e discussione su ostacoli e adattamenti | durante lo Sprint |
+
+![[lez06-ag-p77-scrum-board.png]]
+*Scrum Board dello Sprint 4 ([[04_Agile_01_bis.pdf#page=77]]): colonne To Do / In Progress (max 3) / Testing / Done, post-it con le storie e i punti, definizione di Done, avanzamento 36 %.*
+
+![[lez06-ag-p78-kanban-board.png]]
+*Kanban Board ([[04_Agile_01_bis.pdf#page=78]]): Backlog → To Do (max 5) → In Progress (max 3) → In Review (max 2) → Done; regole: visualizzare il lavoro, limitare il WIP, massimizzare il flusso.*
+
+![[lez06-ag-p80-burndown-infografica.png]]
+*Infografica del burndown ([[04_Agile_01_bis.pdf#page=80]]): story point rimanenti sui giorni dello sprint, linea ideale e reale; valore (individuare ritardi, gestire aspettative, mostrare avanzamento), «inspect and adapt», trasparenza.*
+
+La slide conclusiva (p. 81): Agile favorisce adattabilità, collaborazione e miglioramento continuo. La DoD si ritrova poi nel framework Scrum ([[product-backlog-e-sprint-backlog]], [[daily-scrum-review-retrospective]]).
+
 ## Perché importa
 
 Sono gli strumenti del metodo Agile usato nel [[progetto-di-corso]]: sprint di 2 settimane con iteration review alla fine di ognuno ([[00_IntroduzioneAlCorso_SAD.pdf#page=26]]). L'esame valuta anche come il team ha applicato il metodo Agile ([[00_IntroduzioneAlCorso_SAD.pdf#page=28]]).
@@ -106,3 +157,4 @@ Sono gli strumenti del metodo Agile usato nel [[progetto-di-corso]]: sprint di 2
 
 _Aggiornato: 2026-10-10 — ingest 04_Agile_01_bis.pdf_
 _Aggiornato: 2026-10-22 — rinvii alla Lezione 7_
+_Aggiornato: 2026-11-24 — slide nuove di 04_Agile_01_bis.pdf (pp. 62–81)_

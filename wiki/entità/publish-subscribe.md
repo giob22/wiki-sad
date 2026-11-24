@@ -6,7 +6,7 @@ famiglia: "implicit invocation"
 
 # Publish-Subscribe
 
-> Presentato nella Lez. 3 come pattern per la modificabilità. Il programma lo tratterà anche come stile a invocazione implicita ([[Programma Syllabus]]) — TODO: da espandere.
+> Presentato nella Lez. 3 come pattern per la modificabilità. È trattato anche come stile a invocazione implicita nella Lezione 8 (sezione «Trattazione completa dello stile»; [[Programma Syllabus]]).
 
 ## Contesto e problema
 

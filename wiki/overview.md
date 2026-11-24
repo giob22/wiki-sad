@@ -18,7 +18,7 @@ Elenco lezioni e percorso di lettura → [[lezioni]] · Stato dello studio → [
 | Qualità | attributi osservabili a run-time (performance, security, availability, functionality, usability) e non osservabili (modifiability, portability, reusability, integrability, testability); scenari di qualità (cenni); antipattern architetturali | [[attributi-di-qualita]], [[scenari-di-qualita]], [[valutazione-attributi-di-qualita]], [[availability]], [[modifiability]] | availability (Lez. 2) e modifiability/portability (Lez. 3) trattati; gli altri attributi e gli antipattern da trattare |
 | Progettazione | principi; riuso dell'esperienza con pattern, stili e tattiche | [[pattern-architetturali]], [[attribute-driven-design]], [[buone-pratiche-architetturali]], [[progettazione-basata-sul-riuso]], [[dssa]], [[linee-di-prodotto-software]] | trattato (Lez. 1, Lez. 4: strategie e metodi, alternative di progetto, DSSA, linee di prodotto) |
 | Pattern architetturali | State-Logic-Display, Sense-Compute-Control, MVC, pattern per microservizi | [[state-logic-display]], [[architetture-multi-tier]], [[mvc]], [[spring-mvc]], [[sense-compute-control]] | State-Logic-Display e multi-tier (Lez. 4); MVC con Spring MVC e Sense–Compute–Control (Lez. 5); pattern per microservizi da trattare |
-| Stili architetturali | procedurale e OO; a livelli (macchine virtuali, client-server); data-flow; memoria condivisa; interprete; invocazione implicita (publish-subscribe, event-based); oggetti distribuiti; SOA; microservizi; RESTful | [[stili-architetturali]], [[main-program-e-subroutine]], [[object-oriented]], [[layered]], [[client-server]], [[batch-sequential]], [[pipe-and-filter]], [[repository]], [[blackboard]], [[rule-based]], [[interpreter]], [[mobile-code]], [[implicit-invocation]], [[event-based]], [[publish-subscribe]], [[peer-to-peer]], [[microservices]] | trattati nella Lez. 8 (procedurale, OO, layered, client-server, data-flow, memoria condivisa, interprete e mobile code, invocazione implicita, P2P); SOA e microservizi in Lez. 10 |
+| Stili architetturali | procedurale e OO; a livelli (macchine virtuali, client-server); data-flow; memoria condivisa; interprete; invocazione implicita (publish-subscribe, event-based); oggetti distribuiti; SOA; microservizi; RESTful | [[servizi-e-soa]], [[contratti-e-api-di-servizio]], [[stili-architetturali]], [[main-program-e-subroutine]], [[object-oriented]], [[layered]], [[client-server]], [[batch-sequential]], [[pipe-and-filter]], [[repository]], [[blackboard]], [[rule-based]], [[interpreter]], [[mobile-code]], [[implicit-invocation]], [[event-based]], [[publish-subscribe]], [[peer-to-peer]], [[microservices]] | trattati nella Lez. 8 (procedurale, OO, layered, client-server, data-flow, memoria condivisa, interprete e mobile code, invocazione implicita, P2P); SOA e REST in Lez. 10 (parte 1); oggetti distribuiti e microservizi in senso stretto da trattare |
 | Tattiche | availability, deployability, modifiability, energy efficiency, performance, security, safety, testability, usability | [[tattiche-architetturali]], [[tattiche-availability]], [[tattiche-modifiability]], [[pattern-modifiability]] | availability (Lez. 2) e modifiability (Lez. 3); prime tattiche di performance e security nella Lez. 1 |
 | Soluzioni architetturali | interfacce e stili di interazione; XML, JSON, binario; virtualizzazione e cloud | — | da trattare |
 | Documentazione | stili di documentazione delle viste; contesto, comportamento, decisioni, interfacce; ISO/IEC 42010 | — | da trattare |
@@ -45,14 +45,16 @@ La Lez. 7 completa il quadro con **Scrum** ([[scrum]]): fondato sull'empirismo e
 
 - Altri attributi di qualità: performance, security, functionality, usability, reusability, integrability, testability, deployability, energy efficiency, safety — TODO
 - Antipattern architetturali — TODO
-- Pattern per microservizi e stili architetturali (annunciati nelle conclusioni della Lez. 5 per le prossime lezioni) — TODO
-- Soluzioni architetturali (interfacce, REST, formati, cloud) — TODO
+- Pattern per microservizi (stili architetturali trattati nella Lez. 8; SOA nella Lez. 10) — TODO per i pattern dei microservizi in senso stretto
+- Soluzioni architetturali: interfacce, REST e cloud cenni trattati (Lez. 8–10); formati (XML, JSON, binario), virtualizzazione e container — TODO
 - Documentazione delle architetture (*Views and Beyond*, ISO/IEC 42010) — TODO
 - UP, TDD, refactoring, CI, SCM, DevOps — TODO (Agile e Scrum trattati nelle Lez. 6–7)
 - Architetture di nuova generazione — TODO
 - Stile di allocazione *work assignment*, viste di concorrenza — TODO (solo nominati nella Lez. 1)
 
 La Lez. 8 raccoglie gli **stili architetturali** ([[stili-architetturali]]): ogni stile è descritto da componenti, connettori, topologia, invarianti e attributi di qualità, e lo stesso esempio (Lunar Lander) è ridisegnato negli stili ([[lunar-lander-in-ogni-stile]]). Gli stili si dispongono su un asse di accoppiamento: dalle chiamate dirette ([[main-program-e-subroutine]], [[layered]], [[client-server]]) al flusso di dati ([[pipe-and-filter]]), ai dati condivisi ([[blackboard]]) e agli eventi ([[event-based]], [[publish-subscribe]]), fino alla decentralizzazione ([[peer-to-peer]]); più cresce il [[disaccoppiamento-dei-componenti]], più cala la leggibilità del flusso di controllo.
+
+La Lez. 9 passa dagli attributi di qualità alla **progettazione**: i requisiti architetturalmente significativi ([[requisiti-architetturalmente-significativi]]) diventano i driver del metodo [[attribute-driven-design]], che per iterazioni sceglie design concept (tattiche, pattern, architetture di riferimento), li istanzia in strutture e interfacce, registra le decisioni con la rationale e le analizza. La Lez. 10 applica lo stesso ragionamento ai **servizi**: [[servizi-e-soa]] (contratti, accoppiamento debole), [[contratti-e-api-di-servizio]] (REST, SOAP, OpenAPI, evoluzione), [[comunicazione-sincrona-e-asincrona]], [[intermediari-di-servizio]] (broker, gateway, ESB) e [[orchestrazione-e-coreografia]]; SOA e [[microservices]] si distinguono per confini e deployment, non per tecnologia.
 
 ## Fonti ingerite
 
@@ -65,3 +67,4 @@ _Aggiornato: 2026-10-06 — ingest della parte nuova di 3-Architectural Patterns
 _Aggiornato: 2026-10-10 — ingest di 04_Agile_01_bis.pdf_
 _Aggiornato: 2026-10-22 — ingest di 04_Agile_02.pdf (Scrum)_
 _Aggiornato: 2026-11-24 — ingest di 05_Architectural_Styles_Complete.pdf (stili)_
+_Aggiornato: 2026-11-24 — ingest di 06-ADD (Lez. 9) e 07— Service-Oriented (Lez. 10)_

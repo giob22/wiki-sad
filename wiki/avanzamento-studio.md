@@ -104,7 +104,7 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 
 ## C. Progettazione architetturale
 
-**C1. Principi di progettazione architetturale** — Lez. 1 (raccomandazioni, regole pratiche, ADD) → [[buone-pratiche-architetturali]], [[attribute-driven-design]]
+**C1. Principi di progettazione architetturale** — Lez. 1 (raccomandazioni, regole pratiche, ADD) e Lez. 9 (ASR e metodo ADD completo) → [[buone-pratiche-architetturali]], [[attribute-driven-design]], [[requisiti-architetturalmente-significativi]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato
@@ -183,18 +183,18 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 - [ ] studiato
 - [ ] consolidato
 
-**E10. Stile Service Oriented (SOA)**
+**E10. Stile Service Oriented (SOA)** — Lez. 10 → [[servizi-e-soa]], [[contratti-e-api-di-servizio]], [[comunicazione-sincrona-e-asincrona]], [[intermediari-di-servizio]], [[orchestrazione-e-coreografia]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**E11. Stile a microservizi** — cenni nelle Lez. 0–1; nella Lez. 10 solo il confronto con la SOA (la parte sui microservizi in senso stretto non è ancora tra le fonti) → [[microservices]]
 - [ ] da fare
 - [ ] studiato
 - [ ] consolidato
 
-**E11. Stile a microservizi** — cenni nelle Lez. 0–1 (pagina «microservices»)
-- [ ] da fare
-- [ ] studiato
-- [ ] consolidato
-
-**E12. Stile RESTful**
-- [ ] da fare
+**E12. Stile RESTful** — Lez. 10 (vincoli REST, risorse e metodi HTTP; confronto con SOAP) → [[contratti-e-api-di-servizio]]
+- [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
@@ -252,8 +252,8 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 
 ## G. Soluzioni architetturali
 
-**G1. Accesso alle risorse tramite interfacce; progettazione delle interfacce e stili di interazione**
-- [ ] da fare
+**G1. Accesso alle risorse tramite interfacce; progettazione delle interfacce e stili di interazione** — Lez. 9 (interfacce esterne e interne in ADD, pp. 27–29) e Lez. 10 (contratti, comandi/query/eventi, sincrono/asincrono, API HTTP e OpenAPI)
+- [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
@@ -419,6 +419,16 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 - [ ] consolidato
 
 **X7. Disaccoppiamento di spazio, tempo e sincronizzazione** *(aggiunto: Lez. 8 — non presente nel programma)* → [[disaccoppiamento-dei-componenti]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**X8. Requisiti architetturalmente significativi, Quality Attribute Workshop e utility tree** *(aggiunto: Lez. 9 — non presente nel programma ufficiale)* → [[requisiti-architetturalmente-significativi]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**X9. Definition of Done, demo dell'iterazione e information radiator** *(aggiunto: Lez. 6, slide nuove di 04_Agile_01_bis.pdf — non presenti nel programma)* → [[cerimonie-e-artefatti-agile]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato

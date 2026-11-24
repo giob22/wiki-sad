@@ -2,7 +2,7 @@
 tipo: fonte
 titolo: "Agile Project Management"
 file_raw: "04_Agile_01_bis.pdf"
-pagine: "1-60"
+pagine: "1-81"
 data_ingest: 2026-10-10
 formato: slide-pdf
 riferimento_libro: ""
@@ -31,6 +31,17 @@ Lezione della prof. Fasolino sulla gestione Agile dei progetti. Parte da un sond
 10. Dimensione ([[04_Agile_01_bis.pdf#page=40]], [[04_Agile_01_bis.pdf#page=41]]); epic e task ([[04_Agile_01_bis.pdf#page=42]]); INVEST ([[04_Agile_01_bis.pdf#page=43]], [[04_Agile_01_bis.pdf#page=44]]); PayPal ([[04_Agile_01_bis.pdf#page=45]]); revisione ([[04_Agile_01_bis.pdf#page=46]]); esercizio e soluzione ([[04_Agile_01_bis.pdf#page=47]], [[04_Agile_01_bis.pdf#page=48]]); stima rimandata ([[04_Agile_01_bis.pdf#page=49]]).
 11. Criteri di accettazione vs DoD ([[04_Agile_01_bis.pdf#page=50]]); criteri ([[04_Agile_01_bis.pdf#page=51]]); esempi ([[04_Agile_01_bis.pdf#page=52]]–[[04_Agile_01_bis.pdf#page=54]]).
 12. BDD e Gherkin ([[04_Agile_01_bis.pdf#page=55]]); dai criteri agli scenari ([[04_Agile_01_bis.pdf#page=57]]–[[04_Agile_01_bis.pdf#page=60]]); cosa abbiamo scoperto ([[04_Agile_01_bis.pdf#page=61]]).
+
+## Slide aggiunte nella versione aggiornata (pp. 62–81)
+
+| Pagine PDF | Argomento | Pagina wiki |
+|---|---|---|
+| 62–67 | Definition of Done: checklist, cinque prospettive, uso | [[cerimonie-e-artefatti-agile]] |
+| 68–74 | Iteration Demo: flusso, obiettivi, partecipanti, agenda, flusso complessivo | [[cerimonie-e-artefatti-agile]] |
+| 75–80 | Information radiator: Scrum Board, Kanban Board e WIP, quando usarli, burndown | [[cerimonie-e-artefatti-agile]] |
+| 81 | Conclusioni | — |
+
+La numerazione delle slide 53–61 è cambiata rispetto alla versione precedente del PDF (nuova slide Gherkin a p. 56): vedi i riferimenti in [[criteri-di-accettazione-e-bdd]].
 
 ## Concetti introdotti
 
@@ -61,3 +72,4 @@ Lezione della prof. Fasolino sulla gestione Agile dei progetti. Parte da un sond
 
 _Aggiornato: 2026-10-10 — ingest_
 _Aggiornato: 2026-10-22 — domande aperte risolte dalla Lezione 7_
+_Aggiornato: 2026-11-24 — slide nuove pp. 62–81_

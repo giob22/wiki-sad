@@ -11,10 +11,12 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | Agile | *Agile* (sviluppo agile) | [[sviluppo-agile]] | [[04_Agile_01_bis.pdf#page=5]] |
 | Agile Manifesto | Manifesto Agile | [[sviluppo-agile]] | [[04_Agile_01_bis.pdf#page=6]] |
 | allocation structure | struttura di allocazione | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=5]] |
+| API gateway | API gateway (punto d'ingresso alle API) | [[intermediari-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=39]] |
 | applicability scope | ambito di applicabilità | [[progettazione-basata-sul-riuso]] | [[3-Architectural Patterns-complete.pdf#page=9]] |
 | architectural driver | driver architetturale | [[attribute-driven-design]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=49]] |
 | architectural pattern | pattern architetturale | [[pattern-architetturali]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=47]] |
 | architectural style | stile architetturale | [[stili-architetturali]] | [[05_Architectural_Styles_Complete.pdf#page=2]] |
+| architecturally significant requirement (ASR) | requisito architetturalmente significativo | [[requisiti-architetturalmente-significativi]] | [[06-ADD-Designing a Software Architecture.pdf#page=3]] |
 | artifact (scenario) | artefatto | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=9]] |
 | «artifact» (UML) | file di qualsiasi tipo | [[uml]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=46]] |
 | Attribute-Driven Design (ADD) | progettazione guidata dagli attributi | [[attribute-driven-design]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=49]] |
@@ -26,9 +28,11 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | binding | legame, scelta di un valore/componente/servizio | [[tattiche-modifiability]] | [[03-Modifiability.pdf#page=23]] |
 | blackboard | *blackboard* (lavagna) | [[blackboard]] | [[05_Architectural_Styles_Complete.pdf#page=55]] |
 | bounded context | *bounded context* (contesto delimitato) | [[microservices]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=3]] |
+| breaking change | cambiamento incompatibile (di un contratto) | [[contratti-e-api-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=33]] |
 | burndown chart | grafico burndown | [[cerimonie-e-artefatti-agile]] | [[04_Agile_01_bis.pdf#page=31]] |
 | capacity | capacità (giorni-persona disponibili) | [[stima-story-points-velocity-capacity]] | [[04_Agile_02.pdf#page=54]] |
 | change impact analysis | analisi d'impatto delle modifiche | [[analisi-impatto-modifiche]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=17]] |
+| choreography | coreografia | [[orchestrazione-e-coreografia]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=44]] |
 | circuit breaker | *circuit breaker* (interruttore di circuito) | [[circuit-breaker]] | [[02-Availability.pdf#page=19]] |
 | closed layers architecture (CLA) | architettura a layer chiusi | [[layered]] | [[05_Architectural_Styles_Complete.pdf#page=21]] |
 | cloud computing | cloud computing | [[cloud-computing]] | [[05_Architectural_Styles_Complete.pdf#page=84]] |
@@ -42,6 +46,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | connector | connettore | [[strutture-componenti-e-connettori]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=25]] |
 | construction (fase Scrum) | costruzione | [[ciclo-di-vita-scrum]] | [[04_Agile_02.pdf#page=21]] |
 | context processing | elaborazione del contesto | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
+| contract test | test di contratto | [[contratti-e-api-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=33]] |
 | control loop | ciclo di controllo | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=85]] |
 | controller (MVC) | *controller* | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=42]] |
 | core assets | asset di base condivisi | [[linee-di-prodotto-software]] | [[3-Architectural Patterns-complete.pdf#page=18]] |
@@ -54,6 +59,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | defer binding | posticipare il binding | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=29]] |
 | Definition of Done (DoD) | definizione di fatto | [[user-stories]] | [[04_Agile_01_bis.pdf#page=50]] |
 | deployment structure | struttura di deployment | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=44]] |
+| design concept | concetto di progetto (tattica, pattern, architettura di riferimento, componente esterno) | [[attribute-driven-design]] | [[06-ADD-Designing a Software Architecture.pdf#page=20]] |
 | design method | metodo di progettazione | [[progettazione-basata-sul-riuso]] | [[3-Architectural Patterns-complete.pdf#page=4]] |
 | design strategy | strategia di progettazione | [[progettazione-basata-sul-riuso]] | [[3-Architectural Patterns-complete.pdf#page=4]] |
 | Development Team | team di sviluppo | [[sviluppo-agile]] | [[04_Agile_01_bis.pdf#page=21]] |
@@ -64,6 +70,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | edge | *edge* (nodo periferico vicino ai dispositivi) | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=90]] |
 | elasticity | elasticità | [[modifiability]] | [[03-Modifiability.pdf#page=11]] |
 | empiricism | empirismo (controllo empirico del processo) | [[scrum]] | [[04_Agile_02.pdf#page=12]] |
+| Enterprise Service Bus (ESB) | bus di servizi aziendale | [[intermediari-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=40]] |
 | environment (scenario) | ambiente | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=12]] |
 | epic | *epic* (storia troppo grande) | [[user-stories]] | [[04_Agile_01_bis.pdf#page=42]] |
 | error | errore (stato interno scorretto) | [[availability]] | [[02-Availability.pdf#page=4]] |
@@ -75,6 +82,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | fault tolerance | tolleranza ai guasti | [[availability]] | [[02-Availability.pdf#page=4]] |
 | faultlessness | assenza di guasti | [[availability]] | [[02-Availability.pdf#page=4]] |
 | Fibonacci scale | scala di Fibonacci (1, 2, 3, 5, 8, 13, 21…) | [[stima-story-points-velocity-capacity]] | [[04_Agile_02.pdf#page=49]] |
+| Food To Go (FTGO) | esempio ricorrente di Richardson (ordini di cibo) | [[servizi-e-soa]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=14]] |
 | forecast | previsione | [[sprint-e-sprint-planning]] | [[04_Agile_02.pdf#page=40]] |
 | forward / backward chaining | concatenazione in avanti / all'indietro | [[rule-based]] | [[05_Architectural_Styles_Complete.pdf#page=66]] |
 | Front Controller | *front controller* (unico punto d'ingresso) | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=58]] |
@@ -118,6 +126,8 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | Observer (design pattern) | *Observer* (osservatore) | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=49]] |
 | open layers architecture (OLA) | architettura a layer aperti | [[layered]] | [[05_Architectural_Styles_Complete.pdf#page=21]] |
 | open system | sistema aperto | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=43]] |
+| OpenAPI | formato standard per descrivere API HTTP | [[contratti-e-api-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=23]] |
+| orchestration | orchestrazione | [[orchestrazione-e-coreografia]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=43]] |
 | passive redundancy (warm spare) | ridondanza passiva | [[tattiche-availability]] | [[02-Availability.pdf#page=18]] |
 | peer-to-peer (P2P) | *peer-to-peer* (da pari a pari) | [[peer-to-peer]] | [[05_Architectural_Styles_Complete.pdf#page=121]] |
 | performance | prestazioni | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=12]] |
@@ -136,6 +146,8 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | publisher / subscriber / event bus | chi pubblica / chi si iscrive / bus degli eventi | [[publish-subscribe]] | [[03-Modifiability.pdf#page=32]] |
 | quality attribute (QA) | attributo di qualità | [[attributi-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=2]] |
 | quality attribute scenario | scenario di qualità | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=8]] |
+| Quality Attribute Workshop (QAW) | workshop sugli attributi di qualità | [[requisiti-architetturalmente-significativi]] | [[06-ADD-Designing a Software Architecture.pdf#page=4]] |
+| rationale | motivazione delle decisioni di progetto | [[attribute-driven-design]] | [[06-ADD-Designing a Software Architecture.pdf#page=35]] |
 | RBAC (Role Based Access Control) | controllo degli accessi basato sui ruoli | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=28]] |
 | reactive UI | interfaccia utente reattiva | [[mvc]] | [[3-Architectural Patterns-complete.pdf#page=55]] |
 | Ready (backlog item) | pronta (storia pronta per lo Sprint) | [[product-backlog-e-sprint-backlog]] | [[04_Agile_02.pdf#page=31]] |
@@ -145,6 +157,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | replicate resources | replicare le risorse | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=23]] |
 | repository | archivio di dati condiviso | [[repository]] | [[05_Architectural_Styles_Complete.pdf#page=58]] |
 | response / response measure | risposta / misura della risposta | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=10]] |
+| REST (Representational State Transfer) | stile architetturale per web API | [[contratti-e-api-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=28]] |
 | retrospective | retrospettiva | [[cerimonie-e-artefatti-agile]] | [[04_Agile_01_bis.pdf#page=27]] |
 | reuse of experience | riuso dell'esperienza | [[progettazione-basata-sul-riuso]] | [[3-Architectural Patterns-complete.pdf#page=6]] |
 | ripple effect | effetto a catena | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=36]] |
@@ -159,9 +172,13 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | Sense–Compute–Control | *Sense–Compute–Control* (rilevare–calcolare–controllare) | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
 | sensor | sensore | [[sense-compute-control]] | [[3-Architectural Patterns-complete.pdf#page=84]] |
 | separation of concerns | separazione degli interessi (*concerns*) | [[buone-pratiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=50]] |
+| service contract | contratto di servizio | [[servizi-e-soa]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=10]] |
+| service discovery | scoperta dei servizi (registry) | [[intermediari-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=38]] |
+| service-oriented architecture (SOA) | architettura orientata ai servizi | [[servizi-e-soa]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=13]] |
 | single point of failure | punto singolo di guasto | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=40]] |
 | skeletal system | sistema scheletro | [[importanza-architettura-software]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=48]] |
 | SLA (Service Level Agreement) | accordo sul livello di servizio | [[availability]] | [[02-Availability.pdf#page=6]] |
+| SOAP / WSDL | protocollo di messaggistica XML / descrizione dell'interfaccia | [[contratti-e-api-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=29]] |
 | social debt | *social debt* (debito sociale) | [[strutture-di-modulo]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=20]] |
 | Software Product Line (SPL) | linea di prodotto software | [[linee-di-prodotto-software]] | [[3-Architectural Patterns-complete.pdf#page=18]] |
 | space / time / synchronization decoupling | disaccoppiamento di spazio / tempo / sincronizzazione | [[disaccoppiamento-dei-componenti]] | [[05_Architectural_Styles_Complete.pdf#page=90]] |
@@ -170,6 +187,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | Sprint Goal | obiettivo dello Sprint | [[sprint-e-sprint-planning]] | [[04_Agile_02.pdf#page=41]] |
 | Sprint Review | revisione dello Sprint (non è una demo) | [[daily-scrum-review-retrospective]] | [[04_Agile_02.pdf#page=60]] |
 | stakeholder | *stakeholder* (portatore di interesse) | [[strutture-e-viste]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=5]] |
+| stateless | senza stato di sessione sul server | [[contratti-e-api-di-servizio]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=27]] |
 | State-Logic-Display (three-tiered pattern) | *State-Logic-Display* (pattern a tre tier) | [[state-logic-display]] | [[3-Architectural Patterns-complete.pdf#page=23]] |
 | stimulus / stimulus source | stimolo / sorgente dello stimolo | [[scenari-di-qualita]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=10]] |
 | story point | punto storia (unità di stima relativa) | [[cerimonie-e-artefatti-agile]] | [[04_Agile_01_bis.pdf#page=31]] |
@@ -192,6 +210,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | use an intermediary | usare un intermediario | [[tattiche-architetturali]] | [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=21]] |
 | user story | storia utente | [[user-stories]] | [[04_Agile_01_bis.pdf#page=33]] |
 | uses (relation) | relazione «usa» | [[strutture-di-modulo]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=9]] |
+| utility tree | albero dell'utilità (ASR per attributo di qualità) | [[requisiti-architetturalmente-significativi]] | [[06-ADD-Designing a Software Architecture.pdf#page=6]] |
 | variability | variabilità | [[modifiability]] | [[03-Modifiability.pdf#page=12]] |
 | velocity | *velocity* (story point completati per sprint) | [[stima-story-points-velocity-capacity]] | [[04_Agile_02.pdf#page=51]] |
 | view | vista | [[strutture-e-viste]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=6]] |
@@ -201,6 +220,7 @@ Termini inglesi delle slide con traduzione e pagina del wiki. Ordine alfabetico 
 | waterfall | modello a cascata | [[sviluppo-agile]] | [[04_Agile_01_bis.pdf#page=17]] |
 | work assignment | assegnazione del lavoro | [[strutture-di-allocazione]] | [[01-IntroductionOnSoftwareArchitecture.pdf#page=43]] |
 | Work In Progress (WIP) | lavoro in corso | [[condurre-una-retrospettiva]] | [[04_Agile_02.pdf#page=65]] |
+| wrapper | *wrapper* (involucro che espone un sistema legacy come servizio) | [[servizi-e-soa]] | [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=16]] |
 
 _Aggiornato: 2026-09-26 — ingest lezione 0 e lezione 1_
 _Aggiornato: 2026-09-30 — termini delle Lez. 2 (availability) e 3 (modifiability)_

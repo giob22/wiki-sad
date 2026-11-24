@@ -2,7 +2,7 @@
 tipo: fonte
 titolo: "Reuse-based approaches for designing a Software Architecture — DSSA, Architectural Patterns and Styles"
 file_raw: "3-Architectural Patterns-complete.pdf"
-pagine: "1-37"
+pagine: "1-34, 36-38"
 data_ingest: 2026-10-01
 formato: slide-pdf
 riferimento_libro: "Taylor, Medvidovic, Dashofy — Software Architecture: Foundations, Theory and Practice, cap. 4"
@@ -21,7 +21,7 @@ argomenti: [strategie e metodi di progettazione, riuso dell'esperienza, Attribut
 | 35 | 38 | slide = p. + 3 |
 | 36–37 | 40–41 | slide = p. + 4 |
 
-Mancano le slide 21, 29, 37 e 39. Le slide 36–37 del PDF (pp. 36–37) hanno il titolo in italiano.
+Mancano le slide 21, 29, 37 e 39. Le slide 36–37 del PDF (nella numerazione originale pp. 36–37, oggi pp. 37–38 per l'inserimento della p. 35 nel file esteso) hanno il titolo in italiano.
 
 ## Sommario
 

@@ -194,3 +194,10 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - Aggiornati: lezioni, avanzamento-studio (E1, E4–E6, E8 «da fare» spuntati; X5–X7 aggiunti), glossario, overview, index.
 - Dubbio segnalato nella fonte: data della prima release di Gnutella (slide p. 124).
 
+## [2026-11-24] ingest | Designing a Software Architecture (06-ADD-Designing a Software Architecture.pdf) | pagine coperte: 1-41
+- Pagine: [[designing-a-software-architecture]], [[requisiti-architetturalmente-significativi]]; [[attribute-driven-design]] espansa con i sette passi, esempi e figure.
+
+## [2026-11-24] ingest | Service-Oriented and Microservice Architectures, parte 1 (07— Service-Oriented and Microservice Architectures-1 part.pdf) | pagine coperte: 1-47
+- Pagine: [[service-oriented-and-microservice-architectures]], [[servizi-e-soa]], [[contratti-e-api-di-servizio]], [[comunicazione-sincrona-e-asincrona]], [[intermediari-di-servizio]], [[orchestrazione-e-coreografia]]; [[microservices]] aggiornata (rapporto con la SOA).
+- Avanzamento: E10, E12, G1 spuntati («da fare»); X8 (ASR) e X9 (DoD, demo, information radiator) aggiunti.
+

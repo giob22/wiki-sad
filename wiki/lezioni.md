@@ -40,7 +40,7 @@ Ordine consigliato: quello delle slide.
 **Parte 1 — Cos'è un'architettura software**
 
 1. [[architettura-software]] — P1 pp. 1–4, 7 (e Lez. 0 pp. 4–11): definizioni, punti fermi, ruolo nel processo di sviluppo.
-2. [[microservices]] — P1 pp. 3, 35; P2 p. 21 (e Lez. 0 pp. 7, 10): cenni allo stile a microservizi.
+2. microservices — P1 pp. 3, 35; P2 p. 21 (e Lez. 0 pp. 7, 10): cenni allo stile a microservizi *(si legge nella Lezione 10)*.
 3. [[strutture-e-viste]] — P1 pp. 5–6, 13, 33, 36, 47: struttura architetturale, tre categorie, relazioni tra strutture, quali scegliere.
 4. [[strutture-di-modulo]] — P1 pp. 8–11, 14–23; P2 p. 18: moduli, ragionamento di modificabilità, decomposizione, uses, layer, class, data model.
 5. [[uml]] — P1 pp. 10, 19, 22, 39–40, 44, 46; P2 p. 42: notazione usata nelle figure.
@@ -51,7 +51,7 @@ Ordine consigliato: quello delle slide.
 10. [[strutture-di-allocazione]] — P1 pp. 37–46: deployment, install view, work assignment.
 11. [[pattern-architetturali]] — P1 p. 47; P2 pp. 21–22 (e Lez. 0 p. 16): definizione, pattern come insieme di tattiche.
 12. [[buone-pratiche-architetturali]] — P1 pp. 48, 50: raccomandazioni di processo, regole pratiche.
-13. [[attribute-driven-design]] — P1 p. 49: driver → concetti di progetto → strutture.
+13. attribute-driven-design — P1 p. 49: driver → concetti di progetto → strutture *(si legge nella Lezione 9)*.
 
 **Parte 2 — Attributi di qualità e importanza dell'architettura**
 
@@ -174,7 +174,7 @@ _Aggiornato: 2026-09-30 — aggiunte Lezione 2 (Availability) e Lezione 3 (Modif
 ---
 
 ## Lezione 4 — Reuse-based approaches for designing a Software Architecture: DSSA, Architectural Patterns and Styles (cap. 4 di Taylor, Medvidovic, Dashofy)
-**PDF:** [[3-Architectural Patterns-complete.pdf]] (pp. 1–37 = slide 1–41; tabella di conversione nel riepilogo)
+**PDF:** [[3-Architectural Patterns-complete.pdf]] (pp. 1–34 e 36–38 del file attuale, in origine pp. 1–37 = slide 1–41; il file è stato poi esteso con la Lezione 5; tabella di conversione nel riepilogo)
 **Riepilogo della lezione:** [[approcci-riuso-progettazione-architettura]]
 
 ### Percorso di lettura (ordine delle slide)
@@ -246,16 +246,16 @@ _Aggiornato: 2026-10-06 — aggiunta Lezione 5 (parte nuova di 3-Architectural P
 ---
 
 ## Lezione 6 — Agile Project Management
-**PDF:** [[04_Agile_01_bis.pdf]] (pp. 1–60, slide = pagina). Il file si chiama «04_…» ma è la sesta lezione ingerita.
+**PDF:** [[04_Agile_01_bis.pdf]] (pp. 1–81, slide = pagina; le pp. 62–81 — Definition of Done, demo, information radiator — sono state aggiunte dalla docente nella versione aggiornata). Il file si chiama «04_…» ma è la sesta lezione ingerita.
 **Riepilogo della lezione:** [[agile-project-management]]
 
 ### Percorso di lettura (ordine delle slide)
 
 1. [[sviluppo-agile]] — pp. 3–21: i problemi dei progetti, definizione di Agile, quattro valori e dodici principi del Manifesto, come funziona (con animazione del ciclo), sviluppo iterativo ed evolutivo vs waterfall, ruoli e tre responsabilità.
-2. [[cerimonie-e-artefatti-agile]] — pp. 22–31: le quattro cerimonie con le tabelle, gli artefatti, la lavagna product/sprint backlog con la DoD, il burndown chart (con grafico commentato).
+2. [[cerimonie-e-artefatti-agile]] — pp. 22–31, 62–80: le quattro cerimonie con le tabelle, gli artefatti, la lavagna product/sprint backlog con la DoD, il burndown chart (con grafico commentato).
 3. [[user-stories]] — pp. 32–50: definizione e tre aspetti, template, chi le scrive, dimensione, epic e task, INVEST, revisione e stima, criteri di accettazione vs Definition of Done.
 4. [[valutare-user-stories-invest]] *(esercizio)* — pp. 41–48: cassiere, PayPal, gestione utenti, revisione dei Post-it.
-5. [[criteri-di-accettazione-e-bdd]] — pp. 50–55, 60: criteri di accettazione con esempi (e l'errore di p. 54), BDD, Three Amigos, Gherkin.
+5. [[criteri-di-accettazione-e-bdd]] — pp. 50–55, 61: criteri di accettazione con esempi (e l'errore di p. 54), BDD, Three Amigos, Gherkin.
 6. [[da-criteri-di-accettazione-a-bdd]] *(esercizio)* — pp. 52, 56–60: recupero password in sei scenari Gherkin, scenari per il login.
 
 Ordine consigliato: quello delle slide.
@@ -324,7 +324,34 @@ Le slide propongono l'esercizio sulla pianificazione (stati delle storie, p. 33)
 
 Ordine consigliato: quello delle slide. Gli stili orientati ai servizi (SOA, microservizi), nominati a p. 7, si leggono nella Lezione 10.
 
+## Lezione 9 — Progettare un'architettura: ASR e Attribute-Driven Design (capp. 19–20 di Bass, Clements, Kazman)
+**PDF:** [[06-ADD-Designing a Software Architecture.pdf]] (41 pagine; la numerazione stampata coincide con la pagina del PDF fino a p. 24, poi è +1: nel wiki si usa l'indice del PDF).
+**Riepilogo della lezione:** [[designing-a-software-architecture]]
+
+### Percorso di lettura (ordine delle slide)
+
+1. [[requisiti-architetturalmente-significativi]] — pp. 2–8: definizione di ASR, QAW, utility tree, scenario di modificabilità e utility tree dell'ospedale con coppie (valore, rischio).
+2. [[attribute-driven-design]] — pp. 9–41 (e Lez. 1 p. 49): round e iterazioni, system context diagram, sette passi, tabella pro/contro, prototipi, strutture e interfacce, schizzi, rationale, kanban, analisi.
+
+Ordine consigliato: quello delle slide.
+
+## Lezione 10 — Architetture orientate ai servizi e a microservizi (parte 1)
+**PDF:** [[07— Service-Oriented and Microservice Architectures-1 part.pdf]] (47 pagine, pagina del PDF = slide). Il titolo del file dice «1 part»: è la prima parte.
+**Riepilogo della lezione:** [[service-oriented-and-microservice-architectures]]
+
+### Percorso di lettura (ordine delle slide)
+
+1. [[servizi-e-soa]] — pp. 2–17: prospettiva storica, servizio e contratto, principi, stato e autonomia, SOA, FTGO, SOA vs microservizi, wrapper legacy, scenario di interoperabilità.
+2. [[contratti-e-api-di-servizio]] — pp. 18–19, 22–33: comandi, query, eventi; API HTTP e sua specifica; `POST /orders`; metodi e codici HTTP; REST; SOAP e WSDL; OpenAPI; evoluzione del contratto.
+3. [[comunicazione-sincrona-e-asincrona]] — pp. 20–21: sincrona (timeout, propagazione dei guasti) e asincrona (buffering, accettazione vs completamento).
+4. [[intermediari-di-servizio]] — pp. 34–42: responsabilità, broker forwarding e handle, service discovery, API gateway, ESB, costi.
+5. [[orchestrazione-e-coreografia]] — pp. 43–47: coordinatore o eventi; shopping online; rifiuto dell'ordine in FTGO.
+6. [[microservices]] — pp. 6, 15 (e Lez. 0–1): microservizi in relazione alla SOA.
+
+Ordine consigliato: quello delle slide.
+
 
 _Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01_bis.pdf)_
 _Aggiornato: 2026-10-22 — aggiunta Lezione 7 (04_Agile_02.pdf)_
 _Aggiornato: 2026-11-24 — aggiunta Lezione 8 (05_Architectural_Styles_Complete.pdf)_
+_Aggiornato: 2026-11-24 — aggiunte Lezioni 9 e 10_

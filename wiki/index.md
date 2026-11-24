@@ -58,6 +58,14 @@
 - [[disaccoppiamento-dei-componenti]] — disaccoppiamento di spazio, tempo, sincronizzazione (media)
 - [[cloud-computing]] — definizione NIST, IaaS/PaaS/SaaS, modelli di deployment (media)
 
+**Progettazione e servizi** (Lez. 9–10)
+- [[requisiti-architetturalmente-significativi]] — ASR, QAW, utility tree con (valore, rischio) (alta)
+- [[servizi-e-soa]] — servizio, contratto, SOA, FTGO, wrapper, SOA vs microservizi (alta)
+- [[contratti-e-api-di-servizio]] — comandi/query/eventi, API HTTP, REST, SOAP/WSDL, OpenAPI, evoluzione (alta)
+- [[comunicazione-sincrona-e-asincrona]] — timeout, buffering, accettazione vs completamento (media)
+- [[intermediari-di-servizio]] — broker forwarding/handle, discovery, API gateway, ESB (alta)
+- [[orchestrazione-e-coreografia]] — coordinatore vs eventi; rifiuto dell'ordine in FTGO (alta)
+
 ## Entità
 - [[exam-booking-system]] — caso di studio: esempio guida della lezione 1
 - [[layered]] — stile/pattern: strati, layer chiusi e aperti, façade, portabilità, layer bridging
@@ -81,9 +89,9 @@
 - [[mvc]] — pattern Model–View–Controller: responsabilità, quattro modelli di interazione, Observer, Strategy, Front Controller
 - [[spring-mvc]] — framework: Spring Framework (IoC), Spring MVC (DispatcherServlet), Spring Boot
 - [[sense-compute-control]] — pattern per il controllo di ambienti fisici: tre/quattro stadi, IoT, Lunar Lander, ADS
-- [[microservices]] — stile: servizi indipendenti con propri dati (parziale)
+- [[microservices]] — stile: servizi indipendenti con propri dati; rapporto con la SOA (parziale)
 - [[uml]] — linguaggio: notazione delle viste
-- [[attribute-driven-design]] — processo: driver → concetti di progetto → strutture
+- [[attribute-driven-design]] — processo ADD: driver → concetti di progetto → strutture; i sette passi (Lez. 1, 9)
 - [[autosar]] — standard: architettura aperta automotive
 - [[enactest]] — caso di studio: architettura a componenti di un progetto di ricerca
 - [[software-architecture-in-practice]] — libro: testo base e altri testi del corso
@@ -98,6 +106,8 @@
 - [[approcci-riuso-progettazione-architettura]] — 3-Architectural Patterns-complete.pdf, pp. 1–37 (slide 1–41)
 - [[agile-project-management]] — 04_Agile_01_bis.pdf, pp. 1–60
 - [[agile-scrum-framework]] — 04_Agile_02.pdf, pp. 1–70 (Lezione 7: framework Scrum)
+- [[designing-a-software-architecture]] — 06-ADD-Designing a Software Architecture.pdf, pp. 1–41 (Lezione 9: ASR e ADD)
+- [[service-oriented-and-microservice-architectures]] — 07— Service-Oriented and Microservice Architectures-1 part.pdf, pp. 1–47 (Lezione 10)
 - [[architectural-styles]] — 05_Architectural_Styles_Complete.pdf, pp. 1–157 (Lezione 8: stili architetturali)
 - [[architectural-patterns-mvc-scc]] — 3-Architectural Patterns-complete.pdf, parte nuova pp. 35–36, 39–96 (slide 38–39, 43–101)
 - Programma ufficiale del corso: [[Programma Syllabus]] (raw/)
