@@ -45,9 +45,9 @@ Ordine consigliato: quello delle slide.
 4. [[strutture-di-modulo]] — P1 pp. 8–11, 14–23; P2 p. 18: moduli, ragionamento di modificabilità, decomposizione, uses, layer, class, data model.
 5. [[uml]] — P1 pp. 10, 19, 22, 39–40, 44, 46; P2 p. 42: notazione usata nelle figure.
 6. [[exam-booking-system]] — P1 p. 12 (esempio guida usato in tutta la lezione): mappa di dove compare.
-7. [[layered]] — P1 p. 21; P2 p. 22 (e Lez. 0 pp. 7–8): stile a strati.
+7. layered — P1 p. 21; P2 p. 22 (e Lez. 0 pp. 7–8): stile a strati *(si legge nella Lezione 8)*.
 8. [[strutture-componenti-e-connettori]] — P1 pp. 24–35: componenti, connettori, vista runtime, domande per attributo.
-9. [[client-server]] — P1 pp. 34, 36: stile client-server.
+9. client-server — P1 pp. 34, 36: stile client-server *(si legge nella Lezione 8)*.
 10. [[strutture-di-allocazione]] — P1 pp. 37–46: deployment, install view, work assignment.
 11. [[pattern-architetturali]] — P1 p. 47; P2 pp. 21–22 (e Lez. 0 p. 16): definizione, pattern come insieme di tattiche.
 12. [[buone-pratiche-architetturali]] — P1 pp. 48, 50: raccomandazioni di processo, regole pratiche.
@@ -149,7 +149,7 @@ Il riepilogo della lezione va letto per ultimo, come ripasso.
 6. *Client-server* (pp. 28–29) — pagina «client-server», già linkata nella Lezione 1 e aggiornata: rileggila tutta.
 7. [[plug-in]] — p. 30: nucleo + plug-in, microkernel.
 8. *Layers* (p. 31, e p. 22 per restrict dependencies) — pagina «layered», già linkata nella Lezione 1 e aggiornata: rileggi le sezioni «Come pattern per la modificabilità» e «Attributi di qualità».
-9. [[publish-subscribe]] — pp. 32–33 (e l'event bus di p. 21): publisher, subscriber, event bus, invocazione implicita.
+9. publish-subscribe — pp. 32–33 (e l'event bus di p. 21): publisher, subscriber, event bus, invocazione implicita *(si legge nella Lezione 8)*.
 
 ### Ordine di lettura consigliato
 
@@ -212,7 +212,7 @@ _Aggiornato: 2026-10-01 — aggiunta Lezione 4 (Architectural Patterns)_
 ---
 
 ## Lezione 5 — Architectural Patterns (versione completa): middleware, MVC, Spring MVC, Sense–Compute–Control (cap. 4 di Taylor, Medvidovic, Dashofy)
-**PDF:** [[3-Architectural Patterns-complete.pdf]] — parte nuova: pp. 35–36 e 39–96 (= slide 38–39 e 43–101). Le pp. 1–34 e 37–38 sono identiche al PDF della Lezione 4 e si leggono lì.
+**PDF:** 3-Architectural Patterns-complete.pdf — parte nuova: pp. 35–36 e 39–96 (= slide 38–39 e 43–101). Le pp. 1–34 e 37–38 sono identiche al PDF della Lezione 4 e si leggono lì.
 **Riepilogo della lezione:** [[architectural-patterns-mvc-scc]] (con la tabella di cosa è nuovo e la conversione pagina ↔ slide)
 
 ### Percorso di lettura (ordine delle slide)
@@ -296,6 +296,35 @@ Le slide propongono l'esercizio sulla pianificazione (stati delle storie, p. 33)
 | 9 | Daily Scrum, Review, Retrospective | |
 | 10 | condurre una retrospettiva *(esercizio)* | |
 
+## Lezione 8 — Architectural Styles (cap. 4 di Taylor, Medvidovic, Dashofy)
+**PDF:** [[05_Architectural_Styles_Complete.pdf]] (157 pagine, pagina del PDF = indice del visualizzatore; la numerazione stampata sulle slide è diversa). Il file si chiama «05_…» ma è l'ottava lezione.
+**Riepilogo della lezione:** [[architectural-styles]] (con la tabella slide → pagine wiki)
+
+### Percorso di lettura (ordine delle slide)
+
+1. [[stili-architetturali]] — pp. 2–7: definizione di stile, proprietà di base, benefici, dimensioni di analisi, elenco delle famiglie di stili.
+2. [[main-program-e-subroutine]] — pp. 8–10: decomposizione funzionale, tabella di descrizione dello stile, Lunar Lander in call–return.
+3. [[object-oriented]] — pp. 11–15: oggetti e messaggi, benefici e limiti, Lunar Lander in UML e confronto con call–return.
+4. [[layered]] — pp. 16–29: layer e virtual machine, layer chiusi e aperti (OSI, Motif), façade, Lunar Lander a layer *(esercizio)*.
+5. [[client-server]] — pp. 30–34: ruoli, elementi e limiti, tre responsabilità logiche, 2/3/N tier, Lunar Lander multigiocatore.
+6. [[batch-sequential]] — pp. 35–39: lotti e programmi in sequenza, applicazione finanziaria, perché non va per Lunar Lander.
+7. [[pipe-and-filter]] — pp. 40–51: filtri e pipe, invarianti, esempi (shell, compilatore, log), filtri paralleli, attributi di qualità, benefici e limiti.
+8. [[repository]] — pp. 52–59: memoria condivisa, elementi e topologia a stella, varianti, repository (benefici e limiti).
+9. [[blackboard]] — pp. 60–64: blackboard passiva e attiva, applicazioni, benefici e limiti, Lunar Lander.
+10. [[rule-based]] — pp. 65–71: base di conoscenza e motore inferenziale, forward/backward chaining, conflitti tra regole, spiegabilità.
+11. [[interpreter]] — pp. 72–75: comandi a runtime, stato separato, esempi (Lisp, SQL, Excel), Lunar Lander.
+12. [[mobile-code]] — pp. 76–83: code on demand, remote evaluation, mobile agent, elementi, benefici e limiti.
+13. [[cloud-computing]] — pp. 84–88: definizione NIST, benefici, IaaS/PaaS/SaaS con la figura delle responsabilità, modelli di deployment.
+14. [[disaccoppiamento-dei-componenti]] — pp. 89–91 (e 101): disaccoppiamento di spazio, tempo e sincronizzazione; benefici e costo.
+15. [[implicit-invocation]] — pp. 92–94: annunciare eventi invece di chiamare, esempio del pulsante, benefici e limiti.
+16. [[publish-subscribe]] — pp. 95–106: publisher, subscriber, broker; in un programma e in rete; benefici, limiti, applicazioni, Lunar Lander, MQTT.
+17. [[event-based]] — pp. 107–118: eventi, rapporto con implicit invocation e pub–sub, benefici e limiti, Lunar Lander, modello a eventi di Java (Swing).
+18. [[peer-to-peer]] — pp. 119–157 (appendice): fasi, BitTorrent, indice centralizzato (Napster), decentralizzato (Gnutella), ibrido (Skype), scoperta delle risorse, esempi, Lunar Lander.
+19. [[lunar-lander-in-ogni-stile]] *(esercizio)* — pp. 8–15, 29, 34, 39, 51, 64, 68, 75, 82, 105, 112, 156: confronto del gioco in tutti gli stili.
+
+Ordine consigliato: quello delle slide. Gli stili orientati ai servizi (SOA, microservizi), nominati a p. 7, si leggono nella Lezione 10.
+
 
 _Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01_bis.pdf)_
 _Aggiornato: 2026-10-22 — aggiunta Lezione 7 (04_Agile_02.pdf)_
+_Aggiornato: 2026-11-24 — aggiunta Lezione 8 (05_Architectural_Styles_Complete.pdf)_

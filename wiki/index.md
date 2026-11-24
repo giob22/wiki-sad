@@ -4,6 +4,7 @@
 - [[overview]] — panoramica del corso, programma, copertura
 - [[lezioni]] — **percorso di studio** lezione per lezione: un link per pagina, in ordine di slide, con ordine consigliato
 - [[avanzamento-studio]] — check-list del programma: da fare (Claude) · studiato · consolidato (tu)
+- [[corso-completo]] — **testo di studio**: tutta e sola la teoria dei PDF, una sezione per lezione (sorgente del sito)
 - [[glossario]] — termini inglese ↔ italiano
 - [[log]] — registro cronologico delle operazioni sul wiki
 - [[CLAUDE]] — regole e procedure del wiki (ingest, query, esercizi, esame, lint)
@@ -52,11 +53,28 @@
 - [[linee-di-prodotto-software]] — comunanza vs variabilità, esempi per dominio (media)
 - [[architetture-multi-tier]] — tier vs layer, 1/2/3-tier con attributi, middleware, 4-tier, load-balanced cluster (alta)
 
+**Stili architetturali** (Lez. 8)
+- [[stili-architetturali]] — definizione, proprietà, benefici, famiglie di stili (alta)
+- [[disaccoppiamento-dei-componenti]] — disaccoppiamento di spazio, tempo, sincronizzazione (media)
+- [[cloud-computing]] — definizione NIST, IaaS/PaaS/SaaS, modelli di deployment (media)
+
 ## Entità
 - [[exam-booking-system]] — caso di studio: esempio guida della lezione 1
-- [[layered]] — stile/pattern: strati, portabilità, layer bridging (parziale come stile)
-- [[client-server]] — pattern: discovery + interazione, benefici e trade-off (parziale come stile)
-- [[publish-subscribe]] — pattern: publisher, subscriber, event bus, invocazione implicita
+- [[layered]] — stile/pattern: strati, layer chiusi e aperti, façade, portabilità, layer bridging
+- [[client-server]] — stile/pattern: ruoli, tre responsabilità, 2/3/N tier, discovery, trade-off
+- [[publish-subscribe]] — stile/pattern: publisher, subscriber, broker, MQTT, invocazione implicita
+- [[main-program-e-subroutine]] — stile call–return: decomposizione funzionale, tabella di descrizione (Lez. 8)
+- [[object-oriented]] — stile a oggetti: incapsulamento, benefici e limiti (Lez. 8)
+- [[batch-sequential]] — stile data-flow a lotti (Lez. 8)
+- [[pipe-and-filter]] — stile data-flow: filtri, pipe, invarianti, qualità (Lez. 8)
+- [[repository]] — stile a memoria condivisa: archivio centrale, CRUD (Lez. 8)
+- [[blackboard]] — stile a memoria condivisa: lavagna passiva e attiva (Lez. 8)
+- [[rule-based]] — stile a memoria condivisa: fatti, regole, motore inferenziale (Lez. 8)
+- [[interpreter]] — stile a interprete (Lez. 8)
+- [[mobile-code]] — code on demand, remote evaluation, mobile agent (Lez. 8)
+- [[implicit-invocation]] — invocazione implicita: annunciare eventi (Lez. 8)
+- [[event-based]] — stile basato su eventi, modello a eventi di Java (Lez. 8)
+- [[peer-to-peer]] — stile P2P: centralizzato, decentralizzato, ibrido (Lez. 8)
 - [[plug-in]] — pattern: nucleo + plug-in, microkernel
 - [[circuit-breaker]] — pattern di disponibilità: stop alle chiamate a un servizio che non risponde; Resilience4j
 - [[state-logic-display]] — pattern three-tier: display, logic, state
@@ -80,6 +98,7 @@
 - [[approcci-riuso-progettazione-architettura]] — 3-Architectural Patterns-complete.pdf, pp. 1–37 (slide 1–41)
 - [[agile-project-management]] — 04_Agile_01_bis.pdf, pp. 1–60
 - [[agile-scrum-framework]] — 04_Agile_02.pdf, pp. 1–70 (Lezione 7: framework Scrum)
+- [[architectural-styles]] — 05_Architectural_Styles_Complete.pdf, pp. 1–157 (Lezione 8: stili architetturali)
 - [[architectural-patterns-mvc-scc]] — 3-Architectural Patterns-complete.pdf, parte nuova pp. 35–36, 39–96 (slide 38–39, 43–101)
 - Programma ufficiale del corso: [[Programma Syllabus]] (raw/)
 
@@ -93,6 +112,7 @@
 - [[valutare-user-stories-invest]] — checklist INVEST, scomposizione di epic (cassiere, PayPal, gestione utenti) (bassa)
 - [[da-criteri-di-accettazione-a-bdd]] — dai criteri agli scenari Gherkin (recupero password, login) (bassa)
 - [[pianificare-uno-sprint]] — obiettivo dello sprint, storie «Ready», velocity e capacity applicate a un backlog (media)
+- [[lunar-lander-in-ogni-stile]] — Lunar Lander riorganizzato in tredici stili; esercizio a layer (media)
 - [[condurre-una-retrospettiva]] — tabella osservazione → causa → azione; esercizio su un progetto passato (bassa)
 
 ## Progetto

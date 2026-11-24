@@ -187,3 +187,10 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 
 ## [2026-10-24] progetto | epic tradotte in italiano
 - [[epic-per-github]]: i testi dei campi del template (Objective, Stakeholders and value, Scope, Out of scope, Epic completion criteria, Dependencies risks and constraints) e i titoli delle sette issue sono ora in italiano; etichette del modulo invariate; marcatori [Concordato]/[Proposta]/[Aperto]; la versione inglese resta nella cronologia di Git
+
+## [2026-11-24] ingest | Architectural Styles (05_Architectural_Styles_Complete.pdf) | pagine coperte: 1–157
+- Lezione 8 aggiunta a `corso-completo.md` (stili, con 43 figure in `raw/assets/lez08-stili-*`) e a `corso.toml`.
+- Nuove pagine: [[architectural-styles]], [[stili-architetturali]], [[disaccoppiamento-dei-componenti]], [[cloud-computing]], [[main-program-e-subroutine]], [[object-oriented]], [[batch-sequential]], [[pipe-and-filter]], [[repository]], [[blackboard]], [[rule-based]], [[interpreter]], [[mobile-code]], [[implicit-invocation]], [[event-based]], [[peer-to-peer]], [[lunar-lander-in-ogni-stile]]; completate [[layered]], [[client-server]], [[publish-subscribe]].
+- Aggiornati: lezioni, avanzamento-studio (E1, E4–E6, E8 «da fare» spuntati; X5–X7 aggiunti), glossario, overview, index.
+- Dubbio segnalato nella fonte: data della prima release di Gnutella (slide p. 124).
+

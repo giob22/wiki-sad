@@ -6,7 +6,7 @@ famiglia: "layered"
 
 # Client-server
 
-> Cenni nella Lez. 1; nella Lez. 3 è presentato come **pattern per la modificabilità**. Il programma lo colloca anche nello stile a livelli (*Stile a Livelli: Macchine Virtuali e Client-Server*, [[Programma Syllabus]]) — la trattazione come stile è ancora da fare (TODO).
+> Cenni nella Lez. 1; nella Lez. 3 è presentato come **pattern per la modificabilità**. Il programma lo colloca anche nello stile a livelli (*Stile a Livelli: Macchine Virtuali e Client-Server*, [[Programma Syllabus]]) — la trattazione come stile è nella Lezione 8 (sezione «Trattazione completa dello stile»).
 
 ## Contesto e problema
 
@@ -77,6 +77,26 @@ sequenceDiagram
 
 La Lez. 4 presenta il client/server come **architettura two-tier con fat client**: presentazione e parte della logica applicativa sul client, che invoca direttamente il server di risorse o database tramite un'**API remota** (contratto esplicito che nasconde l'implementazione del server). Segue una tabella di benefici e limiti su otto attributi — tra i limiti: il server condiviso resta un potenziale single point of failure e cambiare le regole di business può richiedere di aggiornare ogni client. Dettagli e confronto con 1-tier e 3-tier → [[architetture-multi-tier]].
 
+## Trattazione completa dello stile (Lez. 8)
+
+> 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=30]]–[[05_Architectural_Styles_Complete.pdf#page=34]]
+
+- **Ruoli.** Lo stile distingue **due ruoli** in un'interazione ed è nato nei sistemi distribuiti per organizzare la comunicazione tra parti separate: uno o più server forniscono servizi a più client; i client invocano un servizio e ricevono un risultato ([[05_Architectural_Styles_Complete.pdf#page=30]]).
+- **Elementi e usi.** Componenti: client e server; i server non devono conoscere in anticipo numero e identità dei client, mentre i client devono sapere come raggiungere un server (*thin* o *thick*). Connettori: protocolli di rete, RPC, Java RMI. Uso tipico: dati o elaborazione centralizzati, con i client che offrono l'interfaccia utente. **Limite:** banda di rete e prestazioni del server diventano colli di bottiglia al crescere dei client ([[05_Architectural_Styles_Complete.pdf#page=31]]).
+- **Tre responsabilità logiche** ([[05_Architectural_Styles_Complete.pdf#page=32]]): *presentazione* (interfaccia, eventi grafici, controlli di input), *logica applicativa*, *gestione dei dati* (dati persistenti).
+- **Alternative di deployment** ([[05_Architectural_Styles_Complete.pdf#page=33]]):
+
+| Tier | Dove stanno le responsabilità |
+|---|---|
+| 2 tier | presentazione + logica applicativa nel client; dati persistenti sul server |
+| 3 tier | tre tier di deployment separati |
+| N tier | logica applicativa e gestione dati distribuite su una catena di server |
+
+![[lez08-stili-p34-client-server-lunar-lander.png]]
+*Lunar Lander multigiocatore ([[05_Architectural_Styles_Complete.pdf#page=34]]): N client (ognuno con «Get/Display Info» e «Graphics Processing») chiamano via procedure call un unico SERVER che contiene Game State, Game Logic ed Environment Simulation (ingresso burnRate; uscita altitudine, carburante, tempo, velocità).*
+
+> 💡 Connessione: l'alternativa decentralizzata, in cui ogni nodo è client e server, è il [[peer-to-peer]].
+
 ## Connessioni
 
 - [[pattern-modifiability]]: gli altri pattern per la modificabilità.
@@ -89,3 +109,4 @@ La Lez. 4 presenta il client/server come **architettura two-tier con fat client*
 
 _Aggiornato: 2026-09-30 — ingest 03-Modifiability.pdf (pattern client-server, benefici e trade-off)_
 _Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_
+_Aggiornato: 2026-11-24 — ingest 05_Architectural_Styles_Complete.pdf (Lez. 8)_

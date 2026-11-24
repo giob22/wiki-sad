@@ -6,7 +6,7 @@ famiglia: "layered"
 
 # Layered (architettura a strati)
 
-> Pagina iniziata con i cenni della lezione 1; lo stile sarà trattato per esteso più avanti (programma: *Layered Style — Virtual Machines and Client-Server*, [[00_IntroduzioneAlCorso_SAD.pdf#page=16]]). TODO: da espandere.
+> Pagina iniziata con i cenni della lezione 1 e completata nella Lezione 8 (sezione «Trattazione completa dello stile»; programma: *Layered Style — Virtual Machines and Client-Server*, [[00_IntroduzioneAlCorso_SAD.pdf#page=16]]).
 
 ## Contesto e problema
 
@@ -68,12 +68,60 @@ Nella presentazione del corso compare anche una rappresentazione a **cerchi conc
 
 ## Quando usarlo / quando no
 
-TODO: da espandere quando lo stile sarà trattato per esteso. Indicazione della Lez. 3: conviene quando contano portabilità e modificabilità più delle prestazioni, e se si rispetta l'ordine stretto tra strati.
+Conviene quando contano portabilità e modificabilità più delle prestazioni e si rispetta l'ordine stretto tra strati (Lez. 3); con requisiti di efficienza si può ricorrere a layer aperti, accettando le dipendenze aggiuntive ([[05_Architectural_Styles_Complete.pdf#page=20]], [[05_Architectural_Styles_Complete.pdf#page=24]]).
 
 ## Varianti ed esempi
 
 - Unix System V ([[01-IntroductionOnSoftwareArchitecture.pdf#page=21]]) — 🧩 non strettamente stratificato: gli User programs usano sia Libraries sia la System call interface.
 - Varianti del programma: *Virtual Machines* e *Client-Server* ([[00_IntroduzioneAlCorso_SAD.pdf#page=16]]) → [[client-server]].
+
+## Trattazione completa dello stile (Lez. 8)
+
+> 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=17]]–[[05_Architectural_Styles_Complete.pdf#page=29]]
+
+- **Soluzione.** Organizzazione gerarchica, simile a un client–server a più livelli: ogni layer espone un'**API** ai layer superiori, è **server** per i superiori e **client** degli inferiori. Connettori: chiamate di procedura o protocolli di interazione (esempio tipico: i sistemi operativi). Nella variante **virtual machine** i layer sono *opachi* e interagiscono solo con quelli adiacenti ([[05_Architectural_Styles_Complete.pdf#page=17]]).
+- **Benefici:** livelli crescenti di astrazione; dipendenze controllate che facilitano l'evoluzione e limitano la propagazione delle modifiche ai layer superiori; layer riusabili o sostituibili con implementazioni che preservano l'interfaccia; interfacce standardizzate per librerie e framework ([[05_Architectural_Styles_Complete.pdf#page=19]]).
+- **Limiti:** attraversare molti layer aggiunge overhead; l'efficienza può motivare il *bypass* di un layer, che introduce dipendenze da considerare nella valutazione della modificabilità ([[05_Architectural_Styles_Complete.pdf#page=20]]).
+
+![[lez08-stili-p18-layered-virtual-machines.png]]
+*Tre layer ([[05_Architectural_Styles_Complete.pdf#page=18]]): Program A nel Layer 1 chiama il Layer 2 (Program B e C), che chiamano il Layer 3 (Program D). Le frecce vanno solo verso il layer adiacente inferiore.*
+
+### Layer chiusi e layer aperti
+
+> 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=21]]–[[05_Architectural_Styles_Complete.pdf#page=25]]
+
+| | **Closed Layers (CLA)** | **Open Layers (OLA)** |
+|---|---|---|
+| Regola | il layer *i* usa solo il layer *i−1* | il layer *i* può usare qualsiasi layer inferiore |
+| Obiettivi | **manutenibilità e portabilità**; ogni layer è una virtual machine VM<sub>i</sub> | **riduzione del tempo di esecuzione, efficienza** |
+| Esempio | stack ISO/OSI | OSF/Motif |
+
+![[lez08-stili-p23-osi-closed-layers.png]]
+*ISO/OSI ([[05_Architectural_Styles_Complete.pdf#page=23]]): sette layer di rete — Application, Presentation, Session, Transport, Network, DataLink, Physical — con livello di astrazione crescente verso l'alto; ogni layer parla solo con quello adiacente. L'Internet Protocol (IP) definisce, a livello rete, una VM in grado di identificare gli host e trasmettere singoli pacchetti da host a host.*
+
+![[lez08-stili-p25-motif-open-layers.png]]
+*OSF/Motif ([[05_Architectural_Styles_Complete.pdf#page=25]]): *Xlib* (disegno di basso livello), *Xt* (gestione dei widget di base), *Motif* (molti widget sofisticati), *Application* (può accedere a ogni layer in modo indipendente — le frecce tratteggiate saltano i layer intermedi).*
+
+🧩 Il compromesso è quello tra [[modifiability]]/portabilità (CLA: poche dipendenze) ed efficienza (OLA: meno attraversamenti).
+
+### Layer e pattern Façade
+
+> 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=26]], [[05_Architectural_Styles_Complete.pdf#page=27]]
+
+![[lez08-stili-p26-facade-senza.png]]
+*Senza façade ([[05_Architectural_Styles_Complete.pdf#page=26]]): un client (AccountManager) coordina Account, Address e CreditCard, chiamando `isValid()` e `save()` su ciascuno.*
+
+![[lez08-stili-p27-facade-con.png]]
+*Con una CustomerFacade ([[05_Architectural_Styles_Complete.pdf#page=27]]): il client chiama solo `saveCustomerData()` sulla façade, che coordina gli oggetti del sottosistema. La façade è quindi l'**interfaccia del layer**: nasconde i dettagli e riduce le dipendenze verso gli strati sotto.*
+
+### Esercizio: Lunar Lander a layer
+
+> 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=28]], [[05_Architectural_Styles_Complete.pdf#page=29]]
+
+![[lez08-stili-p29-layered-lunar-lander.png]]
+*Soluzione ([[05_Architectural_Styles_Complete.pdf#page=29]]): Keyboard Input Handler → (input da tastiera) Game Logic and Environment Simulator → (variazione di altitudine) Generic 2D Game Engine → (posizione x, y degli oggetti) Operating System → (dati binari) Hardware Display / Graphics Card. Ogni layer chiama solo quello sotto: è un CLA.*
+
+Confronto con gli altri stili: [[lunar-lander-in-ogni-stile]].
 
 ## Connessioni
 
@@ -88,3 +136,4 @@ TODO: da espandere quando lo stile sarà trattato per esteso. Indicazione della 
 
 _Aggiornato: 2026-09-30 — ingest 03-Modifiability.pdf (layer pattern)_
 _Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_
+_Aggiornato: 2026-11-24 — ingest 05_Architectural_Styles_Complete.pdf (Lez. 8)_

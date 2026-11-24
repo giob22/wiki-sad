@@ -54,6 +54,35 @@ flowchart LR
 - Notifica event-based nell'Exam Booking System: contratto di eventi tra Booking e Notifications ([[01-IntroductionOnSoftwareArchitecture.pdf#page=16]]) e coda asincrona nella vista runtime ([[01-IntroductionOnSoftwareArchitecture.pdf#page=28]]).
 - Connettore publish-subscribe nella vista C&C della Lez. 1 ([[01-IntroductionOnSoftwareArchitecture.pdf#page=26]]).
 
+## Trattazione completa dello stile (Lez. 8)
+
+> 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=95]]–[[05_Architectural_Styles_Complete.pdf#page=106]]
+
+- **Meccanismo.** I *publisher* pubblicano messaggi senza indirizzare singoli destinatari; i *subscriber* esprimono interesse per topic, tipi di evento o contenuto; un meccanismo di distribuzione consegna i messaggi corrispondenti ([[05_Architectural_Styles_Complete.pdf#page=96]]).
+- **Elementi.** Componenti: publisher, subscriber, proxy/broker opzionali. Connettori: chiamate di procedura in un programma locale, protocolli di rete tra host (le sottoscrizioni *content-based* richiedono matching e routing). Elementi dati: sottoscrizioni, notifiche, informazioni pubblicate. Topologia: subscriber collegati direttamente al publisher o tramite intermediari. Qualità: distribuzione uno-a-molti con accoppiamento limitato ([[05_Architectural_Styles_Complete.pdf#page=97]]).
+- **In un singolo programma:** i subscriber si registrano presso il publisher e indicano la *callback*; il publisher mantiene i subscriber e notifica in modo sincrono o asincrono; i subscriber possono annullare ([[05_Architectural_Styles_Complete.pdf#page=98]]). **In rete:** protocolli di rete e proxy o broker ([[05_Architectural_Styles_Complete.pdf#page=99]]).
+
+![[lez08-stili-p100-pubsub-broker.png]]
+*Message broker ([[05_Architectural_Styles_Complete.pdf#page=100]]): i publisher inviano messaggi a un broker che li instrada su canali (topic); ogni canale consegna una copia a tutti i subscriber interessati.*
+
+![[lez08-stili-p105-pubsub-lunar-lander.png]]
+*Lunar Lander pub–sub ([[05_Architectural_Styles_Complete.pdf#page=105]]): i giocatori (Subscriber 1…n) si registrano presso il Game Server, che pubblica lo stato del gioco; una notifica può portare l'informazione aggiornata o spingere a un download esplicito successivo.*
+
+![[lez08-stili-p106-mqtt.png]]
+*MQTT ([[05_Architectural_Styles_Complete.pdf#page=106]]): un sensore (publisher) pubblica 24 °C sul topic *temperature* verso un MQTT Broker, che lo consegna ai client sottoscritti (mobile e backend). MQTT è uno standard OASIS per l'IoT: leggerissimo, per dispositivi con poco codice e poca banda.*
+
+| Attributo | Effetto | Perché | Fonte |
+|---|---|---|---|
+| Estensibilità | + | nuovi subscriber senza cambiare il publisher | [[05_Architectural_Styles_Complete.pdf#page=102]] |
+| Modificabilità | + | publisher e subscriber evolvono separatamente finché i contratti sono compatibili | [[05_Architectural_Styles_Complete.pdf#page=102]] |
+| Interoperabilità | + | protocolli e formati condivisi tra piattaforme | [[05_Architectural_Styles_Complete.pdf#page=102]] |
+| Reattività | + | consegna asincrona: il publisher non attende | [[05_Architectural_Styles_Complete.pdf#page=102]] |
+| Garanzie di consegna | − | consegna, ordinamento, duplicati richiedono decisioni esplicite | [[05_Architectural_Styles_Complete.pdf#page=103]] |
+| Prestazioni | − | subscriber lenti causano backlog; gli intermediari richiedono capacità, monitoraggio e recovery | [[05_Architectural_Styles_Complete.pdf#page=103]] |
+| Modificabilità dei contratti | − | un cambio del contratto dei messaggi tocca più subscriber | [[05_Architectural_Styles_Complete.pdf#page=103]] |
+
+Applicazioni tipiche: diffusione di notizie, interfacce grafiche, giochi multigiocatore, Internet of Things ([[05_Architectural_Styles_Complete.pdf#page=104]]). Per le tre forme di disaccoppiamento che questo stile realizza → [[disaccoppiamento-dei-componenti]]; per il suo rapporto con eventi e implicit invocation → [[event-based]], [[implicit-invocation]].
+
 ## Connessioni
 
 - [[pattern-modifiability]] · [[tattiche-modifiability]] (*use an intermediary*: il bus è l'intermediario).
@@ -64,3 +93,4 @@ flowchart LR
 - [[quality-attributes-modifiability]] — [[03-Modifiability.pdf#page=32]], [[03-Modifiability.pdf#page=33]]
 
 _Aggiornato: 2026-09-30 — ingest 03-Modifiability.pdf_
+_Aggiornato: 2026-11-24 — ingest 05_Architectural_Styles_Complete.pdf (Lez. 8)_

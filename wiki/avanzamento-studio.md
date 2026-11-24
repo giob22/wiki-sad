@@ -138,43 +138,43 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 
 ## E. Stili architetturali
 
-**E1. Stile procedurale e object-oriented**
-- [ ] da fare
-- [ ] studiato
-- [ ] consolidato
-
-**E2. Stile a livelli: macchine virtuali** — Lez. 3, come pattern Layers per la modificabilità → [[layered]]
+**E1. Stile procedurale e object-oriented** — Lez. 8 → [[main-program-e-subroutine]], [[object-oriented]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
-**E3. Stile a livelli: client-server** — Lez. 3, come pattern per la modificabilità; Lez. 4, come architettura 2-tier → [[client-server]]
+**E2. Stile a livelli: macchine virtuali** — Lez. 3, come pattern Layers per la modificabilità; Lez. 8, trattazione completa (layer chiusi e aperti, façade) → [[layered]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
-**E4. Data-flow (batch e pipe-and-filter)**
-- [ ] da fare
-- [ ] studiato
-- [ ] consolidato
-
-**E5. A memoria condivisa (blackboard e rule-based)**
-- [ ] da fare
-- [ ] studiato
-- [ ] consolidato
-
-**E6. Basato su interprete (codice mobile)**
-- [ ] da fare
-- [ ] studiato
-- [ ] consolidato
-
-**E7. Invocazione implicita: publish-subscribe** — Lez. 3, come pattern per la modificabilità → [[publish-subscribe]]
+**E3. Stile a livelli: client-server** — Lez. 3, come pattern per la modificabilità; Lez. 4, come architettura 2-tier; Lez. 8, come stile (2/3/N tier) → [[client-server]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
-**E8. Invocazione implicita: event-based**
-- [ ] da fare
+**E4. Data-flow (batch e pipe-and-filter)** — Lez. 8 → [[batch-sequential]], [[pipe-and-filter]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**E5. A memoria condivisa (blackboard e rule-based)** — Lez. 8 → [[repository]], [[blackboard]], [[rule-based]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**E6. Basato su interprete (codice mobile)** — Lez. 8 → [[interpreter]], [[mobile-code]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**E7. Invocazione implicita: publish-subscribe** — Lez. 3, come pattern per la modificabilità; Lez. 8, come stile (broker, MQTT) → [[publish-subscribe]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**E8. Invocazione implicita: event-based** — Lez. 8 → [[implicit-invocation]], [[event-based]]
+- [x] da fare
 - [ ] studiato
 - [ ] consolidato
 
@@ -404,6 +404,21 @@ Gli argomenti seguono il **programma ufficiale** del corso → [[Programma Sylla
 - [ ] consolidato
 
 **X4. Criteri di accettazione e Behavior-Driven Development (BDD)** *(aggiunto: Lez. 6 — il programma cita TDD, non BDD)* → [[criteri-di-accettazione-e-bdd]], [[da-criteri-di-accettazione-a-bdd]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**X5. Cloud computing (cenni): IaaS, PaaS, SaaS e modelli di deployment** *(aggiunto: Lez. 8 — il programma ufficiale cita «virtualizzazione e cloud» in G3; la virtualizzazione resta da trattare)* → [[cloud-computing]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**X6. Stile peer-to-peer (centralizzato, decentralizzato, ibrido)** *(aggiunto: Lez. 8 — appendice delle slide, non presente nel programma)* → [[peer-to-peer]]
+- [x] da fare
+- [ ] studiato
+- [ ] consolidato
+
+**X7. Disaccoppiamento di spazio, tempo e sincronizzazione** *(aggiunto: Lez. 8 — non presente nel programma)* → [[disaccoppiamento-dei-componenti]]
 - [x] da fare
 - [ ] studiato
 - [ ] consolidato

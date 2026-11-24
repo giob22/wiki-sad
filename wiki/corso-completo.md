@@ -15,6 +15,7 @@ Testo unico di studio del corso (LM Ingegneria Informatica, UNINA, DIETI, prof.s
 | 5 | [[#Lezione 5 — Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control\|Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control]] | 3-Architectural Patterns-complete.pdf |
 | 6 | [[#Lezione 6 — Agile Project Management (Parte 1)\|Agile Project Management (Parte 1)]] | 04_Agile_01_bis.pdf |
 | 7 | [[#Lezione 7 — Agile Project Management (Parte 2): il framework Scrum\|Agile Project Management (Parte 2): il framework Scrum]] | 04_Agile_02.pdf |
+| 8 | [[#Lezione 8 — Stili architetturali\|Stili architetturali]] | 05_Architectural_Styles_Complete.pdf |
 | 9 | [[#Lezione 9 — Il processo di progettazione architetturale: ASR e il metodo ADD\|Il processo di progettazione architetturale: ASR e il metodo ADD]] | 06-ADD-Designing a Software Architecture.pdf |
 | 10 | [[#Lezione 10 — Architetture orientate ai servizi e a microservizi (parte 1)\|Architetture orientate ai servizi e a microservizi (parte 1)]] | 07— Service-Oriented and Microservice Architectures-1 part.pdf |
 
@@ -1904,6 +1905,374 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - L'ultima slide introduce il workshop: **«Now let's use Scrum in our project!»**
 
 *Approfondimenti nel wiki: [[gestione-progetto-plan-driven-vs-agile]], [[scrum]], [[ciclo-di-vita-scrum]], [[product-backlog-e-sprint-backlog]], [[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]], [[planning-poker]], [[daily-scrum-review-retrospective]]*
+
+## Lezione 8 — Stili architetturali
+
+*Fonte: 05_Architectural_Styles_Complete.pdf (157 pagine, «Architectural Styles», prof.ssa Anna Rita Fasolino, dal capitolo 4 di Taylor, Medvidovic e Dashofy). Esempio ricorrente: il videogioco **Lunar Lander**, riorganizzato in ogni stile.*
+
+### Definizione di stile architetturale · [[05_Architectural_Styles_Complete.pdf#page=2|p. 2]]–[[05_Architectural_Styles_Complete.pdf#page=3|3]]
+
+- Uno **stile architetturale** è una collezione denominata di decisioni di progetto architetturale che: (1) si applicano in un particolare contesto di sviluppo; (2) vincolano le decisioni architetturali prese per i singoli sistemi di quel contesto; (3) promuovono qualità desiderabili nei sistemi risultanti.
+- Gli stili sono **meno specifici del dominio applicativo** dei pattern architetturali. Possono essere utili a diversi livelli, dalle subroutine alla struttura complessiva dell'applicazione.
+
+![[lez08-stili-p2-ambito-degli-stili.png]]
+*Mappa dei concetti di progetto su due assi: «Scope» (livello di programmazione, struttura applicativa, struttura del sistema) e «Application Domain Knowledge» (da superficiale a profonda). Dal basso: i design pattern di programma, gli stili, i pattern architetturali, le architetture software specifiche di dominio.*
+
+### Proprietà e benefici degli stili · [[05_Architectural_Styles_Complete.pdf#page=4|p. 4]]–[[05_Architectural_Styles_Complete.pdf#page=6|6]]
+
+- **Proprietà di base** (p. 4): un **vocabolario di elementi di progetto** (tipi di componente, connettore ed elemento dati: pipe, filtri, oggetti, server); **regole di configurazione** (vincoli topologici, ad es. ogni componente connesso al massimo ad altri due); una **interpretazione semantica** (una composizione di elementi ha un significato definito); **analisi specifiche dello stile**.
+- **Benefici** (p. 5): *riuso del progetto* (soluzioni architetturali a problemi ricorrenti); *riuso del codice* (implementazioni degli aspetti invarianti dello stile); *comprensione strutturale* (un nome come «client–server» trasmette molta informazione strutturale); *interoperabilità* (convenzioni condivise e interazioni standard); *analisi specifiche dello stile* (uno spazio di progetto vincolato rende più facili alcune analisi); *visualizzazioni* (rappresentazioni specifiche dello stile).
+- **Dimensioni per analizzare uno stile** (p. 6): qual è il vocabolario di componenti e connettori? Quali configurazioni strutturali sono ammesse? Qual è il modello computazionale sottostante? Quali sono gli invarianti fondamentali? Quali esempi d'uso comuni? Quali benefici e limiti introduce? Quali specializzazioni o varianti esistono?
+
+### Esempi di stili architetturali · [[05_Architectural_Styles_Complete.pdf#page=7|p. 7]]
+
+- **Tradizionali e influenzati dal linguaggio:** main program e subroutine; object-oriented.
+- **Layered:** layered; virtual machine; client–server.
+- **Data flow:** batch sequential; pipe and filter.
+- **Shared memory:** blackboard; rule-based.
+- **Interpreter:** interpreter; mobile code.
+- **Implicit invocation:** event-based; publish–subscribe; peer-to-peer.
+- **Orientati ai servizi:** service-oriented; microservices.
+
+### Main program e subroutine · [[05_Architectural_Styles_Complete.pdf#page=8|p. 8]]–[[05_Architectural_Styles_Complete.pdf#page=10|10]]
+
+- Decomposizione funzionale **gerarchica**; un **singolo thread di controllo**, gestito direttamente dal linguaggio; la struttura dei sottosistemi resta implicita; le subroutine sono raggruppate in moduli o file; ragionamento gerarchico: la correttezza di una subroutine dipende da quella delle subroutine che chiama (p. 9).
+
+![[lez08-stili-p8-main-program-lunar-lander.png]]
+*Lunar Lander in stile call–return: il Main Program invoca tre procedure (ognuna è un connettore «Procedure Call») che portano a tre moduli: «Get BurnRate from user» (ingresso: nessuno; uscita: throttle), «Environment Simulator» (ingresso: altitudine, throttle, carburante, tempo, velocità; uscita: altitudine, carburante, velocità) e «Display values to user» (ingresso: altitudine, carburante, tempo, velocità; uscita: nessuna).*
+
+| Aspetto | Main program e subroutine (p. 10) |
+|---|---|
+| Sintesi | Decomposizione in passi di elaborazione funzionale |
+| Componenti | Main program e subroutine |
+| Connettori | Chiamate di funzione o procedura |
+| Elementi dati | Valori passati alle e restituiti dalle subroutine |
+| Topologia | Organizzazione statica gerarchica; la struttura complessiva è un grafo orientato |
+| Vincoli | Nessuno |
+| Benefici di qualità | **Modularità**: si può sostituire una subroutine preservando la semantica della sua interfaccia |
+| Usi tipici | Piccoli programmi ed esempi didattici |
+| Cautele | Scalabilità limitata per applicazioni grandi; poca attenzione alle strutture dati; sforzo imprevedibile per nuovi requisiti |
+| Linguaggi | Linguaggi imperativi tradizionali, tra cui BASIC, Pascal e C |
+
+### Stile object-oriented · [[05_Architectural_Styles_Complete.pdf#page=11|p. 11]]–[[05_Architectural_Styles_Complete.pdf#page=15|15]]
+
+- I **componenti** sono oggetti che incapsulano dati e operazioni associate; i **connettori** sono messaggi e invocazioni di metodo (nelle applicazioni distribuite si può usare un middleware come Java RMI). La topologia varia e fa spesso largo uso di gerarchie di ereditarietà. **Invariante:** ogni oggetto è responsabile dell'integrità della propria rappresentazione interna; gli altri oggetti non possono accedervi direttamente (p. 11).
+- **Benefici** (p. 12): l'incapsulamento protegge l'integrità dei dati (i metodi controllano l'accesso allo stato interno); utile per strutture dati complesse e per modellare entità del mondo reale come oggetti.
+- **Limiti:** gli oggetti che collaborano devono conoscere l'identità degli oggetti che forniscono i servizi; capire un'applicazione può richiedere l'analisi di relazioni statiche e dinamiche complesse; molti oggetti in interazione creano overhead prestazionale e servono criteri di strutturazione aggiuntivi.
+- **Lunar Lander object-oriented** (p. 13): la GUI legge il burn rate inserito dall'utente e recupera i parametri della navicella con operazioni *get*, li mostra e li passa alla simulazione dell'ambiente; la simulazione calcola il nuovo stato, che viene memorizzato con operazioni *set*.
+
+![[lez08-stili-p14-oo-lunar-lander-uml.png]]
+*Lo stesso progetto in UML: la classe GUI (operazioni `getBurnRate()` e `displayStatus(...)`) crea una o più istanze di Spacecraft (attributi a, f, t, v con le relative operazioni set/get) e usa l'unica Environment Simulation (operazione `calculateStatus(br, s : Spacecraft) : Spacecraft`).*
+
+![[lez08-stili-p15-oo-vs-call-return.png]]
+*Confronto affiancato tra la versione object-oriented e quella call–return. Nella prima un solo oggetto GUI gestisce tutto l'input e l'output; nella seconda le responsabilità di input e output sono distribuite su più moduli.*
+
+### Stile layered · [[05_Architectural_Styles_Complete.pdf#page=16|p. 16]]–[[05_Architectural_Styles_Complete.pdf#page=29|29]]
+
+- Organizzazione **gerarchica**, simile a una struttura client–server a più livelli; ogni layer espone un'interfaccia (API) ai layer superiori; un layer è **server** per i superiori e **client** degli inferiori. I connettori sono chiamate di procedura o protocolli di interazione (tipico esempio: i sistemi operativi). Nella variante **virtual machine** i layer sono opachi e le interazioni avvengono solo tra layer adiacenti (p. 17).
+
+![[lez08-stili-p18-layered-virtual-machines.png]]
+*Tre layer sovrapposti: nel Layer 1 il Program A, nel Layer 2 i Program B e C, nel Layer 3 il Program D; le frecce vanno solo dal layer superiore all'inferiore adiacente (A→Layer 2, B e C→Layer 3).*
+
+- **Benefici** (p. 19): livelli crescenti di astrazione; dipendenze controllate che favoriscono l'evoluzione e limitano la propagazione delle modifiche ai layer superiori; layer riusabili o sostituibili con implementazioni alternative che preservano l'interfaccia; interfacce di layer standardizzate che supportano librerie e framework.
+- **Limiti** (p. 20): attraversare molti layer può aggiungere overhead; i requisiti di efficienza possono motivare il bypass di un layer; il bypass introduce dipendenze che vanno considerate nel valutare la modificabilità.
+
+#### Layer chiusi e aperti · [[05_Architectural_Styles_Complete.pdf#page=21|p. 21]]–[[05_Architectural_Styles_Complete.pdf#page=25|25]]
+
+- **Closed Layers Architecture (CLA)**: il layer *i* può accedere solo al layer immediatamente inferiore *i−1*. **Open Layers Architecture (OLA)**: il layer *i* può accedere a qualsiasi layer inferiore (p. 21).
+- **CLA** (p. 22): il layer *i* invoca solo servizi e operazioni del layer *i−1*; gli obiettivi principali sono **manutenibilità e portabilità**; nell'interpretazione a virtualizzazione ogni layer *i* definisce una virtual machine VM<sub>i</sub>.
+- **Esempio CLA: lo stack ISO/OSI** (p. 23): il modello di riferimento definisce 7 layer di rete con livello di astrazione crescente. Ad esempio l'Internet Protocol (IP) definisce una VM a livello di rete in grado di identificare gli host e trasmettere singoli pacchetti da host a host.
+
+![[lez08-stili-p23-osi-closed-layers.png]]
+*Pila ISO/OSI dall'alto in basso: Application, Presentation, Session, Transport, Network, DataLink, Physical; ogni layer comunica solo con quello immediatamente sotto, con il «livello di astrazione» che cresce verso l'alto.*
+
+- **OLA** (p. 24): il layer *i* può invocare servizi di qualsiasi layer inferiore; gli obiettivi principali sono **tempo di esecuzione ridotto ed efficienza**.
+- **Esempio OLA: OSF/Motif** (p. 25): *Xlib* offre funzioni di disegno di basso livello; *Xt* la gestione dei widget dell'interfaccia di base; *Motif* un gran numero di widget sofisticati; *Application* può accedere a ciascun layer in modo indipendente.
+
+![[lez08-stili-p25-motif-open-layers.png]]
+*Quattro layer (Application, Motif, Xt, Xlib): oltre alle dipendenze tra layer adiacenti, le frecce tratteggiate mostrano che Application usa direttamente anche Xt e Xlib, e Motif usa direttamente Xlib.*
+
+#### Interfacce dei layer con il pattern Façade · [[05_Architectural_Styles_Complete.pdf#page=26|p. 26]]–[[05_Architectural_Styles_Complete.pdf#page=27|27]]
+
+- Senza una façade un client può dover coordinare più oggetti per validare e salvare i dati di un cliente (p. 26).
+
+![[lez08-stili-p26-facade-senza.png]]
+*Diagramma di sequenza: AccountManager invoca direttamente Account, Address e CreditCard, ciascuno con le proprie operazioni `isValid()` e `save()`.*
+
+![[lez08-stili-p27-facade-con.png]]
+*Nel progetto rivisto una classe CustomerFacade è interposta: AccountManager chiama solo `saveCustomerData()` sulla façade, che coordina Account, Address e CreditCard. A sinistra il diagramma delle classi, a destra la sequenza di interazione (figure 22.7 e 22.8 della fonte).*
+
+#### Esercizio: Lunar Lander a layer · [[05_Architectural_Styles_Complete.pdf#page=28|p. 28]]–[[05_Architectural_Styles_Complete.pdf#page=29|29]]
+
+- Domanda: come si organizzerebbe Lunar Lander in layer?
+
+![[lez08-stili-p29-layered-lunar-lander.png]]
+*Soluzione dall'alto in basso: Keyboard Input Handler → (chiamata di procedura: input da tastiera) → Game Logic and Environment Simulator → (variazione di altitudine) → Generic 2D Game Engine → (posizione x, y degli oggetti) → Operating System → (dati binari) → Hardware Display / Graphics Card.*
+
+### Stile client–server · [[05_Architectural_Styles_Complete.pdf#page=30|p. 30]]–[[05_Architectural_Styles_Complete.pdf#page=34|34]]
+
+- Distingue **due ruoli** in un'interazione; è nato nei sistemi distribuiti per organizzare la comunicazione tra parti separate; uno o più server forniscono servizi a più istanze di client; i client invocano un servizio e ricevono un risultato (p. 30).
+- **Elementi e usi** (p. 31): componenti sono client e server (i server non devono conoscere in anticipo numero e identità dei client; i client devono sapere come raggiungere un server; possono essere *thin* o *thick*); connettori: protocolli di interazione di rete, RPC, Java RMI; uso tipico: dati o elaborazione centralizzati con i client che forniscono l'interfaccia utente; **limiti:** banda di rete e prestazioni del server possono diventare colli di bottiglia al crescere dei client.
+- **Responsabilità logiche** (p. 32): **presentazione** (interfaccia utente, eventi grafici, controlli sull'input); **logica applicativa** (funzioni del sistema); **gestione dei dati** (dati persistenti).
+- **Alternative di deployment** (p. 33): *due tier* (presentazione e logica applicativa possono essere combinate nel client, con i dati persistenti su un server); *tre tier* (le tre responsabilità hanno tier di deployment separati); *N tier* (logica applicativa e gestione dei dati distribuite lungo una catena di server).
+
+![[lez08-stili-p34-client-server-lunar-lander.png]]
+*Versione multigiocatore di Lunar Lander: N client (Client 1, 2, …, n, ciascuno con «Get/Display Info» e «Graphics Processing») chiamano via «Procedure Call» un unico SERVER (Game State, Game Logic, Environment Simulation); ingresso: burnRate, uscita: altitudine, carburante, tempo, velocità.*
+
+### Stili data-flow · [[05_Architectural_Styles_Complete.pdf#page=35|p. 35]]–[[05_Architectural_Styles_Complete.pdf#page=51|51]]
+
+- Due varianti: **batch sequential** e **pipe and filter** (p. 36).
+
+#### Batch sequential · [[05_Architectural_Styles_Complete.pdf#page=37|p. 37]]–[[05_Architectural_Styles_Complete.pdf#page=39|39]]
+
+- I dati si spostano tra elementi di elaborazione **indipendenti**: programmi separati eseguiti in un ordine specificato che si scambiano dati a lotti (*batch*). Storicamente i connettori potevano essere persone che spostavano nastri tra programmi. Gli elementi dati sono i lotti passati tra i componenti finché l'elaborazione è completa. Uso tipico: elaborazione di transazioni nei sistemi finanziari; è uno dei primissimi stili architetturali (p. 37).
+
+![[lez08-stili-p38-batch-sequential-finanza.png]]
+*Applicazione finanziaria: «Daily transactions» → «Sort by account number» → «Sorted transactions»; insieme al «Master account tape» alimenta «Process transactions» → «Updated master tape» (riusato domani, «For tomorrow's use») → «Print summary of accounts» → «Print file». I cerchi sono i lotti di dati, i rettangoli i programmi.*
+
+![[lez08-stili-p39-batch-sequential-lunar-lander.png]]
+*Lunar Lander in batch sequential: i dati (h, v, t, fuel) passano per «Get BurnRate from user» → «Compute new h, v, t, fuel» → «Display h, v, t, fuel to user» e ricircolano per la iterazione successiva. «Difficilmente una ricetta per una missione lunare di successo»: l'elaborazione a lotti non offre il controllo interattivo in tempo reale richiesto dal gioco.*
+
+#### Pipe and filter · [[05_Architectural_Styles_Complete.pdf#page=40|p. 40]]–[[05_Architectural_Styles_Complete.pdf#page=51|51]]
+
+- **Obiettivo** (p. 41): scomporre un compito complesso in passi di elaborazione indipendenti, i **filtri**, collegati da canali, le **pipe**; ogni filtro esegue una specifica trasformazione dei dati.
+- **Elementi e invarianti** (p. 42): i componenti sono **filtri** (programmi che trasformano flussi di dati in ingresso in flussi in uscita); i connettori sono **pipe** (canali per flussi di dati, realizzati con code, stream, messaggi, file temporanei o simili); i filtri sono indipendenti e **non condividono stato**; un filtro non sa quali filtri stiano a monte o a valle; i filtri possono essere eseguiti in **concorrenza** (un filtro a valle non attende che quello a monte abbia finito).
+- **Esempi** (p. 43): shell UNIX, elaborazione dei segnali, sistemi distribuiti e programmazione parallela. Esempio di shell: `ls invoices | grep -e August | sort`. Un compilatore Java può organizzare analisi lessicale, parsing, analisi semantica e ottimizzazione come trasformazioni successive.
+- **Implementare le pipeline** (p. 44): in un programma a processo singolo le pipe sono spesso code in memoria; in un'implementazione distribuita l'infrastruttura di messaggistica passa i flussi tra filtri remoti (ad es. code di messaggi); un passo lungo può essere servito da più istanze parallele di un filtro, migliorando prestazioni e throughput.
+
+![[lez08-stili-p45-filtri-paralleli.png]]
+*Pipeline con filtri paralleli: i dati dalla sorgente si distribuiscono su tre istanze del Task A, passano per Task B e Task C in serie, quindi su tre istanze del Task D, fino alla «Business logic». I filtri possono girare su macchine con prestazioni diverse; un filtro passa il suo output completo alla pipe verso lo stadio successivo; l'elaborazione parallela richiede cura per evitare scritture duplicate e, se serve, preservare l'ordine dell'output (p. 45).*
+
+- **Comportamento dei filtri** (p. 46): un filtro può *arricchire* i dati (calcolando o aggiungendo informazione), *raffinarli* (aggregando o estraendo informazione) o trasformarli in un'altra rappresentazione. Un filtro **attivo** avvia l'elaborazione come programma o thread separato (tipicamente un ciclo di lettura dell'input e scrittura dell'output); un filtro **passivo** viene eseguito quando un altro componente lo invoca con una chiamata di funzione (*pull*) o di procedura (*push*).
+- **Esempio: elaborazione di log** (p. 47): il filtro A legge i file di log; B normalizza i dati; C trattiene solo gli errori critici; D aggrega i risultati; E salva i risultati in un database. Ogni passo è indipendente: il filtro di normalizzazione può essere riusato per un'altra sorgente senza ricostruire l'applicazione.
+- **Attributi di qualità** (p. 48): *prestazioni* (filtri in parallelo, elaborazione incrementale); *scalabilità* (i filtri costosi si replicano e scalano in modo indipendente); *riuso* (filtri generici servono più catene); *modularità* (ogni filtro ha una responsabilità distinta); *modificabilità e testabilità* (ogni filtro è disaccoppiato dagli altri e può essere modificato e testato in modo indipendente).
+- **Benefici** (p. 49): il comportamento del sistema discende dalla composizione dei componenti; i filtri possono essere concorrenti e produrre output incrementale; l'elaborazione incrementale può ridurre la latenza e abilitare il parallelismo; i filtri si possono aggiungere, sostituire e riusare; si possono analizzare proprietà architetturali come throughput, latenza e deadlock.
+- **Limiti** (p. 50): le implementazioni orientate al batch offrono poca interattività; lo stile è scomodo quando i filtri richiedono conversazioni interattive complesse; strutture dati complesse possono richiedere codifica/decodifica costose o l'accordo su formati comuni.
+- **Lunar Lander in pipe and filter** (p. 51): ogni filtro ripete la propria azione: il primo chiede all'utente il burn rate e lo scrive nello stream; il secondo aggiorna l'ambiente quando arriva un nuovo valore di burn rate; il terzo aggiorna il display quando nuovi valori di stato arrivano al suo ingresso.
+
+### Stili shared-data · [[05_Architectural_Styles_Complete.pdf#page=52|p. 52]]–[[05_Architectural_Styles_Complete.pdf#page=71|71]]
+
+- **Shared memory e shared state** (p. 53): più agenti accedono allo stesso **repository di dati centralizzato** e comunicano attraverso di esso. L'obiettivo è **disaccoppiare** gli agenti perché possano essere aggiunti o rimossi a runtime senza conoscersi. Agenti indipendenti tra loro, e archivio indipendente dagli agenti. Supporta l'integrazione dei dati; somiglia per certi aspetti alle variabili globali, ma offre un'organizzazione architetturale distinta.
+
+![[lez08-stili-p54-shared-data.png]]
+*Un blocco centrale «Shared Data» circondato da agenti (ovali) che vi accedono in lettura/scrittura (frecce «Memory Access») ed eseguono elaborazioni («Computation»): topologia a stella.*
+
+- **Elementi** (p. 55): componenti: un repository globale di dati (la *blackboard*) e agenti indipendenti che operano su di esso; connettori: chiamate di procedura, accesso diretto alla memoria o operazioni su database (interazione con database tipicamente **CRUD**: Create, Read, Update, Delete); topologia: **stella** centrata sul repository condiviso.
+- **Varianti** (p. 56): **blackboard** (specialisti indipendenti contribuiscono a una rappresentazione condivisa del problema, ciascuno affrontandone una parte e aggiornando i dati); **rule-based** (una base di conoscenza memorizza fatti e regole, come nei sistemi esperti e in altre applicazioni di intelligenza artificiale); **repository** (componenti diversi condividono e aggiornano dati comuni).
+
+#### 1. Repository · [[05_Architectural_Styles_Complete.pdf#page=57|p. 57]]–[[05_Architectural_Styles_Complete.pdf#page=59|59]]
+
+![[lez08-stili-p57-repository-componenti.png]]
+*Diagramma dei componenti: il componente Repository contiene un «executable» Request Validator, che «use» un Database, ed espone un'interfaccia «instantiate» («an operation») utilizzata dal componente Agent.*
+
+- **Stile repository** (p. 58): un repository centrale memorizza dati condivisi da più componenti; i componenti interrogano e aggiornano il repository tramite interfacce di accesso definite; il repository gestisce persistenza, vincoli di integrità e accesso concorrente; i componenti condividono un modello dati comune, che diventa una dipendenza architetturale importante.
+- **Benefici** (p. 59): i dati condivisi supportano l'integrazione tra le funzioni applicative; vincoli di integrità, controllo degli accessi e backup si gestiscono centralmente; i nuovi componenti possono usare i dati esistenti. **Limiti:** *modificabilità* (modifiche di schema possono richiedere cambiamenti in più componenti); *prestazioni* (accesso concorrente e contesa possono creare colli di bottiglia); *disponibilità* (un guasto del repository può compromettere molte funzioni).
+
+#### 2. Blackboard · [[05_Architectural_Styles_Complete.pdf#page=60|p. 60]]–[[05_Architectural_Styles_Complete.pdf#page=64|64]]
+
+- **Interazione** (p. 60): in un repository i componenti usano i dati condivisi per eseguire le funzioni applicative; in una blackboard i componenti specialisti contribuiscono con risultati parziali e lo **stato condiviso in evoluzione** guida quali componenti eseguire. **Blackboard passiva:** i componenti interrogano (*poll*) lo stato condiviso e decidono quando agire. **Blackboard attiva:** un manager notifica i programmi quando i dati rilevanti cambiano.
+- **Esempi applicativi** (p. 61): intelligenza artificiale (problem solving, riconoscimento vocale, controllo di robot); riconoscimento ottico dei caratteri (strumenti storici come Adobe Acrobat Capture usavano tecniche blackboard per interpretare oggetti, testo e font); sistemi CAD grafici; sistemi di Complex Event Processing (CEP).
+- **Benefici** (p. 62): la strategia risolutiva di un problema complesso non deve essere pianificata per intero in anticipo; le modifiche ai dati del problema determinano quali contributi servono dopo; specialisti indipendenti cooperano per risolvere un problema complesso attraverso una rappresentazione condivisa.
+- **Limiti** (p. 63): cautela quando le interazioni tra programmi indipendenti richiedono logica di coordinamento complessa; modifiche frequenti alla rappresentazione dei dati condivisi possono coinvolgere molti agenti; può aggiungere complessità inutile quando esiste già una chiara strategia di coordinamento; gli agenti concorrenti richiedono meccanismi di controllo degli accessi; i dati condivisi possono diventare un collo di bottiglia; difficoltà nello spiegare come si è arrivati ai risultati.
+
+![[lez08-stili-p64-blackboard-lunar-lander.png]]
+*Lunar Lander con blackboard: tre componenti («Enter burn rate from user», che fornisce br; «Display values», che ottiene a, f, t, v; «Compute new values and Update», che ottiene a, br, f, t, v e fornisce a, f, t, v) accedono, attraverso un connettore «Data Access», alla blackboard «Data Storage (altitude, burnRate, fuel, time, velocity)». I componenti accedono allo stato condiviso tramite riferimenti in memoria, chiamate di procedura o query a database.*
+
+#### 3. Rule-based · [[05_Architectural_Styles_Complete.pdf#page=65|p. 65]]–[[05_Architectural_Styles_Complete.pdf#page=71|71]]
+
+- **Stile rule-based** (p. 66): la memoria condivisa è una **base di conoscenza** con **fatti** e **regole di produzione** del tipo IF … THEN. L'interfaccia utente raccoglie input e mostra output; viene aggiunto un nuovo fatto o una nuova regola alla base di conoscenza. Per una query o un obiettivo, un **motore inferenziale** applica le regole disponibili per stabilire se l'obiettivo è soddisfatto. *Forward chaining:* ragiona dai dati disponibili applicando le regole e derivando nuovi fatti (ad es. «lo studente è idoneo»). *Backward chaining:* parte da un obiettivo (lo studente è idoneo?) e verifica le condizioni necessarie per stabilirlo. Stile associato ai **sistemi esperti** (inclusi quelli in Prolog).
+- **Struttura e usi** (p. 67): componenti: interfaccia utente, motore inferenziale, base di conoscenza; connettori: chiamate di procedura e accesso alla memoria condivisa, che legano strettamente i componenti; elementi dati: fatti e query; topologia: tre parti principali. **Beneficio:** aggiungere o togliere regole può cambiare il comportamento dell'applicazione. **Uso:** prototipazione rapida di applicazioni guidate da regole.
+
+![[lez08-stili-p68-rule-based-lunar-lander.png]]
+*Lunar Lander rule-based: l'interfaccia utente fornisce il fatto `burnrate(25)` e l'obiettivo `landed(spacecraft)`; tramite «Procedure Call» raggiunge il Inference Engine, che attraverso «Data Access» consulta la Knowledge Base (fatti a, br, f, t, v e regola `landed(spacecraft) :- (a, 0), (v, 3)`). Il motore verifica la regola di atterraggio, ad esempio altitudine ≤ 0 AND velocità < 3 ft/s (p. 68).*
+
+- **Comprendere le interazioni** (p. 69): con molte regole è difficile capire come interagiscono quelle toccate dagli stessi fatti; il ragionamento che porta a un risultato può essere difficile da ricostruire; in molte applicazioni conta anche la **spiegazione** del risultato, non solo il risultato.
+- **Interazioni e conflitti tra regole** (p. 70): le regole attivate dagli stessi fatti possono sovrascriversi e il loro ordine di scatto può influenzare il risultato. Insieme di regole illustrativo: R1: IF fever AND cough THEN suspect_flu; R2: IF fever AND rash THEN suspect_measles; R3: IF suspect_flu THEN prescribe_antiviral; R4: IF suspect_measles THEN prescribe_antibiotic. Se febbre, tosse e rash sono tutti presenti, R1 e R2 scattano insieme e l'insieme di regole può produrre esiti in conflitto o incoerenti.
+- **Spiegabilità** (p. 71): capire un risultato può richiedere di seguire l'intera catena di inferenza; ottenere una risposta spesso non basta senza sapere come il motore ci è arrivato; *inference tracing* e analisi dei log rendono il ragionamento più ispezionabile.
+
+### Stile interpreter · [[05_Architectural_Styles_Complete.pdf#page=72|p. 72]]–[[05_Architectural_Styles_Complete.pdf#page=75|75]]
+
+- Il comportamento dell'applicazione è specificato **dinamicamente** da comandi forniti a runtime; l'interprete analizza ed esegue i comandi, aggiornando lo stato di esecuzione quando serve. Componenti: interprete di comandi, programma/stato dell'interprete, interfaccia utente; connettori: chiamate di procedura e stato condiviso; topologia: tre parti principali, con lo stato separato dall'interprete (p. 73).
+- **Caratteristiche** (p. 74): comportamento molto dinamico, insieme di comandi eventualmente estendibile; l'architettura può restare stabile mentre nuove capacità sono composte da primitive esistenti; gli utenti finali ottengono una notevole programmabilità. Esempi: Lisp, motori SQL, ambienti di esecuzione Java o JavaScript, formule e macro dei fogli di calcolo. In Excel le formule passano dal motore di calcolo e le macro VBA dall'ambiente Visual Basic.
+
+![[lez08-stili-p75-interpreter-lunar-lander.png]]
+*Lunar Lander con interprete: «Get Command from user» (ad es. (Burn, 50), (Check Status)) → «Stream» → «Interpret and Execute» → due connettori «Data Access» verso «Interpreter State». Con (Burn, 50) l'interprete aggiorna navicella e stato di gioco; con (Check Status) recupera lo stato di gioco rilevante e mostra il risultato nella GUI.*
+
+### Stile mobile code · [[05_Architectural_Styles_Complete.pdf#page=76|p. 76]]–[[05_Architectural_Styles_Complete.pdf#page=83|83]]
+
+- Il **codice è trasmesso a un host remoto** per essere eseguito o interpretato. Utile quando le risorse di calcolo locali sono insufficienti o grandi insiemi di dati sono già memorizzati in remoto; spostare il codice può evitare di trasferire molti dati. Benefici potenziali: meno traffico di rete e comportamento modificabile senza sostituire l'architettura complessiva (p. 76).
+- **Varianti** (p. 77): **code on demand** (dati e risorse di esecuzione sono locali, il codice necessario viene scaricato); **remote evaluation** (il codice è disponibile localmente ma gira su un host remoto che offre le risorse di esecuzione); **mobile agent** (codice e stato di esecuzione migrano su un altro host per ottenere risorse non disponibili in locale).
+
+![[lez08-stili-p78-code-on-demand.png]]
+*Code on demand: il client (browser) richiede una pagina web al server, che restituisce codice JavaScript; il codice viene eseguito nel browser (p. 78).*
+
+![[lez08-stili-p79-remote-evaluation.png]]
+*Remote evaluation: il client invia il codice a un server (grid), dove viene eseguito, e riceve i risultati. Il grid computing combina risorse di calcolo distribuite per eseguire carichi impegnativi; la fonte illustra il modello con il calcolo ad alte prestazioni. Grid e cloud computing sono concetti distinti (p. 79).*
+
+![[lez08-stili-p80-mobile-agent.png]]
+*Mobile agent: l'iniziatore ha codice e alcune risorse ma non tutte e può decidere autonomamente di migrare su un altro nodo per ottenere risorse aggiuntive; nella figura un agente si sposta lungo un anello di nodi (Master, Node 0, 1, 2) (p. 80).*
+
+- **Elementi** (p. 81): componenti: un *execution dock* che riceve codice e stato, e un interprete o ambiente di esecuzione; connettori: protocolli di rete e meccanismi per impacchettare codice e dati; elementi dati: codice rappresentato come dato, stato del programma e dati applicativi; topologia: una rete di host di esecuzione.
+- **Lunar Lander mobile code** (p. 82): i client web scaricano il codice del gioco e lo eseguono in locale (implementazioni storiche: applet Java o JavaScript); i client mantengono lo stato di gioco ed eseguono il calcolo, riducendo l'elaborazione sul server.
+- **Benefici e limiti** (p. 83): *benefici* adattamento dinamico e accesso alle risorse di elaborazione di altri host; la migrazione può supportare la dependability quando esistono host alternativi. *Limiti:* gli host devono proteggersi da codice non fidato; i costi di comunicazione o le connessioni inaffidabili possono annullare il vantaggio dell'esecuzione remota. Usi tipici: spostare il calcolo verso grandi insiemi di dati remoti, configurare un'applicazione con codice fornito dall'esterno.
+
+### Cloud computing (cenni) · [[05_Architectural_Styles_Complete.pdf#page=84|p. 84]]–[[05_Architectural_Styles_Complete.pdf#page=88|88]]
+
+- **Definizione NIST** (p. 84): un modello per l'accesso di rete comodo e on demand a un pool condiviso di risorse di calcolo configurabili; le risorse possono essere allocate e rilasciate rapidamente con minimo sforzo di gestione o interazione con il provider.
+- **Benefici potenziali** (p. 85): *per i clienti* meno necessità di possedere e mantenere hardware e software di infrastruttura; modelli pay-per-use e capacità scalabile secondo necessità; capacità gestite dal provider che possono supportare affidabilità e sicurezza (secondo servizi e configurazione scelti). *Per i provider:* la domanda aggregata può migliorare l'utilizzo delle risorse e aiutare a gestire la variabilità tra clienti.
+- **Modelli di servizio** (p. 86): **IaaS** (Infrastructure as a Service: rete, storage e calcolo, ad es. macchine virtuali); **PaaS** (Platform as a Service: infrastruttura più sistema operativo e piattaforma applicativa, come application server, servizi di database, middleware); **SaaS** (Software as a Service: il provider gestisce un'applicazione di solito raggiunta con browser o app mobile). Il modello di servizio permette di consumare una capacità senza possedere ogni risorsa necessaria.
+
+![[lez08-stili-p87-responsabilita-cloud.png]]
+*Responsabilità nei modelli di servizio: quattro colonne (Enterprise IT / On Premise, IaaS, PaaS, SaaS) con lo stesso stack di livelli: Data, Application, MW/DBMS, Security, Operating Systems, Virtualization, Storage, Computing Resources, Networking, Data Centers. In blu i livelli gestiti dal cliente, in verde quelli gestiti dal provider: on premise tutto blu; IaaS verde da Virtualization in giù; PaaS verde da MW/DBMS in giù; SaaS tutto verde tranne Data (p. 87).*
+
+- **Modelli di deployment** (p. 88): **cloud privato** (infrastruttura per una sola organizzazione, gestita da essa, da terzi o da entrambi, on o off premises); **community cloud** (per organizzazioni con interessi comuni, gestita da uno o più membri, da terzi o da entrambi); **cloud pubblico** (offerto al pubblico generale e gestito da un provider); **cloud ibrido** (infrastrutture cloud distinte collegate per supportare la portabilità di dati e applicazioni).
+
+### Architetture con componenti disaccoppiati · [[05_Architectural_Styles_Complete.pdf#page=89|p. 89]]–[[05_Architectural_Styles_Complete.pdf#page=91|91]]
+
+- **Forme di disaccoppiamento** (p. 90): un **intermediario** permette ai componenti di comunicare senza indirizzarsi direttamente. *Space / reference decoupling:* i componenti non devono conoscere l'identità l'uno dell'altro. *Time decoupling:* i componenti che interagiscono non devono essere disponibili nello stesso momento (i messaggi devono restare disponibili per la consegna successiva). *Synchronization decoupling:* i componenti non devono attendersi durante un'interazione.
+- **Benefici e costi** (p. 91): l'accoppiamento debole può migliorare l'adattabilità e supportare la scalabilità architetturale; lo space decoupling consente a componenti di muoversi, cambiare, essere aggiunti o migrare; il time decoupling tollera componenti che entrano ed escono; il synchronization decoupling riduce il blocco tra componenti. **Costo:** l'intermediario introduce overhead di elaborazione e comunicazione; i componenti dipendono comunque da formati di messaggio condivisi e dal loro significato.
+
+### Stile implicit invocation · [[05_Architectural_Styles_Complete.pdf#page=92|p. 92]]–[[05_Architectural_Styles_Complete.pdf#page=94|94]]
+
+- Stile per organizzare componenti disaccoppiati: i componenti **annunciano eventi** invece di chiamare esplicitamente i componenti che dovrebbero reagire; i componenti interessati **registrano handler** per particolari tipi di evento; quando un evento si verifica, il meccanismo di distribuzione degli eventi invoca o notifica gli handler registrati; chi annuncia non deve sapere quali componenti risponderanno. La gestione degli eventi può essere sincrona o asincrona (p. 92).
+- **Esempio** (p. 93): un pulsante annuncia un evento di click; i listener registrati reagiscono validando l'input o aggiornando l'interfaccia. *Beneficio:* si possono aggiungere handler senza modificare il componente che annuncia. *Trade-off:* il flusso di controllo diventa meno esplicito; capire il comportamento complessivo richiede di individuare gli handler registrati e le loro regole di esecuzione. Due forme qui trattate: publish–subscribe e architetture event-based.
+- **Benefici e limiti** (p. 94): *benefici* riuso dei componenti ed evoluzione del sistema, sia in sviluppo sia a runtime. *Limiti:* la struttura effettiva e il flusso di controllo possono essere difficili da capire; il meccanismo di consegna degli eventi determina quali handler sono attivati e come; chi annuncia può non sapere quali componenti risponderanno né in che ordine.
+
+### Publish–subscribe · [[05_Architectural_Styles_Complete.pdf#page=95|p. 95]]–[[05_Architectural_Styles_Complete.pdf#page=106|106]]
+
+- **Meccanismo di base** (p. 96): i *publisher* pubblicano messaggi senza indirizzare singoli destinatari; i *subscriber* esprimono interesse per topic, tipi di evento o contenuto dei messaggi; un meccanismo di distribuzione consegna i messaggi corrispondenti ai subscriber interessati.
+- **Elementi architetturali** (p. 97): componenti: publisher, subscriber e proxy di distribuzione o *broker* opzionali; connettori: chiamate di procedura in un programma locale, protocolli di rete tra host (le sottoscrizioni basate sul contenuto richiedono meccanismi di matching e instradamento); elementi dati: sottoscrizioni, notifiche e informazioni pubblicate; topologia: i subscriber si collegano direttamente ai publisher o ricevono messaggi tramite intermediari; implicazioni di qualità: supporta la distribuzione di informazioni uno-a-molti con accoppiamento limitato.
+- **In un singolo programma** (p. 98): i subscriber si registrano presso un publisher per particolari messaggi o contenuti e specificano la *callback* da invocare (adatta a implementazioni semplici e locali); i publisher mantengono i propri subscriber e consegnano le notifiche in modo sincrono o asincrono; i subscriber possono annullare la sottoscrizione.
+- **In rete** (p. 99): le grandi applicazioni distribuite usano protocolli di rete invece di invocazioni di callback locali; i publisher possono usare **proxy o broker intermediari** per distribuire i messaggi a gruppi selezionati di subscriber.
+
+![[lez08-stili-p100-pubsub-broker.png]]
+*Publisher (a sinistra) inviano messaggi a un «Pub/Sub message broker» che li instrada su canali («Channel (Topic)»); ogni canale consegna una copia del messaggio a tutti i subscriber (a destra) interessati a quel topic.*
+
+![[lez08-stili-p101-pubsub-disaccoppiamento.png]]
+*Le tre forme di disaccoppiamento con un middleware publish/subscribe fra publisher (P) e subscriber (S): *space decoupling* (P pubblica una volta, il middleware chiama `notify()` verso più S senza che P ne conosca l'identità); *time decoupling* (P pubblica mentre S è disconnesso; la notifica avviene dopo, quando S torna disponibile); *synchronization decoupling* (P non si blocca in attesa; S riceve la notifica in modo asincrono).*
+
+- **Benefici potenziali** (p. 102): *estensibilità* (nuovi subscriber reagiscono alle pubblicazioni esistenti senza cambiare il publisher); *modificabilità* (publisher e subscriber evolvono separatamente finché i contratti dei messaggi restano compatibili); *interoperabilità* (protocolli e formati condivisi supportano la comunicazione tra piattaforme); *reattività* (la consegna asincrona permette ai publisher di proseguire senza attendere l'elaborazione dei subscriber).
+- **Limiti** (p. 103): i publisher non possono assumere che i subscriber abbiano completato l'elaborazione; garanzie di consegna, ordinamento e gestione dei duplicati richiedono decisioni esplicite; subscriber lenti possono causare accumulo di messaggi; modifiche al contratto dei messaggi possono toccare più subscriber; gli intermediari richiedono capacità, monitoraggio e meccanismi di ripristino.
+- **Applicazioni tipiche** (p. 104): diffusione di notizie, interfacce grafiche, giochi multigiocatore, sistemi Internet of Things.
+
+![[lez08-stili-p105-pubsub-lunar-lander.png]]
+*Lunar Lander publish–subscribe: Subscriber 1, 2, …, n si registrano al Game Server tramite stream (ingresso: register, reg info); un connettore Event porta le notifiche (ingresso: nuovo terreno, navicella; uscita: nessuna). I giocatori si sottoscrivono al gioco e ricevono notifiche quando cambiano informazioni di interesse; una notifica può portare l'informazione aggiornata o spingere a un successivo download esplicito; il game server pubblica le informazioni sullo stato corrente del gioco (p. 105).*
+
+![[lez08-stili-p106-mqtt.png]]
+*Esempio MQTT: un sensore di temperatura (publisher, MQTT Client) pubblica «24 °C» sul topic temperature a un MQTT Broker, che lo inoltra ai client sottoscritti a quel topic (un dispositivo mobile e un sistema backend). MQTT è un protocollo di messaggistica standard OASIS per l'Internet of Things, estremamente leggero, adatto a dispositivi remoti con poco codice e poca banda; è usato in automotive, manifattura, telecomunicazioni, oil & gas (p. 106).*
+
+### Stile event-based · [[05_Architectural_Styles_Complete.pdf#page=107|p. 107]]–[[05_Architectural_Styles_Complete.pdf#page=118|118]]
+
+- **Idea di base** (p. 108): gli **eventi** riportano occorrenze di interesse (click di un pulsante, tick di clock, prenotazione confermata). I *producer* annunciano eventi; i *consumer* reagiscono secondo le proprie responsabilità; un componente può avere entrambi i ruoli. I connettori consegnano gli eventi tramite meccanismi di dispatching locali o canali di rete, spesso con un bus o broker. La gestione locale può essere sincrona o asincrona; i sistemi event-driven distribuiti usano di norma la consegna asincrona.
+- **Eventi, implicit invocation e pub–sub** (p. 109): *implicit invocation* descrive il principio di interazione (un evento attiva handler senza che il producer li chiami esplicitamente); un'*architettura event-based* organizza la cooperazione dei componenti attorno agli eventi; *publish–subscribe* distribuisce le pubblicazioni secondo le sottoscrizioni ed è un meccanismo comune per la comunicazione event-based. Trasmettere ogni evento a tutti i componenti è un'opzione; filtraggio e instradamento possono consegnare solo gli eventi rilevanti.
+- **Benefici** (p. 110): *estensibilità* (nuovi componenti reagiscono agli eventi esistenti mentre i producer mantengono le loro responsabilità); *separazione delle responsabilità* (ogni consumer implementa la propria reazione, ad es. notificare un cliente o aggiornare un read model); *reattività* (i consumer asincroni possono differire il lavoro mentre il producer prosegue); *scalabilità* (i consumer distribuiti scalano separatamente quando partizionamento degli eventi, ordinamento e stato condiviso lo consentono).
+- **Limiti** (p. 111): il flusso di controllo attraversa più reazioni, rendendo difficile tracciare avanzamento e guasti; con la consegna asincrona i consumer possono aggiornare il proprio stato in momenti diversi; la consegna distribuita richiede decisioni su retry, duplicati, ordinamento e ripristino; i contratti degli eventi creano dipendenze (cambi di struttura o significato possono toccare più consumer); handler lenti, cicli di eventi o canali sovraccarichi possono ritardare altre elaborazioni.
+
+![[lez08-stili-p112-event-based-lunar-lander.png]]
+*Lunar Lander event-based: i componenti SpaceCraft, Clock, Game Logic e GUI sono collegati a un bus «Event». Spacecraft mantiene lo stato del veicolo e, ricevuti i tick del clock (Send: t), ricalcola lo stato ed emette un evento (a, br, f, v); Game Logic usa stato e tempo trascorso per decidere se la partita è finita; la GUI pubblica l'input utente (br), riceve gli eventi di stato della navicella e aggiorna il display (p. 112).*
+
+#### Gestione locale degli eventi in Java · [[05_Architectural_Styles_Complete.pdf#page=113|p. 113]]–[[05_Architectural_Styles_Complete.pdf#page=118|118]]
+
+- **AWT e Swing** illustrano l'interazione event-based dentro una singola applicazione: le sorgenti generano oggetti evento; i listener registrati li gestiscono tramite metodi di callback. Swing normalmente smista gli eventi GUI sull'*event dispatch thread*; il codice dei listener deve terminare in fretta per mantenere reattiva l'interfaccia. Qui il dispatching è locale con callback: un broker di rete non serve (p. 113).
+- **Modello a eventi della GUI Java** (p. 114): *event source* (l'oggetto che genera l'evento, ad es. un pulsante); *event object* (contiene le informazioni sull'evento, inclusa la sorgente); *event listener* (oggetto notificato quando l'evento accade, il cui metodo lo gestisce).
+- **Eventi e interfacce listener** (p. 115): a ogni tipo di evento corrisponde un'interfaccia listener appropriata; un `JButton` può generare un `ActionEvent` gestito da un oggetto che implementa `ActionListener`; un `JComboBox` può generare un `ItemEvent` gestito da un `ItemListener`.
+- **Collegare sorgenti e listener** (p. 116): le sorgenti offrono metodi per registrare i listener; il listener implementa l'interfaccia richiesta dal tipo di evento (ad es. `ActionListener` definisce `actionPerformed(ActionEvent e)`); quando l'evento si verifica, la sorgente notifica il listener e invoca il suo metodo di gestione.
+- **Passi per gestire un evento** (p. 117): creare una classe handler che implementa l'interfaccia listener appropriata (ad es. `ButtonClicking implements ActionListener` con `actionPerformed(ActionEvent e)`); registrare l'handler presso la sorgente con `addActionListener` (ad es. `yesButton.addActionListener(this)`).
+- **Per approfondire** (p. 118): organizzazione event-based nelle applicazioni Android; gestione degli eventi nelle interfacce grafiche; modello a eventi Java per le GUI; altri framework per la gestione degli eventi.
+
+### Appendice: stili aggiuntivi — peer-to-peer · [[05_Architectural_Styles_Complete.pdf#page=119|p. 119]]–[[05_Architectural_Styles_Complete.pdf#page=157|157]]
+
+#### Stile peer-to-peer · [[05_Architectural_Styles_Complete.pdf#page=120|p. 120]]–[[05_Architectural_Styles_Complete.pdf#page=126|126]]
+
+- Un'architettura **decentralizzata** condivide risorse distribuite tra nodi *peer*. Stato e comportamento sono distribuiti; un peer può essere sia client sia server; i peer sono componenti indipendenti con proprio stato e proprio thread di controllo; connettori: protocolli di rete, spesso specializzati per l'applicazione; elementi dati: messaggi di rete (p. 121).
+- **Panoramica** (p. 122): un sistema P2P è una collezione distribuita di nodi peer; ogni nodo può fornire servizi e fare richieste ad altri nodi (agisce sia da server sia da client); l'obiettivo dello stile è **condividere risorse e servizi** (dati, CPU, disco, …).
+- **Funzioni e requisiti di qualità** (p. 123): caratteristiche funzionali tipiche: sistemi di file sharing, di file storage, file system distribuito, storage ridondante, calcolo distribuito. Requisiti non funzionali tipici: disponibilità, affidabilità, prestazioni, scalabilità, anonimato.
+- **Sviluppo storico** (p. 124): proposti 30 anni prima, si sono evoluti soprattutto nell'ultimo decennio; i sistemi di file sharing hanno aumentato l'interesse (Napster, 1999; Gnutella, 2000); nel 2000 il client Napster è stato scaricato da 50 milioni di utenti (picco di traffico di 7 TB al giorno); Gnutella ha seguito l'impronta di Napster (prima release nel 2003 secondo la slide; a giugno 2005 la popolazione di Gnutella era di 1,81 milioni di computer; nel 2007 era la rete di file sharing più popolare, con quota di mercato stimata > 40%; i server host sono elencati su gnutellahost.com).
+- **Fasi di un'applicazione P2P** (p. 125): **Boot** (un peer si connette alla rete ed effettua le connessioni; il boot P2P è raro); **Lookup** (un peer cerca un fornitore di un dato servizio o informazione; in genere i fornitori sono SuperPeer); **Resource sharing** (le risorse richieste e trovate vengono consegnate, di solito in più segmenti).
+
+![[lez08-stili-p126-bittorrent.png]]
+*Esempio di condivisione di risorse, BitTorrent (p. 126): il tracker identifica lo sciame (*swarm*) e aiuta i client a scambiarsi pezzi del file; i peer con il file completo sono *seed* (100%), gli altri hanno percentuali parziali (74%, 23%, 19%, 54%); il computer con il client BitTorrent riceve e invia più pezzi del file contemporaneamente (nella figura 37% posseduto).*
+
+- **Classificazione** (p. 127): tre organizzazioni architetturali che differiscono soprattutto per come si **localizzano le risorse**: **Centralized** (un server indicizzato centralizzato mantiene un database di tutti i contenuti e utenti in ogni momento; il database si aggiorna quando un peer si collega alla rete); **Decentralized** (pure P2P: ogni peer funge da index server e mantiene le proprie risorse locali, cerca e fa da router, inoltrando query tra peer); **Hybrid Architecture** (struttura gerarchica con una dorsale di Super Node che assumono le caratteristiche di un index server centrale).
+
+#### P2P con indice centralizzato · [[05_Architectural_Styles_Complete.pdf#page=128|p. 128]]–[[05_Architectural_Styles_Complete.pdf#page=134|134]]
+
+- C'è un **indice centralizzato** usato per cercare le informazioni; quando un peer si connette informa il server centrale di indirizzo IP e contenuti. Il trasferimento dei file è decentralizzato, ma la localizzazione dei contenuti è fortemente centralizzata. Esempio: Napster (p. 128).
+
+![[lez08-stili-p128-indice-centralizzato.png]]
+*Peer A manda una query (Q) all'Index server; la risposta (R) indica un peer che ha il contenuto; poi il download avviene direttamente tra i peer (Peer B, ecc.) (p. 128).*
+
+- **Elementi** (p. 129): componente **Peer** (entità con capacità simili a quelle delle altre entità del sistema; ogni nodo è sia server sia client; autonomo, senza autorità amministrativa; inaffidabile: i nodi entrano ed escono dalla rete «frequentemente»); componente **Index Server** (entità con capacità speciali: permette ai peer di unirsi al sistema e di ricercare il contenuto; mantiene un database di tutti i contenuti e utenti in ogni momento, aggiornato quando un peer si collega); connettore **protocollo di rete** (spesso specializzato per la comunicazione P2P).
+
+![[lez08-stili-p130-indice-componenti.png]]
+*Diagramma dei componenti: Peer A e Peer B (specializzazioni di Peer) si scambiano dati tramite interfacce «Provide data»/«Require data»; entrambi usano le interfacce Login e Search del componente Directory server (p. 130).*
+
+![[lez08-stili-p131-indice-classi.png]]
+*Diagramma delle classi: Directory Index (operazioni `Search()` e `Login()`) è in relazione 1 – * con Peer, che offre `FileTransfer()` e partecipa a un'associazione molti-a-molti con sé stesso nei ruoli «requester» e «provider» (p. 131).*
+
+![[lez08-stili-p132-indice-sequenza.png]]
+*Diagramma di sequenza: i peer eseguono `Login(IP, content)` sul Directory server; un peer invia `Query(q)`, il server esegue `Search(q)` e restituisce `List<peer>`; il peer richiedente chiama poi `Download(q)` direttamente dai peer elencati (p. 132).*
+
+![[lez08-stili-p133-napster.png]]
+*Napster: a sinistra il flusso numerato tra Peer A, Peer B, Peer C e «Peer & Content Directory» (1 richiesta, 2 e 3 registrazioni/risposte, 4 risposta con il peer, 5–6 download diretto); a destra il «Napster Central Index Server» al centro dei client Napster su Internet, con il trasferimento file diretto tra due client (p. 133).*
+
+- **Benefici e trappole** (p. 134): *benefici* poco stato per nodo; uso limitato della banda; alto tasso di successo; tempo di risposta di ricerca rapido; facile da implementare e mantenere. *Trappole:* single point of failure; vulnerabile alla censura; scala limitata; carico possibilmente sbilanciato; database potenzialmente obsoleto.
+
+#### P2P puro / decentralizzato · [[05_Architectural_Styles_Complete.pdf#page=135|p. 135]]–[[05_Architectural_Styles_Complete.pdf#page=141|141]]
+
+![[lez08-stili-p136-p2p-decentralizzato.png]]
+*P2P decentralizzato: Peer A invia query (Q) ai vicini, che le inoltrano ad altri peer; le risposte (R) tornano indietro lungo il percorso; il download avviene poi direttamente tra Peer A e il peer che possiede la risorsa (p. 136).*
+
+- **Overlay come grafo casuale** (p. 136): il P2P decentralizzato organizza la rete overlay come un grafo casuale; ogni nodo conosce un sottoinsieme di nodi, i suoi «vicini», scelti in modi diversi (nodi fisicamente vicini, nodi entrati nella rete all'incirca nello stesso momento, ecc.). Esempio: Gnutella.
+- **Elementi** (p. 137): componente **Peer** (capacità simili agli altri, sia server sia client, autonomo, inaffidabile; **conoscenza locale**: i nodi conoscono solo un piccolo insieme di altri nodi); connettore: protocollo di rete spesso specializzato per P2P.
+
+![[lez08-stili-p138-gnutella.png]]
+*Gnutella: a sinistra una rete di peer (1–8) con connessioni tra vicini; a destra la propagazione di una query «Baby Go Home.mp3» attraverso 6–7 livelli, a seconda del «time to live»; il peer che possiede il file risponde «I've got it!» e la rete raggiunge 8.000–10.000 computer (p. 138).*
+
+- **Come funziona Gnutella** (p. 139): un peer usa un client Gnutella e una peer cache per scoprire gli indirizzi IP di altri peer; chiede una connessione (*Gnutella Connect*); un altro servent accetta (*Gnutella OK*) o rifiuta per capacità o incompatibilità di protocollo; scambi *ping* e *pong* scoprono peer e risorse disponibili; una query porta un **time-to-live (TTL)** che ogni peer che inoltra decrementa, limitando propagazione e carico di rete; identificatori di messaggio univoci aiutano a evitare cicli di inoltro.
+
+![[lez08-stili-p140-p2p-decentralizzato-classi.png]]
+*Diagramma delle classi: la classe Peer espone i servizi `service1()`, `service2()`, …, `serviceN()` e ha un'associazione * – * con sé stessa nei ruoli «requester» e «provider»: ogni peer può richiedere e fornire servizi (p. 140).*
+
+- **Benefici e trappole** (p. 141): *benefici* poco stato per nodo; tolleranza ai guasti. *Trappole:* alto uso di banda; tempo lungo per localizzare un elemento; nessuna garanzia sul tasso di successo; carico possibilmente sbilanciato.
+
+#### P2P ibrido · [[05_Architectural_Styles_Complete.pdf#page=142|p. 142]]–[[05_Architectural_Styles_Complete.pdf#page=152|152]]
+
+- Dispiega una **struttura gerarchica** stabilendo una dorsale di **Super Node** che assumono le caratteristiche di un server di indice centrale; quando un client entra in rete, si collega direttamente a un singolo **Super Peer**. Esempio: Skype (p. 143).
+
+![[lez08-stili-p143-p2p-ibrido.png]]
+*Architettura ibrida: peer ordinari (Peer A, Peer B) collegati ai «Super Nodes», che si scambiano query (Q) e risposte (R) tra loro; il download avviene poi direttamente tra i peer (p. 143).*
+
+- **Elementi** (p. 144): componente **Peer** (come sopra: capacità simili, server e client, autonomo, inaffidabile); componente **Super Peer** (raccoglie e memorizza informazioni sui peer e sui contenuti disponibili per la condivisione; agisce da server per i peer normali e da peer verso gli altri super peer; mantiene indici di alcuni o tutti i nodi del sistema); connettore: protocollo di rete spesso specializzato per P2P.
+
+![[lez08-stili-p145-ibrido-componenti.png]]
+*Diagramma dei componenti: i Simple peer A e B si scambiano dati direttamente; ciascuno fa login e search su un Super peer (X, Y), che si scambiano tra loro l'interfaccia di «Disseminate query» (p. 145).*
+
+![[lez08-stili-p146-ibrido-classi.png]]
+*Diagramma delle classi: Peer (con `FileTransfer()`, associazione requester/provider) è specializzato in Super Peer (che aggiunge `Search()`, `Login()`, `DisseminateQuery()`) e Simple Peer (p. 146).*
+
+![[lez08-stili-p147-ibrido-sequenza.png]]
+*Diagramma di sequenza: i peer eseguono `Login(IP, content)` sul rispettivo SuperPeer; un peer invia `Query(q)` al proprio SuperPeer, che esegue `Search(q)` e fa `DisseminateQuery(q)` agli altri SuperPeer; la lista dei peer risultante torna al richiedente, che scarica con `Download(q)` direttamente dal peer che ha la risorsa (p. 147).*
+
+- **Esempio storico: Skype delle origini** (pp. 148–150): un'architettura mista client–server e peer-to-peer affronta il problema della *discovery*; la replica e distribuzione delle directory, sotto forma di supernodi, affronta il problema di scalabilità e robustezza incontrato in Napster; la promozione dei peer ordinari a supernodi in base alle capacità di rete e di elaborazione affronta un altro aspetto delle prestazioni del sistema: per i servizi importanti ci si affida a «non un peer qualsiasi»; un protocollo proprietario con cifratura fornisce privacy per le chiamate rilanciate attraverso intermediari supernodi; la restrizione dei partecipanti ai client emessi da Skype, resi molto resistenti a ispezioni o modifiche, impedisce ai client malevoli di entrare nella rete.
+
+![[lez08-stili-p148-skype-supernodi.png]]
+*Rete Skype delle origini: un Login Server collegato a peer (1–8) e a tre supernodi (A, B, C) in un triangolo; ogni supernodo serve un gruppo di peer ordinari (p. 148).*
+
+![[lez08-stili-p151-skype-architettura.png]]
+*Architettura di Skype: livelli di registrazione/autenticazione, di super node e di client; a destra la rete con host ordinari (SC) e super node (SN) e le relazioni di vicinato; chiamate tra client pubblici e tra client dietro firewall (p. 151).*
+
+- **Benefici e trappole** (p. 152): *benefici* stato per nodo gestibile; uso della banda e tempo di localizzazione gestibili; successo garantito. *Trappole:* carico possibilmente sbilanciato; più difficile supportare la tolleranza ai guasti.
+
+#### Scoperta delle risorse, topologia ed esempi · [[05_Architectural_Styles_Complete.pdf#page=153|p. 153]]–[[05_Architectural_Styles_Complete.pdf#page=157|157]]
+
+- **Resource discovery** (p. 153): senza una directory centralizzata la scoperta delle risorse diventa un problema fondamentale. Nel P2P puro una richiesta viene inoltrata a molti peer; trovata la risorsa, il peer richiedente può contattare direttamente il fornitore. Gli algoritmi di *query routing* e i requisiti di banda limitano questo approccio. I sistemi ibridi usano peer selezionati o directory per localizzare le risorse; ad esempio l'originale Napster centralizzava la scoperta delle risorse e decentralizzava il trasferimento dei file.
+- **Topologia e implicazioni di qualità** (p. 154): una topologia di rete consente connessioni multiple tra peer e può cambiare dinamicamente quando i peer entrano o escono; controllo e risorse sono distribuiti tra i nodi partecipanti; la decentralizzazione può tollerare alcuni guasti di nodo quando esistono peer e percorsi alternativi sufficienti; la capacità può crescere con le risorse e la potenza di calcolo messe a disposizione dai peer.
+- **Esempi applicativi** (p. 155): distribuzione e storage di contenuti (file e video streaming); reti, protocolli e client di file sharing (Gnutella, FastTrack, BitTorrent, eMule, uTorrent); sistemi storici di televisione P2P (PPLive); collaborazione e comunicazione (chat, instant messaging, telefonia Internet storica come le prime versioni di Skype); content-delivery network (CoralCDN) e reti di sensori.
+- **Lunar Lander peer-to-peer** (p. 156): al tempo T₀ LL1 chiede ai peer vicini se altre navicelle sono atterrate; essi possono inoltrare la richiesta ad altri peer; quando un peer (LL5) trova la risorsa, il risultato è instradato a LL1; al tempo T₁ LL1 contatta direttamente LL5 per chiedere ulteriori informazioni.
+- **Per approfondire** (p. 157): analizzare gli stili architetturali di applicazioni open source scelte; descrizioni architetturali sono disponibili in *The Architecture of Open Source Applications* (http://aosabook.org/en/index.html).
+
+*Approfondimenti nel wiki: [[layered]], [[client-server]], [[publish-subscribe]], [[microservices]], [[pattern-architetturali]]*
 
 ## Lezione 9 — Il processo di progettazione architetturale: ASR e il metodo ADD
 

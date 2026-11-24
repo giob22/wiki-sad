@@ -85,6 +85,11 @@ breve = "Agile Project Management (parte 2), il framework Scrum: empirismo e tre
 concetti = ["gestione-progetto-plan-driven-vs-agile", "scrum", "ciclo-di-vita-scrum", "product-backlog-e-sprint-backlog", "sprint-e-sprint-planning", "stima-story-points-velocity-capacity", "entità/planning-poker", "daily-scrum-review-retrospective"]
 
 [[lezioni]]
+n = 8
+breve = "Gli stili architetturali: definizione e proprietà; main program e subroutine, object-oriented, layered (layer chiusi e aperti, façade), client-server, data-flow (batch sequential, pipe and filter), memoria condivisa (repository, blackboard, rule-based), interpreter e mobile code, cloud computing, implicit invocation (publish-subscribe, event-based) e, in appendice, peer-to-peer; esempio ricorrente Lunar Lander."
+concetti = ["stili-architetturali", "entità/layered", "entità/client-server", "entità/pipe-and-filter", "entità/blackboard", "entità/mobile-code", "entità/event-based", "entità/peer-to-peer", "disaccoppiamento-dei-componenti", "cloud-computing"]
+
+[[lezioni]]
 n = 9
 breve = "Il processo di progettazione architetturale: requisiti architetturalmente significativi (ASR), Quality Attribute Workshop e utility tree; il metodo Attribute-Driven Design in sette passi, dalla revisione degli ingressi alla scelta dei design concept, alle interfacce, agli schizzi e alla rationale, fino all'analisi."
 concetti = ["entità/attribute-driven-design", "scenari-di-qualita"]
