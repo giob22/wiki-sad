@@ -88,3 +88,8 @@ concetti = ["gestione-progetto-plan-driven-vs-agile", "scrum", "ciclo-di-vita-sc
 n = 9
 breve = "Il processo di progettazione architetturale: requisiti architetturalmente significativi (ASR), Quality Attribute Workshop e utility tree; il metodo Attribute-Driven Design in sette passi, dalla revisione degli ingressi alla scelta dei design concept, alle interfacce, agli schizzi e alla rationale, fino all'analisi."
 concetti = ["entità/attribute-driven-design", "scenari-di-qualita"]
+
+[[lezioni]]
+n = 10
+breve = "Servizi e architetture orientate ai servizi (SOA) in confronto ai microservizi: contratti, comunicazione sincrona e asincrona, API HTTP, REST, SOAP/WSDL e OpenAPI, evoluzione dei contratti, intermediari (broker, discovery, API gateway, ESB), orchestrazione e coreografia; esempio FTGO."
+concetti = ["entità/microservices", "entità/publish-subscribe"]

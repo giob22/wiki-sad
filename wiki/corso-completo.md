@@ -16,6 +16,7 @@ Testo unico di studio del corso (LM Ingegneria Informatica, UNINA, DIETI, prof.s
 | 6 | [[#Lezione 6 — Agile Project Management (Parte 1)\|Agile Project Management (Parte 1)]] | 04_Agile_01_bis.pdf |
 | 7 | [[#Lezione 7 — Agile Project Management (Parte 2): il framework Scrum\|Agile Project Management (Parte 2): il framework Scrum]] | 04_Agile_02.pdf |
 | 9 | [[#Lezione 9 — Il processo di progettazione architetturale: ASR e il metodo ADD\|Il processo di progettazione architetturale: ASR e il metodo ADD]] | 06-ADD-Designing a Software Architecture.pdf |
+| 10 | [[#Lezione 10 — Architetture orientate ai servizi e a microservizi (parte 1)\|Architetture orientate ai servizi e a microservizi (parte 1)]] | 07— Service-Oriented and Microservice Architectures-1 part.pdf |
 
 ## Lezione 1 — Introduzione all'architettura software
 
@@ -2035,3 +2036,139 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - Presentata una guida dettagliata al metodo **Attribute-Driven Design, versione 3.0**. Discussi aspetti aggiuntivi da considerare nei passi: l'uso di un **backlog**; l'identificazione e selezione dei **design concept** e il loro uso nel produrre strutture; la **definizione delle interfacce**; la produzione di **documentazione preliminare**. Documentazione preliminare e attività di analisi vanno svolte regolarmente come parti integranti del processo di progettazione.
 
 *Approfondimenti nel wiki: [[attribute-driven-design]], [[scenari-di-qualita]], [[buone-pratiche-architetturali]], [[strutture-e-viste]]*
+
+## Lezione 10 — Architetture orientate ai servizi e a microservizi (parte 1)
+
+*Fonte: 07— Service-Oriented and Microservice Architectures-1 part.pdf (47 pagine, «Service-Oriented and Microservice Architectures», prof.ssa Anna Rita Fasolino: servizi, contratti e trade-off di qualità). Esempio ricorrente: Food To Go (FTGO).*
+
+### Prospettiva storica · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=2|p. 2]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=7|7]]
+
+- **Sistemi aziendali precedenti:** applicazioni centralizzate e sistemi client–server organizzavano l'accesso a funzioni e dati aziendali condivisi. **Anni '90:** applicazioni multi-tier e middleware a oggetti distribuiti supportavano la cooperazione tra processi e macchine. **Anni 2000:** SOA e tecnologie di web service affrontavano l'integrazione con **contratti di servizio espliciti** e messaggi interoperabili. **Anni 2010:** i microservizi hanno enfatizzato **capacità di business distribuibili in modo indipendente**. Questi approcci si sovrappongono e continuano a coesistere.
+- **Client–server e multi-tier** (p. 3): il *client–server* separa chi richiede da chi fornisce; nei sistemi *multi-tier* presentazione, elaborazione applicativa e gestione dei dati possono girare in tier separati. **Il problema dell'integrazione:** applicazioni di vendite, contabilità e logistica possono usare modelli dati e tecnologie diversi ed essere sviluppate separatamente. **La domanda successiva:** come far condividere a questi sistemi, sviluppati indipendentemente, le capacità di business senza esporne gli interni?
+- **Oggetti distribuiti e componenti** (p. 4): middleware degli anni '90 — **CORBA, DCOM, Java RMI** — permettevano interazioni remote tra oggetti o componenti. Interfacce esplicite: il middleware gestiva localizzazione degli oggetti remoti, codifica dei parametri e restituzione dei risultati. **Sfide:** ecosistemi middleware diversi potevano richiedere bridge o adattatori; chiamate remote a grana fine potevano aggiungere latenza e accoppiamento. L'orientamento ai servizi ha messo l'accento su **capacità di business e contratti di interazione espliciti** attraverso i confini di applicazione e proprietà.
+- **Perché la SOA si è affermata** (p. 5): **integrazione aziendale** (connettere applicazioni esistenti e nuove, anche di proprietari diversi); **contratti di servizio** (le capacità sono esposte tramite interfacce e messaggi concordati mentre le implementazioni restano incapsulate). **Tappe degli anni 2000:** nota W3C su SOAP 1.1 (2000), W3C Web Services Architecture (2004), OASIS SOA Reference Model (2006). Web service, wrapper ed ESB hanno supportato la realizzazione di SOA, ma **la SOA non richiede una tecnologia specifica**.
+- **SOA e microservizi nel tempo** (p. 6): i microservizi **mantengono l'idea** di esporre capacità di business tramite contratti espliciti nascondendo i dettagli di implementazione; l'enfasi successiva è su **confini di business coesi, deployment indipendente e proprietà decentralizzata dei dati**. Riferimento: l'articolo di Lewis e Fowler (2014) che ha documentato le caratteristiche dell'approccio emergente. **Scelta architetturale:** un sistema può combinare un progetto interno a strati o modulare con integrazione basata su servizi; sono gli obiettivi di qualità a determinare quali confini sono utili. La necessità di deployment indipendente può favorire la separazione in servizi; interazioni frequenti e requisiti di bassa latenza possono favorire il tenere insieme responsabilità correlate.
+- **Decisioni guidate dalla qualità** (p. 7): *scenario di qualità* (stimolo, ambiente, risposta attesa, misura); *tattica* (un meccanismo che può influire sulla risposta richiesta); *scelta architetturale* (confini, interazioni, proprietà dei dati); *trade-off* (dichiarare il costo e le evidenze necessarie per giustificare la scelta).
+
+### 1. Servizi e SOA
+
+#### Che cos'è un servizio · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=8|p. 8]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=12|12]]
+
+- Sommario (p. 8): contratti di servizio e interoperabilità; riuso e integrazione di sistemi esistenti; esempio ricorrente **Food To Go (FTGO)**.
+- Un **servizio** è un componente software **autonomo** che offre capacità utili, di business o tecniche. La sua interfaccia pubblica definisce come i client le richiedono. Può girare separatamente e interagire con i client tramite **contratti espliciti**. Il confine di un servizio dovrebbe **nascondere i dettagli di implementazione** (p. 9).
+- **Il contratto di servizio** (p. 10): specifica operazioni o messaggi, ingressi, uscite ed errori possibili; descrive anche la **semantica** (cosa promette il servizio e cosa devono fornire i client); le aspettative di qualità possono includere tempo di risposta, disponibilità e carico supportato. Conoscere l'interfaccia non richiede di conoscere l'implementazione.
+- **Principi di progetto** (p. 11): **accoppiamento debole** (i client dipendono da un contratto limitato ed esplicito); **astrazione** (i dettagli restano dietro l'interfaccia); **autonomia** (il servizio controlla le proprie responsabilità e risorse); **componibilità e riuso** (i servizi partecipano ad applicazioni più grandi).
+- **Stato e autonomia** (p. 12): un servizio può possedere dati di business persistenti ed esporre comunque un'interazione **stateless**. Le richieste stateless portano con sé il contesto necessario a elaborarle, comprese le informazioni di autenticazione; sessioni client memorizzate localmente possono vincolare instradamento e recupero. L'**autonomia del servizio** richiede dipendenze controllate e chiara proprietà.
+
+#### Architettura orientata ai servizi · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=13|p. 13]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=17|17]]
+
+- La **SOA** organizza capacità distribuite come servizi con contratti espliciti. Interfacce standard supportano la comunicazione tra tecnologie e organizzazioni diverse. I **provider** espongono le capacità, i **consumer** le usano, la **discovery** può aiutare a trovarle. SOAP, REST e un ESB sono **scelte di implementazione** dentro questo approccio più ampio (p. 13).
+- **FTGO: Food To Go** (esempio, p. 14): i consumatori ordinano cibo tramite sito web o app mobile; i ristoranti mantengono i menu e gestiscono gli ordini; i corrieri ritirano e consegnano i pasti; FTGO coordina queste attività e integra provider di pagamento, messaggistica ed e-mail.
+- **SOA e microservizi** (p. 15): la SOA enfatizza l'esposizione e l'integrazione di capacità tramite contratti di servizio; i microservizi enfatizzano **confini di servizio coesi e deployment indipendente**. Entrambi possono usare orchestrazione, coreografia e protocolli di comunicazione diversi. **SOAP, REST o un ESB da soli non bastano a stabilire la distinzione architetturale.**
+- **Integrare sistemi legacy** (p. 16): un **wrapper** espone funzionalità esistenti tramite un'interfaccia di servizio; i client usano un contratto stabile mentre l'implementazione legacy resta dietro; supporta integrazione o modernizzazione graduali; il wrapper richiede comunque gestione degli errori, sicurezza e monitoraggio. Riferimento: Canfora, Fasolino, Frattolillo, Tramontana, *A Wrapping Approach for Migrating Legacy System Interactive Functionalities to Service Oriented Architectures*, Journal of Systems and Software 81 (2008), 463–480.
+
+![[lez10-soa-p16-wrapper-legacy.png]]
+*Una richiesta di web service entra in un Application Server, dove un Wrapper racchiude il sistema Legacy; la risposta torna come messaggio di web service.*
+
+- **Uno scenario di interoperabilità** (p. 17): *stimolo (illustrativo):* FTGO cambia provider di pagamento durante la manutenzione. *Risposta richiesta:* sostituire l'adapter del provider mantenendo il contratto verso l'applicazione. *Misura (illustrativa):* nessuna modifica alle regole degli ordini né alle applicazioni client. *Tattiche rilevanti:* **incapsulamento** e uso di un **intermediario**. Validare anche la semantica degli errori, non solo i formati dei dati.
+
+### 2. Comunicazione e contratti
+
+#### Comandi, query ed eventi · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=18|p. 18]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=19|19]]
+
+- Sommario: comandi, query ed eventi; interazioni sincrone e asincrone; API HTTP, SOAP e OpenAPI.
+- Un **comando** richiede un'azione: `createOrder`. Una **query** recupera informazioni: `findOrderById`. Un **evento** riporta un fatto: `OrderCreated`. I contratti definiscono sia le operazioni richiesta/risposta sia gli eventi pubblicati.
+
+![[lez10-soa-p19-comandi-query-eventi.png]]
+*Il client dell'Order Service invoca l'API di servizio, che definisce operazioni (commands: `createOrder()`, queries: `findOrderById()`); l'Order Service pubblica eventi (OrderCreated, OrderCancelled) quando i dati cambiano e i sottoscrittori li ricevono.*
+
+#### Comunicazione sincrona e asincrona · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=20|p. 20]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=21|21]]
+
+- **Sincrona** (p. 20): il chiamante invia una richiesta e attende la risposta entro un limite di tempo; è facile da seguire quando serve una risposta immediata. Lunghe catene di chiamate sincrone aumentano il tempo di risposta e possono **propagare i guasti** tra servizi. I **timeout** limitano l'attesa, ma un timeout lascia **incerto l'esito** se il server può aver completato l'operazione: non garantisce che il server abbia smesso di elaborare né che l'operazione sia fallita.
+- **Asincrona** (p. 21): un produttore invia un messaggio per un'elaborazione successiva (tramite coda o broker). Il **buffering** può assorbire picchi di carico temporanei o indisponibilità dei consumer. Il mittente ha bisogno di un contratto che distingua **accettazione del messaggio** da **completamento dell'operazione** e definisca come si segnalano o gestiscono i fallimenti. Ritardi di consegna, ordinamento ed elaborazione duplicata richiedono decisioni esplicite.
+
+#### API HTTP e specifica · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=22|p. 22]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=28|28]]
+
+- **Una API HTTP** (p. 22): un'API definisce come i client software interagiscono con una capacità; un'API HTTP espone le interazioni tramite **URI, metodi, header e rappresentazioni**. I client possono restare indipendenti da archiviazione e dettagli interni; l'API richiede un contratto stabile e una politica di controllo degli accessi.
+- **Specifica di un'API** (p. 23): descrive il contratto tra servizio e client: operazioni disponibili e loro significato, struttura di richieste e risposte, ingressi richiesti, errori possibili, requisiti di autenticazione. **OpenAPI** fornisce un formato standard, leggibile dalle macchine, per descrivere il contratto di un'API HTTP.
+- **Esempio: creare un ordine** (p. 24): operazione `POST /orders`; ingresso richiesto: un identificativo di ristorante e una lista non vuota di articoli, ciascuno con identificativo e quantità positiva; risposta di successo: **201 Created**, con identificativo dell'ordine, stato iniziale e header `Location`; errori: **400** per ingresso non valido, **401** per credenziali mancanti o non valide, **403** per permessi insufficienti; autenticazione: la richiesta deve includere un **Bearer token**.
+- **Risorse e metodi HTTP** (p. 25): `GET /orders/{id}` recupera una rappresentazione dell'ordine; `POST /orders` richiede la creazione; `PUT /orders/{id}` sostituisce lo stato della risorsa indirizzata (`PATCH` può esprimere aggiornamenti parziali); `DELETE /orders/{id}` richiede la rimozione secondo le regole di business dell'API. Rappresentazione JSON di una risorsa:
+
+```json
+{ "id": 123, "restaurantId": 42, "status": "PENDING" }
+```
+
+- **Risposte ed errori** (p. 26): **200 OK** risposta riuscita con la rappresentazione attesa; **201 Created** creazione riuscita (con `Location`); **400 Bad Request** e **404 Not Found** distinguono richieste non valide da risorse mancanti; **409 Conflict** può rappresentare un conflitto di stato. I corpi degli errori devono spiegare il problema in modo coerente.
+- **Richieste stateless** (p. 27): ogni richiesta contiene il contesto necessario all'interazione; il server può comunque memorizzare ordini, anagrafiche clienti e altro stato delle risorse; un **token** può portare il contesto di autenticazione senza una sessione memorizzata in una singola istanza applicativa; l'interazione stateless può semplificare l'instradamento tra repliche. Le dipendenze condivise dai dati richiedono comunque meccanismi di recupero.
+- **Stile architetturale REST** (p. 28): *Representational State Transfer*, stile per sistemi ipermediali distribuiti, molto usato per progettare web API. I client interagiscono con **risorse identificate da URI** e scambiano **rappresentazioni** del loro stato (per esempio documenti JSON). REST definisce **vincoli**: separazione client–server, interazioni stateless, caching, interfaccia uniforme e sistema a strati (tramite proxy, gateway); il *code on demand* è opzionale. L'interfaccia uniforme comprende messaggi autodescrittivi e ipermedia che guidano le azioni disponibili. **Usare solo HTTP e JSON non rende un'API RESTful.**
+
+#### Web service SOAP e OpenAPI · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=29|p. 29]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=32|32]]
+
+- **Web service basati su SOAP** (p. 29): SOAP definisce un framework di messaggistica XML, spesso trasportato su HTTP; **WSDL** descrive l'interfaccia del servizio e il suo binding; le specifiche **WS-\*** affrontano sicurezza e messaggistica affidabile. Queste tecnologie possono supportare l'integrazione aziendale quando contratti e infrastruttura si adattano al contesto.
+- **Struttura di WSDL** (p. 30): **types e messages** descrivono i dati scambiati; le **operations** definiscono l'interfaccia astratta; i **binding** collegano le operazioni a formati di messaggio e protocolli; gli **endpoint** identificano dove si raggiunge il servizio.
+
+![[lez10-soa-p30-struttura-wsdl.png]]
+*Documento WSDL commentato: `types` (tipi di dati definiti con XML Schema), `message` (messaggi definiti con parametri basati sui tipi), `portType` (operazioni definite su messaggi in/out — astratto), `binding` (meccanismi di binding — concreto), `service` (localizzazione del servizio).*
+
+- **Descrizioni OpenAPI** (p. 31): descrivono percorsi, operazioni, parametri e risposte di un'API HTTP; gli **schemi** definiscono la struttura delle rappresentazioni; le descrizioni possono usare **YAML o JSON**; gli strumenti possono rendere la documentazione e generare codice client o scheletri server.
+- **Un'operazione OpenAPI** (p. 32):
+
+```yaml
+openapi: 3.1.0
+info: {title: FTGO API, version: '1.0'}
+paths:
+  /orders/{id}:
+    get:
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: integer}}
+      responses:
+        '200':
+          description: Order found
+        '404':
+          description: Order not found
+```
+
+#### Evoluzione del contratto di un'API · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=33|p. 33]]
+
+- **Cambiamenti compatibili:** client e provider possono aggiornarsi in modo indipendente (per esempio aggiungere un campo di risposta opzionale se i client esistenti ignorano i campi sconosciuti).
+- **Cambiamenti incompatibili (breaking):** richiedere un nuovo campo di ingresso, cambiare tipo o significato di un campo, restituire 200 invece di 404 possono rompere i client.
+- **Versioning e migrazione:** per i cambiamenti incompatibili definire un percorso di migrazione, un periodo di supporto della vecchia versione e una data di ritiro.
+- **Contract test:** verificano interazioni concordate (per esempio 404 per un ordine mancante); mantengono allineate specifica, implementazione e aspettative dei consumer.
+
+### 3. Intermediari e coordinamento
+
+#### Responsabilità degli intermediari · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=34|p. 34]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=38|38]]
+
+- Sommario: routing e service discovery; gateway e integrazione aziendale; orchestrazione e coreografia.
+- **Responsabilità degli intermediari** (p. 35): il **routing** sceglie dove vanno una richiesta o un messaggio; la **trasformazione** adatta una rappresentazione o formato di messaggio; un **gateway** applica politiche selezionate di accesso e traffico; la **discovery** risolve gli endpoint disponibili dei servizi. Queste responsabilità possono stare in componenti diversi.
+- **Broker forwarding** (p. 36): il client invia la richiesta al broker; il broker inoltra la richiesta e rilancia la risposta; l'intermediazione può centralizzare routing e controlli di policy; **ogni interazione ha un hop in più e dipende dal broker.**
+- **Broker handle** (p. 37): il broker restituisce un **handle** (endpoint) del servizio; il client comunica poi direttamente con il provider; riduce l'intermediazione nelle chiamate successive; i client devono gestire cambi di endpoint, informazioni obsolete e guasti del provider.
+- **Service discovery** (p. 38): un **registry** registra servizi ed endpoint; la discovery cerca un'istanza o una capacità; la selezione può considerare disponibilità e politica di routing; registrazione, informazioni di salute e aggiornamento degli endpoint richiedono supporto operativo.
+
+![[lez10-soa-p36-broker-forwarding.png]]
+![[lez10-soa-p37-broker-handle.png]]
+![[lez10-soa-p38-service-discovery.png]]
+*I tre schemi di intermediazione: forwarding (richiesta e risposta passano dal broker: serviceRequest, forwardedRequest, serviceReply, forwardedReply); handle (il broker risponde con un serviceHandle e il requester chiama direttamente il servizio); discovery (queryServices → serviceList → select aService → service handle → serviceRequestWithHandle → serviceReply).*
+
+#### API gateway ed Enterprise Service Bus · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=39|p. 39]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=42|42]]
+
+- **API gateway** (p. 39): dà ai client un punto d'ingresso alle API di servizi selezionati; può applicare **autenticazione, rate limit, logging e routing**; può **aggregare risposte** se le esigenze dei client lo giustificano. I servizi mantengono la proprietà delle regole di business e dei dati; il gateway gestisce accesso, routing e, quando serve, l'aggregazione.
+- **Enterprise Service Bus** (p. 40): fornisce **mediazione** tra sistemi aziendali eterogenei; responsabilità tipiche: routing, trasformazione, bridging di protocolli; supporta l'integrazione con applicazioni e servizi esistenti. La SOA può usare anche altre strutture di integrazione: l'ESB è una realizzazione.
+- **API gateway vs ESB** (p. 41): *API Gateway* — punto d'ingresso controllato per le API di servizio verso i client (autenticazione, rate limiting, routing, aggregazione delle risposte). *ESB* — integra applicazioni e servizi eterogenei (trasformazione dei messaggi, bridging di protocolli, collegamenti a sistemi legacy). **Esempio FTGO:** il gateway instrada una richiesta d'ordine a Orders; un ESB potrebbe adattare messaggi contabili per un sistema legacy che richiede un formato o protocollo diverso. **Sovrapposizione e coesistenza:** entrambi possono instradare, proteggere e trasformare messaggi; il gateway si concentra sull'accesso alle API, l'ESB sull'integrazione tra sistemi; possono coesistere.
+- **I costi della mediazione** (p. 42): un intermediario condiviso crea una dipendenza che richiede pianificazione di capacità e recupero; le trasformazioni centralizzate nell'ESB possono semplificare i client, ma l'ESB può accumulare logica di integrazione e diventare più complesso; i cambiamenti alle politiche applicate dall'intermediario possono riguardare più client e servizi; il progetto deve bilanciare interoperabilità con latenza, autonomia e complessità operativa.
+
+#### Orchestrazione e coreografia · [[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=43|p. 43]]–[[07— Service-Oriented and Microservice Architectures-1 part.pdf#page=47|47]]
+
+- **Orchestrazione** (p. 43): un **coordinatore** controlla il flusso di lavoro e chiama i servizi partecipanti. Il coordinatore può essere un servizio di orchestrazione dedicato, un componente dentro un servizio applicativo o un **workflow engine** che esegue una definizione di processo. Il suo stato registra l'avanzamento e il prossimo passo. Il controllo centrale rende più facile **trovare le decisioni** di workflow; il coordinatore richiede logica di recupero e gestione esplicita dei guasti dei partecipanti.
+- **Coreografia** (p. 44): i partecipanti **reagiscono a eventi o messaggi** secondo le proprie regole; nessun componente deve emettere ogni passo; il coordinamento si distribuisce nei contratti dei partecipanti. **Tracciare l'intero processo di business** e cambiare le dipendenze tra eventi può diventare più difficile.
+- **Coordinamento nello shopping online** (p. 45): l'esempio separa i **coordinatori** dai **servizi di capacità**; il progetto di interazione dettagliato specifica quali passi richiedono risposte, callback o recupero.
+
+![[lez10-soa-p45-coordinamento-shopping-online.png]]
+*Sistema OnlineShoppingSystem: interazioni utente (Customer Interaction, Supplier Interaction); coordinatori (Customer Coordinator, Supplier Coordinator, Billing Coordinator); servizi di capacità (Email, CreditCard, CustomerAccount, Catalog, DeliveryOrder, Inventory).*
+
+- **Scegliere il tipo di coordinamento** (p. 46): l'accettazione di un ordine FTGO richiede un esito definito quando un ristorante rifiuta l'ordine. Un **orchestratore** può registrare lo stato pendente e scegliere l'azione di recupero; una **collaborazione a eventi** può distribuire quelle reazioni tra i servizi. La scelta deve tenere conto di **visibilità dell'avanzamento, recupero dei guasti e accoppiamento**.
+
+![[lez10-soa-p47-ftgo-rifiuto-ristorante.png]]
+*«FTGO: handling a restaurant rejection» (ordine in attesa, pagamento già autorizzato). Orchestrazione: il Restaurant service invia la risposta di rifiuto all'Order orchestrator, che registra l'avanzamento e coordina il recupero: Payment service rilascia l'autorizzazione, Order service segna l'ordine REJECTED. Coreografia di eventi: il Restaurant service pubblica `RestaurantRejectedOrder` su un Event broker, che consegna l'evento a Payment service (rilascia l'autorizzazione) e Order service (segna l'ordine REJECTED); i servizi reagiscono in modo indipendente. Trade-off di progetto: visibilità dell'avanzamento, recupero dei guasti, accoppiamento.*
+
+*Approfondimenti nel wiki: [[microservices]], [[publish-subscribe]], [[client-server]]*
