@@ -13,6 +13,8 @@ Testo unico di studio del corso (LM Ingegneria Informatica, UNINA, DIETI, prof.s
 | 3 | [[#Lezione 3 — Attributi di qualità: modificabilità\|Attributi di qualità: modificabilità]] | 03-Modifiability.pdf |
 | 4 | [[#Lezione 4 — Progettazione basata sul riuso: DSSA, pattern e architetture multi-tier\|Progettazione basata sul riuso: DSSA, pattern e architetture multi-tier]] | 3-Architectural Patterns-complete.pdf |
 | 5 | [[#Lezione 5 — Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control\|Pattern architetturali: MVC, Spring MVC e Sense-Compute-Control]] | 3-Architectural Patterns-complete.pdf |
+| 6 | [[#Lezione 6 — Agile Project Management (Parte 1)\|Agile Project Management (Parte 1)]] | 04_Agile_01_bis.pdf |
+| 7 | [[#Lezione 7 — Agile Project Management (Parte 2): il framework Scrum\|Agile Project Management (Parte 2): il framework Scrum]] | 04_Agile_02.pdf |
 
 ## Lezione 1 — Introduzione all'architettura software
 
@@ -1396,3 +1398,507 @@ public class ExpenseManagerApplication {
 - Sono state analizzate **due strategie di progettazione basate sul riuso**: le **DSSA** e i **pattern architetturali** (Three-Tier, MVC, Sense Compute Control). Nelle prossime lezioni si introdurranno gli **stili architetturali**.
 
 *Approfondimenti nel wiki: [[mvc]], [[spring-mvc]], [[sense-compute-control]], [[applicare-sense-compute-control]], [[implementare-mvc]]*
+
+## Lezione 6 — Agile Project Management (Parte 1)
+
+*Fonte: 04_Agile_01_bis.pdf (81 pagine, «Agile Project Management (Part 1)», prof.ssa Anna Rita Fasolino). Agenda: che cos'è Agile; Manifesto Agile; come funziona Agile; cerimonie; artefatti; user story; Definition of Done; Iteration Demo; Information Radiator.*
+
+### Che cos'è Agile · [[04_Agile_01_bis.pdf#page=3|p. 3]]–[[04_Agile_01_bis.pdf#page=5|5]]
+
+- **Sondaggio** sui progetti passati: requisiti poco chiari o cambiati durante il progetto? stakeholder disponibili o assenti, problemi di comunicazione? stime dei tempi di sviluppo: sono state fatte e rispettate? problemi o ritardi imprevisti? mancava chiarezza sull'avanzamento del progetto? Da qui: *parliamo di Agile*.
+- **Agile** è un **approccio iterativo** alla gestione dei progetti e allo sviluppo dei prodotti che permette ai team di: **consegnare valore più velocemente**; **ricevere feedback continuo**; **ridurre il rischio di grandi errori dovuti a una pianificazione rigida**; **adattarsi al cambiamento**.
+- Idea di fondo: evitare il modello «big bang» (un unico rilascio finale) e lavorare per **piccoli incrementi di valore**.
+
+### Il Manifesto Agile: i quattro valori · [[04_Agile_01_bis.pdf#page=6|p. 6]]–[[04_Agile_01_bis.pdf#page=8|8]]
+
+![[lez06-ag-p6-valori-manifesto.png]]
+*I quattro valori del Manifesto Agile: individui e interazioni più che processi e strumenti; software funzionante più che documentazione esaustiva; collaborazione col cliente più che negoziazione dei contratti; rispondere al cambiamento più che seguire un piano.*
+
+![[lez06-ag-p7-valori-manifesto-infografica.png]]
+*Infografica in italiano: ogni valore con ciò che passa in secondo piano.*
+
+Domanda in aula: quale dei quattro valori, se applicato fin dall'inizio, avrebbe più migliorato i vostri progetti?
+
+### I dodici principi · [[04_Agile_01_bis.pdf#page=9|p. 9]]–[[04_Agile_01_bis.pdf#page=11|11]]
+
+1. La massima priorità è **soddisfare il cliente** con **consegne tempestive e continue** di software di valore.
+2. **Accogliere i cambiamenti dei requisiti**, anche a sviluppo avanzato; i processi agili sfruttano il cambiamento a vantaggio competitivo del cliente.
+3. **Consegnare software funzionante frequentemente**, da un paio di settimane a un paio di mesi, preferendo la scala più breve.
+4. Committenti e sviluppatori devono **lavorare insieme quotidianamente** per tutta la durata del progetto.
+5. Costruire i progetti attorno a **individui motivati**: dare loro ambiente e supporto necessari e fidarsi che portino a termine il lavoro.
+6. Il metodo più efficiente ed efficace di comunicare informazioni **dentro e verso un team** è la **conversazione faccia a faccia**.
+7. **Il software funzionante è la principale misura di avanzamento.**
+8. I processi agili promuovono lo **sviluppo sostenibile**: sponsor, sviluppatori e utenti devono poter mantenere **un ritmo costante** indefinitamente.
+9. La continua attenzione all'**eccellenza tecnica** e alla buona progettazione aumenta l'agilità.
+10. **Semplicità**: l'arte di massimizzare la quantità di lavoro non svolto è essenziale.
+11. Le migliori architetture, requisiti e progetti emergono da **team auto-organizzati**.
+12. A intervalli regolari il team **riflette su come diventare più efficace**, poi regola e adatta il proprio comportamento.
+
+**I principi in breve** (p. 11): *continuous delivery of value* (consegna continua di valore), *collaboration* (collaborazione), *simplicity* (semplicità), *continuous improvement* (miglioramento continuo).
+
+L'attività di p. 12 è un **«agility check»** in aula (la slide non ha contenuto scritto).
+
+### Come funziona Agile · [[04_Agile_01_bis.pdf#page=13|p. 13]]–[[04_Agile_01_bis.pdf#page=15|15]]
+
+- Ciclo: **Backlog → Priorità → Iterazione → Feedback → Miglioramento.**
+- **Agile suddivide il progetto in iterazioni** (p. 14), in quattro passi: **Make a list** (fai una lista: con il cliente si elencano le funzionalità che vorrebbe; diventa la lista delle cose da fare del progetto); **Size things up** (stima le attività, una rispetto all'altra, e indovina quanto tempo servirà per ciascuna); **Set some priorities** (chiedi al cliente di dare una priorità alla lista, così si lavora prima sulle cose più importanti); **Start working**.
+- **Pianificazione dell'iterazione** (p. 15): **selezione delle attività prioritarie e definizione dell'obiettivo dell'iterazione.**
+
+![[lez06-ag-p14-progetto-in-iterazioni.png]]
+*I quattro passi su riquadri neri con icone (lista, compasso, bersaglio, spunta).*
+
+### Sviluppo iterativo ed evolutivo · [[04_Agile_01_bis.pdf#page=16|p. 16]]–[[04_Agile_01_bis.pdf#page=18|18]]
+
+- Lo sviluppo iterativo è organizzato come una serie di **mini-progetti brevi a durata fissa** (per esempio tre settimane), le **iterazioni**. Ogni iterazione produce un **sistema eseguibile, testato e integrato**, anche se solo parziale, e comprende analisi dei requisiti, progettazione, implementazione e test.
+- Il sistema **cresce e si raffina a ogni iterazione** tramite feedback e adattamento ciclici: per questo si chiama sviluppo **iterativo e incrementale**, ed è anche **evolutivo** grazie a feedback e adattamento.
+
+![[lez06-ag-p17-waterfall-vs-iterativo.png]]
+*«Waterfall vs iterative». Non così: si consegnano una ruota, poi un asse con due ruote, poi un'auto senza carrozzeria, infine l'auto; il cliente è scontento fino all'ultimo. Così: uno skateboard, un monopattino, una bicicletta, una moto, un'auto; il cliente è sempre più soddisfatto.*
+
+![[lez06-ag-p18-sviluppo-iterativo-evolutivo.png]]
+*Due iterazioni consecutive, ciascuna con Requirements → Design → Implementation & Test & Integration → System Test, di 4 settimane (per esempio); il feedback dell'iterazione N raffina requisiti e design della N+1.*
+
+### Ruoli in Agile · [[04_Agile_01_bis.pdf#page=19|p. 19]]–[[04_Agile_01_bis.pdf#page=21|21]]
+
+- **Agile non definisce ruoli specifici: li definiscono i framework**: Scrum, Kanban, Extreme Programming (XP), Disciplined Agile (DA), SAFe, LeSS.
+- **Stesse responsabilità, nomi diversi** (p. 20):
+
+| Responsabilità | Scrum | Disciplined Agile | XP | SAFe |
+|---|---|---|---|---|
+| Definisce il valore | Product Owner | Product Owner | Customer | Product Manager / Product Owner |
+| Facilita il team | Scrum Master | Team Lead | Coach | Scrum Master |
+| Costruisce il prodotto | Developers | Team Members | Programmers | Agile Team |
+| Definisce l'architettura | Team | Architecture Owner | Team | System Architect |
+| Fornisce feedback | Stakeholder | Stakeholder | Customer | Business Owner |
+
+- **Tre responsabilità fondamentali** (p. 21): **Product Owner** — visione del prodotto, priorità, valore: «sviluppare il prodotto giusto» (*Developing the Right Product*); **Scrum Master** — facilita il team, rimuove gli ostacoli, promuove Agile: «aiutare il team a lavorare bene»; **Development Team** — progetta, scrive il codice, testa, consegna: «costruire il prodotto nel modo giusto».
+
+### Le quattro cerimonie · [[04_Agile_01_bis.pdf#page=22|p. 22]]–[[04_Agile_01_bis.pdf#page=27|27]]
+
+Planning, daily meeting, demo, retrospective: **iteration planning**, **daily coordination meeting**, **iteration demonstration**, **iteration retrospective**.
+
+| Cerimonia | Scopo | Partecipanti | Frequenza | Durata |
+|---|---|---|---|---|
+| **Iteration planning** (detta anche «sprint planning») | definire il lavoro e l'obiettivo dell'iterazione; le attività da prioritizzare, le storie e i task concreti della prossima iterazione | membri del team, team lead, product owner | all'inizio di ogni iterazione | circa un'ora per ogni settimana di iterazione |
+| **Daily meeting** | allineamento rapido su avanzamento, ostacoli, prossimi passi | membri del team, team lead, product owner | una volta al giorno | circa 15 minuti |
+| **Iteration demo** | presentazione del valore generato e raccolta di feedback | membri del team, team lead, PO; stakeholder (opzionali) | alla fine dell'iterazione | circa 30–60 minuti |
+| **Retrospective** | riflessione sul processo e azioni di miglioramento | membri del team, team lead, PO | alla fine dell'iterazione | circa 60 minuti |
+
+![[lez06-ag-p24-iteration-planning-tabella.png]]
+![[lez06-ag-p25-daily-meeting.png]]
+![[lez06-ag-p26-iteration-demo.png]]
+![[lez06-ag-p27-retrospective.png]]
+*Le tabelle delle slide per ogni cerimonia (partecipanti, frequenza, durata, obiettivo).*
+
+### Artefatti Agile · [[04_Agile_01_bis.pdf#page=28|p. 28]]–[[04_Agile_01_bis.pdf#page=31|31]]
+
+Product backlog, iteration backlog, user story, burndown chart.
+
+| Artefatto | Definizione |
+|---|---|
+| **Product Backlog** | la lista del lavoro necessario per creare il prodotto; raccoglie tutto il lavoro che arriva al team; il product owner lo ordina per priorità |
+| **Iteration Backlog** | la lista del lavoro da completare in un'iterazione, nell'ordine deciso dal team |
+| **Burndown Chart** | rappresentazione grafica di quanto velocemente il team procede negli elementi di lavoro; mostra lo sforzo totale per ogni iterazione |
+| **User Story** | strumento per descrivere una funzionalità dal punto di vista dell'utente finale: che tipo di utente, cosa vuole e perché |
+
+![[lez06-ag-p30-product-sprint-backlog.png]]
+*Lavagna con il Product Backlog (otto user story ordinate per priorità: login sicuro, ricerca prodotti, carrello, pagamento con carta, e-mail di conferma, tracciamento ordine, preferiti, assistenza) e lo Sprint Backlog (obiettivo: checkout fluido; quattro storie con i task relativi), più la Definizione di Fatto (codice sviluppato, test unitari passati, code review, documentazione aggiornata, funzionalità demo-ready).*
+
+**Burndown chart** (p. 31): rappresenta il **lavoro rimanente** (in Story Point), che **diminuisce giorno per giorno fino a zero alla fine dello Sprint**. La **linea tratteggiata** indica il progresso ideale teorico; la **linea viola** il progresso reale del team. **Gestione dei cambiamenti imprevisti:** la **linea blu** in alto evidenzia i **cambiamenti di ambito**, mostrando se durante il lavoro sono stati aggiunti task non pianificati.
+
+![[lez06-ag-p31-burndown-chart.png]]
+*Infografica «Il grafico burndown Agile»: story point rimanenti sui giorni dello sprint, progresso ideale, progresso reale e linea dell'ambito, con un picco quando si aggiunge lavoro.*
+
+### User story · [[04_Agile_01_bis.pdf#page=32|p. 32]]–[[04_Agile_01_bis.pdf#page=37|37]]
+
+- Formato: **As a \<user>, I want \<capability>, so that \<benefit>.**
+- Una **user story** è un modo di rappresentare una funzionalità o un requisito di valore per un utente o cliente. Comprende **tre aspetti**: una **descrizione scritta** della storia (di alto livello, semplice e breve); una **conversazione** sulla storia per capirne i dettagli; un insieme di **test di accettazione** per stabilire quando la storia è completa.
+- **Esempio** (p. 34): descrizione: *un cassiere può inserire gli articoli acquistati dal cliente.* La discussione tra i membri del team chiarisce i dettagli (per esempio gli articoli si inseriscono con un codice e si possono inserire più articoli della stessa categoria). Dalla discussione escono i **test di accettazione**: test con un singolo articolo; con più articoli distinti; con più articoli di cui alcuni della stessa categoria; con un gran numero di articoli.
+- **Card** (p. 35): di solito si scrivono su **piccoli cartoncini** (per esempio Post-it); il cartoncino dev'essere piccolo per **evitare troppi dettagli**; i test di accettazione si possono elencare **sul retro**.
+- **Template** (p. 36): *As a \<type of user>, I want \<to perform some task>, so that I can \<achieve some goal/benefit/value>.*
+
+![[lez06-ag-p37-esempi-user-story.png]]
+*Sei Post-it in italiano di esempi di user story (cercare prodotti, aggiungere al carrello, salvare nei preferiti, reimpostare la password, gestire gli utenti, pagare con PayPal).*
+
+### Chi scrive le user story? · [[04_Agile_01_bis.pdf#page=38|p. 38]]–[[04_Agile_01_bis.pdf#page=39|39]]
+
+- Domanda: «Le user story sono scritte solo dal product owner?» **No.** Il PO è responsabile solo di **aggiungerle al Backlog**, ma **chiunque può scriverle** (di solito sono sviluppate e raffinate in modo collaborativo da tutto il team).
+
+### Dimensione delle storie · [[04_Agile_01_bis.pdf#page=40|p. 40]]–[[04_Agile_01_bis.pdf#page=42|42]]
+
+- In sviluppo Agile è utile avere storie che un programmatore (o una coppia) possa **implementare e verificare entro uno Sprint**: dimensione adatta alla pianificazione iterativa. Una storia può essere sviluppata in **un giorno** o in **un'iterazione di due settimane**.
+- **Esempi di dimensione** (p. 41): 1) *Un cassiere può gestire una vendita per un cliente* — **troppo grande**. 2) *Un cassiere può aggiungere a un ordine gli articoli acquistati dal cliente* — **dimensione giusta**. 3) *La ricevuta mostra l'indirizzo del negozio* — **troppo piccola**.
+- **Dividere e combinare le storie** (p. 42): una storia troppo grande si chiama **Epic**, e si può dividere in più user story. Esempio: «il cassiere può gestire la vendita al cliente» è un'Epic, divisa in: un cassiere può inserire gli articoli acquistati; un cassiere può vedere il totale della vendita; un cliente può pagare una vendita in contanti; un cliente può ottenere la ricevuta. Una **user story** si può dividere in **task** (creare un'API, creare un form, scrivere test…).
+
+![[lez06-ag-p42-epic-storie-task.png]]
+*Epic → user story → task.*
+
+### Le proprietà INVEST · [[04_Agile_01_bis.pdf#page=43|p. 43]]–[[04_Agile_01_bis.pdf#page=45|45]]
+
+**INVEST** = *Independent, Negotiable, Valuable, Estimable, Small, Testable.*
+
+| Proprietà | Significato |
+|---|---|
+| **Independent** | evitare dipendenze tra storie, per non avere problemi di stima, prioritizzazione e pianificazione |
+| **Negotiable** | i dettagli si negoziano durante la discussione, quindi una storia non deve essere troppo dettagliata |
+| **Valuable** | per utenti e acquirenti: le storie devono avere valore per gli utenti, a volte anche per gli acquirenti, non solo per gli sviluppatori |
+| **Estimable** | il team di sviluppo deve poter stimare il lavoro necessario per ogni storia |
+| **Small** | dimensione tale da permettere lo sviluppo in un tempo che va da mezza giornata a, al massimo, due settimane |
+| **Verifiable (Testable)** | scritte in modo da poter verificare se sono state sviluppate e completate con successo |
+
+**Esempio PayPal** (p. 45): «Permettere ai clienti di pagare con PayPal» è **troppo complessa: è un'Epic**. Meglio queste storie: *come cliente voglio vedere PayPal tra i metodi di pagamento disponibili; voglio essere reindirizzato a PayPal per autorizzare il pagamento; voglio tornare automaticamente al sito e-commerce dopo il pagamento; voglio ricevere una conferma quando il pagamento è completato; come amministratore voglio registrare l'esito del pagamento PayPal per aggiornare lo stato dell'ordine.*
+
+![[lez06-ag-p45-esempio-paypal-epic.png]]
+*L'Epic PayPal e le cinque storie in cui si divide.*
+
+### Revisione delle storie e stima · [[04_Agile_01_bis.pdf#page=46|p. 46]]–[[04_Agile_01_bis.pdf#page=49|49]]
+
+- **User stories review**: attività per controllare la qualità delle user story (o dei requisiti) già definite: sono scritte bene? rispettano i criteri INVEST? come si possono riscrivere?
+- **Esercizio** (p. 47): la storia *«As an administrator, I want to manage the platform's users in order to control access and keep their data up to date»* va valutata con la checklist INVEST (per ogni criterio: Yes / Partially / No, con una breve spiegazione se non pienamente soddisfatto), poi: come migliorarla o dividerla?
+- **Una possibile soluzione** (p. 48): dividerla in *creare un nuovo account utente per consentire l'accesso alla piattaforma; disattivare un account per impedire l'accesso a utenti non più autorizzati; modificare i dati dell'utente per mantenerli aggiornati.* Le nuove storie sono più focalizzate, ma vanno comunque discusse e verificate rispetto a INVEST.
+- **Stima delle user story** (p. 49): le stime sono ipotesi basate sulle informazioni disponibili; argomento della lezione successiva (Lezione 7).
+
+![[lez06-ag-p47-esercizio-invest.png]]
+*La tabella della checklist INVEST (criterio, domanda, risultato).*
+
+### Criteri di accettazione e Definition of Done · [[04_Agile_01_bis.pdf#page=50|p. 50]]–[[04_Agile_01_bis.pdf#page=52|52]]
+
+- **Quando una storia è completa?** I **criteri di accettazione** (*acceptance criteria*) sono aspetti dettagliati di un requisito di alto livello dal punto di vista di uno stakeholder, **unici per ogni storia**; la **Definition of Done** è una checklist di ciò che rende «fatta» una storia, **in generale per tutte le storie**.
+- I criteri di accettazione spingono il team a considerare i dettagli del requisito **prima di cominciare lo sviluppo**; sono condizioni specifiche che una singola storia deve soddisfare; si integrano con un approccio **BDD** (Behavior-Driven Development) o **ATDD** (Acceptance Test-Driven Development).
+- **Esempio** (p. 52): *«As a customer, I want to recover my password so that I can access the system again.»* Discussione: quanto resta valido il link? posso riusare un vecchio link? cosa succede se inserisco un indirizzo e-mail inesistente? riceverò una notifica? c'è una lunghezza minima della password? Criteri di accettazione: 1. il link ricevuto via e-mail è valido 30 minuti; 2. ogni link si può usare una sola volta; 3. la nuova password deve contenere almeno 12 caratteri; 4. se l'indirizzo e-mail non esiste, si mostra un messaggio generico.
+
+![[lez06-ag-p52-criteri-recupero-password.png]]
+*Il caso del recupero password con discussione e criteri.*
+
+### Altri esempi di criteri di accettazione · [[04_Agile_01_bis.pdf#page=53|p. 53]]–[[04_Agile_01_bis.pdf#page=54|54]]
+
+**Esempio 1 — login.** Storia: *as a registered user, I want to log in using my email and password to access my personal area.*
+
+| Criterio | Testo |
+|---|---|
+| AC1 | se e-mail e password sono corrette, l'utente accede alla propria area personale |
+| AC2 | se la password è errata, il sistema mostra un messaggio di errore senza specificare quale credenziale è sbagliata |
+| AC3 | se uno dei campi è vuoto, il sistema impedisce l'invio della richiesta e evidenzia il campo obbligatorio |
+| AC4 | dopo 5 tentativi falliti consecutivi, l'account è bloccato temporaneamente per 15 minuti |
+| AC5 | se l'utente è disabilitato, il sistema non consente l'accesso |
+
+**Esempio 2 — ricerca prodotti.** Storia: *as a registered user, I want to search for a product so that I can place an order.*
+
+| Criterio | Testo |
+|---|---|
+| AC1 | inserendo un nome completo o parziale, si mostrano i prodotti corrispondenti |
+| AC2 | la ricerca non distingue maiuscole e minuscole |
+| AC3 | se non esistono prodotti corrispondenti si mostra il messaggio «No products found» |
+| AC4 | ogni risultato mostra nome, prezzo e disponibilità del prodotto |
+| AC5 | se il campo di ricerca è vuoto, il sistema mostra un messaggio che invita a inserire un termine di ricerca |
+
+### BDD, Gherkin e dai criteri ai test · [[04_Agile_01_bis.pdf#page=55|p. 55]]–[[04_Agile_01_bis.pdf#page=61|61]]
+
+- **BDD** (*Behavior-Driven Development*) nasce come evoluzione del **TDD** (Test-Driven Development): invece di concentrarsi sui test tecnici, sposta l'attenzione sul **comportamento atteso del sistema dal punto di vista dell'utente finale**. Coinvolge i cosiddetti **«Three Amigos»** (Business Analyst/Product Owner, sviluppatori, QA/tester) nel definire gli scenari d'uso **prima di scrivere codice**.
+- **Sintassi Gherkin** (p. 56): gli scenari sono scritti in un linguaggio naturale strutturato, comprensibile a tutti (tecnici e non), nel formato **Given** (dato un contesto iniziale) · **When** (quando avviene un evento o azione) · **Then** (allora si ottiene un risultato). Obiettivo: creare una **«specifica vivente»** (*living specification*) che sia insieme documentazione e test automatico.
+
+**Dai criteri di accettazione ai test BDD** (recupero password, pp. 57–60)
+
+| Criterio | Scenario | Given / When / Then |
+|---|---|---|
+| 1 — validità del link di 30 minuti | positivo: link usato entro i 30 minuti | *Given* un utente ha ricevuto il link di reset 20 minuti fa · *When* lo apre · *Then* il sistema permette di inserire una nuova password |
+| 1 | negativo: link usato dopo la scadenza | *Given* un utente ha ricevuto il link 35 minuti fa · *When* lo apre · *Then* il sistema lo informa che il link è scaduto *And* gli chiede di richiederne uno nuovo |
+| 2 — ogni link una sola volta | riuso di un link già usato | *Given* un utente ha già usato il link · *When* tenta di usarlo una seconda volta · *Then* il sistema rifiuta la richiesta *And* mostra un messaggio che il link non è più valido |
+| 3 — password di almeno 12 caratteri | scenario 1: password valida | *Given* un utente ha aperto un link valido · *When* inserisce una password di almeno 12 caratteri · *Then* il sistema aggiorna la password *And* conferma l'operazione |
+| 3 | scenario 2: password troppo corta | *Given* un utente ha aperto un link valido · *When* inserisce una password di 8 caratteri · *Then* il sistema la rifiuta *And* lo informa che la lunghezza minima è 12 |
+| 4 — e-mail inesistente: messaggio generico | richiesta con e-mail non registrata | *Given* l'e-mail «utente@example.com» non è nel sistema · *When* si richiede il recupero della password · *Then* il sistema mostra un messaggio generico *And* non rivela se l'indirizzo sia registrato |
+
+**Cosa abbiamo scoperto?** (p. 61) Non c'è una corrispondenza uno-a-uno tra criteri di accettazione e scenari BDD: **un solo criterio può richiedere più scenari**; il processo va da un requisito funzionale a test eseguibili; i criteri di accettazione fanno da **ponte tra business, sviluppo e qualità del software**.
+
+### Definition of Done · [[04_Agile_01_bis.pdf#page=62|p. 62]]–[[04_Agile_01_bis.pdf#page=67|67]]
+
+- Domanda: **quando una user story si può considerare completa?** Quando si è finito di scrivere il codice? O…?
+- **Definition of Done**: ✅ tutti i criteri di accettazione sono soddisfatti; ✅ il codice è stato rivisto (*code review*); ✅ tutti i test unitari sono passati; ✅ i test di integrazione sono passati; ✅ nessun bug critico è aperto; ✅ la documentazione tecnica è aggiornata; ✅ la funzionalità è stata distribuita nell'ambiente di test; ✅ il Product Owner ha verificato la user story. **Solo a questo punto la storia può passare a Done.**
+
+**Una DoD realistica, da prospettive diverse** (p. 64)
+
+| Prospettiva | Condizioni |
+|---|---|
+| **Coding** | codice completato; standard di codifica rispettati; code review effettuata |
+| **Quality** | test unitari passati; test di integrazione passati; nessun bug bloccante |
+| **Documentation** | documentazione tecnica aggiornata; API documentate |
+| **Deploy** | build completata con successo; deployment nell'ambiente di test |
+| **Business** | criteri di accettazione soddisfatti; il Product Owner approva la user story |
+
+- **Prova a scrivere la tua DoD** (p. 65). **Esempio** (p. 66): codice sviluppato; test eseguiti; code review; documentazione aggiornata; deployment nell'ambiente di test; approvazione del Product Owner.
+- **Quando si usa la DoD** (p. 67): guida il team durante tutto lo Sprint. Prima di spostare un elemento in Done il team verifica i suoi criteri di accettazione e tutte le condizioni applicabili della DoD. **Alla Sprint Review è considerato parte dell'Incremento solo il lavoro completato che soddisfa la DoD.** Nella **Sprint Retrospective** il team può rivedere e rafforzare la DoD. **Il lavoro che non soddisfa la DoD non è Done e torna al Product Backlog.**
+
+### Iteration Demo · [[04_Agile_01_bis.pdf#page=68|p. 68]]–[[04_Agile_01_bis.pdf#page=74|74]]
+
+- **Il flusso:** verifica della DoD → demo → feedback → rilascio oppure ritorno al backlog (p. 68).
+- **Obiettivi della demo** (p. 69): dimostrare l'incremento ottenuto; verificare che le user story soddisfino i criteri di accettazione; raccogliere suggerimenti e osservazioni; determinare le priorità per il Product Backlog; valutare se il prodotto è pronto per il rilascio.
+- **Scopo specifico** (p. 70): **non dimostrare il lavoro del team, ma verificare il valore prodotto e raccogliere feedback**. È un momento di discussione tra team e stakeholder per capire se ciò che è stato sviluppato risponde davvero alle esigenze degli utenti e del business. **Partecipanti:** Product Owner, Scrum Master, Development Team, stakeholder clienti, utenti rappresentativi, sponsor (se opportuno).
+- **Come funziona** (p. 71): per esempio in un progetto e-commerce si può mostrare: ricerca prodotti; aggiunta al carrello; pagamento con PayPal; conferma dell'ordine. **Si presentano solo le user story completate**, cioè quelle che soddisfano sia i criteri di accettazione sia la DoD. Il team mostra **software funzionante, non slide o documenti**; ogni funzionalità è dimostrata dal vivo.
+
+![[lez06-ag-p72-agenda-demo.png]]
+*Una possibile agenda della demo (esempio «Sprint Review — PayPal Checkout»): 1 Introduzione (5 minuti: il PO ricorda lo Sprint Goal, «permettere ai clienti di completare l'acquisto tramite PayPal»); 2 Dimostrazione (20–40 minuti: login, aggiunta di un prodotto, checkout, pagamento PayPal, conferma dell'ordine); 3 Feedback degli stakeholder; 4 Aggiornamento del backlog (nuove user story, modifica di quelle esistenti, cambio di priorità); il tutto informa il lavoro futuro.*
+
+![[lez06-ag-p73-flusso-complessivo.png]]
+*Il flusso complessivo: Product Backlog → Iteration Planning → Iterazione (con Iteration Backlog e Coordination Meeting) → Iteration Review (Demo) → Retrospective; «Product feedback» riporta dalla review al Product Backlog e «Process improvements» dalla retrospettiva alla pianificazione.*
+
+- Domanda in aula (p. 74): il vostro team fa demo? Sì o no? Se sì, come sono condotte?
+
+### Information radiator · [[04_Agile_01_bis.pdf#page=75|p. 75]]–[[04_Agile_01_bis.pdf#page=80|80]]
+
+- In Agile l'obiettivo è che lo **stato del progetto sia visibile a colpo d'occhio**. Gli **information radiator** sono strumenti visivi che rendono **trasparente** lo stato del lavoro: «irradiano» informazioni, così chiunque passi vicino alla lavagna o apra il dashboard capisce subito come procede il progetto.
+- **Scrum Board** (p. 77): serve a gestire il lavoro di uno Sprint.
+- **Kanban Board** (p. 78): rappresenta invece l'**intero flusso di lavoro**. Kanban introduce i **limiti di Work-in-Progress (WIP)**: un numero massimo di task aperti, per evitare di iniziare molte cose senza finirle; l'obiettivo è ottimizzare il flusso.
+
+![[lez06-ag-p77-scrum-board.png]]
+*Scrum Board dello Sprint 4: obiettivo dello sprint, colonne To Do / In Progress (max 3) / Testing / Done con i post-it delle user story e i punti, definizione di Done, legenda dei colori, progresso dello sprint (36 %), note (daily scrum, sprint review e planning successivi).*
+
+![[lez06-ag-p78-kanban-board.png]]
+*Kanban Board: Backlog, To Do (max 5), In Progress (max 3), In Review (max 2), Done; legenda dei tipi di lavoro e flusso: Backlog → To Do → In Progress → In Review → Done, con le regole sul WIP («visualizzare il lavoro, limitare il WIP, massimizzare il flusso»).*
+
+**Quando usarli** (p. 79)
+
+| Strumento | Quando | Esempio tipico |
+|---|---|---|
+| **Scrum Board** | il lavoro si può pianificare; il team lavora a Sprint; c'è un Product Owner; si sviluppano nuove funzionalità | sviluppo di una nuova applicazione |
+| **Kanban Board** | arrivano continuamente nuove richieste; è difficile pianificare gli Sprint; le priorità cambiano ogni giorno | Service Desk, DevOps Team, Application Support, Incident Management, manutenzione correttiva |
+
+- **Burndown chart** (p. 80): il grafico rende visibile l'avanzamento e supporta la discussione su ostacoli e adattamenti.
+
+![[lez06-ag-p80-burndown-infografica.png]]
+*«The Agile Burndown Chart — visualizing sprint progress»: grafico degli story point rimanenti sui giorni dello sprint con la linea ideale e quella reale; riquadri laterali: valore del burndown (individuare i ritardi, gestire le aspettative, mostrare l'avanzamento), dati chiave (story point iniziali, lavoro completato ogni giorno), «inspect and adapt» (individuare scostamenti dal piano, discutere ostacoli e prossimi passi), trasparenza (condividere lo stato, allineare gli stakeholder).*
+
+### Conclusioni · [[04_Agile_01_bis.pdf#page=81|p. 81]]
+
+- Agile favorisce **adattabilità, collaborazione e miglioramento continuo**.
+
+*Approfondimenti nel wiki: [[sviluppo-agile]], [[cerimonie-e-artefatti-agile]], [[user-stories]], [[criteri-di-accettazione-e-bdd]]*
+
+## Lezione 7 — Agile Project Management (Parte 2): il framework Scrum
+
+*Fonte: 04_Agile_02.pdf (70 pagine, «Agile Project Management (Part 2)», prof.ssa Anna Rita Fasolino). Agenda: dalla gestione tradizionale a Scrum; il framework Scrum; Product Backlog e Sprint Planning; Story Point, velocity e capacity; eventi Scrum; workshop (valutazione Agile e pianificazione del primo Sprint).*
+
+### Premessa sulla gestione di progetto · [[04_Agile_02.pdf#page=3|p. 3]]–[[04_Agile_02.pdf#page=7|7]]
+
+**Gestione di progetto tradizionale** (p. 4): il lavoro è pianificato nel dettaglio all'inizio del progetto; il **piano è lo strumento principale di controllo**.
+
+**Quando funziona bene** (p. 5): l'approccio guidato dal piano è molto efficace quando i **requisiti sono stabili**, la **tecnologia è consolidata**, il **prodotto è ben definito**, i **cambiamenti sono limitati** (costruire un ponte, un edificio, installare un impianto industriale). Ma se i requisiti cambiano continuamente, il cliente scopre nuovi bisogni, la tecnologia evolve durante il progetto, gli utenti vedono il software e cambiano idea, restare fedeli a un piano dettagliato definito mesi prima diventa difficile.
+
+**Gestione Agile** (p. 6): richiede un approccio diverso, adattato allo sviluppo incrementale e alle pratiche dei metodi Agile.
+
+**Plan-driven vs Agile** (p. 7)
+
+| Plan-driven | Agile |
+|---|---|
+| piano dettagliato | visione del prodotto (*Product Vision*) |
+| esecuzione del piano | Sprint |
+| monitoraggio delle deviazioni dal piano | feedback |
+| | adattamento continuo |
+
+### Gestione di progetto e buone pratiche di sviluppo · [[04_Agile_02.pdf#page=8|p. 8]]–[[04_Agile_02.pdf#page=10|10]]
+
+- In molti progetti la gestione non è presa sul serio: l'attenzione è sulle buone pratiche di sviluppo (design pattern, stili architetturali, principi di progettazione, *clean code*). Ma **senza una gestione strutturata è facile perdere visibilità** su stato reale del lavoro, priorità e lavoro rimanente.
+- **Agile non sostituisce le competenze tecniche**: fornisce un quadro per organizzare il lavoro, rendere trasparente l'avanzamento e adattarsi al cambiamento.
+- **Analizzare i vostri progetti passati** (p. 9): avete applicato design pattern, architettura software, principi SOLID, *clean code*, Git, testing. Ma: sapevate esattamente quanto lavoro restava? quali funzionalità erano le più importanti? c'era una lista condivisa dei compiti da completare? sapevate cosa si poteva rilasciare oggi? tutti avevano la stessa visione dello stato del progetto? Se avete risposto spesso «non sempre», **mancava un framework di gestione del progetto**.
+
+### Scrum · [[04_Agile_02.pdf#page=11|p. 11]]–[[04_Agile_02.pdf#page=14|14]]
+
+- **Scrum** è un framework Agile per gestire lo sviluppo di **prodotti complessi**, introdotto nei primi anni '90 da **Ken Schwaber e Jeff Sutherland**. Si basa su un approccio **iterativo e incrementale** e organizza il lavoro in **Sprint, ruoli, eventi e artefatti**. **Non prescrive come sviluppare il software**: dà una struttura dentro cui i team adottano le pratiche tecniche più adatte (per esempio TDD, Pair Programming, Continuous Integration).
+- **Dalla Scrum Guide** di Schwaber e Sutherland (p. 12): Scrum si fonda sulla teoria del **controllo empirico del processo** (**empirismo**): la conoscenza viene dall'esperienza e le decisioni si basano su ciò che è noto. Usa un metodo iterativo e un approccio incrementale per ottimizzare la prevedibilità e controllare il rischio.
+- **I tre pilastri** (p. 13): **trasparenza** del processo; **ispezione frequente** del prodotto in costruzione; **adattamento** del processo o del prodotto, se necessario.
+- **Elementi del framework** (p. 14): lo **Scrum Team** e: **ruoli**, **eventi**, **artefatti**, **regole** che legano insieme eventi, ruoli e artefatti governandone relazioni e interazioni.
+
+### Lo Scrum Team e i ruoli · [[04_Agile_02.pdf#page=15|p. 15]]–[[04_Agile_02.pdf#page=18|18]]
+
+- Lo Scrum Team comprende tre ruoli: **Product Owner** (definisce le funzionalità del prodotto e le loro priorità); **Development Team** (team auto-organizzato e molto autonomo, non più di 7–8 persone); **Scrum Master** (aiuta il gruppo a imparare e applicare Scrum). **Massimo 10 persone in totale**, inclusi PO e Scrum Master.
+- **Product Owner**: responsabile di **massimizzare il valore del prodotto** e del lavoro del Development Team.
+- **Scrum Master**: responsabile di **promuovere e supportare Scrum**, aiutando tutti a comprendere teoria, pratiche, regole e valori di Scrum.
+- **Development Team**: **numero limitato (7–8) di professionisti** che lavorano per consegnare un Incremento di prodotto finito e potenzialmente rilasciabile.
+
+![[lez07-ag2-p16-po-responsabilita.png]]
+*Il Product Owner: decide cosa deve essere fatto (funzionalità, priorità, quando rilasciare); ha un'ampia conoscenza dei bisogni degli utenti finali; sa gestire gli stakeholder; ha un'idea dei processi di sviluppo software e sa comunicare la propria visione al team; il suo scopo principale è produrre valore per l'utente finale e per l'azienda.*
+
+![[lez07-ag2-p17-scrum-master.png]]
+*Lo Scrum Master: aiuta gli stakeholder a comprendere i valori di Scrum; guida l'adozione di Scrum nell'organizzazione; facilita gli eventi Scrum come richiesto e necessario (verso il Product Owner); fa da coach Scrum al Dev Team.*
+
+![[lez07-ag2-p18-development-team.png]]
+*Il Development Team: cross-funzionale, con tutte le competenze necessarie per creare un Incremento; auto-organizzato; ogni membro allocato al 100 % sul progetto; Scrum non riconosce titoli ai membri; le competenze specialistiche non tolgono che la responsabilità sia del team nel suo complesso; dà indicazioni e suggerimenti al Product Owner per migliorare il prodotto.*
+
+### Gli Sprint · [[04_Agile_02.pdf#page=19|p. 19]]
+
+- Il cuore di Scrum è lo **Sprint**: periodo a durata fissa (*time-boxed*), di norma **un mese o meno**, in cui si crea un incremento di prodotto **utilizzabile e potenzialmente rilasciabile**.
+- Gli Sprint hanno **durata costante** per tutto il progetto. Alla fine di uno Sprint, **il successivo comincia subito**.
+
+### Il ciclo di vita di un progetto Scrum · [[04_Agile_02.pdf#page=20|p. 20]]–[[04_Agile_02.pdf#page=21|21]]
+
+Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si può vedere in **tre macro-fasi**:
+- **Inception** (avvio): fase di pianificazione in cui si stabiliscono gli obiettivi generali del progetto e si progetta l'architettura software. **Uscite:** visione del prodotto, Product Backlog iniziale, team e ambiente di sviluppo.
+- **Construction**: l'inception è seguita da una serie di cicli di Sprint, ciascuno dei quali sviluppa un incremento di sistema.
+- **Transition** (chiusura): conclude il progetto, completa la documentazione richiesta (schermate di aiuto e manuali utente compresi) e valuta le lezioni apprese.
+
+![[lez07-ag2-p20-ciclo-di-vita-progetto.png]]
+*Otto Sprint verso la «Next Release»; sotto, Inception («Envision and plan»), Construction («Incrementally build a consumable solution»), Transition («Release solution»).*
+
+### Product Vision · [[04_Agile_02.pdf#page=22|p. 22]]–[[04_Agile_02.pdf#page=23|23]]
+
+- La **Product Vision** descrive lo scopo del prodotto e il valore che intende generare. Risponde a: quale problema vogliamo risolvere? per chi sviluppiamo il prodotto? quale valore offrirà agli utenti? come sapremo se il prodotto ha successo? **Resta stabile nel tempo** e guida tutte le decisioni sul Product Backlog.
+- **Esempio — piattaforma e-commerce:** *Visione:* permettere ai clienti di acquistare prodotti online in modo rapido, sicuro e semplice da qualsiasi dispositivo. *Utenti:* clienti; amministratori del negozio. *Valore:* ridurre il tempo per completare un acquisto; aumentare le vendite online; migliorare l'esperienza del cliente.
+
+### Inception e formazione del team · [[04_Agile_02.pdf#page=24|p. 24]]
+
+- Uno Scrum Team deve essere **cross-funzionale**: devono essere presenti tutte le competenze necessarie a produrre un incremento (Developer, UX, Tester, DBA, DevOps, Security…). Il team si **auto-organizza**, assegnandosi le varie responsabilità.
+- **Chi sarà il PO?** Si sceglie tra: il cliente; un Business Analyst; un Product Manager; un istruttore (nel vostro laboratorio); un senior developer con profonda conoscenza del dominio. Il PO capisce i bisogni degli stakeholder, decide le priorità, mantiene il Product Backlog e massimizza il valore del prodotto.
+
+### Gli artefatti Scrum · [[04_Agile_02.pdf#page=25|p. 25]]–[[04_Agile_02.pdf#page=28|28]]
+
+- **Product Backlog**: lista ordinata degli elementi necessari per completare il prodotto; l'ordine stabilisce la priorità. **Sprint Backlog**: piano di sviluppo dettagliato di ogni Sprint; insieme di elementi (task da completare per costruire il prodotto). **Potentially Shippable Product Increment**: tutto ciò che è prodotto durante uno Sprint; in alcuni casi coincide con lo Sprint Backlog.
+
+![[lez07-ag2-p25-artefatti-scrum.png]]
+*Product Backlog → Sprint Backlog → ciclo di 2–4 settimane (con ciclo da 24 ore) → Potentially shippable Product Increment.*
+
+- **Product Backlog e Sprint Backlog** (p. 26): il PO definisce nel Product Backlog le funzionalità da costruire (lista prioritaria). Contiene **user story, bug, miglioramenti, debito tecnico e spike**, tutti prioritizzati dal PO. Mentre il lavoro procede, il backlog è aggiornato e raffinato. All'inizio di ogni Sprint il team seleziona un insieme di elementi da sviluppare in quell'iterazione e crea lo Sprint Backlog (i task da eseguire per raggiungere lo Sprint Goal).
+- **Un esempio di backlog** (p. 27, «una specie di lista TODO»): ogni attività ha una stima di impegno e in Scrum si stima di norma in story point.
+
+| Ordine | ID | Elemento | Tipo | Stato | Stima |
+|---|---|---|---|---|---|
+| 1 | 121 | As an Administrator, I want to link accounts to profiles, so that customers can access new accounts | Requirement | Not Started | 5 |
+| 2 | 113 | Update requirements traceability matrix | Overhead | Not Started | 2 |
+| 3 | 403 | As a Customer, I want to transfer money between my active accounts, so that I can adjust each account's balance | Improvement | Not Started | 3 |
+| 4 | 97 | Refactor Login Class | Maintenance | Not Started | 8 |
+| 5 | 68 | As a Site Visitor, I want to find locations, so that I can use bank services | Requirement | Not Started | 8 |
+
+![[lez07-ag2-p28-product-e-sprint-backlog.png]]
+*Dal Product Backlog (work item 1…n) allo Sprint Backlog (i primi work item, ciascuno scomposto in task) e all'incremento di prodotto.*
+
+### Un backlog che evolve · [[04_Agile_02.pdf#page=29|p. 29]]–[[04_Agile_02.pdf#page=31|31]]
+
+- La prima bozza del backlog definisce solo i requisiti inizialmente noti e meglio compresi. Il Product Backlog **evolve** durante gli Sprint, come il prodotto e l'ambiente in cui sarà usato. Il **Backlog Refinement** è l'atto di aggiungere **dettaglio, stime e ordine** agli elementi del Product Backlog; è un processo continuo in cui PO e Development Team collaborano sui dettagli.
+- **Esempio — backlog iniziale di un e-commerce** (p. 30): 1 Login; 2 Product search; 3 Shopping cart; 4 PayPal checkout; 5 Wishlist; 6 Product reviews; 7 Mobile app; 8 AI-powered product recommendations. Gli elementi iniziali sono meno vaghi dei successivi (si veda il 7) e dovranno essere raffinati prima del prossimo Sprint.
+- **Raffinare la user story «Login»** (p. 31): da *«As a user, I want to log in.»* a *«As a registered user, I want to authenticate using my email and password to access my personal area.»* Si aggiungono i **criteri di accettazione** (e-mail obbligatoria; password obbligatoria; messaggio di errore; blocco dopo 5 tentativi); poi il team la **stima: 3 Story Point**. **Ora è pronta.** Intanto la storia «Mobile App» resta semplicemente *«Create a mobile app»*: nessuno perde tempo a discuterne, perché probabilmente non sarà sviluppata prima di sei mesi.
+
+### Quando una user story è pronta (Ready) · [[04_Agile_02.pdf#page=32|p. 32]]–[[04_Agile_02.pdf#page=34|34]]
+
+- Esempio: *«As a customer, I want to recover my password.»* È pronta? Domande: è chiara? è abbastanza piccola? ha criteri di accettazione? è stimata? è indipendente? è verificabile? **Se la risposta è sì… allora è READY.**
+- **Prossimo Sprint tra due settimane** (p. 33): solo i primi 2 o 3 elementi saranno candidati allo Sprint.
+
+| Elemento | Stato |
+|---|---|
+| Login | Ready |
+| Product search | Ready |
+| Shopping cart | Almost ready |
+| PayPal | Needs further clarification |
+| Wishlist | Too broadly defined |
+| Mobile app | Just an idea |
+
+- **Il flusso complessivo** (p. 34): *Product Backlog → Backlog Refinement (chiarimento, scomposizione, stima…) → elementi del Product Backlog «Ready» → Sprint Planning → Sprint Backlog.* Il Backlog Refinement **prepara** il lavoro; lo Sprint Planning **seleziona** il lavoro.
+
+### Sprint Backlog con task dettagliati · [[04_Agile_02.pdf#page=35|p. 35]]–[[04_Agile_02.pdf#page=37|37]]
+
+- **Lo Sprint è pianificato in Story Point; l'esecuzione quotidiana può essere organizzata tramite task**, che possono essere stimati in ore (esempio: foglio di calcolo con obiettivo «Completare User Account», storie *«As a user I want to login so that I can access the user area»* (3 SP) con i task Create login form UI, Create login form controller, Create login business logic, Implement "remember me" check, Write Selenium test case, Manual test on device; e *«As a user I want to logout so that I can browse the website anonymously»* (1 SP) con i task Create logout business logic, Check if logout button is present on UI, Manual test on device; per ogni task ore pianificate e ore rimanenti giorno per giorno su due settimane).
+
+![[lez07-ag2-p35-sprint-backlog-task.png]]
+*Il foglio dello Sprint Backlog con ID, storia/task, story point, commenti, ore pianificate e ore rimanenti per giorno.*
+
+- **Potentially Shippable Product Increment** (p. 36): l'insieme delle funzionalità completate in uno Sprint che soddisfano la **Definition of Done** e che potrebbero essere rilasciate agli utenti, anche se si decide di non farlo. Devono: soddisfare i criteri di accettazione; essere testate; essere integrate; essere distribuite nell'ambiente previsto.
+
+### Gli eventi Scrum · [[04_Agile_02.pdf#page=38|p. 38]]–[[04_Agile_02.pdf#page=40|40]]
+
+- Scrum usa **eventi prestabiliti** per creare regolarità e ridurre le riunioni non definite da Scrum. **Ogni evento è a tempo fisso (*time-boxed*)**: la durata non si può cambiare una volta iniziato. Ogni evento è un'opportunità formale di **ispezionare e adattare** qualcosa. Gli eventi sono: **Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective** (p. 39).
+- Diagramma «Scrum Activities»: 1. Sprint Planning → 2. Daily Scrum (ripetuto) → 3. Sprint Review → 4. Sprint Retrospective; fuori dall'anello, 5. Product Backlog Refinement.
+- **Sprint** (p. 40): ogni Sprint ha un obiettivo da raggiungere, un piano flessibile per raggiungerlo, il lavoro svolto e il risultato, e comincia subito dopo la fine dello Sprint precedente. Uno Sprint troppo lungo permette che la definizione di ciò che si costruisce cambi, aumentando complessità e rischi. **Il lavoro da svolgere (definito nello Sprint Backlog) non è obbligatorio, ma è una previsione**: l'unico contenitore dello Sprint è il timebox, non il lavoro pianificato.
+
+### Sprint Goal · [[04_Agile_02.pdf#page=41|p. 41]]–[[04_Agile_02.pdf#page=42|42]]
+
+- **Uno Sprint non è una collezione casuale di user story**: è un insieme di storie che, insieme, permettono di raggiungere uno specifico obiettivo di business che genera valore. Lo **Sprint Goal** è l'obiettivo dello Sprint e le storie selezionate devono contribuire a raggiungerlo.
+- **Esempi** (p. 42): se per lo Sprint ho scelto *Login, PayPal, PDF Report, Dashboard, Translation*, qual è l'obiettivo? «Beats me!!» Se scelgo *Cart, Checkout, Payment, Order confirmation*, l'obiettivo è chiaro: **permettere ai clienti di completare un acquisto online**.
+
+### Sprint Planning · [[04_Agile_02.pdf#page=43|p. 43]]–[[04_Agile_02.pdf#page=46|46]]
+
+- Lo Sprint Planning individua lo **Sprint Goal** e il lavoro necessario per raggiungerlo. Il lavoro è selezionato dal Product Backlog e aggiunto allo Sprint Backlog; è pianificato dall'**intero Scrum Team**; l'evento è a tempo fisso e la durata varia con la lunghezza dello Sprint.
+- Il **PO presenta gli elementi a priorità più alta** del Product Backlog; il **Development Team valuta le user story**: contribuiscono allo Sprint Goal? abbiamo capacità sufficiente? possiamo completarle nello Sprint? **Solo allora** alcune storie sono selezionate e diventano parte dello Sprint Backlog. La selezione si basa sullo **Sprint Goal**, sulle **storie stimate** e sulla **velocity** del team.
+
+![[lez07-ag2-p45-sprint-planning.png]]
+*Sprint Planning: 1 Product Backlog (il PO presenta gli elementi più prioritari) → 2 Discuss & Select (gli sviluppatori valutano e scelgono: supporta lo Sprint Goal? abbiamo capacità? possiamo completarla nello Sprint?) → 3 Sprint Backlog (storie scelte + piano di task); criteri di selezione: Sprint Goal, stime delle storie, capacità disponibile, velocity passata («informa la previsione, non è un impegno fisso»); l'intero Scrum Team collabora; a tempo fisso.*
+
+### Stimare le user story · [[04_Agile_02.pdf#page=47|p. 47]]–[[04_Agile_02.pdf#page=50|50]]
+
+- **Quando e da chi** (p. 47): la stima avviene durante il **Backlog Refinement** ed è fatta dal **Development Team**, perché sono gli sviluppatori a capire complessità tecnica, rischi, dipendenze e lavoro coinvolto. Il Product Owner può chiarire il requisito ma **non assegna gli Story Point**.
+- **Come si stima** (p. 48): non si stima il tempo; si stima la **dimensione relativa** della user story. Gli **Story Point** rappresentano una combinazione di **complessità, quantità di lavoro, rischio, incertezza**. Il metodo più usato è il **Planning Poker**.
+- **Planning Poker** (p. 49): tecnica di stima agile basata su discussione e consenso; tutti stimano in modo indipendente, poi si discute per arrivare a un consenso. **Perché usarlo:** coinvolgimento del team, stime più accurate, rende evidente l'incertezza, consenso e impegno. **Quando:** durante il Backlog Refinement, prima dello Sprint Planning, per stimare storie o lavoro tecnico di dimensione comparabile. **La scala:** carte 1, 2, 3, 5, 8, 13, 21, ? (valori che crescono in modo non lineare; dimensione relativa, non tempo; «?» = «non lo so»/«troppo incerto»). **I passi:** 1 presenta (il PO presenta la storia); 2 fai domande (il team chiarisce i dubbi); 3 stima in privato (ognuno sceglie segretamente una carta); 4 scopri (tutti scoprono la carta insieme); 5 discuti (differenze e ragioni); 6 ristima (se serve, nuova carta in privato); 7 raggiungi il consenso (si ripete fino al consenso). Obiettivo: una comprensione e una stima condivise, non una media. **Esempio:** storia *«As a user, I want to recover my password so that I can access the system again»*; Anna, Luca, Marco, Sara scelgono 3, 5, 3, 8; si discute (perché 8? perché 3? quali rischi?); dopo la ristima si arriva a **5** («Consensus reached!»). **Consigli:** stimare storie di dimensione comparabile; evitare l'ancoraggio sulle prime stime; incoraggiare tutti a spiegare le proprie stime; usare la scala in modo coerente nel tempo; accettare «I don't know» quando l'incertezza è alta.
+
+![[lez07-ag2-p49-planning-poker.png]]
+*L'infografica «Planning Poker — Estimate together, estimate better» con i nove riquadri.*
+
+- **Perché Fibonacci, invece del tempo** (p. 50): *perché si stima la complessità, non il tempo.* (1) Confrontare è più facile che misurare: «chi è più grande tra topo, cane, elefante?» è facile, «quanto pesa un elefante?» no. (2) Si usa un riferimento (il topo = 1 punto) e si stima in modo relativo. (3) La **sequenza di Fibonacci** 1, 2, 3, 5, 8, 13, 21… cresce in modo non lineare, con intervalli sempre più ampi che riflettono l'incertezza crescente con la complessità. (4) Esempio con gli animali: topo 1, gatto 2, cane 3, cavallo 8, elefante 21. (5) Esempio con user story: Change the logo 1; Password recovery 3; Product search 5; Shopping cart 8; PayPal payment 13 («perché non 11? la precisione artificiale non aiuta»). (6) Perché non una scala 1–10: «7 o 8?», «9 o 10?» sono distinzioni inutili; con Fibonacci PayPal payment = 8 e un nuovo motore di ricerca = 13. **Messaggio chiave:** Fibonacci non rende le stime più precise; ci aiuta ad accettare che la precisione diminuisce al crescere della complessità.
+
+![[lez07-ag2-p50-perche-fibonacci.png]]
+*L'infografica «Why do we use Fibonacci?» con i sei riquadri.*
+
+### Velocity e capacity · [[04_Agile_02.pdf#page=51|p. 51]]–[[04_Agile_02.pdf#page=54|54]]
+
+- **Velocity** (p. 51): numero di Story Point che un team completa durante uno Sprint. Contano solo le storie **completate**: quelle che soddisfano la Definition of Done e fanno parte dell'Incremento; le storie iniziate ma non finite non contribuiscono. Serve soprattutto a **pianificare gli Sprint futuri**: aiuta a decidere quanto lavoro sia realistico includere.
+- **Esempio** (p. 52): velocity degli ultimi sprint: Sprint 1 = 28; Sprint 2 = 31; Sprint 3 = 30; Sprint 4 = 29. Si calcola la **media** delle storie completate negli sprint recenti: la velocity è circa **30 SP**; per il prossimo sprint si selezionano storie per circa 30 SP. All'inizio di un progetto la velocity è spesso instabile, ma poi si stabilizza.
+- **Inizio del primo Sprint** (p. 53): la velocity non è ancora disponibile; si può solo fare una stima iniziale e la velocity reale si determina alla fine dello Sprint. **Anche se la stima iniziale era sbagliata, non è un problema: stavamo sperimentando…**
+- **Velocity vs capacity** (p. 54): la **capacity** rappresenta la disponibilità effettiva del team; se un membro è assente per alcuni giorni la capacity diminuisce proporzionalmente. Esempio: la capacity di un team di **7 persone** su **2 settimane (10 giorni lavorativi)** è normalmente $7 \times 10 = 70$ giorni-persona. Se una persona è in ferie per 5 giorni e uno sviluppatore è assente 2 giorni, la capacity si riduce del **10 %**. Per la stima successiva gli Story Point del backlog si riducono del 10 %.
+
+### Daily Scrum · [[04_Agile_02.pdf#page=55|p. 55]]–[[04_Agile_02.pdf#page=59|59]]
+
+- Nel Daily Scrum il Development Team **sincronizza il proprio lavoro** e **pianifica le attività della giornata** per avvicinarsi allo Sprint Goal. Di preferenza: ogni giorno dello Sprint, alla stessa ora, nello stesso luogo (fisico o virtuale). **Non è un resoconto**: serve a verificare il progresso verso lo Sprint Goal, individuare gli impedimenti, coordinare il lavoro del team, adattare il piano per le prossime 24 ore.
+
+![[lez07-ag2-p55-daily-scrum.png]]
+*Daily Scrum — 15 minuti; ogni giorno dello Sprint, stessa ora, stesso luogo; quattro passi: check progress, identify impediments, coordinate work, adapt the plan. «A planning conversation, not a status report.»*
+
+- **Come è cambiato** (p. 57): **ieri** si chiedeva *cosa hai fatto ieri? cosa farai oggi? quali problemi hai?*; **oggi** si preferisce una conversazione sullo Sprint Goal: *a che punto siamo rispetto allo Sprint Goal? cosa dobbiamo fare oggi per avvicinarci all'obiettivo? ci sono impedimenti che possono rallentare lo Sprint?* Così il focus passa dai task individuali al risultato del team.
+
+![[lez07-ag2-p58-daily-scrum-board.png]]
+*«Daily Scrum: the scrum board at the center»: Sprint Goal («Enable users to recover their password securely and easily») → Scrum Board come information radiator (To Do / In Progress / Test / Done con post-it) → Daily Scrum; si ispeziona la board da destra a sinistra, si individuano impedimenti, si concorda cosa completare oggi; esempio di conversazione tra Marco, Sara e Luca con la decisione di lavorare insieme subito dopo il Daily su un problema di token.*
+
+**Falsi miti sul Daily Scrum** (p. 59)
+
+| ❌ Mito | ✅ Realtà |
+|---|---|
+| è la riunione dello Scrum Master | è la riunione del Development Team |
+| serve per fare report | serve a pianificare le prossime 24 ore |
+| ognuno parla del proprio lavoro | il team riesamina il flusso di lavoro sulla Scrum Board |
+| serve a controllare le persone | facilita il coordinamento per raggiungere lo Sprint Goal |
+| i problemi si risolvono durante il Daily | i problemi si individuano nel Daily e si affrontano subito dopo, coinvolgendo solo le persone interessate |
+
+### Sprint Review · [[04_Agile_02.pdf#page=60|p. 60]]–[[04_Agile_02.pdf#page=62|62]]
+
+- La Sprint Review è un **incontro informale**, di **al più quattro ore per uno Sprint di un mese**, in cui Scrum Team e stakeholder collaborano per **ispezionare l'incremento completato** a fine Sprint e, se necessario, **adattare il Product Backlog** per cogliere nuove opportunità. In base a ciò che è stato realizzato e ai cambiamenti del backlog, i partecipanti decidono cosa si può fare per ottimizzare il valore del prodotto; le decisioni dipendono anche da cambiamenti di mercato o uso potenziale del prodotto, budget e tempo disponibili per gli Sprint successivi. **Esito:** un Product Backlog rivisto che definisce il lavoro probabilmente scelto per il prossimo Sprint.
+- **NOTA: la Sprint Review non è una DEMO!** È un'occasione per ispezionare il prodotto, raccogliere feedback e aggiornare il backlog.
+
+![[lez07-ag2-p61-sprint-review.png]]
+*Sprint Review: cos'è (sessione informale a fine Sprint, prima della Retrospective, fino a 4 ore per uno Sprint di un mese; partecipano Scrum Team e stakeholder chiave), cosa si fa (presentare l'Incremento, raccogliere feedback, discutere e adattare, aggiornare il Product Backlog), esiti e benefici, esempio «Speed Boat Game» (le funzionalità sono isole da raggiungere con un budget limitato: gli stakeholder scelgono insieme quali visitare per prime).*
+
+### Sprint Retrospective · [[04_Agile_02.pdf#page=63|p. 63]]–[[04_Agile_02.pdf#page=67|67]]
+
+- **La Sprint Review migliora il prodotto; la Sprint Retrospective migliora il modo di lavorare del team** (p. 63).
+- **Obiettivi** (p. 64): analizzare come è stato condotto il lavoro durante lo Sprint; individuare punti di forza e aree di miglioramento; migliorare il processo di sviluppo; aumentare la qualità del prodotto con il miglioramento continuo. **Partecipanti:** Product Owner, Scrum Master, Development Team. **Durata:** a tempo fisso, al massimo 3 ore per uno Sprint di un mese, proporzionalmente meno per Sprint più brevi.
+- **Il team riflette su tre domande** (p. 65): 1 **cosa è andato bene?** (collaborazione efficace, stime realistiche, pochi bug, buona comunicazione); 2 **cosa si potrebbe migliorare?** (troppe user story aperte contemporaneamente, ritardi nei test, Product Backlog poco chiaro, dipendenze tra sviluppatori); 3 **cosa faremo esattamente nel prossimo Sprint?** (il team definisce azioni di miglioramento: limitare il Work In Progress; code review quotidiane; coinvolgere prima il Product Owner; scrivere i criteri di accettazione durante il Refinement; programmazione in coppia per le storie più complesse).
+
+**Osservazione → causa → azione** (p. 66)
+
+| Osservazione | Possibile causa | Azione per il prossimo Sprint |
+|---|---|---|
+| Abbiamo iniziato troppe user story contemporaneamente | troppo Work in Progress (WIP) | limitare a due le storie in «In Progress» |
+| I test si sono fatti solo negli ultimi due giorni | il tester è stato coinvolto troppo tardi | coinvolgere il tester dall'inizio di ogni storia |
+| Alcune user story erano poco chiare | criteri di accettazione insufficienti | raffinare di più il Product Backlog prima dello Sprint Planning |
+| Le stime erano troppo ottimistiche | requisiti non ben compresi | fare più domande nel Backlog Refinement e coinvolgere più attivamente il PO |
+| Il PO aveva disponibilità limitata | comunicazione scarsa | fissare una sessione settimanale regolare di Backlog Refinement |
+| Abbiamo trovato molti bug durante la demo | mancavano code review e test continui | code review obbligatorie e Continuous Integration |
+| Il Daily Scrum è durato 30 minuti | si è cercato di risolvere i problemi durante la riunione | Daily entro 15 minuti, discussioni tecniche subito dopo |
+| Non abbiamo raggiunto lo Sprint Goal | abbiamo preso troppo lavoro | pianificare meno Story Point per il prossimo Sprint |
+
+- **Retrospettiva su uno dei vostri progetti passati** (p. 67): qual è stato il problema più frustrante? quale azione concreta introdurreste per evitare che si ripeta? **Ogni retrospettiva dovrebbe produrre al massimo 2–3 azioni di miglioramento**: cercare di migliorare tutto insieme porta quasi sempre a nessun miglioramento; meglio poche azioni chiare e verificabili per lo Sprint successivo.
+
+### Panoramica finale · [[04_Agile_02.pdf#page=68|p. 68]]–[[04_Agile_02.pdf#page=70|70]]
+
+![[lez07-ag2-p68-cerimonie-scrum.png]]
+*Le quattro cerimonie Scrum: Daily Scrum Meeting, Sprint Planning Meeting, Sprint Review Meeting, Sprint Retrospective Meeting.*
+
+![[lez07-ag2-p69-scrum-lifecycle.png]]
+*Scrum a colpo d'occhio: input da dirigenti, team, stakeholder, clienti, utenti → Product Owner; Product Backlog (lista ordinata) → Sprint Planning Meeting → Sprint Backlog → Sprint di 1–4 settimane con Daily Scrum ogni 24 ore → lavoro finito → Sprint Review → Sprint Retrospective; Scrum Master e burndown/up chart; «la data di fine Sprint e ciò che il team consegna non cambiano».*
+
+- L'ultima slide introduce il workshop: **«Now let's use Scrum in our project!»**
+
+*Approfondimenti nel wiki: [[gestione-progetto-plan-driven-vs-agile]], [[scrum]], [[ciclo-di-vita-scrum]], [[product-backlog-e-sprint-backlog]], [[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]], [[planning-poker]], [[daily-scrum-review-retrospective]]*
