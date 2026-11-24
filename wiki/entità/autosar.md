@@ -21,7 +21,7 @@ Esempio di **architettura a standard aperto** citato per i **sistemi aperti**: u
 
 ### Come architettura di riferimento (Lez. 4)
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=13]], [[04-Architectural Patterns.pdf#page=14]], [[04-Architectural Patterns.pdf#page=15]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=13]], [[3-Architectural Patterns-complete.pdf#page=14]], [[3-Architectural Patterns-complete.pdf#page=15]]
 
 AUTOSAR è il primo esempio di **DSSA** (architettura di riferimento) per il dominio **automotive**: «piattaforme e architetture software standardizzate per i sistemi elettronici automotive». La figura di p. 15 (Application Layer, RTE, Basic Software a strati, Microcontroller) è descritta in [[dssa]].
 
@@ -36,4 +36,4 @@ AUTOSAR è il primo esempio di **DSSA** (architettura di riferimento) per il dom
 - [[attributi-di-qualita-e-importanza-architettura]] — [[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=43]]
 
 _Aggiornato: 2026-09-26 — ingest lezione 1_
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_

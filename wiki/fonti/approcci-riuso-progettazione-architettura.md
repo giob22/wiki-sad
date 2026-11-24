@@ -1,7 +1,7 @@
 ---
 tipo: fonte
 titolo: "Reuse-based approaches for designing a Software Architecture — DSSA, Architectural Patterns and Styles"
-file_raw: "04-Architectural Patterns.pdf"
+file_raw: "3-Architectural Patterns-complete.pdf"
 pagine: "1-37"
 data_ingest: 2026-10-01
 formato: slide-pdf
@@ -9,7 +9,7 @@ riferimento_libro: "Taylor, Medvidovic, Dashofy — Software Architecture: Found
 argomenti: [strategie e metodi di progettazione, riuso dell'esperienza, Attribute-Driven Design, alternative di progetto, ambito di applicabilità, DSSA, architetture di riferimento, AUTOSAR, IoT, cloud NIST, linee di prodotto software, comunanza e variabilità, pattern architetturali, State-Logic-Display, multi-tier, tier vs layer, 1-tier, 2-tier fat client, 3-tier thin client, middleware, 4-tier deployment, load-balanced cluster]
 ---
 
-# Approcci basati sul riuso per progettare un'architettura — 04-Architectural Patterns.pdf
+# Approcci basati sul riuso per progettare un'architettura — 3-Architectural Patterns-complete.pdf
 
 ## Numerazione pagine ↔ slide
 
@@ -29,15 +29,15 @@ Lezione sul **cap. 4 di Taylor, Medvidovic, Dashofy**: come si progetta un'archi
 
 ## Punti chiave
 
-1. Titolo e libro di riferimento ([[04-Architectural Patterns.pdf#page=1]]); outline ([[04-Architectural Patterns.pdf#page=2]]); «come si progetta un'architettura?» ([[04-Architectural Patterns.pdf#page=3]]).
-2. Strategie vs metodi di progettazione ([[04-Architectural Patterns.pdf#page=4]]); libri sui metodi ([[04-Architectural Patterns.pdf#page=5]]); riuso dell'esperienza ([[04-Architectural Patterns.pdf#page=6]]); ADD ([[04-Architectural Patterns.pdf#page=7]]).
-3. Tre alternative di progetto ([[04-Architectural Patterns.pdf#page=8]]); ambito di applicabilità di DSSA, pattern, stili, design pattern ([[04-Architectural Patterns.pdf#page=9]]).
-4. DSSA: definizione e tre proprietà dei componenti ([[04-Architectural Patterns.pdf#page=10]]); esempi web Microsoft e TV ([[04-Architectural Patterns.pdf#page=11]], [[04-Architectural Patterns.pdf#page=12]]); vantaggi e limiti ([[04-Architectural Patterns.pdf#page=13]]); otto architetture di riferimento per dominio ([[04-Architectural Patterns.pdf#page=14]]); AUTOSAR, IoT, cloud ([[04-Architectural Patterns.pdf#page=15]]–[[04-Architectural Patterns.pdf#page=17]]).
-5. Linee di prodotto: definizione e idea di fondo ([[04-Architectural Patterns.pdf#page=18]]); comunanza vs variabilità ([[04-Architectural Patterns.pdf#page=19]]); esempi in dieci domini ([[04-Architectural Patterns.pdf#page=20]]).
-6. Pattern architetturali: sezione ([[04-Architectural Patterns.pdf#page=21]]); definizione e confronto con DSSA ([[04-Architectural Patterns.pdf#page=22]]); tre esempi ([[04-Architectural Patterns.pdf#page=23]]).
-7. State-Logic-Display come multi-tier; tier ≠ layer ([[04-Architectural Patterns.pdf#page=24]]); figura e applicazioni ([[04-Architectural Patterns.pdf#page=25]]); two/three/n-tier ([[04-Architectural Patterns.pdf#page=26]]); evoluzione dei tier ([[04-Architectural Patterns.pdf#page=27]]).
-8. 1-tier e sua tabella degli attributi ([[04-Architectural Patterns.pdf#page=28]], [[04-Architectural Patterns.pdf#page=29]]); 2-tier fat client e tabella ([[04-Architectural Patterns.pdf#page=30]]–[[04-Architectural Patterns.pdf#page=32]]); 3-tier thin client e tabella ([[04-Architectural Patterns.pdf#page=33]], [[04-Architectural Patterns.pdf#page=34]]).
-9. Middleware come abilitatore di integrazione ([[04-Architectural Patterns.pdf#page=35]]); 4-tier deployment per web ([[04-Architectural Patterns.pdf#page=36]]); load-balanced cluster per le prestazioni ([[04-Architectural Patterns.pdf#page=37]]).
+1. Titolo e libro di riferimento ([[3-Architectural Patterns-complete.pdf#page=1]]); outline ([[3-Architectural Patterns-complete.pdf#page=2]]); «come si progetta un'architettura?» ([[3-Architectural Patterns-complete.pdf#page=3]]).
+2. Strategie vs metodi di progettazione ([[3-Architectural Patterns-complete.pdf#page=4]]); libri sui metodi ([[3-Architectural Patterns-complete.pdf#page=5]]); riuso dell'esperienza ([[3-Architectural Patterns-complete.pdf#page=6]]); ADD ([[3-Architectural Patterns-complete.pdf#page=7]]).
+3. Tre alternative di progetto ([[3-Architectural Patterns-complete.pdf#page=8]]); ambito di applicabilità di DSSA, pattern, stili, design pattern ([[3-Architectural Patterns-complete.pdf#page=9]]).
+4. DSSA: definizione e tre proprietà dei componenti ([[3-Architectural Patterns-complete.pdf#page=10]]); esempi web Microsoft e TV ([[3-Architectural Patterns-complete.pdf#page=11]], [[3-Architectural Patterns-complete.pdf#page=12]]); vantaggi e limiti ([[3-Architectural Patterns-complete.pdf#page=13]]); otto architetture di riferimento per dominio ([[3-Architectural Patterns-complete.pdf#page=14]]); AUTOSAR, IoT, cloud ([[3-Architectural Patterns-complete.pdf#page=15]]–[[3-Architectural Patterns-complete.pdf#page=17]]).
+5. Linee di prodotto: definizione e idea di fondo ([[3-Architectural Patterns-complete.pdf#page=18]]); comunanza vs variabilità ([[3-Architectural Patterns-complete.pdf#page=19]]); esempi in dieci domini ([[3-Architectural Patterns-complete.pdf#page=20]]).
+6. Pattern architetturali: sezione ([[3-Architectural Patterns-complete.pdf#page=21]]); definizione e confronto con DSSA ([[3-Architectural Patterns-complete.pdf#page=22]]); tre esempi ([[3-Architectural Patterns-complete.pdf#page=23]]).
+7. State-Logic-Display come multi-tier; tier ≠ layer ([[3-Architectural Patterns-complete.pdf#page=24]]); figura e applicazioni ([[3-Architectural Patterns-complete.pdf#page=25]]); two/three/n-tier ([[3-Architectural Patterns-complete.pdf#page=26]]); evoluzione dei tier ([[3-Architectural Patterns-complete.pdf#page=27]]).
+8. 1-tier e sua tabella degli attributi ([[3-Architectural Patterns-complete.pdf#page=28]], [[3-Architectural Patterns-complete.pdf#page=29]]); 2-tier fat client e tabella ([[3-Architectural Patterns-complete.pdf#page=30]]–[[3-Architectural Patterns-complete.pdf#page=32]]); 3-tier thin client e tabella ([[3-Architectural Patterns-complete.pdf#page=33]], [[3-Architectural Patterns-complete.pdf#page=34]]).
+9. Middleware come abilitatore di integrazione ([[3-Architectural Patterns-complete.pdf#page=36]]); 4-tier deployment per web ([[3-Architectural Patterns-complete.pdf#page=37]]); load-balanced cluster per le prestazioni ([[3-Architectural Patterns-complete.pdf#page=38]]).
 
 ## Concetti introdotti
 
@@ -49,10 +49,10 @@ Lezione sul **cap. 4 di Taylor, Medvidovic, Dashofy**: come si progetta un'archi
 
 ## Domande aperte
 
-- L'outline ([[04-Architectural Patterns.pdf#page=2]]) e il titolo annunciano gli **Architectural Styles**, che però non sono nel PDF: arriveranno in una lezione successiva?
-- MVC e Sense-Compute-Control sono solo elencati ([[04-Architectural Patterns.pdf#page=23]]).
-- La tabella di [[04-Architectural Patterns.pdf#page=20]] è tagliata all'ultima riga (ERP).
-- Nel load-balanced cluster ([[04-Architectural Patterns.pdf#page=37]]) load balancer e database sono in copia singola: la slide non discute la loro ridondanza (vedi [[availability]]).
+- L'outline ([[3-Architectural Patterns-complete.pdf#page=2]]) e il titolo annunciano gli **Architectural Styles**, che però non sono nel PDF: arriveranno in una lezione successiva?
+- MVC e Sense-Compute-Control sono solo elencati ([[3-Architectural Patterns-complete.pdf#page=23]]).
+- La tabella di [[3-Architectural Patterns-complete.pdf#page=20]] è tagliata all'ultima riga (ERP).
+- Nel load-balanced cluster ([[3-Architectural Patterns-complete.pdf#page=38]]) load balancer e database sono in copia singola: la slide non discute la loro ridondanza (vedi [[availability]]).
 
 ## Domande da esame
 

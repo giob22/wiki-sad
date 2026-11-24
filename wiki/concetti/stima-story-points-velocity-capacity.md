@@ -2,7 +2,7 @@
 tipo: concetto
 importanza_esame: alta
 prerequisiti: ["user-stories", "product-backlog-e-sprint-backlog"]
-fonti_pdf: ["04_Agile_02 (1).pdf#page=47", "04_Agile_02 (1).pdf#page=48", "04_Agile_02 (1).pdf#page=50", "04_Agile_02 (1).pdf#page=51", "04_Agile_02 (1).pdf#page=52", "04_Agile_02 (1).pdf#page=53", "04_Agile_02 (1).pdf#page=54"]
+fonti_pdf: ["04_Agile_02.pdf#page=47", "04_Agile_02.pdf#page=48", "04_Agile_02.pdf#page=50", "04_Agile_02.pdf#page=51", "04_Agile_02.pdf#page=52", "04_Agile_02.pdf#page=53", "04_Agile_02.pdf#page=54"]
 termine_inglese: "story points, velocity, capacity"
 ---
 
@@ -12,32 +12,32 @@ termine_inglese: "story points, velocity, capacity"
 
 | Termine | Definizione (slide) | Fonte |
 |---|---|---|
-| **Story Point (SP)** | misura della **dimensione relativa** di una user story: **non si stima il tempo**; rappresenta una combinazione di **complessità, quantità di lavoro, rischio e incertezza** | [[04_Agile_02 (1).pdf#page=48]] |
-| **Velocity** (velocità del team) | il **numero di Story Point che un team completa durante uno Sprint**; contano **solo le storie completate** | [[04_Agile_02 (1).pdf#page=51]] |
-| **Capacity** (capacità) | la **disponibilità effettiva** del team | [[04_Agile_02 (1).pdf#page=54]] |
+| **Story Point (SP)** | misura della **dimensione relativa** di una user story: **non si stima il tempo**; rappresenta una combinazione di **complessità, quantità di lavoro, rischio e incertezza** | [[04_Agile_02.pdf#page=48]] |
+| **Velocity** (velocità del team) | il **numero di Story Point che un team completa durante uno Sprint**; contano **solo le storie completate** | [[04_Agile_02.pdf#page=51]] |
+| **Capacity** (capacità) | la **disponibilità effettiva** del team | [[04_Agile_02.pdf#page=54]] |
 
 ## Spiegazione
 
 ### Quando e da chi si stima
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=47]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=47]]
 
 La stima si fa durante il **Backlog Refinement** ed è eseguita dal **Development Team**, perché sono gli sviluppatori a conoscere la **complessità tecnica, i rischi, le dipendenze e il lavoro coinvolto**. Il **Product Owner può chiarire il requisito ma non assegna gli Story Point**. (Così si risolve la questione «la stima è rimandata alla prossima lezione» lasciata aperta in [[user-stories]].)
 
 ### Come si stima: dimensione relativa
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=48]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=48]]
 
-Si stima la **dimensione relativa** della storia, non il tempo. Il metodo più usato è il **Planning Poker** → [[planning-poker]]. La scala delle carte è di tipo **Fibonacci** (1, 2, 3, 5, 8, 13, 21, …, [[04_Agile_02 (1).pdf#page=49]]): il perché è nella sezione seguente.
+Si stima la **dimensione relativa** della storia, non il tempo. Il metodo più usato è il **Planning Poker** → [[planning-poker]]. La scala delle carte è di tipo **Fibonacci** (1, 2, 3, 5, 8, 13, 21, …, [[04_Agile_02.pdf#page=49]]): il perché è nella sezione seguente.
 
 > 🧩 Elaborazione mia — perché non i giorni: dire «3 giorni» lega la stima a una persona e al suo ritmo («a me servono 3 giorni, a te 5»); dire «questa storia è grande il triplo di quella di riferimento» è un confronto che vale per tutto il team ed è più facile da fare (e più stabile) di una misura assoluta.
 
 ### Perché Fibonacci, invece del tempo
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=50]] (titolo in italiano; infografica in inglese)
+> 📄 Fonte: [[04_Agile_02.pdf#page=50]] (titolo in italiano; infografica in inglese)
 
 ![[lez07-ag2-p50-perche-fibonacci.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=50]], «Why do we use Fibonacci? Because we estimate complexity, not time». Sei riquadri e un messaggio finale, trascritti qui sotto.*
+*Figura di [[04_Agile_02.pdf#page=50]], «Why do we use Fibonacci? Because we estimate complexity, not time». Sei riquadri e un messaggio finale, trascritti qui sotto.*
 
 | # | Riquadro | Contenuto |
 |---|---|---|
@@ -54,7 +54,7 @@ Si stima la **dimensione relativa** della storia, non il tempo. Il metodo più u
 
 ### Velocity
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=51]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=51]]
 
 La velocity è il numero di SP completati in uno Sprint. **Contano solo le storie completate**: quelle che **rispettano la Definition of Done** e **fanno parte dell'Incremento** ([[product-backlog-e-sprint-backlog]]). Le storie **iniziate ma non finite non contribuiscono**. Serve soprattutto a **pianificare gli Sprint futuri**: aiuta il team a decidere quanto lavoro sia **realistico** includere.
 
@@ -62,7 +62,7 @@ La velocity è il numero di SP completati in uno Sprint. **Contano solo le stori
 
 #### Esempio: calcolo della velocity media
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=52]] (il risultato «circa 30 SP» è dato senza passaggi)
+> 📄 Fonte: [[04_Agile_02.pdf#page=52]] (il risultato «circa 30 SP» è dato senza passaggi)
 
 | Sprint | Velocity (SP) |
 |---|---|
@@ -84,17 +84,17 @@ $$
 
 **Verifica di sanità:** ogni valore è entro ±1,5 SP dalla media (28 è –1,5; 31 è +1,5; 30 è +0,5; 29 è –0,5): la serie è già stabile. **Ipotesi:** gli sprint hanno la stessa durata e lo stesso team; vale per i soli sprint **recenti**, quindi la media si aggiorna man mano.
 
-> 🧩 Elaborazione mia — la velocity è una **previsione, non un impegno**: la slide di planning dice che «past velocity informs the forecast; it is not a fixed commitment» ([[04_Agile_02 (1).pdf#page=45]]).
+> 🧩 Elaborazione mia — la velocity è una **previsione, non un impegno**: la slide di planning dice che «past velocity informs the forecast; it is not a fixed commitment» ([[04_Agile_02.pdf#page=45]]).
 
 ### Inizio del primo Sprint
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=53]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=53]]
 
 Nel **primo Sprint la velocity non è disponibile**: si può solo fare una **stima iniziale** e si determina la **velocity reale** alla fine dello Sprint. **Anche se la stima iniziale era sbagliata non è un problema: stavamo sperimentando…** 🧩 È l'empirismo di Scrum: si agisce, si misura, si adatta ([[scrum]]).
 
 ### Velocity vs Capacity
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=54]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=54]]
 
 La **capacity** rappresenta la **disponibilità effettiva** del team: se un membro è assente o in ferie per alcuni giorni, la capacity **diminuisce proporzionalmente**.
 
@@ -102,7 +102,7 @@ Esempio della slide: un team di **7 persone** su **2 settimane (10 giorni lavora
 
 #### Derivazione — riduzione della capacity
 
-**Fonte:** [[04_Agile_02 (1).pdf#page=54]] (risultato «10 %» dato senza passaggi)
+**Fonte:** [[04_Agile_02.pdf#page=54]] (risultato «10 %» dato senza passaggi)
 
 $$
 \begin{aligned}
@@ -124,7 +124,7 @@ $$
 | **Uso** | calibrare quanto lavoro prendere | correggere la velocity per assenze e carichi |
 | **Si calcola** | dopo lo sprint, come media | prima dello sprint, dal calendario del team |
 
-Fonte della distinzione: [[04_Agile_02 (1).pdf#page=51]], [[04_Agile_02 (1).pdf#page=54]] (la tabella è una sintesi mia 🧩).
+Fonte della distinzione: [[04_Agile_02.pdf#page=51]], [[04_Agile_02.pdf#page=54]] (la tabella è una sintesi mia 🧩).
 
 ## Perché importa
 
@@ -143,6 +143,6 @@ Fonte della distinzione: [[04_Agile_02 (1).pdf#page=51]], [[04_Agile_02 (1).pdf#
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=47]]–[[04_Agile_02 (1).pdf#page=54]]
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=47]]–[[04_Agile_02.pdf#page=54]]
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

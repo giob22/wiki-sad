@@ -20,11 +20,11 @@ Formulazione equivalente della prima parte della lezione: i pattern architettura
 
 ### La definizione della Lez. 4
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=22]], [[04-Architectural Patterns.pdf#page=23]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=22]], [[3-Architectural Patterns-complete.pdf#page=23]]
 
 Nella Lez. 4 il pattern architetturale è un **insieme riusabile di decisioni di progetto architetturali** che affronta un **problema di progetto ricorrente**; definisce una **soluzione generale** adattabile a contesti di sviluppo diversi. Si distingue dalla DSSA per l'ambito: la DSSA è un quadro complessivo per una famiglia di sistemi di un dominio, il pattern risolve un problema ricorrente in domini diversi, e più pattern si combinano nella stessa DSSA o architettura → [[progettazione-basata-sul-riuso]], [[dssa]].
 
-Esempi elencati ([[04-Architectural Patterns.pdf#page=23]]): **State-Logic-Display** (three-tiered pattern) → [[state-logic-display]]; **Model-View-Controller**; **Sense-Compute-Control**. Nella lezione successiva (PDF completo) MVC e Sense–Compute–Control sono spiegati per esteso → [[mvc]], [[sense-compute-control]]. Le conclusioni ([[3-Architectural Patterns-complete.pdf#page=96]]) riassumono: si sono analizzate due strategie di progetto basate sul riuso — **DSSA** e **pattern architetturali** (Three-Tier, MVC, Sense–Compute–Control) — e gli **stili architetturali** arriveranno nelle prossime lezioni.
+Esempi elencati ([[3-Architectural Patterns-complete.pdf#page=23]]): **State-Logic-Display** (three-tiered pattern) → [[state-logic-display]]; **Model-View-Controller**; **Sense-Compute-Control**. Nella lezione successiva (PDF completo) MVC e Sense–Compute–Control sono spiegati per esteso → [[mvc]], [[sense-compute-control]]. Le conclusioni ([[3-Architectural Patterns-complete.pdf#page=96]]) riassumono: si sono analizzate due strategie di progetto basate sul riuso — **DSSA** e **pattern architetturali** (Three-Tier, MVC, Sense–Compute–Control) — e gli **stili architetturali** arriveranno nelle prossime lezioni.
 
 > 🧩 Elaborazione mia — i tre pattern a confronto:
 >
@@ -69,7 +69,7 @@ Il programma distingue:
 
 La progettazione architetturale si basa sul **riuso dell'esperienza** tramite **DSSA** (*Domain-Specific Software Architectures*), pattern, stili e tattiche ([[00_IntroduzioneAlCorso_SAD.pdf#page=16]]).
 
-La Lez. 4 colloca stili, pattern architetturali, DSSA e design pattern nella figura dell'**ambito di applicabilità**: gli stili incorporano meno conoscenza del dominio dei pattern architetturali ([[04-Architectural Patterns.pdf#page=9]] → [[progettazione-basata-sul-riuso]]). TODO: da espandere — la definizione precisa di **stile** non è ancora stata data: l'outline della Lez. 4 annuncia gli *Architectural Styles* ([[04-Architectural Patterns.pdf#page=2]]) ma il PDF si ferma ai pattern; nelle Lez. 1 e 3 «Layered» è chiamato sia *architecture* sia *pattern*.
+La Lez. 4 colloca stili, pattern architetturali, DSSA e design pattern nella figura dell'**ambito di applicabilità**: gli stili incorporano meno conoscenza del dominio dei pattern architetturali ([[3-Architectural Patterns-complete.pdf#page=9]] → [[progettazione-basata-sul-riuso]]). TODO: da espandere — la definizione precisa di **stile** non è ancora stata data: l'outline della Lez. 4 annuncia gli *Architectural Styles* ([[3-Architectural Patterns-complete.pdf#page=2]]) ma il PDF si ferma ai pattern; nelle Lez. 1 e 3 «Layered» è chiamato sia *architecture* sia *pattern*.
 
 ## Perché importa
 
@@ -90,5 +90,5 @@ I pattern sono la forma principale di **riuso di soluzioni collaudate**: restrin
 - [[presentazione-corso]] — [[00_IntroduzioneAlCorso_SAD.pdf#page=16]]
 
 _Aggiornato: 2026-09-26 — ingest lezione 1_
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_
 _Aggiornato: 2026-10-06 — MVC e Sense–Compute–Control spiegati; conclusioni della lezione_

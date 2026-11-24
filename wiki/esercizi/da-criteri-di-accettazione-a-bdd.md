@@ -8,7 +8,7 @@ difficoltà: bassa
 
 ## Metodo
 
-> 📄 Fonte: [[04_Agile_01.pdf#page=52]], [[04_Agile_01.pdf#page=55]], [[04_Agile_01.pdf#page=60]]
+> 📄 Fonte: [[04_Agile_01_bis.pdf#page=52]], [[04_Agile_01_bis.pdf#page=55]], [[04_Agile_01_bis.pdf#page=61]]
 
 1. **Discussione**: per la storia, elenca le domande aperte (durate, limiti, casi d'errore, cosa vede l'utente).
 2. **Criteri**: trasforma ogni risposta in un criterio di accettazione verificabile, con valori concreti.
@@ -24,16 +24,16 @@ difficoltà: bassa
 
 ### Caso 1 — Recupero della password
 
-**Traccia:** [[04_Agile_01.pdf#page=52]] (storia e criteri), [[04_Agile_01.pdf#page=56]]–[[04_Agile_01.pdf#page=59]] (scenari).
+**Traccia:** [[04_Agile_01_bis.pdf#page=52]] (storia e criteri), [[04_Agile_01_bis.pdf#page=57]]–[[04_Agile_01_bis.pdf#page=60]] (scenari).
 
 **Storia:** come cliente, voglio recuperare la mia password così da poter accedere di nuovo al sistema.
 
 | Criterio | Scenari della slide |
 |---|---|
-| 1. Il link è valido 30 minuti | **positivo**: link usato entro la validità; **negativo**: link usato dopo la scadenza ([[04_Agile_01.pdf#page=56]]) |
-| 2. Ogni link si usa una sola volta | riuso di un link già usato ([[04_Agile_01.pdf#page=57]]) |
-| 3. La password nuova ha almeno 12 caratteri | **scenario 1**: password valida; **scenario 2**: password troppo corta ([[04_Agile_01.pdf#page=58]]) |
-| 4. Email inesistente → messaggio generico | richiesta di reset con email non registrata ([[04_Agile_01.pdf#page=59]]) |
+| 1. Il link è valido 30 minuti | **positivo**: link usato entro la validità; **negativo**: link usato dopo la scadenza ([[04_Agile_01_bis.pdf#page=57]]) |
+| 2. Ogni link si usa una sola volta | riuso di un link già usato ([[04_Agile_01_bis.pdf#page=58]]) |
+| 3. La password nuova ha almeno 12 caratteri | **scenario 1**: password valida; **scenario 2**: password troppo corta ([[04_Agile_01_bis.pdf#page=59]]) |
+| 4. Email inesistente → messaggio generico | richiesta di reset con email non registrata ([[04_Agile_01_bis.pdf#page=60]]) |
 
 **Gli scenari in Gherkin** (📄 il contenuto è delle slide; 🧩 la formattazione come file `.feature` e la traduzione in italiano sono mie):
 
@@ -95,7 +95,7 @@ Feature: Recupero della password
 
 ### Caso 2 — Scenari per il login (esercizio mio sui criteri della slide)
 
-> 🧩 Esercizio mio sui criteri di [[04_Agile_01.pdf#page=53]]: applico il metodo a due dei cinque criteri.
+> 🧩 Esercizio mio sui criteri di [[04_Agile_01_bis.pdf#page=53]]: applico il metodo a due dei cinque criteri.
 
 ```gherkin
 Feature: Login con email e password
@@ -126,4 +126,4 @@ Feature: Login con email e password
 - Mettere dettagli d'implementazione negli scenari (tabelle, classi): il BDD descrive il **comportamento** dal punto di vista dell'utente.
 - Pensare che ogni criterio dia esattamente uno scenario.
 
-_Aggiornato: 2026-10-10 — ingest 04_Agile_01.pdf_
+_Aggiornato: 2026-10-10 — ingest 04_Agile_01_bis.pdf_

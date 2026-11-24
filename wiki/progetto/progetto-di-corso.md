@@ -70,11 +70,11 @@ Pagina di riferimento sul progetto software della classe, da quanto detto nella 
 
 ## Metodo Agile nel progetto (Lez. 6)
 
-> 📄 Fonte: [[04_Agile_01.pdf#page=21]]–[[04_Agile_01.pdf#page=31]]
+> 📄 Fonte: [[04_Agile_01_bis.pdf#page=21]]–[[04_Agile_01_bis.pdf#page=31]]
 
 Il progetto usa le pratiche spiegate nella lezione su Agile: il tutor del team fa da **Scrum Master**, gli sprint durano 2 settimane e si chiudono con l'**iteration review** (demo), i requisiti si scrivono come **user story** con criteri di accettazione. Ruoli, cerimonie e artefatti → pagine «cerimonie e artefatti Agile» e «user story» (linkate nella Lezione 6).
 
-> 🧩 Con sprint di 2 settimane, l'iteration planning dura circa 2 ore (regola «un'ora per settimana di iterazione», [[04_Agile_01.pdf#page=24]]).
+> 🧩 Con sprint di 2 settimane, l'iteration planning dura circa 2 ore (regola «un'ora per settimana di iterazione», [[04_Agile_01_bis.pdf#page=24]]).
 
 ## Esperimenti di disponibilità per gruppo (da confermare)
 

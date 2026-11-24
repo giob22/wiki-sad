@@ -2,7 +2,7 @@
 tipo: concetto
 importanza_esame: media
 prerequisiti: ["scrum"]
-fonti_pdf: ["04_Agile_02 (1).pdf#page=20", "04_Agile_02 (1).pdf#page=21", "04_Agile_02 (1).pdf#page=22", "04_Agile_02 (1).pdf#page=23", "04_Agile_02 (1).pdf#page=24"]
+fonti_pdf: ["04_Agile_02.pdf#page=20", "04_Agile_02.pdf#page=21", "04_Agile_02.pdf#page=22", "04_Agile_02.pdf#page=23", "04_Agile_02.pdf#page=24"]
 termine_inglese: "Scrum project life-cycle, product vision"
 ---
 
@@ -10,7 +10,7 @@ termine_inglese: "Scrum project life-cycle, product vision"
 
 ## Definizione
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=21]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=21]]
 
 Scrum, in senso stretto, è **solo una successione di Sprint**; il ciclo di vita di un progetto può però essere visto come composto da **tre macro-fasi**:
 
@@ -23,7 +23,7 @@ Scrum, in senso stretto, è **solo una successione di Sprint**; il ciclo di vita
 ## Spiegazione
 
 ![[lez07-ag2-p20-ciclo-di-vita-progetto.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=20]]. Una freccia curva «Next Release» attraversa otto cerchi a freccia (otto Sprint). Sotto, una barra divisa in tre tratti: **Inception** («Envision and plan», cioè immaginare e pianificare) sul primo cerchio, **Construction** («Incrementally build a consumable solution», costruire per incrementi una soluzione utilizzabile) sui cerchi centrali, **Transition** («Release solution», rilasciare la soluzione) sugli ultimi. Il messaggio: tutti i cerchi sono Sprint, ma non tutti hanno lo stesso scopo; la maggior parte del lavoro è costruzione, con un inizio di preparazione e una fine di rilascio.*
+*Figura di [[04_Agile_02.pdf#page=20]]. Una freccia curva «Next Release» attraversa otto cerchi a freccia (otto Sprint). Sotto, una barra divisa in tre tratti: **Inception** («Envision and plan», cioè immaginare e pianificare) sul primo cerchio, **Construction** («Incrementally build a consumable solution», costruire per incrementi una soluzione utilizzabile) sui cerchi centrali, **Transition** («Release solution», rilasciare la soluzione) sugli ultimi. Il messaggio: tutti i cerchi sono Sprint, ma non tutti hanno lo stesso scopo; la maggior parte del lavoro è costruzione, con un inizio di preparazione e una fine di rilascio.*
 
 > 🧩 Elaborazione mia — perché le tre fasi sono compatibili con «Scrum = solo Sprint»: la preparazione e la chiusura sono comunque eseguite in iterazioni a durata fissa (nel progetto di corso la prima iterazione è proprio quella *preparatoria* di 3 settimane, [[guida-progetto-picus]]). Inoltre l'inception comprende **la progettazione dell'architettura**: è il punto in cui questo corso incontra Scrum (→ [[attribute-driven-design]], [[buone-pratiche-architetturali]]).
 
@@ -31,7 +31,7 @@ Scrum, in senso stretto, è **solo una successione di Sprint**; il ciclo di vita
 
 ### Product Vision
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=22]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=22]]
 
 La **visione del prodotto** (*Product Vision*) descrive **lo scopo del prodotto e il valore che intende generare**. Risponde a quattro domande:
 
@@ -44,7 +44,7 @@ La visione **resta stabile nel tempo** e **guida tutte le decisioni sul Product 
 
 #### Esempio: visione di una piattaforma di e-commerce
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=23]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=23]]
 
 | Parte | Contenuto della slide | Risposta alla domanda di p. 22 🧩 |
 |---|---|---|
@@ -56,7 +56,7 @@ La visione **resta stabile nel tempo** e **guida tutte le decisioni sul Product 
 
 ### Inception e formazione del team
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=24]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=24]]
 
 Nell'inception si forma il team. Un **Scrum Team deve essere cross-funzionale**: devono essere presenti **tutte le competenze necessarie a produrre un incremento**. La slide elenca i profili (con icone): **Developer, UX, Tester, DBA, DevOps, Security …**. Il team **si auto-organizza** assegnandosi le varie responsabilità.
 
@@ -78,6 +78,6 @@ Collega Scrum al **ciclo di progetto**: dove si progetta l'architettura (incepti
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=20]]–[[04_Agile_02 (1).pdf#page=24]]
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=20]]–[[04_Agile_02.pdf#page=24]]
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

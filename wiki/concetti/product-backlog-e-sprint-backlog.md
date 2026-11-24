@@ -2,7 +2,7 @@
 tipo: concetto
 importanza_esame: alta
 prerequisiti: ["scrum", "user-stories"]
-fonti_pdf: ["04_Agile_02 (1).pdf#page=25", "04_Agile_02 (1).pdf#page=26", "04_Agile_02 (1).pdf#page=27", "04_Agile_02 (1).pdf#page=28", "04_Agile_02 (1).pdf#page=29", "04_Agile_02 (1).pdf#page=30", "04_Agile_02 (1).pdf#page=31", "04_Agile_02 (1).pdf#page=32", "04_Agile_02 (1).pdf#page=33", "04_Agile_02 (1).pdf#page=34", "04_Agile_02 (1).pdf#page=35", "04_Agile_02 (1).pdf#page=36"]
+fonti_pdf: ["04_Agile_02.pdf#page=25", "04_Agile_02.pdf#page=26", "04_Agile_02.pdf#page=27", "04_Agile_02.pdf#page=28", "04_Agile_02.pdf#page=29", "04_Agile_02.pdf#page=30", "04_Agile_02.pdf#page=31", "04_Agile_02.pdf#page=32", "04_Agile_02.pdf#page=33", "04_Agile_02.pdf#page=34", "04_Agile_02.pdf#page=35", "04_Agile_02.pdf#page=36"]
 termine_inglese: "Product Backlog, Sprint Backlog, Backlog Refinement, Increment"
 ---
 
@@ -10,7 +10,7 @@ termine_inglese: "Product Backlog, Sprint Backlog, Backlog Refinement, Increment
 
 ## Definizione
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=25]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=25]]
 
 Gli **artefatti di Scrum** sono tre:
 
@@ -21,13 +21,13 @@ Gli **artefatti di Scrum** sono tre:
 | **Potentially Shippable Product Increment** (Incremento) | **tutto ciò che è stato prodotto durante uno Sprint**; in alcuni casi coincide con lo Sprint Backlog |
 
 ![[lez07-ag2-p25-artefatti-scrum.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=25]], «Scrum Framework». Un parallelepipedo alto e azzurro (il Product Backlog, lungo perché contiene molto lavoro) → un parallelepipedo più piccolo (lo Sprint Backlog, il pezzo scelto) → un anello da «2–4 weeks» che contiene un ciclo più piccolo da «24 hours» (il Daily Scrum) → un piccolo parallelepipedo finale, il «Potentially shippable Product Increment». Mostra la riduzione progressiva: da tutto il lavoro possibile, a ciò che si fa in uno sprint, a ciò che si consegna.*
+*Figura di [[04_Agile_02.pdf#page=25]], «Scrum Framework». Un parallelepipedo alto e azzurro (il Product Backlog, lungo perché contiene molto lavoro) → un parallelepipedo più piccolo (lo Sprint Backlog, il pezzo scelto) → un anello da «2–4 weeks» che contiene un ciclo più piccolo da «24 hours» (il Daily Scrum) → un piccolo parallelepipedo finale, il «Potentially shippable Product Increment». Mostra la riduzione progressiva: da tutto il lavoro possibile, a ciò che si fa in uno sprint, a ciò che si consegna.*
 
 ## Spiegazione
 
 ### Product Backlog e Sprint Backlog
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=26]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=26]]
 
 - Il **Product Owner** definisce le funzionalità da costruire nel Product Backlog (**lista prioritaria**).
 - Contiene **user story, bug, miglioramenti, debito tecnico (*technical debt*) e *spike***, tutti **prioritizzati dal PO**. (*Spike*: la slide non lo definisce; è un elemento di lavoro del backlog distinto dalle storie — ❓ da chiarire a lezione.)
@@ -38,12 +38,12 @@ Gli **artefatti di Scrum** sono tre:
 
 ### Un backlog di esempio (tipi di elementi e stime)
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=27]] — «A kind of TODO List»
+> 📄 Fonte: [[04_Agile_02.pdf#page=27]] — «A kind of TODO List»
 
 La slide dice: ogni attività ha una **stima di impegno** e, in Scrum, è prassi comune stimare in **story point** ([[stima-story-points-velocity-capacity]]).
 
 ![[lez07-ag2-p27-esempio-product-backlog.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=27]], tabella «PRODUCT BACKLOG» trascritta qui sotto.*
+*Figura di [[04_Agile_02.pdf#page=27]], tabella «PRODUCT BACKLOG» trascritta qui sotto.*
 
 | Ordine | ID | Elemento | Tipo | Stato | Stima (SP) |
 |---|---|---|---|---|---|
@@ -61,20 +61,20 @@ La slide dice: ogni attività ha una **stima di impegno** e, in Scrum, è prassi
 
 ### Dal Product Backlog allo Sprint Backlog
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=28]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=28]]
 
 ![[lez07-ag2-p28-product-e-sprint-backlog.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=28]]. A sinistra il **Product Backlog**: pila verticale di note verdi «WORK ITEM 1, 2, 3, 4, …, n». A destra lo **Sprint Backlog**: solo i primi tre elementi (WORK ITEM 1, 2, 3), collegati da frecce, ciascuno con a destra una fila di note azzurre «Task» (circa cinque, sei e quattro). Al centro la dicitura «Product increment». Si legge così: lo sprint prende **la testa** della lista ordinata e **scompone ogni elemento in task**; ciò che viene completato forma l'incremento.*
+*Figura di [[04_Agile_02.pdf#page=28]]. A sinistra il **Product Backlog**: pila verticale di note verdi «WORK ITEM 1, 2, 3, 4, …, n». A destra lo **Sprint Backlog**: solo i primi tre elementi (WORK ITEM 1, 2, 3), collegati da frecce, ciascuno con a destra una fila di note azzurre «Task» (circa cinque, sei e quattro). Al centro la dicitura «Product increment». Si legge così: lo sprint prende **la testa** della lista ordinata e **scompone ogni elemento in task**; ciò che viene completato forma l'incremento.*
 
 ### Un backlog che evolve
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=29]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=29]]
 
 La prima bozza del backlog definisce **solo i requisiti inizialmente noti e meglio compresi**. Il Product Backlog **evolve durante gli Sprint**, come il prodotto a cui si riferisce e l'ambiente in cui sarà usato. Il **raffinamento del Product Backlog** (*Backlog Refinement*) è l'atto di **aggiungere dettaglio, stime e ordine** agli elementi; è un **processo continuo** in cui **Product Owner e Development Team collaborano** sui dettagli degli elementi.
 
 #### Esempio: backlog iniziale di un e-commerce
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=30]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=30]]
 
 | Priorità | Elemento |
 |---|---|
@@ -91,7 +91,7 @@ La slide osserva che gli **elementi iniziali sono meno vaghi di quelli successiv
 
 #### Raffinare lo user story «Login»
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=31]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=31]]
 
 | Passo | Prima | Dopo |
 |---|---|---|
@@ -106,7 +106,7 @@ Intanto la storia «Mobile App» resta semplicemente *«Create a mobile app»*: 
 
 #### Quando una storia è «Ready»
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=32]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=32]]
 
 Esempio: *As a customer, I want to recover my password.* «È pronta?» Sei domande; **se tutte le risposte sono sì, è READY**:
 
@@ -123,7 +123,7 @@ La slide non usa il termine «Definition of Ready»: parla di storia «Ready» (
 
 #### Stato degli elementi: chi può entrare nel prossimo sprint
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=33]] — «Next sprint in two weeks…»
+> 📄 Fonte: [[04_Agile_02.pdf#page=33]] — «Next sprint in two weeks…»
 
 | Elemento | Stato |
 |---|---|
@@ -140,7 +140,7 @@ La slide non usa il termine «Definition of Ready»: parla di storia «Ready» (
 
 ### Il flusso complessivo
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=34]] — «What is the total flow?»
+> 📄 Fonte: [[04_Agile_02.pdf#page=34]] — «What is the total flow?»
 
 ```mermaid
 flowchart LR
@@ -153,12 +153,12 @@ flowchart LR
 
 ### Sprint Backlog con task dettagliati
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=35]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=35]]
 
 La slide spiega: **lo Sprint è pianificato in Story Point**; l'**esecuzione quotidiana** può essere organizzata con **task**, che possono essere **stimati in ore**.
 
 ![[lez07-ag2-p35-sprint-backlog-task.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=35]], un foglio di calcolo (colonne in italiano e inglese) trascritto qui sotto.*
+*Figura di [[04_Agile_02.pdf#page=35]], un foglio di calcolo (colonne in italiano e inglese) trascritto qui sotto.*
 
 Intestazione: **Goal: «Completare User Account»**; casella «Ore di sviluppo ideali» con valore **192**. Colonne: ID, Story/Task, SP, Comments, **Planned Hours**, poi i giorni **Lun Mar Mer Gio Ven Lun Mar Mer Gio Ven** (due settimane lavorative) sotto «Remaining Hours».
 
@@ -184,7 +184,7 @@ Intestazione: **Goal: «Completare User Account»**; casella «Ore di sviluppo i
 
 ### Incremento potenzialmente rilasciabile
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=36]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=36]]
 
 Un **Potentially Shippable Product Increment** è l'insieme delle funzionalità completate durante uno Sprint che **soddisfano la Definition of Done** e **potrebbero essere rilasciate** agli utenti, **anche se si decide di non farlo**. Per esserlo devono:
 
@@ -215,6 +215,6 @@ I backlog sono lo strumento per fare **trasparenza e adattamento** ([[scrum]]): 
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=25]]–[[04_Agile_02 (1).pdf#page=37]]
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=25]]–[[04_Agile_02.pdf#page=37]]
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

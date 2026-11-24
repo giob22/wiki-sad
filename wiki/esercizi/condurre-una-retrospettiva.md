@@ -8,12 +8,12 @@ difficoltà: bassa
 
 ## Metodo
 
-Quando: alla **fine di ogni Sprint**, dopo la Sprint Review, con PO, Scrum Master e Development Team ([[daily-scrum-review-retrospective]]; [[04_Agile_02 (1).pdf#page=64]]).
+Quando: alla **fine di ogni Sprint**, dopo la Sprint Review, con PO, Scrum Master e Development Team ([[daily-scrum-review-retrospective]]; [[04_Agile_02.pdf#page=64]]).
 
 1. **Osserva** i fatti dello Sprint (cosa è andato bene, cosa è andato male) con le prime due domande di p. 65.
 2. Per ogni problema cerca la **causa** (non fermarti al sintomo).
 3. Scegli **un'azione concreta e verificabile** per lo Sprint successivo, che agisca sulla causa.
-4. **Limita a 2–3 azioni** in tutto: «provare a migliorare tutto insieme porta quasi sempre a nessun miglioramento; meglio poche azioni chiare e verificabili» ([[04_Agile_02 (1).pdf#page=67]]).
+4. **Limita a 2–3 azioni** in tutto: «provare a migliorare tutto insieme porta quasi sempre a nessun miglioramento; meglio poche azioni chiare e verificabili» ([[04_Agile_02.pdf#page=67]]).
 
 **Concetti usati:** [[daily-scrum-review-retrospective]], [[product-backlog-e-sprint-backlog]] (refinement, criteri di accettazione, DoD), [[stima-story-points-velocity-capacity]] (stime, velocity), [[sprint-e-sprint-planning]] (Sprint Goal), [[user-stories]].
 
@@ -21,7 +21,7 @@ Quando: alla **fine di ogni Sprint**, dopo la Sprint Review, con PO, Scrum Maste
 
 ### Caso 1 — La tabella «osservazione → causa → azione»
 
-**Traccia:** [[04_Agile_02 (1).pdf#page=66]] — tabella a tre colonne (*Observation*, *Possible cause*, *Action for the next Sprint*) con otto righe, usata come esempio di retrospettiva.
+**Traccia:** [[04_Agile_02.pdf#page=66]] — tabella a tre colonne (*Observation*, *Possible cause*, *Action for the next Sprint*) con otto righe, usata come esempio di retrospettiva.
 
 **Svolgimento:** per ogni riga si individua **a che elemento di Scrum** si collega la causa (colonna aggiunta da me 🧩) e **perché l'azione funziona**:
 
@@ -40,7 +40,7 @@ Quando: alla **fine di ogni Sprint**, dopo la Sprint Review, con PO, Scrum Maste
 
 ### Caso 2 — Retrospettiva su un vostro progetto passato
 
-**Traccia:** [[04_Agile_02 (1).pdf#page=67]] — «Conduct a retrospective on one of your past projects»: *Qual è stato il problema più frustrante che hai incontrato? Quale azione concreta introdurresti per evitare che si ripeta?* Nota: **ogni retrospettiva dovrebbe produrre al massimo 2–3 azioni di miglioramento.**
+**Traccia:** [[04_Agile_02.pdf#page=67]] — «Conduct a retrospective on one of your past projects»: *Qual è stato il problema più frustrante che hai incontrato? Quale azione concreta introdurresti per evitare che si ripeta?* Nota: **ogni retrospettiva dovrebbe produrre al massimo 2–3 azioni di miglioramento.**
 
 **Svolgimento:** il PDF non fornisce una soluzione: è un esercizio personale. Il metodo per risponderci:
 
@@ -55,11 +55,11 @@ Quando: alla **fine di ogni Sprint**, dopo la Sprint Review, con PO, Scrum Maste
 
 - **Troppe azioni**: più di 2–3 e non se ne attua nessuna (p. 67).
 - **Azioni vaghe** («comunicare meglio»): non verificabili; la tabella di p. 66 usa sempre un'azione concreta.
-- **Confondere Review e Retrospective**: la Review è sul **prodotto** con gli stakeholder; la Retrospective sul **modo di lavorare**, del solo team ([[04_Agile_02 (1).pdf#page=63]]).
+- **Confondere Review e Retrospective**: la Review è sul **prodotto** con gli stakeholder; la Retrospective sul **modo di lavorare**, del solo team ([[04_Agile_02.pdf#page=63]]).
 - **Fermarsi al sintomo** («Daily troppo lungo») senza la causa («si risolvevano i problemi in riunione»).
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=65]]–[[04_Agile_02 (1).pdf#page=67]]
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=65]]–[[04_Agile_02.pdf#page=67]]
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

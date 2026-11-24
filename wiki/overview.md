@@ -58,7 +58,7 @@ La Lez. 7 completa il quadro con **Scrum** ([[scrum]]): fondato sull'empirismo e
 
 _Aggiornato: 2026-09-26 — ingest di 00_IntroduzioneAlCorso_SAD.pdf e delle due parti di 01-IntroductionOnSoftwareArchitecture_
 _Aggiornato: 2026-09-30 — ingest di 02-Availability.pdf e 03-Modifiability.pdf; programma allineato a Programma Syllabus.md_
-_Aggiornato: 2026-10-01 — ingest di 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest di 3-Architectural Patterns-complete.pdf_
 _Aggiornato: 2026-10-06 — ingest della parte nuova di 3-Architectural Patterns-complete.pdf_
-_Aggiornato: 2026-10-10 — ingest di 04_Agile_01.pdf_
-_Aggiornato: 2026-10-22 — ingest di 04_Agile_02 (1).pdf (Scrum)_
+_Aggiornato: 2026-10-10 — ingest di 04_Agile_01_bis.pdf_
+_Aggiornato: 2026-10-22 — ingest di 04_Agile_02.pdf (Scrum)_

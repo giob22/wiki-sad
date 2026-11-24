@@ -1,7 +1,7 @@
 ---
 tipo: fonte
 titolo: "Agile Project Management (Part 2) — il framework Scrum"
-file_raw: "04_Agile_02 (1).pdf"
+file_raw: "04_Agile_02.pdf"
 pagine: "1-70"
 data_ingest: 2026-10-22
 formato: slide-pdf
@@ -9,7 +9,7 @@ riferimento_libro: "Schwaber e Sutherland, The Scrum Guide (citata a p. 12)"
 argomenti: [project management, plan-driven, Agile, Scrum, empirismo, trasparenza, ispezione, adattamento, Scrum Team, Product Owner, Scrum Master, Development Team, Sprint, product vision, inception, construction, transition, Product Backlog, Sprint Backlog, backlog refinement, Ready, incremento, Definition of Done, Sprint Goal, Sprint Planning, story point, Planning Poker, Fibonacci, velocity, capacity, Daily Scrum, Sprint Review, Sprint Retrospective]
 ---
 
-# Agile Project Management (Part 2) — 04_Agile_02 (1).pdf
+# Agile Project Management (Part 2) — 04_Agile_02.pdf
 
 Numerazione: pagina del PDF = numero stampato sulla slide (dove presente). Il file è la **seconda parte** della lezione sulla gestione Agile ([[agile-project-management]], Lez. 6): nel wiki è la **Lezione 7**. Una prima versione del file (`04_Agile_02.pdf`) era troncata e non è stata ingerita; questa è la versione completa (70 pagine).
 
@@ -19,14 +19,14 @@ Lezione della prof. Fasolino che passa dai principi Agile (Lez. 6) al **framewor
 
 ## Punti chiave
 
-1. Perché serve una gestione di progetto, e quando il piano dettagliato funziona ([[04_Agile_02 (1).pdf#page=4]]–[[04_Agile_02 (1).pdf#page=10]]).
-2. Scrum: definizione, empirismo, pilastri, elementi, ruoli ([[04_Agile_02 (1).pdf#page=11]]–[[04_Agile_02 (1).pdf#page=19]]).
-3. Ciclo di vita in tre fasi, product vision, formazione del team ([[04_Agile_02 (1).pdf#page=20]]–[[04_Agile_02 (1).pdf#page=24]]).
-4. Artefatti, Product Backlog, refinement, Ready, Sprint Backlog, Incremento ([[04_Agile_02 (1).pdf#page=25]]–[[04_Agile_02 (1).pdf#page=37]]).
-5. Eventi: Sprint, Sprint Goal, Sprint Planning ([[04_Agile_02 (1).pdf#page=38]]–[[04_Agile_02 (1).pdf#page=46]]).
-6. Stima, Planning Poker, Fibonacci, velocity, capacity ([[04_Agile_02 (1).pdf#page=47]]–[[04_Agile_02 (1).pdf#page=54]]).
-7. Daily Scrum, Sprint Review, Sprint Retrospective ([[04_Agile_02 (1).pdf#page=55]]–[[04_Agile_02 (1).pdf#page=67]]).
-8. Panoramica delle cerimonie e del ciclo Scrum; avvio del workshop ([[04_Agile_02 (1).pdf#page=68]]–[[04_Agile_02 (1).pdf#page=70]]).
+1. Perché serve una gestione di progetto, e quando il piano dettagliato funziona ([[04_Agile_02.pdf#page=4]]–[[04_Agile_02.pdf#page=10]]).
+2. Scrum: definizione, empirismo, pilastri, elementi, ruoli ([[04_Agile_02.pdf#page=11]]–[[04_Agile_02.pdf#page=19]]).
+3. Ciclo di vita in tre fasi, product vision, formazione del team ([[04_Agile_02.pdf#page=20]]–[[04_Agile_02.pdf#page=24]]).
+4. Artefatti, Product Backlog, refinement, Ready, Sprint Backlog, Incremento ([[04_Agile_02.pdf#page=25]]–[[04_Agile_02.pdf#page=37]]).
+5. Eventi: Sprint, Sprint Goal, Sprint Planning ([[04_Agile_02.pdf#page=38]]–[[04_Agile_02.pdf#page=46]]).
+6. Stima, Planning Poker, Fibonacci, velocity, capacity ([[04_Agile_02.pdf#page=47]]–[[04_Agile_02.pdf#page=54]]).
+7. Daily Scrum, Sprint Review, Sprint Retrospective ([[04_Agile_02.pdf#page=55]]–[[04_Agile_02.pdf#page=67]]).
+8. Panoramica delle cerimonie e del ciclo Scrum; avvio del workshop ([[04_Agile_02.pdf#page=68]]–[[04_Agile_02.pdf#page=70]]).
 
 ## Cosa è nuovo rispetto alla Lezione 6
 

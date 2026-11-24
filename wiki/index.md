@@ -77,9 +77,9 @@
 - [[attributi-di-qualita-e-importanza-architettura]] — 01-IntroductionOnSoftwareArchitecture-2 parte.pdf, pp. 1–45 (slide 51–97)
 - [[quality-attributes-availability]] — 02-Availability.pdf, pp. 1–23
 - [[quality-attributes-modifiability]] — 03-Modifiability.pdf, pp. 1–33 (slide 1–34)
-- [[approcci-riuso-progettazione-architettura]] — 04-Architectural Patterns.pdf, pp. 1–37 (slide 1–41)
-- [[agile-project-management]] — 04_Agile_01.pdf, pp. 1–60
-- [[agile-scrum-framework]] — 04_Agile_02 (1).pdf, pp. 1–70 (Lezione 7: framework Scrum)
+- [[approcci-riuso-progettazione-architettura]] — 3-Architectural Patterns-complete.pdf, pp. 1–37 (slide 1–41)
+- [[agile-project-management]] — 04_Agile_01_bis.pdf, pp. 1–60
+- [[agile-scrum-framework]] — 04_Agile_02.pdf, pp. 1–70 (Lezione 7: framework Scrum)
 - [[architectural-patterns-mvc-scc]] — 3-Architectural Patterns-complete.pdf, parte nuova pp. 35–36, 39–96 (slide 38–39, 43–101)
 - Programma ufficiale del corso: [[Programma Syllabus]] (raw/)
 
@@ -115,5 +115,5 @@ Progetto: 1 figura `prog-picus-p12-piano-iterazioni.png` (p. 12 di 00-Presentazi
 Lez. 2: 13 figure `lez02-av-pN-*.png`; Lez. 3: 14 figure `lez03-mo-pN-*.png`; Lez. 4: 20 figure `lez04-ap-pN-*.png`; Lez. 5: 32 figure `lez05-ap-pN-*.png` (N = pagina di 3-Architectural Patterns-complete.pdf).
 Animazioni SVG e grafico della Lez. 5 in `output/grafici/` (script [[genera_animazioni_lez05.py]]): [[anim-mvc-classico.svg]], [[anim-spring-mvc-richiesta.svg]], [[anim-sense-compute-control.svg]], [[grafico-lunar-lander-controllo.svg]].
 Lez. 6: 25 figure `lez06-ag-pN-*.png`; animazione [[anim-ciclo-iterazione-agile.svg]] e grafico [[grafico-burndown-sprint.svg]] (script [[genera_grafici_lez06.py]]).
-Lez. 7: 16 figure `lez07-ag2-pN-*.png` (N = pagina di 04_Agile_02 (1).pdf, render dell'intera slide).
+Lez. 7: 16 figure `lez07-ag2-pN-*.png` (N = pagina di 04_Agile_02.pdf, render dell'intera slide).
 Diagrammi Mermaid ricostruiti (🧩) direttamente nelle pagine: vista dei moduli e versione event-based, vista runtime, deployment iniziale, tattiche di prestazioni e modificabilità, ADD, catena fault→error→failure, stati del circuit breaker, reduce coupling, plug-in, publish-subscribe, sequenza client-server.

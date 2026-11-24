@@ -2,7 +2,7 @@
 tipo: concetto
 importanza_esame: media
 prerequisiti: ["dssa", "modifiability"]
-fonti_pdf: ["04-Architectural Patterns.pdf#page=18", "04-Architectural Patterns.pdf#page=19", "04-Architectural Patterns.pdf#page=20"]
+fonti_pdf: ["3-Architectural Patterns-complete.pdf#page=18", "3-Architectural Patterns-complete.pdf#page=19", "3-Architectural Patterns-complete.pdf#page=20"]
 termine_inglese: "Software Product Line (SPL)"
 ---
 
@@ -10,7 +10,7 @@ termine_inglese: "Software Product Line (SPL)"
 
 ## Definizione
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=18]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=18]]
 
 > 🔑 Definizione chiave: una **linea di prodotto software** (*Software Product Line*, SPL) è una **famiglia di prodotti** a forte componente software, correlati tra loro, che:
 > - rispondono alle esigenze di uno **specifico segmento di mercato o missione**;
@@ -21,11 +21,11 @@ termine_inglese: "Software Product Line (SPL)"
 **Idea di fondo:** **sviluppare per il riuso**, poi **derivare i prodotti tramite configurazione**.
 
 ![[lez04-ap-p18-linee-di-prodotto.png]]
-*Figura di [[04-Architectural Patterns.pdf#page=18]] (a destra): tre cerchi «Common», ciascuno con due cerchietti A e B. Legenda: **Common** = funzionalità comuni a tutti i prodotti; **A** = funzionalità specifiche del prodotto A, quindi *Product A = Common + A*; **B** = funzionalità specifiche del prodotto B, *Product B = Common + B*.*
+*Figura di [[3-Architectural Patterns-complete.pdf#page=18]] (a destra): tre cerchi «Common», ciascuno con due cerchietti A e B. Legenda: **Common** = funzionalità comuni a tutti i prodotti; **A** = funzionalità specifiche del prodotto A, quindi *Product A = Common + A*; **B** = funzionalità specifiche del prodotto B, *Product B = Common + B*.*
 
 ## Comunanza e variabilità
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=19]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=19]]
 
 Una linea di prodotto **riusa sistematicamente ciò che è comune** e **gestisce esplicitamente ciò che è variabile**.
 
@@ -41,10 +41,10 @@ Una linea di prodotto **riusa sistematicamente ciò che è comune** e **gestisce
 
 ## Esempi espansi — linee di prodotto in domini diversi
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=20]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=20]]
 
 ![[lez04-ap-p20-esempi-linee-di-prodotto.png]]
-*Figura di [[04-Architectural Patterns.pdf#page=20]]: tabella dominio / linea di prodotto / elementi comuni / variabilità pianificata.*
+*Figura di [[3-Architectural Patterns-complete.pdf#page=20]]: tabella dominio / linea di prodotto / elementi comuni / variabilità pianificata.*
 
 | Dominio | Linea di prodotto | Elementi comuni | Variabilità pianificata |
 |---|---|---|---|
@@ -59,7 +59,7 @@ Una linea di prodotto **riusa sistematicamente ciò che è comune** e **gestisce
 | Home banking | soluzioni bancarie configurabili | conti, transazioni, autenticazione, auditing | prodotti finanziari, normative nazionali, regole di autorizzazione |
 | ERP | suite per organizzazioni diverse | utenti, contabilità, reportistica, dati anagrafici (*master data*) | ❓ cella tagliata nella slide |
 
-> ❓ Salto non ricostruito: l'ultima riga della tabella di [[04-Architectural Patterns.pdf#page=20]] è tagliata dal bordo della slide («master da…») e la colonna della variabilità per l'ERP è vuota.
+> ❓ Salto non ricostruito: l'ultima riga della tabella di [[3-Architectural Patterns-complete.pdf#page=20]] è tagliata dal bordo della slide («master da…») e la colonna della variabilità per l'ERP è vuota.
 
 ## Perché importa
 
@@ -77,6 +77,6 @@ Riprende tre fili già visti: la motivazione §3.8 dell'architettura come **mode
 
 ## Fonti
 
-- [[approcci-riuso-progettazione-architettura]] — [[04-Architectural Patterns.pdf#page=18]]–[[04-Architectural Patterns.pdf#page=20]]
+- [[approcci-riuso-progettazione-architettura]] — [[3-Architectural Patterns-complete.pdf#page=18]]–[[3-Architectural Patterns-complete.pdf#page=20]]
 
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_

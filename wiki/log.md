@@ -64,7 +64,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - avanzamento-studio.md: riallineata al programma ufficiale raw/Programma Syllabus.md (nessuna spunta dell'utente da conservare); «da fare» spuntato per A1–A3, B1, B4, B7, B8, B12, C1, C2, E2, E3, E7, F0, F1, F3; plug-in tra gli argomenti aggiunti
 - revisione di copertura totale: tutte le 56 pagine citate, tutte le 27 figure usate, 0 orfani, 0 link irrisolti, 0 duplicati in lezioni.md
 
-## [2026-10-01] ingest | Reuse-based approaches for designing a Software Architecture — DSSA, Architectural Patterns and Styles (04-Architectural Patterns.pdf) | pagine coperte: 1-37
+## [2026-10-01] ingest | Reuse-based approaches for designing a Software Architecture — DSSA, Architectural Patterns and Styles (3-Architectural Patterns-complete.pdf) | pagine coperte: 1-37
 - fonte: [[approcci-riuso-progettazione-architettura]] (tabella pagina ↔ slide: mancano le slide 21, 29, 37, 39)
 - concetti creati (4): progettazione-basata-sul-riuso, dssa, linee-di-prodotto-software, architetture-multi-tier; entità creata: state-logic-display
 - aggiornate: pattern-architetturali (definizione della Lez. 4, esempi), attribute-driven-design, autosar (come DSSA), client-server (2-tier), layered (tier vs layer), microservices (riga «N services»)
@@ -78,7 +78,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - revisione di copertura totale: tutte le 37 pagine citate, tutte le 20 figure usate, 0 orfani, 0 link irrisolti, 0 duplicati in lezioni.md
 
 ## [2026-10-06] ingest | Architectural Patterns, versione completa — parte nuova: middleware, MVC, Spring MVC, Sense–Compute–Control (3-Architectural Patterns-complete.pdf) | pagine coperte: 35-36, 39-96
-- confronto automatico con 04-Architectural Patterns.pdf: pp. 1–34 identiche, pp. 37–38 identiche (titoli tradotti), p. 36 = vecchia p. 35 + una nota nuova; ingerite solo le pagine nuove come Lezione 5
+- confronto automatico con 3-Architectural Patterns-complete.pdf: pp. 1–34 identiche, pp. 37–38 identiche (titoli tradotti), p. 36 = vecchia p. 35 + una nota nuova; ingerite solo le pagine nuove come Lezione 5
 - fonte: [[architectural-patterns-mvc-scc]] (tabella «cosa è nuovo» e conversione pagina ↔ slide)
 - entità create (3): mvc, spring-mvc, sense-compute-control; esercizi creati (2): implementare-mvc, applicare-sense-compute-control
 - aggiornate: architetture-multi-tier (middleware nel three-tier), pattern-architetturali (confronto dei tre pattern, conclusioni), exam-booking-system, progetto-di-corso
@@ -99,7 +99,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - p. 84: Compute interpreta, Control decide e invia; p. 87 (e figure pp. 85, 88, tabella p. 93): Compute interpreta e decide, Control invia
 - aggiunta nota ⚠️ Contraddizione con le citazioni testuali e la chiave di lettura (p. 84 ≈ ruoli della variante a quattro stadi)
 
-## [2026-10-10] ingest | Agile Project Management (04_Agile_01.pdf) | pagine coperte: 1-60
+## [2026-10-10] ingest | Agile Project Management (04_Agile_01_bis.pdf) | pagine coperte: 1-60
 - Lezione 6 (il nome del file inizia con «04» ma è la sesta lezione ingerita)
 - fonte: [[agile-project-management]]
 - concetti creati (4): sviluppo-agile, cerimonie-e-artefatti-agile, user-stories, criteri-di-accettazione-e-bdd
@@ -161,7 +161,7 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - domande-al-committente: aggiunta la sezione «cosa ha già risposto lo stakeholder» (Q-01 risolta, Q-09 quasi, Q-08 in gran parte) e le nuove Q-20 e Q-21
 - eliminati i file della versione precedente del Context Diagram (diagramma e script) perché sostituiti dal diagramma del gruppo
 
-## [2026-10-22] ingest | Agile Project Management (Part 2) (04_Agile_02 (1).pdf) | pagine coperte: 1-70
+## [2026-10-22] ingest | Agile Project Management (Part 2) (04_Agile_02.pdf) | pagine coperte: 1-70
 - fonte: [[agile-scrum-framework]] (con tabella di copertura pagina per pagina); il file `04_Agile_02.pdf` caricato prima era troncato (senza indice finale, font perduti, mancavano le pagine dopo la 55) e non è stato ingerito: l'utente ha caricato la versione completa
 - concetti nuovi: [[gestione-progetto-plan-driven-vs-agile]], [[scrum]], [[ciclo-di-vita-scrum]], [[product-backlog-e-sprint-backlog]], [[sprint-e-sprint-planning]], [[stima-story-points-velocity-capacity]], [[daily-scrum-review-retrospective]]; entità [[planning-poker]]; esercizi [[pianificare-uno-sprint]], [[condurre-una-retrospettiva]]
 - calcoli ricostruiti: velocity media dei quattro sprint (29,5 ≈ 30 SP), riduzione della capacity (7 su 70 giorni-persona = 10 %), carico di 27 SP; esempi espansi: backlog e-commerce, refinement di «Login», criteri «Ready», sprint backlog in ore, Sprint Goal, Fibonacci, Planning Poker, scrum board, Sprint Review, tabella della retrospettiva

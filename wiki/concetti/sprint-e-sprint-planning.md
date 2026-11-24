@@ -2,7 +2,7 @@
 tipo: concetto
 importanza_esame: alta
 prerequisiti: ["scrum", "product-backlog-e-sprint-backlog"]
-fonti_pdf: ["04_Agile_02 (1).pdf#page=39", "04_Agile_02 (1).pdf#page=40", "04_Agile_02 (1).pdf#page=41", "04_Agile_02 (1).pdf#page=42", "04_Agile_02 (1).pdf#page=44", "04_Agile_02 (1).pdf#page=45", "04_Agile_02 (1).pdf#page=46"]
+fonti_pdf: ["04_Agile_02.pdf#page=39", "04_Agile_02.pdf#page=40", "04_Agile_02.pdf#page=41", "04_Agile_02.pdf#page=42", "04_Agile_02.pdf#page=44", "04_Agile_02.pdf#page=45", "04_Agile_02.pdf#page=46"]
 termine_inglese: "Scrum events, Sprint, Sprint Goal, Sprint Planning"
 ---
 
@@ -10,14 +10,14 @@ termine_inglese: "Scrum events, Sprint, Sprint Goal, Sprint Planning"
 
 ## Definizione
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=39]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=39]]
 
 Scrum usa **eventi prestabiliti** per creare **regolarità** e ridurre al minimo le riunioni non previste da Scrum. **Ogni evento è a tempo fisso** (*time-boxed*): la sua durata **non può essere cambiata una volta iniziato**. **Ogni evento è un'opportunità formale di ispezionare e adattare qualcosa** (→ pilastri in [[scrum]]).
 
 Gli eventi sono cinque: **Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective**.
 
 ![[lez07-ag2-p68-cerimonie-scrum.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=68]] («A final overview of Scrum ceremonies»): quattro riquadri colorati attorno a un disco centrale «Scrum Ceremonies» — **Daily Scrum Meeting** (arancio, in piedi davanti a una lavagna a colonne), **Sprint Planning Meeting** (azzurro, tavolo con persone e icone di idee), **Sprint Review Meeting** (rosa, persone davanti a un portatile), **Sprint Retrospective Meeting** (verde, tavolata con post-it). È la sintesi grafica delle quattro riunioni dentro lo Sprint, trattate in [[daily-scrum-review-retrospective]] (Daily, Review, Retrospective) e qui (Planning).*
+*Figura di [[04_Agile_02.pdf#page=68]] («A final overview of Scrum ceremonies»): quattro riquadri colorati attorno a un disco centrale «Scrum Ceremonies» — **Daily Scrum Meeting** (arancio, in piedi davanti a una lavagna a colonne), **Sprint Planning Meeting** (azzurro, tavolo con persone e icone di idee), **Sprint Review Meeting** (rosa, persone davanti a un portatile), **Sprint Retrospective Meeting** (verde, tavolata con post-it). È la sintesi grafica delle quattro riunioni dentro lo Sprint, trattate in [[daily-scrum-review-retrospective]] (Daily, Review, Retrospective) e qui (Planning).*
 
 La slide di p. 39 mostra anche il diagramma **«Scrum Activities»**: una linea chiusa a forma di anello su cui stanno, in sequenza, **1. Sprint Planning → 2. Daily Scrum** (con una freccia che si richiude su se stessa: ripetuto ogni giorno) **→ 3. Sprint Review → 4. Sprint Retrospective** e poi di nuovo il Planning; **fuori dall'anello**, in alto, la casella **5. Product Backlog Refinement**: è un'attività continua, non un evento in sequenza (→ [[product-backlog-e-sprint-backlog]]).
 
@@ -25,7 +25,7 @@ La slide di p. 39 mostra anche il diagramma **«Scrum Activities»**: una linea 
 
 ### Lo Sprint
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=40]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=40]]
 
 - Ogni Sprint ha **un obiettivo da raggiungere**, **un piano flessibile** per arrivarci, il **lavoro svolto** e il **risultato**; comincia **subito dopo la fine** dello Sprint precedente.
 - **Uno Sprint troppo lungo** permette che **la definizione di ciò che si sta costruendo cambi**, aumentando **complessità e rischio**.
@@ -35,13 +35,13 @@ La slide di p. 39 mostra anche il diagramma **«Scrum Activities»**: una linea 
 
 ### Lo Sprint Goal
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=41]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=41]]
 
 **Uno Sprint non è una collezione casuale di user story**: è un insieme di storie che **insieme permettono di raggiungere uno specifico obiettivo di business che genera valore**. Lo **Sprint Goal** è l'**obiettivo dello Sprint** e **le storie selezionate devono contribuire a raggiungerlo**.
 
 #### Esempi: quando c'è un obiettivo e quando no
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=42]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=42]]
 
 | Selezione per lo Sprint | Obiettivo? |
 |---|---|
@@ -52,7 +52,7 @@ La slide di p. 39 mostra anche il diagramma **«Scrum Activities»**: una linea 
 
 ### Sprint Planning
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=44]] (p. 43 è la slide-titolo)
+> 📄 Fonte: [[04_Agile_02.pdf#page=44]] (p. 43 è la slide-titolo)
 
 - Lo **Sprint Planning** individua lo **Sprint Goal** e il **lavoro necessario a raggiungerlo**.
 - Il lavoro è **scelto dal Product Backlog** e aggiunto allo **Sprint Backlog**.
@@ -60,9 +60,9 @@ La slide di p. 39 mostra anche il diagramma **«Scrum Activities»**: una linea 
 - L'evento è a tempo fisso e **la durata varia con la lunghezza dello Sprint**.
 
 ![[lez07-ag2-p45-sprint-planning.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=45]], infografica «Sprint Planning — Define the Sprint Goal and plan the work needed to achieve it». In alto una casella **Sprint Goal** con una freccia verso la fine del processo. Tre riquadri numerati in sequenza: **1 Product Backlog** (il PO presenta gli elementi a priorità più alta, impilati dal più alto al più basso), **2 Discuss & Select** (gli sviluppatori valutano e scelgono le storie, con tre domande: supporta lo Sprint Goal? abbiamo abbastanza capacità? possiamo completarla nello Sprint?), **3 Sprint Backlog** (storie scelte + un piano per consegnarle, cioè i task con caselle da spuntare). In basso i **criteri di selezione**: Sprint Goal, stime delle storie, capacità disponibile, velocity passata (con la nota: «Past velocity informs the forecast; it is not a fixed commitment»); due note: «l'intero Scrum Team collabora» e «a tempo fisso: la durata dipende dalla lunghezza dello Sprint».*
+*Figura di [[04_Agile_02.pdf#page=45]], infografica «Sprint Planning — Define the Sprint Goal and plan the work needed to achieve it». In alto una casella **Sprint Goal** con una freccia verso la fine del processo. Tre riquadri numerati in sequenza: **1 Product Backlog** (il PO presenta gli elementi a priorità più alta, impilati dal più alto al più basso), **2 Discuss & Select** (gli sviluppatori valutano e scelgono le storie, con tre domande: supporta lo Sprint Goal? abbiamo abbastanza capacità? possiamo completarla nello Sprint?), **3 Sprint Backlog** (storie scelte + un piano per consegnarle, cioè i task con caselle da spuntare). In basso i **criteri di selezione**: Sprint Goal, stime delle storie, capacità disponibile, velocity passata (con la nota: «Past velocity informs the forecast; it is not a fixed commitment»); due note: «l'intero Scrum Team collabora» e «a tempo fisso: la durata dipende dalla lunghezza dello Sprint».*
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=46]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=46]]
 
 Come si svolge: il **Product Owner presenta gli elementi a priorità più alta** del backlog; il **Development Team valuta le storie** con tre domande — **contribuiscono allo Sprint Goal? Abbiamo capacità sufficiente? Possiamo completarle nello Sprint?** — e **solo allora** alcune diventano parte dello Sprint Backlog. **La selezione si basa sullo Sprint Goal, sulle storie stimate e sulla velocity del team.**
 
@@ -96,6 +96,6 @@ Lo Sprint Planning è il punto in cui **backlog, stime, capacità e obiettivo** 
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=38]]–[[04_Agile_02 (1).pdf#page=46]], [[04_Agile_02 (1).pdf#page=68]]
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=38]]–[[04_Agile_02.pdf#page=46]], [[04_Agile_02.pdf#page=68]]
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

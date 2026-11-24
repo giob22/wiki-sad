@@ -16,7 +16,7 @@ Regola: 1 PDF = 1 lezione, salvo diversa indicazione. Glossario dei termini ingl
 3. [[overview]] — pp. 12, 15–17, 30: obiettivi formativi, **programma** del corso e stato di copertura, dati del corso.
 4. [[progetto-di-corso]] — pp. 18–29: metodi didattici, progetto di classe, iterazioni, Scrum, tecnologie, calendario, **valutazione d'esame**.
 5. [[guida-progetto-picus]] — **progetto d'esame PICUS**, dai documenti in `wiki/progetto/riferimenti/`: presentazione PICUS pp. 1–29, richieste informali del committente pp. 1–7, AGENTS.md del team §1–10. Cosa fare, calendario delle iterazioni, dominio e desiderata, attività e deliverable dell'iterazione preparatoria, decisioni del team, come lavorare in 8 ruotando i ruoli Scrum.
-6. [[a2-stakeholder-e-contesto]] — **attività 1 del progetto** (presentazione PICUS p. 18, richieste §2–3): analisi degli stakeholder, confini del sistema, flussi, Context Diagram, ipotesi e domande aperte.
+6. [[a2-stakeholder-e-contesto]] — **attività 1 del progetto** (presentazione PICUS p. 18, richieste §2–3): analisi degli stakeholder, confini del sistema, flussi, Context Diagram (nota del gruppo: [[Context Diagram]]), ipotesi e domande aperte.
 7. [[burndown-github-project]] — **strumento per il progetto**: burndown dello sprint sul GitHub Project pesato con le taglie dei task (richiama il burndown chart della Lezione 6, pagina «cerimonie e artefatti Agile»).
 8. [[mascotte-pinguino]] — **materiale del team**: animazione della mascotte (pinguino con elmetto e fragola) dalla tavola di 25 frame, con gesti extra.
 9. [[domande-al-committente]] — **attività 8 del progetto** (presentazione PICUS p. 25, richieste §8–9): le domande più rilevanti da porre al direttore del Banco, in ordine di priorità.
@@ -174,7 +174,7 @@ _Aggiornato: 2026-09-30 — aggiunte Lezione 2 (Availability) e Lezione 3 (Modif
 ---
 
 ## Lezione 4 — Reuse-based approaches for designing a Software Architecture: DSSA, Architectural Patterns and Styles (cap. 4 di Taylor, Medvidovic, Dashofy)
-**PDF:** [[04-Architectural Patterns.pdf]] (pp. 1–37 = slide 1–41; tabella di conversione nel riepilogo)
+**PDF:** [[3-Architectural Patterns-complete.pdf]] (pp. 1–37 = slide 1–41; tabella di conversione nel riepilogo)
 **Riepilogo della lezione:** [[approcci-riuso-progettazione-architettura]]
 
 ### Percorso di lettura (ordine delle slide)
@@ -246,7 +246,7 @@ _Aggiornato: 2026-10-06 — aggiunta Lezione 5 (parte nuova di 3-Architectural P
 ---
 
 ## Lezione 6 — Agile Project Management
-**PDF:** [[04_Agile_01.pdf]] (pp. 1–60, slide = pagina). Il file si chiama «04_…» ma è la sesta lezione ingerita.
+**PDF:** [[04_Agile_01_bis.pdf]] (pp. 1–60, slide = pagina). Il file si chiama «04_…» ma è la sesta lezione ingerita.
 **Riepilogo della lezione:** [[agile-project-management]]
 
 ### Percorso di lettura (ordine delle slide)
@@ -263,7 +263,7 @@ Ordine consigliato: quello delle slide.
 ---
 
 ## Lezione 7 — Agile Project Management (Parte 2): il framework Scrum
-**PDF:** [[04_Agile_02 (1).pdf]] (pp. 1–70, slide = pagina). È la seconda parte della lezione sulla gestione Agile; il file si chiama «04_Agile_02 (1)».
+**PDF:** [[04_Agile_02.pdf]] (pp. 1–70, slide = pagina). È la seconda parte della lezione sulla gestione Agile; il file si chiama «04_Agile_02».
 **Riepilogo della lezione:** [[agile-scrum-framework]] (con la tabella pagina per pagina)
 
 ### Percorso di lettura (ordine delle slide)
@@ -297,5 +297,5 @@ Le slide propongono l'esercizio sulla pianificazione (stati delle storie, p. 33)
 | 10 | condurre una retrospettiva *(esercizio)* | |
 
 
-_Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01.pdf)_
-_Aggiornato: 2026-10-22 — aggiunta Lezione 7 (04_Agile_02 (1).pdf)_
+_Aggiornato: 2026-10-10 — aggiunta Lezione 6 (04_Agile_01_bis.pdf)_
+_Aggiornato: 2026-10-22 — aggiunta Lezione 7 (04_Agile_02.pdf)_

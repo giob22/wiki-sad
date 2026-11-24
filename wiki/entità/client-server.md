@@ -73,7 +73,7 @@ sequenceDiagram
 
 ### Come architettura 2-tier (Lez. 4)
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=30]], [[04-Architectural Patterns.pdf#page=31]], [[04-Architectural Patterns.pdf#page=32]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=30]], [[3-Architectural Patterns-complete.pdf#page=31]], [[3-Architectural Patterns-complete.pdf#page=32]]
 
 La Lez. 4 presenta il client/server come **architettura two-tier con fat client**: presentazione e parte della logica applicativa sul client, che invoca direttamente il server di risorse o database tramite un'**API remota** (contratto esplicito che nasconde l'implementazione del server). Segue una tabella di benefici e limiti su otto attributi — tra i limiti: il server condiviso resta un potenziale single point of failure e cambiare le regole di business può richiedere di aggiornare ogni client. Dettagli e confronto con 1-tier e 3-tier → [[architetture-multi-tier]].
 
@@ -88,4 +88,4 @@ La Lez. 4 presenta il client/server come **architettura two-tier con fat client*
 - [[quality-attributes-modifiability]], [[introduzione-architettura-software]], [[presentazione-corso]]
 
 _Aggiornato: 2026-09-30 — ingest 03-Modifiability.pdf (pattern client-server, benefici e trade-off)_
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_

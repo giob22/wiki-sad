@@ -2,7 +2,7 @@
 tipo: concetto
 importanza_esame: media
 prerequisiti: ["sviluppo-agile"]
-fonti_pdf: ["04_Agile_02 (1).pdf#page=4", "04_Agile_02 (1).pdf#page=5", "04_Agile_02 (1).pdf#page=6", "04_Agile_02 (1).pdf#page=7", "04_Agile_02 (1).pdf#page=8", "04_Agile_02 (1).pdf#page=9"]
+fonti_pdf: ["04_Agile_02.pdf#page=4", "04_Agile_02.pdf#page=5", "04_Agile_02.pdf#page=6", "04_Agile_02.pdf#page=7", "04_Agile_02.pdf#page=8", "04_Agile_02.pdf#page=9"]
 termine_inglese: "plan-driven vs Agile project management"
 ---
 
@@ -10,25 +10,25 @@ termine_inglese: "plan-driven vs Agile project management"
 
 ## Definizione
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=4]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=4]]
 
-Nella **gestione di progetto tradizionale** (*traditional project management*, detta anche *plan-driven*) il lavoro viene **pianificato nel dettaglio all'inizio** del progetto e il **piano è lo strumento principale di controllo** del progetto. Nella **gestione Agile** (*Agile project management*) serve invece «un approccio diverso, adattato allo sviluppo incrementale e alle pratiche dei metodi Agile» ([[04_Agile_02 (1).pdf#page=6]]).
+Nella **gestione di progetto tradizionale** (*traditional project management*, detta anche *plan-driven*) il lavoro viene **pianificato nel dettaglio all'inizio** del progetto e il **piano è lo strumento principale di controllo** del progetto. Nella **gestione Agile** (*Agile project management*) serve invece «un approccio diverso, adattato allo sviluppo incrementale e alle pratiche dei metodi Agile» ([[04_Agile_02.pdf#page=6]]).
 
 ## Spiegazione
 
 ### Quando il piano dettagliato funziona
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=5]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=5]]
 
 L'approccio guidato dal piano è molto efficace quando sono veri **tutti** questi fattori: requisiti stabili, tecnologia consolidata, prodotto ben definito, poche modifiche. Gli esempi della slide sono opere materiali: **costruire un ponte, un edificio, installare un impianto industriale**.
 
 > 🧩 Elaborazione mia — perché proprio questi esempi: in un ponte la progettazione si chiude prima di posare la prima pietra e cambiare un pilone a lavori iniziati costa moltissimo; per questo ha senso prevedere tutto in anticipo. Il piano funziona quando **la previsione è affidabile** (quattro condizioni sopra) e **il costo di una deviazione è alto**.
 
-La slide pone poi quattro domande che mettono in crisi il piano: *cosa succede se* i requisiti continuano a cambiare, il cliente scopre nuovi bisogni, la tecnologia evolve durante il progetto, gli utenti vedono il software e cambiano idea? «In tali casi, aderire a un piano dettagliato definito mesi prima può diventare difficile» ([[04_Agile_02 (1).pdf#page=5]]). Sono i problemi dei progetti software già emersi nel sondaggio della Lezione 6 ([[sviluppo-agile]]).
+La slide pone poi quattro domande che mettono in crisi il piano: *cosa succede se* i requisiti continuano a cambiare, il cliente scopre nuovi bisogni, la tecnologia evolve durante il progetto, gli utenti vedono il software e cambiano idea? «In tali casi, aderire a un piano dettagliato definito mesi prima può diventare difficile» ([[04_Agile_02.pdf#page=5]]). Sono i problemi dei progetti software già emersi nel sondaggio della Lezione 6 ([[sviluppo-agile]]).
 
 ### Due cicli a confronto
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=7]] — slide «Plan-driven vs Agile»
+> 📄 Fonte: [[04_Agile_02.pdf#page=7]] — slide «Plan-driven vs Agile»
 
 ```mermaid
 flowchart LR
@@ -42,7 +42,7 @@ flowchart LR
         A4 -.->|"nuovo sprint"| A2
     end
 ```
-*🧩 Ricostruzione in Mermaid della slide [[04_Agile_02 (1).pdf#page=7]]: le due colonne sono elenchi verticali di tre e quattro passi. La freccia tratteggiata (ritorno dall'adattamento allo sprint) non è disegnata nella slide: l'ho aggiunta perché «continuous adaptation» e la ripetizione degli sprint (pp. 19, 40) implicano un ciclo.*
+*🧩 Ricostruzione in Mermaid della slide [[04_Agile_02.pdf#page=7]]: le due colonne sono elenchi verticali di tre e quattro passi. La freccia tratteggiata (ritorno dall'adattamento allo sprint) non è disegnata nella slide: l'ho aggiunta perché «continuous adaptation» e la ripetizione degli sprint (pp. 19, 40) implicano un ciclo.*
 
 Cosa dice il confronto:
 
@@ -52,11 +52,11 @@ Cosa dice il confronto:
 | **Cosa si controlla** | la **deviazione dal piano**: si confronta lo stato reale con quello previsto | il **feedback** ricevuto a ogni sprint: si cambia ciò che serve |
 | **Atteggiamento verso il cambiamento** | la modifica è uno scostamento da gestire | l'**adattamento è continuo** e previsto |
 
-Fonte: [[04_Agile_02 (1).pdf#page=7]] per le due colonne; la riga «atteggiamento verso il cambiamento» è una sintesi 🧩.
+Fonte: [[04_Agile_02.pdf#page=7]] per le due colonne; la riga «atteggiamento verso il cambiamento» è una sintesi 🧩.
 
 ### Perché serve un framework di gestione (e non solo buone pratiche tecniche)
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=8]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=8]]
 
 In molti progetti la gestione non è presa sul serio: l'attenzione va alle buone pratiche di sviluppo (design pattern, stili architetturali, principi di progettazione, *clean code*). Ma **senza un approccio strutturato di gestione è facile perdere visibilità** sullo stato reale del lavoro, sulle priorità e su ciò che resta da fare. Conclusione della slide: **Agile non sostituisce le competenze tecniche; fornisce un quadro per organizzare il lavoro, rendere trasparente l'avanzamento e adattarsi al cambiamento.**
 
@@ -64,7 +64,7 @@ In molti progetti la gestione non è presa sul serio: l'attenzione va alle buone
 
 ### Analisi dei vostri progetti passati
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=9]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=9]]
 
 La slide elenca ciò che gli studenti hanno «certamente applicato»: design pattern, architettura software, principi SOLID, *clean code*, Git e controllo di versione, testing. Poi cinque domande; se si è risposto spesso «non sempre», **mancava un framework di gestione del progetto**. Ecco a quale elemento di Scrum risponde ogni domanda (🧩, collegamento mio con le pagine di questa lezione):
 
@@ -90,6 +90,6 @@ Introduce Scrum come **risposta a un problema di gestione**, non come moda: il p
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=3]]–[[04_Agile_02 (1).pdf#page=10]] (p. 3 e p. 10 sono slide-titolo)
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=3]]–[[04_Agile_02.pdf#page=10]] (p. 3 e p. 10 sono slide-titolo)
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

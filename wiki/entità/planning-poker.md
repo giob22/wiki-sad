@@ -8,16 +8,16 @@ famiglia: "tecnica di stima agile"
 
 ## Cos'è
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=48]], [[04_Agile_02 (1).pdf#page=49]]
+> 📄 Fonte: [[04_Agile_02.pdf#page=48]], [[04_Agile_02.pdf#page=49]]
 
 Il **Planning Poker** è la tecnica di stima di gruppo più usata per assegnare gli **Story Point** alle user story ([[stima-story-points-velocity-capacity]]). La slide di p. 49 (un'infografica in nove riquadri) la definisce «*una tecnica di stima agile basata su discussione e consenso*»: **tutti i membri del team stimano in modo indipendente, poi discutono** le stime per **arrivare a un consenso**.
 
 ![[lez07-ag2-p49-planning-poker.png]]
-*Figura di [[04_Agile_02 (1).pdf#page=49]], infografica «Planning Poker — Estimate together, estimate better». Nove riquadri: copertina con carte colorate (1, 2, 5, 8, 13, ?); **What it is**; **Why use it**; **When to use it**; **The scale**; **How it works: the steps** (due riquadri); **Practical example**; **Useful tips**. Il contenuto è trascritto sotto.*
+*Figura di [[04_Agile_02.pdf#page=49]], infografica «Planning Poker — Estimate together, estimate better». Nove riquadri: copertina con carte colorate (1, 2, 5, 8, 13, ?); **What it is**; **Why use it**; **When to use it**; **The scale**; **How it works: the steps** (due riquadri); **Practical example**; **Useful tips**. Il contenuto è trascritto sotto.*
 
 ## Come si usa
 
-**Quando:** durante il **Backlog Refinement**, **prima dello Sprint Planning**, per stimare user story o lavoro tecnico di dimensione paragonabile ([[04_Agile_02 (1).pdf#page=47]], p. 49 riquadro «When to use it»).
+**Quando:** durante il **Backlog Refinement**, **prima dello Sprint Planning**, per stimare user story o lavoro tecnico di dimensione paragonabile ([[04_Agile_02.pdf#page=47]], p. 49 riquadro «When to use it»).
 
 **Perché:** **coinvolgimento del team** (tutti partecipano attivamente); **stime più accurate** (la discussione migliora stime e allineamento); **fa emergere l'incertezza** (le differenze tra stime mettono in luce rischi e complessità nascosta); **consenso e impegno** (il team condivide e accetta la stima finale).
 
@@ -47,7 +47,7 @@ flowchart LR
 
 ### Esempio pratico
 
-> 📄 Fonte: [[04_Agile_02 (1).pdf#page=49]], riquadro «Practical example»
+> 📄 Fonte: [[04_Agile_02.pdf#page=49]], riquadro «Practical example»
 
 Storia: *«As a user, I want to recover my password so that I can access the system again.»* Quattro persone — **Anna, Luca, Marco, Sara** — scelgono segretamente le carte **3, 5, 3, 8**. Scoperte le carte, si apre la **discussione** («Why 8? Why 3? What risks do we see?»). Dopo la discussione si **ristima** e si arriva a **5**: «Consensus reached!».
 
@@ -67,6 +67,6 @@ Non è uno stile né un pattern architetturale, quindi non si applica la tabella
 
 ## Fonti
 
-- [[agile-scrum-framework]] — [[04_Agile_02 (1).pdf#page=48]], [[04_Agile_02 (1).pdf#page=49]]
+- [[agile-scrum-framework]] — [[04_Agile_02.pdf#page=48]], [[04_Agile_02.pdf#page=49]]
 
-_Aggiornato: 2026-10-22 — ingest 04_Agile_02 (1).pdf_
+_Aggiornato: 2026-10-22 — ingest 04_Agile_02.pdf_

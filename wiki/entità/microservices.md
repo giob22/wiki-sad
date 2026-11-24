@@ -48,7 +48,7 @@ TODO: da espandere.
 - È uno degli stili suggeriti per il [[progetto-di-corso]] ([[00_IntroduzioneAlCorso_SAD.pdf#page=25]]); la prima iterazione del progetto prevede la definizione dei *bounded context* ([[00_IntroduzioneAlCorso_SAD.pdf#page=24]]).
 - È citato come pattern che comprende più tattiche ([[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=21]]).
 
-- Nella figura dell'evoluzione dei tier ([[04-Architectural Patterns.pdf#page=27]]) i microservizi corrispondono alla riga «N services»: deployment indipendente, servizi con logica e dati propri, collegati da API o messaggi → [[architetture-multi-tier]].
+- Nella figura dell'evoluzione dei tier ([[3-Architectural Patterns-complete.pdf#page=27]]) i microservizi corrispondono alla riga «N services»: deployment indipendente, servizi con logica e dati propri, collegati da API o messaggi → [[architetture-multi-tier]].
 
 ## Connessioni
 
@@ -61,4 +61,4 @@ TODO: da espandere.
 - [[introduzione-architettura-software]], [[presentazione-corso]]
 
 _Aggiornato: 2026-09-26 — ingest lezione 0 e lezione 1_
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_

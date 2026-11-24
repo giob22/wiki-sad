@@ -37,9 +37,9 @@ Tattiche incorporate ([[01-IntroductionOnSoftwareArchitecture-2 parte.pdf#page=2
 
 ### Layer non è tier (Lez. 4)
 
-> 📄 Fonte: [[04-Architectural Patterns.pdf#page=24]], [[04-Architectural Patterns.pdf#page=34]]
+> 📄 Fonte: [[3-Architectural Patterns-complete.pdf#page=24]], [[3-Architectural Patterns-complete.pdf#page=34]]
 
-I **layer** sono una **decomposizione logica** delle responsabilità del software; i **tier** sono la **distribuzione fisica o runtime** degli elementi software. Un sistema con 3 layer può stare su 1 tier (il mainframe) o su 3 tier → [[architetture-multi-tier]]. La tabella del three-tier ([[04-Architectural Patterns.pdf#page=34]]) aggiunge altri benefici e limiti degli strati: testabilità con mock o stub, controlli di sicurezza ai confini, ma aggirare gli strati può eludere i controlli.
+I **layer** sono una **decomposizione logica** delle responsabilità del software; i **tier** sono la **distribuzione fisica o runtime** degli elementi software. Un sistema con 3 layer può stare su 1 tier (il mainframe) o su 3 tier → [[architetture-multi-tier]]. La tabella del three-tier ([[3-Architectural Patterns-complete.pdf#page=34]]) aggiunge altri benefici e limiti degli strati: testabilità con mock o stub, controlli di sicurezza ai confini, ma aggirare gli strati può eludere i controlli.
 
 ## Diagramma
 
@@ -87,4 +87,4 @@ TODO: da espandere quando lo stile sarà trattato per esteso. Indicazione della 
 - [[introduzione-architettura-software]], [[attributi-di-qualita-e-importanza-architettura]], [[presentazione-corso]], [[quality-attributes-modifiability]]
 
 _Aggiornato: 2026-09-30 — ingest 03-Modifiability.pdf (layer pattern)_
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_

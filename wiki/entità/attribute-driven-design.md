@@ -27,7 +27,7 @@ flowchart LR
 
 🧩 Il diagramma riassume la lezione 1: gli **attributi di qualità** ([[attributi-di-qualita]]) sono tra i driver; **tattiche** e **pattern** ([[tattiche-architetturali]], [[pattern-architetturali]]) sono i concetti di progetto; le **strutture** prodotte sono le tre categorie di [[strutture-e-viste]]. Nella figura compaiono strutture non ancora trattate: *Concurrency*, *Process*, *Shared Data* (C&C) e *Implementation* (allocazione).
 
-Nella Lez. 4 lo stesso diagramma ricompare ([[04-Architectural Patterns.pdf#page=7]]) tra i metodi di progettazione architetturale → [[progettazione-basata-sul-riuso]]. Tra i *design concepts* ora sono stati spiegati le **reference architectures** ([[dssa]]) e i **pattern** ([[state-logic-display]]).
+Nella Lez. 4 lo stesso diagramma ricompare ([[3-Architectural Patterns-complete.pdf#page=7]]) tra i metodi di progettazione architetturale → [[progettazione-basata-sul-riuso]]. Tra i *design concepts* ora sono stati spiegati le **reference architectures** ([[dssa]]) e i **pattern** ([[state-logic-display]]).
 
 ## Link ai concetti correlati
 
@@ -38,4 +38,4 @@ Nella Lez. 4 lo stesso diagramma ricompare ([[04-Architectural Patterns.pdf#page
 - [[introduzione-architettura-software]] — [[01-IntroductionOnSoftwareArchitecture.pdf#page=49]]
 
 _Aggiornato: 2026-09-26 — ingest lezione 1_
-_Aggiornato: 2026-10-01 — ingest 04-Architectural Patterns.pdf_
+_Aggiornato: 2026-10-01 — ingest 3-Architectural Patterns-complete.pdf_

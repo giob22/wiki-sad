@@ -13,9 +13,9 @@ argomenti: [middleware nel three-tier, MVC, Observer, Strategy, modelli di inter
 
 ## Cosa è nuovo rispetto al PDF precedente
 
-Il file è la **versione completa** di `04-Architectural Patterns.pdf` (Lezione 4). Confronto pagina per pagina:
+Il file è la **versione completa** di `3-Architectural Patterns-complete.pdf` (Lezione 4). Confronto pagina per pagina:
 
-| Pagine del PDF completo | Rispetto a 04-Architectural Patterns.pdf | Dove è nel wiki |
+| Pagine del PDF completo | Rispetto a 3-Architectural Patterns-complete.pdf | Dove è nel wiki |
 |---|---|---|
 | 1–34 | **identiche** alle pp. 1–34 | Lezione 4 → [[approcci-riuso-progettazione-architettura]] |
 | 35 | **nuova**: middleware nell'architettura three-tier | [[architetture-multi-tier]] |
@@ -26,7 +26,7 @@ Il file è la **versione completa** di `04-Architectural Patterns.pdf` (Lezione 
 | 83–95 | **nuove**: pattern Sense–Compute–Control | [[sense-compute-control]], [[applicare-sense-compute-control]] |
 | 96 | **nuova**: conclusioni | qui sotto e [[pattern-architetturali]] |
 
-Le pagine identiche non sono state ingerite di nuovo: per le pp. 1–34 e 37–38 i link del wiki restano verso `04-Architectural Patterns.pdf`.
+Le pagine identiche non sono state ingerite di nuovo: per le pp. 1–34 e 37–38 i link del wiki restano verso `3-Architectural Patterns-complete.pdf`.
 
 ## Numerazione pagine ↔ slide (parte nuova)
 
