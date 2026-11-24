@@ -83,3 +83,8 @@ concetti = ["sviluppo-agile", "cerimonie-e-artefatti-agile", "user-stories", "cr
 n = 7
 breve = "Agile Project Management (parte 2), il framework Scrum: empirismo e tre pilastri, ruoli, Sprint e ciclo di vita, Product Backlog e refinement, Sprint Planning, Story Point con Planning Poker, velocity e capacity, Daily Scrum, Sprint Review e Retrospective."
 concetti = ["gestione-progetto-plan-driven-vs-agile", "scrum", "ciclo-di-vita-scrum", "product-backlog-e-sprint-backlog", "sprint-e-sprint-planning", "stima-story-points-velocity-capacity", "entità/planning-poker", "daily-scrum-review-retrospective"]
+
+[[lezioni]]
+n = 9
+breve = "Il processo di progettazione architetturale: requisiti architetturalmente significativi (ASR), Quality Attribute Workshop e utility tree; il metodo Attribute-Driven Design in sette passi, dalla revisione degli ingressi alla scelta dei design concept, alle interfacce, agli schizzi e alla rationale, fino all'analisi."
+concetti = ["entità/attribute-driven-design", "scenari-di-qualita"]
