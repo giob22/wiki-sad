@@ -53,3 +53,13 @@ note = ["La presentazione del corso e il progetto PICUS non sono teoria e non co
 n = 1
 breve = "Cos'è un'architettura software (Bass, Clements, Kazman): strutture di modulo, componenti e connettori e di allocazione, con l'Exam Booking System come esempio guida; attributi di qualità, scenari, tattiche e pattern; le undici ragioni per cui l'architettura è importante."
 concetti = ["architettura-software", "strutture-e-viste", "strutture-di-modulo", "strutture-componenti-e-connettori", "strutture-di-allocazione", "attributi-di-qualita", "scenari-di-qualita", "valutazione-attributi-di-qualita", "tattiche-architetturali", "importanza-architettura-software", "buone-pratiche-architetturali", "entità/exam-booking-system", "entità/uml", "entità/attribute-driven-design"]
+
+[[lezioni]]
+n = 2
+breve = "La disponibilità: fault, error e failure, MTBF e MTTR, SLA e tabella dei «nove»; scenari; tattiche per rilevare, recuperare e prevenire i guasti; pattern di ridondanza e circuit breaker; dallo scenario alle decisioni (RTO e RPO) e alle tecnologie."
+concetti = ["availability", "tattiche-availability", "entità/circuit-breaker"]
+
+[[lezioni]]
+n = 3
+breve = "La modificabilità: le quattro domande per pianificarla, il costo del cambiamento e il debito tecnico; scalabilità, variabilità, portabilità e indipendenza dalla posizione; tattiche (coesione, accoppiamento, binding) e pattern client-server, plug-in, layers, publish-subscribe."
+concetti = ["modifiability", "tattiche-modifiability", "pattern-modifiability", "entità/client-server", "entità/plug-in", "entità/layered", "entità/publish-subscribe", "linee-di-prodotto-software"]

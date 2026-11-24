@@ -9,6 +9,8 @@ Testo unico di studio del corso (LM Ingegneria Informatica, UNINA, DIETI, prof.s
 | # | Lezione | PDF sorgente |
 |---|---|---|
 | 1 | [[#Lezione 1 — Introduzione all'architettura software\|Introduzione all'architettura software]] | 01-IntroductionOnSoftwareArchitecture.pdf, 01-IntroductionOnSoftwareArchitecture-2 parte.pdf |
+| 2 | [[#Lezione 2 — Attributi di qualità: disponibilità\|Attributi di qualità: disponibilità]] | 02-Availability.pdf |
+| 3 | [[#Lezione 3 — Attributi di qualità: modificabilità\|Attributi di qualità: modificabilità]] | 03-Modifiability.pdf |
 
 ## Lezione 1 — Introduzione all'architettura software
 
@@ -54,7 +56,7 @@ Tre parti: **1. Che cos'è un'architettura software · 2. Capire gli attributi d
 - Non tutte le architetture sono buone: importanza della **progettazione** e della **valutazione** dell'architettura.
 - L'architettura **include il comportamento**: il modo in cui gli elementi interagiscono tra loro e con l'ambiente influisce sulle proprietà (per esempio le prestazioni a runtime); importanza di progettare e documentare questo comportamento.
 
-## Strutture di modulo
+### Strutture di modulo
 
 #### Che cosa sono · [[01-IntroductionOnSoftwareArchitecture.pdf#page=8|p. 8]]–[[01-IntroductionOnSoftwareArchitecture.pdf#page=9|9]]
 
@@ -149,7 +151,7 @@ La vista dei moduli permette di ragionare sulla **modificabilità**:
 ![[lez01-intro-p23-data-model.png]]
 *Tre entità (PurchaseOrder, OrderItem, CatalogItem) con chiavi e tipi; le linee a «zampa di gallina» indicano che a un ordine corrispondono 0 o più voci, ognuna legata a esattamente un articolo di catalogo.*
 
-## Strutture componenti-e-connettori (C&C)
+### Strutture componenti-e-connettori (C&C)
 
 #### Che cosa sono · [[01-IntroductionOnSoftwareArchitecture.pdf#page=24|p. 24]]–[[01-IntroductionOnSoftwareArchitecture.pdf#page=26|26]]
 
@@ -211,7 +213,7 @@ Domande che la vista C&C permette di porre, per attributo:
 ![[lez01-intro-p36-relazione-tra-strutture.png]]
 *A sinistra una vista di decomposizione (System con Client e Server), a destra una vista client-server (un server S1 e dieci client). La vista di destra serve per analisi delle prestazioni, previsione dei colli di bottiglia e gestione del traffico di rete: cose estremamente difficili o impossibili con la vista di sinistra.*
 
-## Strutture di allocazione
+### Strutture di allocazione
 
 #### Che cosa sono · [[01-IntroductionOnSoftwareArchitecture.pdf#page=37|p. 37]]–[[01-IntroductionOnSoftwareArchitecture.pdf#page=38|38]]
 
@@ -494,3 +496,295 @@ Ci sono decine di motivazioni; se ne esaminano alcune.
 - L'architettura può essere la prima introduzione al sistema per i nuovi membri del progetto: **viste di modulo** per mostrare la struttura del progetto; **viste C&C** per spiegare come il sistema dovrebbe funzionare e svolgere il suo compito; **viste di allocazione** per mostrare dove la parte assegnata si colloca nell'ambiente di sviluppo o di deployment.
 
 *Approfondimenti nel wiki: [[architettura-software]], [[strutture-e-viste]], [[strutture-di-modulo]], [[strutture-componenti-e-connettori]], [[strutture-di-allocazione]], [[uml]], [[exam-booking-system]], [[attributi-di-qualita]], [[scenari-di-qualita]], [[valutazione-attributi-di-qualita]], [[tattiche-architetturali]], [[importanza-architettura-software]], [[buone-pratiche-architetturali]], [[attribute-driven-design]], [[layered]], [[client-server]], [[microservices]], [[enactest]], [[autosar]]*
+
+## Lezione 2 — Attributi di qualità: disponibilità
+
+*Fonte: 02-Availability.pdf (23 pagine). Cap. 4–13 di Bass, Clements, Kazman, «Software Architecture in Practice»: definizione, scenari per specificare, tattiche e pattern; esempio guida: l'Exam Booking System.*
+
+### Definizioni · [[02-Availability.pdf#page=3|p. 3]]–[[02-Availability.pdf#page=4|4]]
+
+- **Disponibilità** (*availability*) = grado in cui un sistema è **operativo e accessibile quando serve**. Riguarda anche la capacità del sistema di: **prevenire** che i guasti causino malfunzionamenti osservabili dall'esterno; **continuare a fornire il servizio** nonostante alcuni guasti; **recuperare e ripristinare** il servizio dopo un malfunzionamento.
+- Obiettivo: assicurare che l'**interruzione cumulativa del servizio non superi un valore accettabile in un intervallo di tempo specificato**.
+- **Failure** (malfunzionamento): comportamento scorretto del sistema, osservabile dall'esterno.
+- **Fault** (guasto): la causa interna (o esterna) di un failure, per esempio un difetto software o il crash di un server.
+- **Error** (errore): stato interno scorretto del sistema, causato da un fault.
+- La disponibilità dipende soprattutto da: **assenza di guasti** (ridurre guasti e malfunzionamenti), **tolleranza ai guasti** (continuare a operare nonostante i guasti), **recuperabilità** (ripristinare servizio e dati dopo un malfunzionamento).
+
+### Catena fault → error → failure · [[02-Availability.pdf#page=5|p. 5]]
+
+![[lez02-av-p5-catena-fault-error-failure.png]]
+*Schema: Fault → (attivazione) → Error → (propagazione) → Failure; se l'errore è rilevato, contenuto o mascherato non c'è nessun malfunzionamento osservabile. Esempio del Booking System: fault «University SIS non disponibile» → error «i dati dello studente non sono disponibili nell'Exam Booking System» → (se non rilevato né gestito) failure «la richiesta di ammissibilità restituisce un risultato scorretto o nessuno».*
+
+### Misure tipiche della disponibilità · [[02-Availability.pdf#page=6|p. 6]]
+
+- La disponibilità si può misurare come **probabilità** che il sistema fornisca i servizi specificati entro i limiti richiesti in un intervallo di tempo.
+- Espressione nota: $\text{Availability} \approx \dfrac{MTBF}{MTBF + MTTR}$, con **MTBF** = *Mean Time Between Failures* (tempo medio tra i guasti) e **MTTR** = *Mean Time to Repair* (tempo medio di riparazione).
+- La disponibilità attesa di un sistema o servizio si esprime spesso come **SLA** (*Service Level Agreement*), che specifica il livello di disponibilità garantito e, di solito, le penali per il fornitore in caso di violazione.
+
+### Esempio di requisiti di disponibilità · [[02-Availability.pdf#page=7|p. 7]]
+
+Percentuale di tempo in cui il sistema è disponibile rispetto al tempo in cui è in servizio, con il downtime corrispondente:
+
+| Disponibilità | Downtime su 90 giorni | Downtime su un anno |
+|---|---|---|
+| 99,0 % | 21 h 36 min | 3 giorni 15,6 h |
+| 99,9 % | 2 h 10 min | 8 h 0 min 46 s (sulla slide) |
+| 99,99 % | 12 min 58 s | 52 min 34 s |
+| 99,999 % | 1 min 18 s | 5 min 15 s |
+| 99,9999 % | 8 s | 32 s |
+
+> ⚠️ Refuso della slide: 0,1 % di un anno di 8.760 h dà $8{,}76\ \text{h} = 8\ \text{h}\ 45\ \text{min}\ 36\ \text{s}$, non 8 h 0 min 46 s.
+
+### Scenario di disponibilità · [[02-Availability.pdf#page=8|p. 8]]–[[02-Availability.pdf#page=9|9]]
+
+- Esempio: un server di una server farm si guasta durante il funzionamento normale, e il sistema informa l'operatore e continua a operare **senza downtime**.
+- **Scenario per l'Exam Booking System**: durante un periodo di prenotazione, un application server smette di rispondere; il load balancer rileva il guasto, toglie l'istanza dal pool e reindirizza le nuove richieste. **Misura:** rilevazione entro 30 s, ripristino entro 60 s, almeno il 99 % delle richieste completate, nessuna prenotazione confermata persa.
+
+![[lez02-av-p9-scenario-exam-booking.png]]
+*Scenario dell'Exam Booking System (riquadro) accanto allo schema della server farm.*
+
+### Scenari generali di disponibilità · [[02-Availability.pdf#page=10|p. 10]]–[[02-Availability.pdf#page=12|12]]
+
+Tabelle del libro, a tre colonne (parte dello scenario, descrizione, valori possibili): sorgente, stimolo, artefatto, ambiente (p. 10); risposta (p. 11); misura della risposta (p. 12).
+
+![[lez02-av-p10-scenario-generale-1.png]]
+![[lez02-av-p11-scenario-generale-2.png]]
+![[lez02-av-p12-scenario-generale-3.png]]
+
+### Tattiche di disponibilità · [[02-Availability.pdf#page=13|p. 13]]–[[02-Availability.pdf#page=14|14]]
+
+- Un failure si verifica quando il sistema non fornisce più un servizio coerente con la specifica e ciò è osservabile dagli attori. Un fault (o una combinazione di fault) ha il potenziale per causarlo.
+- Le **tattiche di disponibilità** servono a far sì che il sistema **prevenga o sopporti i guasti** in modo che il servizio resti conforme alla specifica: evitano che i guasti diventino malfunzionamenti, o almeno ne limitano gli effetti e rendono possibile la riparazione.
+- Spesso sono fornite da un'infrastruttura software (per esempio un middleware); il lavoro dell'architetto può essere **scegliere e valutare** (non implementare) le tattiche giuste e la loro combinazione.
+
+![[lez02-av-p14-albero-tattiche-availability.png]]
+*Albero delle tattiche (dal libro): rilevare i guasti (monitor, ping/echo, heartbeat, timestamp, condition monitoring, sanity checking, voting, exception detection, self-test); recuperare dai guasti, preparazione e riparazione (redundant spare, rollback, exception handling, software upgrade, retry, ignore faulty behavior, graceful degradation, reconfiguration) e reintroduzione (shadow, state resynchronization, escalating restart, nonstop forwarding); prevenire i guasti (removal from service, transactions, predictive model, exception prevention, increase competence set).*
+
+### Rilevare i guasti · [[02-Availability.pdf#page=15|p. 15]]
+
+| Tattica | Significato | Esempio |
+|---|---|---|
+| **Monitor** | raccogliere indicatori di stato e di risorse | monitorare istanze applicative, connessioni al database, lunghezza della coda |
+| **Ping / Echo** | verificare raggiungibilità e ritardo | il load balancer interroga ogni application server |
+| **Heartbeat** | scambiarsi messaggi di vita | il broker controlla se i consumer di notifiche sono vivi (reset di un watchdog timer) |
+| **Condition monitoring** | verificare le condizioni operative di un processo e le ipotesi di progetto | |
+| **Voting** | confrontare i risultati di componenti ridondanti | |
+| **Replication** | previene i guasti hardware, non quelli software | |
+| **Functional redundancy** | più componenti che implementano la stessa funzione con diversità per progetto | |
+| **Exception detection** | rilevare una condizione che altera il normale flusso di esecuzione | |
+
+### Recuperare dai guasti · [[02-Availability.pdf#page=16|p. 16]]
+
+| Tattica | Significato | Esempio |
+|---|---|---|
+| **Redundant spare** | un duplicato subentra | un secondo application server riceve le richieste reindirizzate |
+| **Retry** | ripetere un'operazione dopo un guasto transitorio | ripetere con politica limitata una richiesta al SIS andata in timeout |
+| **Rollback** | riportare dati o calcolo a uno stato corretto noto | |
+| **Exception handling** | contenere l'errore e restituire una risposta controllata (crash, codici di errore o classi di eccezione) | |
+| **Graceful degradation** | mantenere le funzioni più critiche, abbandonando le meno critiche | preservare la prenotazione ritardando notifiche o report |
+
+### Prevenire i guasti · [[02-Availability.pdf#page=17|p. 17]]
+
+- **Removal from service**: mettere un componente offline prima che guasti latenti (memory leak, frammentazione…) incidano sui servizi. Esempio: riavviare un'istanza applicativa alla volta per liberare le risorse.
+- **Transactions**: sfruttare la semantica transazionale per l'alta disponibilità (protocollo *two-phase commit*). Esempio: riservare un posto e registrare la prenotazione in un'unica transazione atomica.
+- **Increase the competence set**: trattare più condizioni anomale come casi normali. Esempio: Eligibility Checking distingue «non idoneo» da «SIS non disponibile».
+
+### Pattern di ridondanza · [[02-Availability.pdf#page=18|p. 18]]
+
+| Pattern | Descrizione | Costo / tempo di recupero |
+|---|---|---|
+| **Redundancy attiva (hot spare)** | le repliche elaborano lo stesso input e mantengono lo stato sincronizzato | failover rapido; costi di risorse e sincronizzazione alti |
+| **Redundancy passiva (warm spare)** | il componente attivo elabora le richieste e aggiorna periodicamente uno standby | bilancia tempo di recupero e costo |
+| **Cold spare** | lo standby parte solo dopo il guasto | costa meno ma ha il tempo di recupero più lungo (poco adatto a requisiti di alta disponibilità) |
+
+- Nell'esempio, i server applicativi replicati dietro il load balancer si comportano come repliche attive quando servono entrambi traffico; un database standby è di solito warm o hot, a seconda della replica e della politica di failover.
+
+![[lez02-av-p18-pattern-ridondanza.png]]
+*In alto un sistema Active-Active (richieste a Node 1 e Node 2, entrambi attivi); in basso un sistema Active-Passive (richieste a Node 1, con failover verso Node 2 passivo).*
+
+### Circuit Breaker · [[02-Availability.pdf#page=19|p. 19]]
+
+- Il **circuit breaker** impedisce chiamate ripetute a un servizio che non risponde: dopo un numero definito di guasti o timeout **apre il circuito**, così le richieste successive falliscono subito o ricevono una risposta di ripiego (*fallback*).
+- Evita l'esaurimento delle risorse e i guasti a cascata, lasciando al servizio guasto il tempo di riprendersi.
+- In Java Spring Boot si può usare la libreria **Resilience4j**, aggiungendo la dipendenza Maven e proteggendo la chiamata con l'API specifica:
+
+```xml
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+</dependency>
+```
+
+### Dallo scenario alle decisioni architetturali · [[02-Availability.pdf#page=20|p. 20]]–[[02-Availability.pdf#page=22|22]]
+
+Lo scenario di p. 20 è quello dell'Exam Booking System (p. 9). Tabella di p. 21:
+
+| Guasto / disturbo | Rilevazione | Risposta architetturale | Misura della risposta |
+|---|---|---|---|
+| Un application server smette di rispondere | health check del load balancer | rimuovere l'istanza e reindirizzare le richieste | rilevazione ≤ 30 s; ripristino ≤ 60 s |
+| SIS dell'università non disponibile | timeout e probe falliti | retry limitato; fallire in modo sicuro; riportare l'idoneità come non disponibile | nessuna decisione errata sull'idoneità |
+| Il database primario si guasta | replica e monitoraggio del database (cluster monitoring) | promuovere il database standby; riconnettere le istanze applicative allo standby promosso | **RTO ≤ 5 min; RPO ≤ 1 min** |
+
+**RTO** = *Recovery Time Objective*; **RPO** = *Recovery Point Objective*. Domanda di discussione: quali **singoli punti di guasto** restano dopo aver replicato gli application server?
+
+![[lez02-av-p22-configurazioni-prima-dopo-guasto.png]]
+*Prima del guasto: due application server con health check, DB primario replicato su standby, due message broker replicati. Dopo: l'Application Server 1 è FAILED, rimosso dal pool, e le richieste vanno al 2.*
+
+### Dalle tattiche alle tecnologie · [[02-Availability.pdf#page=23|p. 23]]
+
+| Problema | Tattiche o pattern | Tecnologie utilizzabili |
+|---|---|---|
+| SIS lento o indisponibile | timeout, bounded retry, circuit breaker, fallback | Spring Boot; WebClient o RestClient; Resilience4j TimeLimiter, Retry, CircuitBreaker; WireMock o Toxiproxy per simulare ritardi ed errori |
+| Guasto del database primario | active–passive redundancy, replication, health monitoring, failover | PostgreSQL streaming replication; Patroni; etcd o Consul; HAProxy; Docker Compose |
+| Sovraccarico del Booking Service | load balancing, horizontal scaling, health-based routing | più istanze Spring Boot; Docker; NGINX, HAProxy o Traefik; in alternativa Kubernetes (Deployment, Service, HPA); k6 o JMeter |
+| Notification Service indisponibile | messaggistica asincrona, queue-based load leveling, store-and-forward | RabbitMQ; Spring AMQP; RabbitTemplate; @RabbitListener; durable queue e dead-letter queue |
+| Analytics esaurisce le risorse condivise | bulkhead, isolamento delle risorse, limite di concorrenza | Resilience4j Bulkhead o ThreadPoolBulkhead; executor Java separati; HikariCP con pool distinti; limiti di risorse Docker o Kubernetes |
+| Servizio secondario non disponibile | graceful degradation, fallback, cached response | Resilience4j CircuitBreaker; fallback Spring; Caffeine o Redis |
+| Richieste duplicate | idempotenza, duplicate detection, unicità transazionale | Spring Boot; chiave di idempotenza; tabella PostgreSQL per le richieste elaborate; vincoli UNIQUE; eventuale transactional outbox |
+| Guasti difficili da individuare e diagnosticare | health monitoring, heartbeat, logging, metriche, distributed tracing | Spring Boot Actuator; Micrometer; Prometheus; Grafana; OpenTelemetry; Jaeger o Grafana Tempo |
+
+*La slide assegna una riga a ciascun gruppo del corso, con un esperimento da svolgere (non riportato qui).*
+
+*Approfondimenti nel wiki: [[availability]], [[tattiche-availability]], [[circuit-breaker]]*
+
+## Lezione 3 — Attributi di qualità: modificabilità
+
+*Fonte: 03-Modifiability.pdf (33 pagine). Cap. 4–13 di Bass, Clements, Kazman, «Software Architecture in Practice»; esempio guida: l'Exam Booking System.*
+
+### I cambiamenti nei sistemi software · [[03-Modifiability.pdf#page=3|p. 3]]
+
+- **La maggior parte dei costi di un sistema software si genera dopo il rilascio.**
+- I cambiamenti avvengono per: aggiungere nuove funzionalità, modificare o ritirare le vecchie; correggere difetti, rafforzare la sicurezza, migliorare le prestazioni; migliorare l'esperienza dell'utente; adottare nuove tecnologie, piattaforme, protocolli, standard; far lavorare insieme sistemi mai progettati per farlo.
+- La **modificabilità** riguarda il cambiamento; l'interesse è **ridurre costo e rischio** delle modifiche.
+
+### Quattro domande per pianificare la modificabilità · [[03-Modifiability.pdf#page=4|p. 4]]–[[03-Modifiability.pdf#page=6|6]]
+
+1. **Cosa può cambiare?** funzioni del sistema, piattaforma, ambiente, qualità, capacità.
+2. **Qual è la probabilità del cambiamento?** quali cambiamenti sono probabili e quindi quali saranno supportati e quali no.
+3. **Quando viene fatto il cambiamento e chi lo fa?** *Quando*: nell'implementazione (modificando il codice sorgente); in compilazione (switch di compilazione); nel build (scelta delle librerie); nella configurazione (impostazione di parametri); a esecuzione (parametri, plug-in, allocazione all'hardware…). *Chi*: uno sviluppatore, un utente finale, un amministratore di sistema o il sistema stesso (se è in grado di imparare ad adattarsi).
+4. **Qual è il costo del cambiamento?** (vedi sotto).
+
+**Esempio del Booking System — quando si modifica e chi lo fa** (p. 6)
+
+| Fase | Cosa cambia | Esempio |
+|---|---|---|
+| **Implementazione** | codice sorgente | uno sviluppatore cambia la logica che verifica se uno studente può prenotare un esame |
+| **Compilazione** | una scelta fissata alla compilazione | un'opzione di compilazione (switch) abilita una versione di una funzione; cambiarla richiede ricompilazione |
+| **Build** | i componenti inclusi nell'applicazione | il team sceglie quale libreria connettore SIS includere; cambiarla richiede un nuovo build |
+| **Configurazione** | valori impostati prima dell'avvio | un amministratore imposta l'endpoint del SIS o un limite di prenotazioni in un file di configurazione |
+| **Esecuzione** | valori o componenti cambiati mentre l'applicazione gira | un amministratore aggiorna una regola di prenotazione da un'interfaccia di gestione, o il sistema stesso carica un plug-in supportato |
+
+### Qual è il costo del cambiamento · [[03-Modifiability.pdf#page=7|p. 7]]–[[03-Modifiability.pdf#page=9|9]]
+
+Due tipi di costo: **il costo di introdurre i meccanismi** che rendono il sistema più modificabile e **il costo di fare la modifica usando i meccanismi**. Se il codice è modificato spesso, senza introdurre un meccanismo architetturale e accumulando modifiche una sopra l'altra, si genera in genere un **debito tecnico** consistente.
+
+- **Nessuna previsione per un cambiamento futuro** → il costo iniziale è zero. Quando il cambiamento viene richiesto si modifica il codice e si rivalida il sistema (il costo si paga in quel momento). Esempio: se il numero massimo di prenotazioni di Booking è fissato nel codice, alzare il limite richiede modifica del codice, test e un nuovo deployment.
+- All'estremo opposto, un sistema può **rilevare cambiamenti nell'ambiente e adattarsi automaticamente**: ogni adattamento non richiede modifiche manuali, ma progettare, realizzare e collaudare quella capacità può costare molto. Esempio: Booking rileva un aumento delle richieste e regola automaticamente il numero di istanze; non serve uno sviluppatore, ma il meccanismo di monitoraggio e scalatura va costruito e collaudato prima.
+
+![[lez03-mo-p8-quando-si-paga-il-costo.png]]
+*Due linee temporali: senza previsione il costo si paga quando arriva il cambiamento; con adattamento automatico il costo si paga in anticipo.*
+
+### Sapori specifici di modificabilità · [[03-Modifiability.pdf#page=10|p. 10]]–[[03-Modifiability.pdf#page=14|14]]
+
+Oltre ai cambiamenti dei requisiti funzionali, un sistema può dover accomodare cambiamenti di carico di lavoro, varianti di prodotto, piattaforme di esecuzione o posizione dei servizi: **scalabilità, variabilità, portabilità, indipendenza dalla posizione**.
+
+![[lez03-mo-p10-varianti-modificabilita.png]]
+*Quattro riquadri: Scalability, Variability, Portability, Location Independence.*
+
+- **Scalabilità** (*scalability*): capacità di accomodare un carico crescente **aggiungendo risorse**. **Scalatura orizzontale** (*scale out*): aggiungere istanze (per esempio un altro server in un cluster). **Scalatura verticale** (*scale up*): aumentare le risorse di una istanza (CPU, memoria). In cloud, la capacità di aggiungere o togliere risorse al variare della domanda si chiama **elasticità**. Esempio: Booking aggiunge istanze applicative per gestire un picco di prenotazioni.
+- **Variabilità** (*variability*): capacità di produrre **varianti pianificate** di un sistema da software e artefatti condivisi. È centrale in una **linea di prodotto software**: una famiglia di prodotti con un nucleo comune ma funzionalità selezionate diverse. Esempio: una linea di prodotto Booking ha un nucleo di prenotazione comune; ogni università sceglie le proprie regole di idoneità e opzioni di notifica per creare la propria variante.
+- **Portabilità** (*portability*): facilità di adattare il software a una piattaforma diversa. Migliora quando le dipendenze dalla piattaforma sono minimizzate o **isolate dietro interfacce chiare**; scrivere il software per una macchina virtuale come la JVM riduce la dipendenza dal sistema operativo. Esempio: Booking genera ricevute; usando le API di file indipendenti dalla piattaforma di Java e un percorso di archiviazione configurabile può passare da Linux a Windows senza cambiare la logica di prenotazione.
+- **Indipendenza dalla posizione** (*location independence*): permette a componenti distribuiti di comunicare **senza conoscere in anticipo l'indirizzo fisico** l'uno dell'altro. Un client usa un **nome logico** di servizio e scopre l'indirizzo corrente a runtime; un servizio può spostarsi su un altro server con poco o nessun cambiamento per i client. Richiede **indirezione** tra identità logica e posizione fisica, fornita da DNS, service discovery o un intermediario come un load balancer. Esempio: Booking chiama il SIS tramite un nome di servizio; se il SIS cambia server, un registry o il DNS risolve il nome nel nuovo indirizzo.
+
+### Scenario generale di modificabilità · [[03-Modifiability.pdf#page=15|p. 15]]–[[03-Modifiability.pdf#page=17|17]]
+
+![[lez03-mo-p15-scenario-generale-1.png]]
+![[lez03-mo-p16-scenario-generale-2.png]]
+*Tabella dello scenario generale (parte, descrizione, valori possibili), dal libro.*
+
+**Scenario concreto d'esempio:** uno sviluppatore vuole cambiare l'interfaccia utente; la modifica sarà fatta nel codice **in fase di progettazione**, richiederà **meno di tre ore** per essere fatta e collaudata e **non ci saranno effetti collaterali**.
+
+![[lez03-mo-p17-scenario-concreto-ui.png]]
+*Le sei parti dello scenario compilate per il caso dell'interfaccia utente.*
+
+### Tattiche per la modificabilità · [[03-Modifiability.pdf#page=18|p. 18]]
+
+![[lez03-mo-p18-albero-tattiche-modifiability.png]]
+*Albero delle tattiche (dal libro): aumentare la coesione, ridurre l'accoppiamento, posticipare il binding.*
+
+### Aumentare la coesione · [[03-Modifiability.pdf#page=19|p. 19]]
+
+- **Split module**: dividere un modulo con responsabilità non correlate in moduli con scopi chiari e coesi. Esempio: separare i controlli di idoneità dall'invio delle notifiche se oggi sono entrambi in BookingService.
+- **Redistribute responsibilities**: riunire responsabilità correlate che sono sparse tra più moduli. Esempio: se le regole di idoneità sono in parte nell'interfaccia utente, in parte in BookingService, in parte nel connettore SIS, spostarle in un componente dedicato.
+- **Obiettivo:** raggruppare le responsabilità in modo che un cambiamento probabile riguardi **il minor numero possibile di moduli**.
+
+![[lez03-mo-p19-increase-cohesion.png]]
+*A sinistra: BookingService (eligibility checks + send notifications) diviso in EligibilityRules e NotificationService. A destra: la logica di idoneità sparsa in UI, BookingService e SIS Adapter riunita in un solo modulo EligibilityRules.*
+
+### Ridurre l'accoppiamento · [[03-Modifiability.pdf#page=20|p. 20]]–[[03-Modifiability.pdf#page=22|22]]
+
+L'**accoppiamento** (*coupling*) è il grado in cui un modulo dipende da un altro; un accoppiamento forte può far propagare una modifica tra moduli.
+- **Encapsulation**: esporre un'interfaccia e nascondere l'implementazione interna.
+- **Use an intermediary**: far interagire i componenti tramite un mediatore senza che si conoscano; intermediari come un bus publish–subscribe, un repository di dati condiviso o la service discovery dinamica eliminano la necessità che una parte conosca l'identità dell'altra.
+- **Abstract common service**: mettere servizi simili dietro un'interfaccia condivisa, in modo che le implementazioni possano cambiare indipendentemente se l'interfaccia resta stabile.
+- **Restrict dependencies**: limitare con quali moduli un modulo interagisce o da cui dipende: restringendo la **visibilità** di un modulo (se gli sviluppatori non vedono un'interfaccia non possono usarla) e restringendo l'accesso ai soli moduli **autorizzati**. Si vede nelle architetture a strati (uno strato può usare solo gli strati inferiori, a volte solo il successivo) e nei wrapper (le entità esterne vedono, e quindi dipendono, solo dal wrapper e non dalla funzionalità interna).
+
+![[lez03-mo-p21-reduce-coupling-tre-tattiche.png]]
+*Tre tattiche: encapsulation (BookingService → Eligibility API → rule engine nascosto); use an intermediary (BookingService → event bus con l'evento `ReservationConfirmed` → Notification); abstract common service (BookingService → interfaccia comune StudentRecords con implementazioni alternative).*
+
+### Posticipare il binding · [[03-Modifiability.pdf#page=23|p. 23]]–[[03-Modifiability.pdf#page=25|25]]
+
+- Il **binding** è la scelta di un valore, componente o servizio. **Posticipare la scelta** permette alcune modifiche senza cambiare il codice sorgente. Se i binding sono definiti direttamente nel codice in fase di progetto vanno cambiati a mano; altrimenti si possono cambiare automaticamente. Quindi conviene definire i binding il più tardi possibile nel ciclo di vita.
+- Tattiche per legare **a compilazione o build**: component replacement (in uno script di build o makefile), compile-time parameterization. A **deploy o configurazione**: configuration-time binding, resource files. A **runtime**: discovery, interpret parameters, shared repositories, polymorphism.
+
+| Momento di binding | Tattica | Tecnologia d'esempio | Esempio nel Booking |
+|---|---|---|---|
+| Build | Component replacement | Maven build profiles | scegliere il connettore SIS dell'Università A o B al build |
+| Compilazione / build | Compile-time parameterization | generazione di sorgenti durante un build Maven | generare una classe con un valore fissato prima della compilazione; cambiarlo richiede ricompilazione |
+| Deploy / configurazione | Configuration-time binding | Spring Boot externalized configuration | impostare l'endpoint SIS con una variabile d'ambiente al deploy |
+| Deploy / configurazione | Resource files | `application.yml` o `.properties` esterno | impostare in un file il numero massimo di prenotazioni |
+| Runtime | Discovery | Spring Cloud DiscoveryClient e service registry | trovare un'istanza SIS disponibile dal nome logico del servizio |
+| Runtime | Interpret parameters | logica applicativa che legge parametri della richiesta | scegliere una regola di idoneità in base al tipo di esame della richiesta |
+| Runtime | Shared repositories | tabella di database condivisa | leggere dal database le regole di prenotazione attive |
+| Runtime | Polymorphism | interfacce Java e implementazioni alternative | scegliere un'implementazione di `EligibilityPolicy` per l'università o l'esame pertinente |
+
+### Pattern per la modificabilità · [[03-Modifiability.pdf#page=26|p. 26]]–[[03-Modifiability.pdf#page=27|27]]
+
+- I pattern per la modificabilità dividono il sistema in moduli che si possono sviluppare ed evolvere separatamente con poca interazione, supportando **portabilità, modificabilità e riuso**: **Client-Server, Plug-in, Layers, Publish-Subscribe**.
+
+### Pattern Client-Server · [[03-Modifiability.pdf#page=28|p. 28]]–[[03-Modifiability.pdf#page=29|29]]
+
+- Un **server** fornisce servizi **contemporaneamente a più client distribuiti**. L'interazione segue la sequenza **Discovery e Interaction**: la comunicazione è avviata da un client, che usa un servizio di discovery per determinare la posizione del server; il server risponde secondo un protocollo concordato. Poi il client invia richieste e il server le elabora e risponde.
+
+![[lez03-mo-p28-client-server.png]]
+*Due client collegati via Internet a un server.*
+
+**Benefici e trade-off**
+- La connessione tra server e client è stabilita **dinamicamente**; il server non ha conoscenza a priori dei client (**basso accoppiamento** server–client) e non c'è accoppiamento tra i client.
+- Il numero di client può scalare facilmente, limitato solo dalla capacità del server; anche la funzionalità del server può scalare se la capacità è superata.
+- Client e server possono evolvere indipendentemente; servizi comuni sono condivisi tra più client; l'interazione con l'utente è isolata nel client.
+- *Trade-off:* i messaggi possono essere ritardati dalla congestione di rete, degradando (o rendendo imprevedibili) le **prestazioni**; per i client che comunicano via una rete condivisa servono provvedimenti speciali per la **sicurezza** (soprattutto riservatezza) e l'integrità.
+
+### Pattern Plug-in · [[03-Modifiability.pdf#page=30|p. 30]]
+
+- Due tipi di elementi: elementi che forniscono un **nucleo di funzionalità** e **varianti specializzate (plug-in)** che aggiungono funzionalità al nucleo tramite un insieme fisso di interfacce. Nucleo e plug-in sono legati insieme in genere a build time o dopo.
+- Esempio: il nucleo può essere un sistema operativo minimale (il **microkernel**, che fornisce memoria, IPC e gestione dei thread); i plug-in forniscono la funzionalità reale (driver di dispositivo, gestione dei task, gestione delle richieste di I/O).
+- **Benefici:** un meccanismo controllato per estendere un prodotto base; possono essere sviluppati da produttori diversi ed evolvere indipendentemente dal microkernel. **Rischio:** possono essere introdotte vulnerabilità di sicurezza e minacce alla privacy.
+
+### Pattern Layers · [[03-Modifiability.pdf#page=31|p. 31]]
+
+- Divide il sistema in **strati** sviluppabili ed evolvibili separatamente con poca interazione, a supporto di portabilità, modificabilità e riuso. Ogni strato è esposto tramite un'interfaccia pubblica; gli strati interagiscono secondo una **relazione di ordinamento stretta** (o talvolta tramite un *layer bridge*).
+- **Benefici:** il software degli strati inferiori può cambiare (finché l'interfaccia non cambia) senza influire sugli strati superiori.
+- **Trade-off:** lo stratificazione aggiunge spesso una **penalità di prestazioni**; se si verificano molti *layer bridging* il sistema può non raggiungere gli obiettivi di portabilità e modificabilità che lo strato rigoroso favorisce.
+
+![[lez03-mo-p31-layer-pattern.png]]
+*Cinque strati — Presentation, Application, Business, Persistence, Database — con le chiamate tra strati verso il basso.*
+
+### Pattern Publish-Subscribe · [[03-Modifiability.pdf#page=32|p. 32]]–[[03-Modifiability.pdf#page=33|33]]
+
+- Pattern in cui i componenti comunicano tramite **messaggi asincroni** (eventi, topic). Tre tipi di elementi: **Publisher** (invia/pubblica messaggi), **Subscriber** (si iscrive e poi riceve messaggi), **Event Bus** (gestisce le sottoscrizioni e l'inoltro dei messaggi, parte dell'infrastruttura di runtime). I publisher non conoscono i subscriber; i subscriber conoscono solo i tipi di messaggio.
+- Si basa sull'**invocazione implicita**: il componente che pubblica non invoca direttamente nessun altro; a runtime, quando un messaggio è pubblicato, il bus notifica tutti gli elementi registrati per quell'evento o topic. Ne risulta un **accoppiamento debole** tra publisher e subscriber.
+- **Benefici:** publisher e subscriber sono indipendenti; aggiungere o cambiare subscriber richiede solo la registrazione a un evento e non cambia il publisher; il comportamento del sistema si cambia facilmente cambiando l'evento o il topic pubblicato e quindi i subscriber che lo riceveranno.
+- **Trade-off:** **latenza**; **non determinismo** nell'ordine di invocazione dei metodi; **testabilità**: un cambiamento nei componenti associati agli eventi può avere un impatto ampio su comportamento e qualità del servizio.
+
+*Approfondimenti nel wiki: [[modifiability]], [[tattiche-modifiability]], [[pattern-modifiability]], [[client-server]], [[plug-in]], [[layered]], [[publish-subscribe]], [[linee-di-prodotto-software]]*
