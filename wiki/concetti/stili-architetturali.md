@@ -12,7 +12,9 @@ termine_inglese: "architectural style"
 
 > 🔑 Definizione chiave — 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=2]] (da Taylor, Medvidovic e Dashofy, cap. 4)
 
-Uno **stile architetturale** (*architectural style*) è una **collezione denominata di decisioni di progetto architetturale** che (1) si applicano in un particolare contesto di sviluppo, (2) **vincolano** le decisioni architetturali prese per i singoli sistemi di quel contesto, (3) **promuovono qualità desiderabili** nei sistemi risultanti. Gli stili sono **meno specifici del dominio applicativo** dei pattern architetturali e possono servire a vari livelli, «dalle subroutine alla struttura complessiva dell'applicazione».
+Uno **stile architetturale** (*architectural style*) è una **collezione denominata di decisioni di progetto architetturale** che (1) si applicano in un particolare contesto di sviluppo, (2) **limitano le scelte architetturali** che si possono fare nei singoli sistemi di quel contesto (ogni sistema deve rispettare le regole dello stile), (3) **favoriscono qualità desiderabili** nei sistemi che ne risultano. **Rispetto ai pattern architetturali**, gli stili sono **meno legati a uno specifico dominio applicativo** (dicono come è organizzato il sistema, non a quale tipo di applicazione serve) e si possono applicare a livelli diversi, «dalle subroutine alla struttura complessiva dell'applicazione».
+
+> 🧩 Elaborazione mia — come leggere i punti (2) e (3): lo stile è un insieme di regole valide per un'intera famiglia di sistemi (es. «i filtri non condividono stato»). Chi progetta un sistema di quel tipo sceglie liberamente quanti componenti avere e cosa fanno, ma solo dentro quelle regole: è questo il «vincolo». Proprio perché lo spazio di scelta è ristretto, le qualità che ne derivano (modificabilità, parallelismo, …) sono prevedibili.
 
 ## Spiegazione
 

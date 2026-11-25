@@ -201,3 +201,5 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 - Pagine: [[service-oriented-and-microservice-architectures]], [[servizi-e-soa]], [[contratti-e-api-di-servizio]], [[comunicazione-sincrona-e-asincrona]], [[intermediari-di-servizio]], [[orchestrazione-e-coreografia]]; [[microservices]] aggiornata (rapporto con la SOA).
 - Avanzamento: E10, E12, G1 spuntati («da fare»); X8 (ASR) e X9 (DoD, demo, information radiator) aggiunti.
 
+
+## [2026-11-25] revisione | Lezione 8 | controllo semantico dell'italiano: riscritte le frasi ambigue (definizione di stile, benefici, layered, pipe and filter, P2P, Skype) senza cambiare il significato

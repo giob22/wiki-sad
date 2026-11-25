@@ -80,7 +80,7 @@ Conviene quando contano portabilità e modificabilità più delle prestazioni e 
 > 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=17]]–[[05_Architectural_Styles_Complete.pdf#page=29]]
 
 - **Soluzione.** Organizzazione gerarchica, simile a un client–server a più livelli: ogni layer espone un'**API** ai layer superiori, è **server** per i superiori e **client** degli inferiori. Connettori: chiamate di procedura o protocolli di interazione (esempio tipico: i sistemi operativi). Nella variante **virtual machine** i layer sono *opachi* e interagiscono solo con quelli adiacenti ([[05_Architectural_Styles_Complete.pdf#page=17]]).
-- **Benefici:** livelli crescenti di astrazione; dipendenze controllate che facilitano l'evoluzione e limitano la propagazione delle modifiche ai layer superiori; layer riusabili o sostituibili con implementazioni che preservano l'interfaccia; interfacce standardizzate per librerie e framework ([[05_Architectural_Styles_Complete.pdf#page=19]]).
+- **Benefici:** livelli crescenti di astrazione; dipendenze controllate (ogni layer dipende solo da quelli sotto) che facilitano l'evoluzione e limitano la propagazione delle modifiche: un cambiamento in un layer può ripercuotersi solo su quelli superiori; layer riusabili o sostituibili con implementazioni che preservano l'interfaccia; interfacce standardizzate per librerie e framework ([[05_Architectural_Styles_Complete.pdf#page=19]]).
 - **Limiti:** attraversare molti layer aggiunge overhead; l'efficienza può motivare il *bypass* di un layer, che introduce dipendenze da considerare nella valutazione della modificabilità ([[05_Architectural_Styles_Complete.pdf#page=20]]).
 
 ![[lez08-stili-p18-layered-virtual-machines.png]]

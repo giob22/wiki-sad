@@ -25,7 +25,7 @@ Un programma si costruisce per **decomposizione funzionale gerarchica**: il comp
 | Vincoli | nessuno |
 | Invariante | ragionamento gerarchico: la correttezza di una subroutine dipende da quella delle subroutine che chiama |
 
-La struttura dei sottosistemi resta **implicita**: le subroutine sono raggruppate in moduli o file, ma lo stile non lo impone.
+I sottosistemi non compaiono **esplicitamente** nella struttura: le subroutine sono raggruppate in moduli o file, ma lo stile non lo impone.
 
 ## Diagramma
 
@@ -38,7 +38,7 @@ La struttura dei sottosistemi resta **implicita**: le subroutine sono raggruppat
 |---|---|---|---|
 | Modularità | + | si sostituisce una subroutine preservando la semantica della sua interfaccia | [[05_Architectural_Styles_Complete.pdf#page=10]] |
 | Scalabilità (applicazioni grandi) | − | non regge la crescita: la struttura implicita non guida l'organizzazione | [[05_Architectural_Styles_Complete.pdf#page=10]] |
-| Modificabilità (nuovi requisiti) | − | «sforzo imprevedibile» per i nuovi requisiti; poca attenzione alle strutture dati | [[05_Architectural_Styles_Complete.pdf#page=10]] |
+| Modificabilità (nuovi requisiti) | − | l'impegno necessario per gestire nuovi requisiti è difficile da prevedere; poca attenzione alle strutture dati | [[05_Architectural_Styles_Complete.pdf#page=10]] |
 
 ## Quando usarlo / quando no
 
