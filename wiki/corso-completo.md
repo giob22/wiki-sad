@@ -1916,7 +1916,7 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - **Rispetto ai pattern architetturali**, gli stili sono **meno legati a uno specifico dominio applicativo**: dicono come è organizzato il sistema, non a quale tipo di applicazione serve. Si possono applicare a livelli diversi, dalle singole subroutine alla struttura complessiva dell'applicazione.
 
 ![[lez08-stili-p3-ambito-degli-stili.png]]
-*(p. 3) Mappa dei concetti di progetto su due assi: «Scope» (livello di programmazione, struttura applicativa, struttura del sistema) e «Application Domain Knowledge» (da superficiale a profonda). Dal basso: i design pattern di programma, gli stili, i pattern architetturali, le architetture software specifiche di dominio.*
+*(p. 3) Mappa dei concetti di progetto su due assi: «Scope» (livello di programmazione, struttura applicativa, struttura del sistema) e «Application Domain Knowledge» (da superficiale a profonda). Dal basso: i design pattern di programma, gli stili, i pattern architetturali, le architetture software specifiche di dominio. I design pattern e gli stili hanno entrambi poca conoscenza del dominio; la nuvola degli stili è però molto più larga, perché gli stili si applicano a tutti i livelli di scope, mentre i design pattern restano al livello del codice.*
 
 ### Proprietà e benefici degli stili · [[05_Architectural_Styles_Complete.pdf#page=4|p. 4]]–[[05_Architectural_Styles_Complete.pdf#page=6|6]]
 

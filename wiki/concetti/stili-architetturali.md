@@ -46,6 +46,8 @@ Uno stile è un **modo di restringere lo spazio di progetto**: dice quali tipi d
 
 **La mappa di p. 3** colloca gli stili tra i *design pattern di programma* (scope di linguaggio, conoscenza di dominio superficiale) e le *architetture software specifiche di dominio* (scope di sistema, conoscenza profonda). Gli stili stanno a metà: riguardano la struttura applicativa (componenti e connettori) con poca conoscenza del dominio, e i **pattern architetturali** ([[pattern-architetturali]]) li seguono con un po' più di conoscenza di dominio.
 
+> 🧩 Elaborazione mia — come leggere la mappa: sono due dimensioni diverse. *Conoscenza del dominio* (asse verticale): design pattern e stili sono entrambi generici, cioè poco legati a un dominio. *Scope* (asse orizzontale): la nuvola dei design pattern è piccola, perché restano al livello del codice; quella degli stili è molto larga, perché si applicano dalle subroutine alla struttura dell'intero sistema. Quindi la mappa non dice che i design pattern «sono più generali» degli stili: dipende da quale dei due assi si considera.
+
 **La classificazione di p. 7** raggruppa gli stili in famiglie, ognuna con una pagina nel wiki:
 
 | Famiglia | Stili | Pagine |
