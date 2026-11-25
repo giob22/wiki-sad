@@ -1926,7 +1926,7 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 #### Definizione · [[05_Architectural_Styles_Complete.pdf#page=2|p. 2]]
 
 - Uno **stile architetturale** (*architectural style*) è un insieme di decisioni di progetto architetturale a cui si dà un nome (ad es. «client–server», «pipe and filter»). Queste decisioni:
-  1. **valgono in un certo contesto di sviluppo**;
+  1. **valgono in un certo contesto di sviluppo**: hanno senso solo per un certo tipo di sistema, con certe caratteristiche. Fuori da quel contesto possono diventare un ostacolo (🧩 lo stile batch sequential va bene per elaborare a lotti le transazioni bancarie, ma applicato al Lunar Lander, un gioco interattivo, non funziona: lo si vede più avanti nella lezione);
   2. **limitano le scelte** che si possono fare nei singoli sistemi di quel contesto: chi adotta lo stile deve rispettarne le regole;
   3. **favoriscono qualità desiderabili** nei sistemi che ne risultano.
 - 🧩 *Esempio.* Lo stile pipe and filter impone che i componenti si scambino dati solo attraverso canali e non condividano variabili. Chi progetta un sistema in questo stile sceglie quanti componenti creare e cosa fa ciascuno, ma non può farli comunicare in altro modo. In cambio ottiene componenti riusabili ed eseguibili in parallelo.
