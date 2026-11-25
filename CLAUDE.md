@@ -185,11 +185,12 @@ Scorri tutto il wiki e riporta:
 
 ## Il testo di studio — `wiki/corso-completo.md`
 
-È il testo su cui l'utente studia e la **sorgente del sito**: un unico file, **schematico e senza ridondanze**, che contiene **tutta e sola la teoria**, cioè **ciò che sta nei PDF delle lezioni**, nell'ordine delle slide: definizioni, elenchi, tabelle, esempi, diagrammi (con una frase che dice cosa mostrano), codice.
+È il testo su cui l'utente studia e la **sorgente del sito**: un unico file, **schematico ma esplicito e senza ridondanze**, che contiene **tutta e sola la teoria**, cioè **ciò che sta nei PDF delle lezioni**, nell'ordine delle slide: definizioni, elenchi, tabelle, esempi, diagrammi (con una frase che dice cosa mostrano), codice.
 
 - Ogni lezione è una sezione `## Lezione N — titolo` (trattino lungo `—`), seguita da `*Fonte: file.pdf, pp. a–b.*` e dalle sottosezioni `###`/`####` nell'ordine delle slide
-- **Non è teoria**, quindi **non entra**: la Lezione 0 (presentazione del corso), il progetto di corso, gli esercizi svolti, le domande d'esame, le elaborazioni 🧩 e le fonti esterne 📚. Restano nelle loro pagine; la sezione può chiudere con `*Approfondimenti nel wiki: [[...]], [[...]]*`
+- **Non è teoria**, quindi **non entra**: la Lezione 0 (presentazione del corso), il progetto di corso, gli esercizi svolti, le domande d'esame, le elaborazioni 🧩 lunghe e le fonti esterne 📚. Restano nelle loro pagine; la sezione può chiudere con `*Approfondimenti nel wiki: [[...]], [[...]]*`
 - Un esempio o un diagramma delle slide si riporta con una riga che lo spiega (non si copia senza spiegazione); le spiegazioni lunghe stanno nelle pagine concetto
+- **Deve potersi studiare senza domande** (richiesta dell'utente, 2026-11-25): elenchi **verticali**, un'idea per punto e sotto-punti per i dettagli (niente righe con più affermazioni separate da «;»); ogni termine tecnico spiegato in poche parole alla prima occorrenza (es. «thread di controllo», «overhead», «throughput», «CRUD»); le frasi tradotte dall'inglese si rendono in un italiano naturale, senza calchi, mantenendo il significato della slide; dove aiuta, un esempio breve marcato 🧩 (*Esempio.*) o una parentesi 🧩. Ogni figura ha una didascalia che si capisce da sola e, se il diagramma ha più passaggi, un elenco che li spiega
 - Ogni definizione compare una volta sola; i richiami tra lezioni sono una frase, non una ripetizione
 - I **riferimenti ai PDF stanno solo nei titoli** (`### Titolo · [[file.pdf#page=2|p. 2]], [[file.pdf#page=3|3]]`; pagine consecutive compattate `p. 2–6`); mai nel corpo. Le immagini si incorporano con `![[nome-in-raw-assets.png]]` seguito da una didascalia in corsivo
 - In testa al file la tabella **Indice** ha una riga per lezione (`| N | [[#Lezione N — titolo\|titolo]] | file.pdf |`)

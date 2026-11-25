@@ -207,3 +207,5 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 ## [2026-11-25] revisione | Lezione 8 | didascalia della mappa degli stili (p. 3): chiarita la differenza tra i due assi (dominio e scope)
 
 ## [2026-11-25] revisione | Lezione 8 | chiarita la definizione di «vocabolario di elementi di progetto» (p. 4)
+
+## [2026-11-25] revisione | Lezione 8 | riscritta per intero nel testo di studio: elenchi verticali, termini spiegati, esempi brevi 🧩, didascalie autosufficienti; aggiunta la figura del Lunar Lander P2P (p. 156); regola registrata in CLAUDE.md
