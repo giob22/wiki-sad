@@ -26,7 +26,7 @@ Uno stile è un **modo di restringere lo spazio di progetto**: dice quali tipi d
 
 | Proprietà | Che cosa fissa | Esempio |
 |---|---|---|
-| Vocabolario di elementi di progetto | tipi di componente, connettore ed elemento dati | pipe, filtri, oggetti, server |
+| Vocabolario di elementi di progetto | l'elenco dei tipi di elementi con cui si costruisce il sistema: tipi di componente, connettore ed elemento dati (come le parole ammesse in una lingua) | pipe, filtri, oggetti, server |
 | Regole di configurazione | vincoli topologici | ogni componente connesso ad al massimo due altri |
 | Interpretazione semantica | il significato di una composizione | un filtro trasforma un flusso in un altro flusso |
 | Analisi specifiche dello stile | che cosa si può verificare sui sistemi costruiti con quelle regole | throughput e deadlock in pipe and filter |

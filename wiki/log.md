@@ -205,3 +205,5 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 ## [2026-11-25] revisione | Lezione 8 | controllo semantico dell'italiano: riscritte le frasi ambigue (definizione di stile, benefici, layered, pipe and filter, P2P, Skype) senza cambiare il significato
 
 ## [2026-11-25] revisione | Lezione 8 | didascalia della mappa degli stili (p. 3): chiarita la differenza tra i due assi (dominio e scope)
+
+## [2026-11-25] revisione | Lezione 8 | chiarita la definizione di «vocabolario di elementi di progetto» (p. 4)
