@@ -39,7 +39,10 @@ Uno stile è un **modo di restringere lo spazio di progetto**: dice quali tipi d
 
 > 📄 Fonte: [[05_Architectural_Styles_Complete.pdf#page=2]], [[05_Architectural_Styles_Complete.pdf#page=7]]
 
-**La mappa di p. 2** colloca gli stili tra i *design pattern di programma* (scope di linguaggio, conoscenza di dominio superficiale) e le *architetture software specifiche di dominio* (scope di sistema, conoscenza profonda). Gli stili stanno a metà: riguardano la struttura applicativa (componenti e connettori) con poca conoscenza del dominio, e i **pattern architetturali** ([[pattern-architetturali]]) li seguono con un po' più di conoscenza di dominio.
+![[lez08-stili-p3-ambito-degli-stili.png]]
+*Mappa di [[05_Architectural_Styles_Complete.pdf#page=3]]: asse «Scope» (livello di programmazione, struttura applicativa con componenti e connettori, struttura di sistema) e asse «Application Domain Knowledge» (da superficiale a profonda); dal basso: design pattern di programma, stili, pattern architetturali, architetture software specifiche di dominio.*
+
+**La mappa di p. 3** colloca gli stili tra i *design pattern di programma* (scope di linguaggio, conoscenza di dominio superficiale) e le *architetture software specifiche di dominio* (scope di sistema, conoscenza profonda). Gli stili stanno a metà: riguardano la struttura applicativa (componenti e connettori) con poca conoscenza del dominio, e i **pattern architetturali** ([[pattern-architetturali]]) li seguono con un po' più di conoscenza di dominio.
 
 **La classificazione di p. 7** raggruppa gli stili in famiglie, ognuna con una pagina nel wiki:
 

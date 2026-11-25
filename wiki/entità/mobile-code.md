@@ -41,6 +41,9 @@ Le risorse di calcolo locali sono insufficienti o grandi insiemi di dati stanno 
 ![[lez08-stili-p80-mobile-agent.png]]
 *Mobile agent ([[05_Architectural_Styles_Complete.pdf#page=80]]): un agente migra autonomamente lungo un anello di nodi (Master, Node 0, 1, 2) per ottenere risorse che non ha localmente.*
 
+![[lez08-stili-p82-mobile-code-lunar-lander.png]]
+*Lunar Lander con mobile code ([[05_Architectural_Styles_Complete.pdf#page=82]]): tre browser — uno con un programma JavaScript eseguito da un JavaScript Interpreter con proprio stato, uno con una Java Virtual Machine che esegue un Game Applet, uno con il «Lunar Lander Game Code» — parlano con il (Game) Server solo tramite Remote Procedure Call su HTTP; calcolo e stato di gioco stanno nei client.*
+
 ## Attributi di qualità
 
 | Attributo | Effetto | Perché | Fonte |

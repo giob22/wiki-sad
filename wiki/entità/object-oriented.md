@@ -29,6 +29,9 @@ Si vogliono strutture dati complesse e entità del mondo reale modellate come og
 ![[lez08-stili-p15-oo-vs-call-return.png]]
 *Confronto con la versione call–return ([[05_Architectural_Styles_Complete.pdf#page=15]]): a sinistra (OO) un solo oggetto GUI gestisce tutto l'input e l'output e legge/scrive Spacecraft con operazioni *get*/*set* (a, f, t, v); a destra (call–return) le responsabilità di I/O sono distribuite su più moduli.*
 
+![[lez08-stili-p13-oo-lunar-lander.png]]
+*Lunar Lander a oggetti ([[05_Architectural_Styles_Complete.pdf#page=13]]): il modulo «GUI – Get/Display Info» chiama tre procedure: `"GET" a, f, t, v` e `"SET" a, f, t, v` verso SpaceCraft, e `"CALCULATE"` (ingresso: br, SpaceCraft; uscita: SpaceCraft) verso Environment Simulation.*
+
 Descrizione dell'esempio ([[05_Architectural_Styles_Complete.pdf#page=13]]): la GUI legge il burn rate e recupera i parametri con *get*, li mostra e li passa alla simulazione; la simulazione calcola il nuovo stato, memorizzato con *set*.
 
 ## Attributi di qualità

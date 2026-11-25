@@ -32,6 +32,9 @@ Il **cloud computing** è un modello per l'accesso di rete comodo e *on demand* 
 
 ## Esempi espansi
 
+![[lez08-stili-p86-modelli-di-servizio-cloud.png]]
+*Modelli di servizio ([[05_Architectural_Styles_Complete.pdf#page=86]], «Figure 5.5 Everything as a service»): lo stack SaaS (es. fotoritocco, gestione logistica) sopra PaaS (gestione cloud, monitoraggio, database, sviluppo software) sopra IaaS (storage, rete, calcolo, virtualizzazione) sopra il cloud data center; a destra la piramide SaaS–PaaS–IaaS.*
+
 ![[lez08-stili-p87-responsabilita-cloud.png]]
 *Responsabilità nei modelli di servizio ([[05_Architectural_Styles_Complete.pdf#page=87]]): quattro colonne con lo stesso stack (Data, Application, MW/DBMS, Security, Operating Systems, Virtualization, Storage, Computing Resources, Networking, Data Centers). In blu ciò che gestisce il cliente, in verde ciò che gestisce il provider. On premise: tutto del cliente. IaaS: il provider gestisce da Virtualization in giù. PaaS: da MW/DBMS in giù (incluso sistema operativo, sicurezza). SaaS: tutto tranne i dati. Più si sale verso SaaS, meno il cliente gestisce.*
 

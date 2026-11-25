@@ -1915,8 +1915,8 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - Uno **stile architetturale** è una collezione denominata di decisioni di progetto architetturale che: (1) si applicano in un particolare contesto di sviluppo; (2) vincolano le decisioni architetturali prese per i singoli sistemi di quel contesto; (3) promuovono qualità desiderabili nei sistemi risultanti.
 - Gli stili sono **meno specifici del dominio applicativo** dei pattern architetturali. Possono essere utili a diversi livelli, dalle subroutine alla struttura complessiva dell'applicazione.
 
-![[lez08-stili-p2-ambito-degli-stili.png]]
-*Mappa dei concetti di progetto su due assi: «Scope» (livello di programmazione, struttura applicativa, struttura del sistema) e «Application Domain Knowledge» (da superficiale a profonda). Dal basso: i design pattern di programma, gli stili, i pattern architetturali, le architetture software specifiche di dominio.*
+![[lez08-stili-p3-ambito-degli-stili.png]]
+*(p. 3) Mappa dei concetti di progetto su due assi: «Scope» (livello di programmazione, struttura applicativa, struttura del sistema) e «Application Domain Knowledge» (da superficiale a profonda). Dal basso: i design pattern di programma, gli stili, i pattern architetturali, le architetture software specifiche di dominio.*
 
 ### Proprietà e benefici degli stili · [[05_Architectural_Styles_Complete.pdf#page=4|p. 4]]–[[05_Architectural_Styles_Complete.pdf#page=6|6]]
 
@@ -1961,6 +1961,9 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - **Limiti:** gli oggetti che collaborano devono conoscere l'identità degli oggetti che forniscono i servizi; capire un'applicazione può richiedere l'analisi di relazioni statiche e dinamiche complesse; molti oggetti in interazione creano overhead prestazionale e servono criteri di strutturazione aggiuntivi.
 - **Lunar Lander object-oriented** (p. 13): la GUI legge il burn rate inserito dall'utente e recupera i parametri della navicella con operazioni *get*, li mostra e li passa alla simulazione dell'ambiente; la simulazione calcola il nuovo stato, che viene memorizzato con operazioni *set*.
 
+![[lez08-stili-p13-oo-lunar-lander.png]]
+*Lunar Lander a oggetti (p. 13): il modulo «GUI – Get/Display Info» chiama tre «Procedure Call»: `"GET" a, f, t, v` e `"SET" a, f, t, v` verso l'oggetto SpaceCraft, e `"CALCULATE"` (ingresso: br, SpaceCraft; uscita: SpaceCraft) verso Environment Simulation.*
+
 ![[lez08-stili-p14-oo-lunar-lander-uml.png]]
 *Lo stesso progetto in UML: la classe GUI (operazioni `getBurnRate()` e `displayStatus(...)`) crea una o più istanze di Spacecraft (attributi a, f, t, v con le relative operazioni set/get) e usa l'unica Environment Simulation (operazione `calculateStatus(br, s : Spacecraft) : Spacecraft`).*
 
@@ -1981,12 +1984,18 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 
 - **Closed Layers Architecture (CLA)**: il layer *i* può accedere solo al layer immediatamente inferiore *i−1*. **Open Layers Architecture (OLA)**: il layer *i* può accedere a qualsiasi layer inferiore (p. 21).
 - **CLA** (p. 22): il layer *i* invoca solo servizi e operazioni del layer *i−1*; gli obiettivi principali sono **manutenibilità e portabilità**; nell'interpretazione a virtualizzazione ogni layer *i* definisce una virtual machine VM<sub>i</sub>.
+
+![[lez08-stili-p22-closed-layers.png]]
+*Closed layers (p. 22): quattro layer (VM1–VM4), ognuno con classi (con attributi e operazioni); le dipendenze vanno solo da un layer a quello immediatamente inferiore.*
 - **Esempio CLA: lo stack ISO/OSI** (p. 23): il modello di riferimento definisce 7 layer di rete con livello di astrazione crescente. Ad esempio l'Internet Protocol (IP) definisce una VM a livello di rete in grado di identificare gli host e trasmettere singoli pacchetti da host a host.
 
 ![[lez08-stili-p23-osi-closed-layers.png]]
 *Pila ISO/OSI dall'alto in basso: Application, Presentation, Session, Transport, Network, DataLink, Physical; ogni layer comunica solo con quello immediatamente sotto, con il «livello di astrazione» che cresce verso l'alto.*
 
 - **OLA** (p. 24): il layer *i* può invocare servizi di qualsiasi layer inferiore; gli obiettivi principali sono **tempo di esecuzione ridotto ed efficienza**.
+
+![[lez08-stili-p24-open-layers.png]]
+*Open layers (p. 24): gli stessi quattro layer, ma alcune dipendenze saltano i layer intermedi (una classe del primo layer usa direttamente una del quarto).*
 - **Esempio OLA: OSF/Motif** (p. 25): *Xlib* offre funzioni di disegno di basso livello; *Xt* la gestione dei widget dell'interfaccia di base; *Motif* un gran numero di widget sofisticati; *Application* può accedere a ciascun layer in modo indipendente.
 
 ![[lez08-stili-p25-motif-open-layers.png]]
@@ -2036,6 +2045,9 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 #### Pipe and filter · [[05_Architectural_Styles_Complete.pdf#page=40|p. 40]]–[[05_Architectural_Styles_Complete.pdf#page=51|51]]
 
 - **Obiettivo** (p. 41): scomporre un compito complesso in passi di elaborazione indipendenti, i **filtri**, collegati da canali, le **pipe**; ogni filtro esegue una specifica trasformazione dei dati.
+
+![[lez08-stili-p41-pipeline-componenti-riusati.png]]
+*Pipeline (p. 41): i dati dalla sorgente 1 attraversano i task A, B, C, D e producono i «transformed data» che vanno alla «Business logic»; i dati della sorgente 2 attraversano i task B, E, F. Il Task B compare in entrambe: «Components reused in different pipelines».*
 - **Elementi e invarianti** (p. 42): i componenti sono **filtri** (programmi che trasformano flussi di dati in ingresso in flussi in uscita); i connettori sono **pipe** (canali per flussi di dati, realizzati con code, stream, messaggi, file temporanei o simili); i filtri sono indipendenti e **non condividono stato**; un filtro non sa quali filtri stiano a monte o a valle; i filtri possono essere eseguiti in **concorrenza** (un filtro a valle non attende che quello a monte abbia finito).
 - **Esempi** (p. 43): shell UNIX, elaborazione dei segnali, sistemi distribuiti e programmazione parallela. Esempio di shell: `ls invoices | grep -e August | sort`. Un compilatore Java può organizzare analisi lessicale, parsing, analisi semantica e ottimizzazione come trasformazioni successive.
 - **Implementare le pipeline** (p. 44): in un programma a processo singolo le pipe sono spesso code in memoria; in un'implementazione distribuita l'infrastruttura di messaggistica passa i flussi tra filtri remoti (ad es. code di messaggi); un passo lungo può essere servito da più istanze parallele di un filtro, migliorando prestazioni e throughput.
@@ -2049,6 +2061,9 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - **Benefici** (p. 49): il comportamento del sistema discende dalla composizione dei componenti; i filtri possono essere concorrenti e produrre output incrementale; l'elaborazione incrementale può ridurre la latenza e abilitare il parallelismo; i filtri si possono aggiungere, sostituire e riusare; si possono analizzare proprietà architetturali come throughput, latenza e deadlock.
 - **Limiti** (p. 50): le implementazioni orientate al batch offrono poca interattività; lo stile è scomodo quando i filtri richiedono conversazioni interattive complesse; strutture dati complesse possono richiedere codifica/decodifica costose o l'accordo su formati comuni.
 - **Lunar Lander in pipe and filter** (p. 51): ogni filtro ripete la propria azione: il primo chiede all'utente il burn rate e lo scrive nello stream; il secondo aggiorna l'ambiente quando arriva un nuovo valore di burn rate; il terzo aggiorna il display quando nuovi valori di stato arrivano al suo ingresso.
+
+![[lez08-stili-p51-pipe-filter-lunar-lander.png]]
+*Lunar Lander in pipe and filter (p. 51): «Get BurnRate from user» → Stream (in: br, out: nessuno) → «Compute new values» → Stream (in: a, f, t, v) → «Display new values to user».*
 
 ### Stili shared-data · [[05_Architectural_Styles_Complete.pdf#page=52|p. 52]]–[[05_Architectural_Styles_Complete.pdf#page=71|71]]
 
@@ -2114,6 +2129,9 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 
 - **Elementi** (p. 81): componenti: un *execution dock* che riceve codice e stato, e un interprete o ambiente di esecuzione; connettori: protocolli di rete e meccanismi per impacchettare codice e dati; elementi dati: codice rappresentato come dato, stato del programma e dati applicativi; topologia: una rete di host di esecuzione.
 - **Lunar Lander mobile code** (p. 82): i client web scaricano il codice del gioco e lo eseguono in locale (implementazioni storiche: applet Java o JavaScript); i client mantengono lo stato di gioco ed eseguono il calcolo, riducendo l'elaborazione sul server.
+
+![[lez08-stili-p82-mobile-code-lunar-lander.png]]
+*Lunar Lander con mobile code (p. 82): tre Web Browser — il primo con un programma JavaScript LunarLander eseguito da un JavaScript Interpreter con proprio Interpreter State e Data Access, il secondo con una Java Virtual Machine che esegue un Lunar Lander Game Applet, il terzo con il «Lunar Lander Game Code» — comunicano con il (Game) Server tramite Remote Procedure Call con HTTP come meccanismo.*
 - **Benefici e limiti** (p. 83): *benefici* adattamento dinamico e accesso alle risorse di elaborazione di altri host; la migrazione può supportare la dependability quando esistono host alternativi. *Limiti:* gli host devono proteggersi da codice non fidato; i costi di comunicazione o le connessioni inaffidabili possono annullare il vantaggio dell'esecuzione remota. Usi tipici: spostare il calcolo verso grandi insiemi di dati remoti, configurare un'applicazione con codice fornito dall'esterno.
 
 ### Cloud computing (cenni) · [[05_Architectural_Styles_Complete.pdf#page=84|p. 84]]–[[05_Architectural_Styles_Complete.pdf#page=88|88]]
@@ -2121,6 +2139,9 @@ Anche se Scrum è basato solo su una successione di Sprint, il ciclo di vita si 
 - **Definizione NIST** (p. 84): un modello per l'accesso di rete comodo e on demand a un pool condiviso di risorse di calcolo configurabili; le risorse possono essere allocate e rilasciate rapidamente con minimo sforzo di gestione o interazione con il provider.
 - **Benefici potenziali** (p. 85): *per i clienti* meno necessità di possedere e mantenere hardware e software di infrastruttura; modelli pay-per-use e capacità scalabile secondo necessità; capacità gestite dal provider che possono supportare affidabilità e sicurezza (secondo servizi e configurazione scelti). *Per i provider:* la domanda aggregata può migliorare l'utilizzo delle risorse e aiutare a gestire la variabilità tra clienti.
 - **Modelli di servizio** (p. 86): **IaaS** (Infrastructure as a Service: rete, storage e calcolo, ad es. macchine virtuali); **PaaS** (Platform as a Service: infrastruttura più sistema operativo e piattaforma applicativa, come application server, servizi di database, middleware); **SaaS** (Software as a Service: il provider gestisce un'applicazione di solito raggiunta con browser o app mobile). Il modello di servizio permette di consumare una capacità senza possedere ogni risorsa necessaria.
+
+![[lez08-stili-p86-modelli-di-servizio-cloud.png]]
+*Modelli di servizio (p. 86, «Figure 5.5 Everything as a service»): a sinistra lo stack Software as a service (es. fotoritocco, gestione logistica), Platform as a service (gestione cloud, monitoraggio; database, sviluppo software), Infrastructure as a service (storage, rete; calcolo, virtualizzazione), sopra il cloud data center; a destra la piramide SaaS – PaaS – IaaS.*
 
 ![[lez08-stili-p87-responsabilita-cloud.png]]
 *Responsabilità nei modelli di servizio: quattro colonne (Enterprise IT / On Premise, IaaS, PaaS, SaaS) con lo stesso stack di livelli: Data, Application, MW/DBMS, Security, Operating Systems, Virtualization, Storage, Computing Resources, Networking, Data Centers. In blu i livelli gestiti dal cliente, in verde quelli gestiti dal provider: on premise tutto blu; IaaS verde da Virtualization in giù; PaaS verde da MW/DBMS in giù; SaaS tutto verde tranne Data (p. 87).*

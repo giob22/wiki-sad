@@ -96,8 +96,14 @@ Conviene quando contano portabilità e modificabilità più delle prestazioni e 
 | Obiettivi | **manutenibilità e portabilità**; ogni layer è una virtual machine VM<sub>i</sub> | **riduzione del tempo di esecuzione, efficienza** |
 | Esempio | stack ISO/OSI | OSF/Motif |
 
+![[lez08-stili-p22-closed-layers.png]]
+*Closed layers ([[05_Architectural_Styles_Complete.pdf#page=22]]): quattro layer VM1–VM4 con classi (attributi e operazioni); le dipendenze vanno solo al layer immediatamente inferiore, per questo ogni layer è una virtual machine che nasconde quelle sotto.*
+
 ![[lez08-stili-p23-osi-closed-layers.png]]
 *ISO/OSI ([[05_Architectural_Styles_Complete.pdf#page=23]]): sette layer di rete — Application, Presentation, Session, Transport, Network, DataLink, Physical — con livello di astrazione crescente verso l'alto; ogni layer parla solo con quello adiacente. L'Internet Protocol (IP) definisce, a livello rete, una VM in grado di identificare gli host e trasmettere singoli pacchetti da host a host.*
+
+![[lez08-stili-p24-open-layers.png]]
+*Open layers ([[05_Architectural_Styles_Complete.pdf#page=24]]): gli stessi quattro layer, ma alcune dipendenze saltano i layer intermedi (una classe del layer 1 usa direttamente una del layer 4): più efficiente, meno isolamento.*
 
 ![[lez08-stili-p25-motif-open-layers.png]]
 *OSF/Motif ([[05_Architectural_Styles_Complete.pdf#page=25]]): *Xlib* (disegno di basso livello), *Xt* (gestione dei widget di base), *Motif* (molti widget sofisticati), *Application* (può accedere a ogni layer in modo indipendente — le frecce tratteggiate saltano i layer intermedi).*

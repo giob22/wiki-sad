@@ -23,6 +23,9 @@ Un compito complesso di trasformazione di dati va **scomposto in passi indipende
 
 ## Diagramma
 
+![[lez08-stili-p41-pipeline-componenti-riusati.png]]
+*Pipeline ([[05_Architectural_Styles_Complete.pdf#page=41]]): i dati della sorgente 1 attraversano Task A, B, C, D e arrivano, trasformati, alla business logic; quelli della sorgente 2 attraversano Task B, E, F. Il Task B è lo stesso componente in due pipeline: «Components reused in different pipelines» — il riuso dei filtri.*
+
 ![[lez08-stili-p45-filtri-paralleli.png]]
 *Filtri paralleli ([[05_Architectural_Styles_Complete.pdf#page=45]]): i dati da una sorgente si distribuiscono su tre istanze del Task A, passano per Task B e Task C in serie, poi per tre istanze del Task D, fino alla business logic. Le pipe sono i tubi azzurri; lo stadio lento (A, D) è replicato per aumentare il throughput.*
 
@@ -60,6 +63,9 @@ Sì quando il problema è una catena di trasformazioni di flussi (compilatori, e
 
 - Shell UNIX: `ls invoices | grep -e August | sort` — tre filtri collegati da due pipe ([[05_Architectural_Styles_Complete.pdf#page=43]]).
 - Un compilatore Java: analisi lessicale → parsing → analisi semantica → ottimizzazione ([[05_Architectural_Styles_Complete.pdf#page=43]]).
+![[lez08-stili-p51-pipe-filter-lunar-lander.png]]
+*Lunar Lander ([[05_Architectural_Styles_Complete.pdf#page=51]]): «Get BurnRate from user» → Stream (in: br) → «Compute new values» → Stream (in: a, f, t, v) → «Display new values to user».*
+
 - Lunar Lander: un filtro chiede il burn rate e lo scrive nello stream; il secondo aggiorna l'ambiente a ogni nuovo valore; il terzo aggiorna il display ([[05_Architectural_Styles_Complete.pdf#page=51]]).
 
 ## Connessioni
