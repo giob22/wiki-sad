@@ -3102,135 +3102,361 @@ Come Skype affrontava i problemi del P2P:
 
 ## Lezione 9 — Il processo di progettazione architetturale: ASR e il metodo ADD
 
-*Fonte: 06-ADD-Designing a Software Architecture.pdf (41 pagine). Cap. 19–20 di Bass, Clements, Kazman, «Software Architecture in Practice»: requisiti architetturalmente significativi (cap. 19) e progettare un'architettura con ADD (cap. 20).*
+*Fonte: 06-ADD-Designing a Software Architecture.pdf (41 pagine), dai capitoli 19 e 20 di Bass, Clements, Kazman, «Software Architecture in Practice».*
+
+**Come è organizzata la lezione.**
+
+- La lezione risponde a due domande:
+  1. **da quali requisiti dipende l'architettura?** Sono i *requisiti architetturalmente significativi* (ASR, capitolo 19 del libro);
+  2. **come si progetta concretamente un'architettura?** Con il metodo **ADD** (*Attribute-Driven Design*, capitolo 20), che guida il progettista passo per passo.
+- ADD è fatto di **sette passi**, che si ripetono in più iterazioni. Ogni passo ha qui la sua sezione.
 
 ### Requisiti architetturalmente significativi (ASR) · [[06-ADD-Designing a Software Architecture.pdf#page=2|p. 2]]–[[06-ADD-Designing a Software Architecture.pdf#page=4|4]]
 
-- Sommario: *Architecturally Significant Requirements* (cap. 19); *Designing an Architecture with ADD* (cap. 20).
-- Un **ASR** è un requisito che avrà un **effetto profondo sull'architettura**: l'architettura potrebbe essere drasticamente diversa in sua assenza. Spesso (ma non sempre) gli ASR hanno la forma di **requisiti di attributi di qualità** (prestazioni, sicurezza, modificabilità, disponibilità, usabilità…) che l'architettura deve fornire al sistema.
-- **Come trovare gli ASR** (p. 4): gli architetti li identificano **da un documento dei requisiti** oppure **intervistando gli stakeholder** e conducendo un **Quality Attribute Workshop (QAW)**. Il QAW è un metodo facilitato, focalizzato sugli stakeholder, per **generare, prioritizzare e raffinare scenari di attributi di qualità** prima che l'architettura software sia completata. I risultati delle interviste devono includere un **elenco di driver architetturali** e un **insieme di scenari di qualità prioritizzati** dagli stakeholder.
+#### Che cos'è un ASR · [[06-ADD-Designing a Software Architecture.pdf#page=2|p. 2]]–[[06-ADD-Designing a Software Architecture.pdf#page=3|3]]
 
-### Scenario concreto d'esempio e utility tree · [[06-ADD-Designing a Software Architecture.pdf#page=5|p. 5]]–[[06-ADD-Designing a Software Architecture.pdf#page=8|8]]
+- Un **ASR** (*Architecturally Significant Requirement*) è un requisito che ha un **effetto profondo sull'architettura**: senza quel requisito, l'architettura potrebbe essere completamente diversa.
+- Spesso, ma non sempre, gli ASR sono **requisiti di attributi di qualità**: prestazioni, sicurezza, modificabilità, disponibilità, usabilità e così via, cioè le qualità che l'architettura deve garantire al sistema.
+- 🧩 *Esempio.* «Il sistema deve reggere 10.000 utenti contemporanei» è un ASR: obbliga a pensare a repliche e bilanciamento del carico. «Il pulsante deve essere blu» non lo è: non cambia nulla nella struttura.
 
-- Scenario di modificabilità d'esempio (p. 5): *uno sviluppatore vuole cambiare l'interfaccia utente; la modifica sarà fatta nel codice in fase di progettazione, richiederà meno di tre ore per essere fatta e collaudata e non ci saranno effetti collaterali.*
-- **Se non c'è nessuno stakeholder disponibile** (p. 6): l'architetto può costruire un **utility tree** quando le «fonti primarie» dei requisiti non sono disponibili. È una **rappresentazione top-down degli ASR legati agli attributi di qualità** che l'architetto ritiene critici per il successo del sistema. Per ogni attributo di qualità si riportano **raffinamenti specifici** (per esempio le prestazioni possono essere scomposte in «latenza dei dati» e «throughput delle transazioni», oppure in «tempo di attesa dell'utente» e «tempo di aggiornamento della pagina web»). Sotto ogni raffinamento si registrano gli **ASR specifici, espressi come scenari di qualità**.
-- Gli scenari si valutano con **due criteri**: il **valore di business** dello scenario candidato e il **rischio tecnico** di realizzarlo; si può usare un semplice punteggio **H** (alto), **M** (medio), **L** (basso) per ciascun criterio (coppia «valore di business, rischio tecnico»).
+#### Come trovare gli ASR · [[06-ADD-Designing a Software Architecture.pdf#page=4|p. 4]]
 
-**Esempio di utility tree** (pp. 7–8, sistema ospedaliero)
+Gli architetti trovano gli ASR in due modi:
 
-| Attributo | Raffinamento | Scenario ASR | (valore, rischio) |
+- leggendo il **documento dei requisiti**;
+- **intervistando gli stakeholder** e organizzando un **Quality Attribute Workshop** (QAW).
+
+Il **QAW**:
+
+- è un incontro guidato da un facilitatore e centrato sugli stakeholder;
+- serve a **generare**, **dare priorità** e **raffinare** gli scenari di attributi di qualità;
+- si svolge **prima** che l'architettura sia completata.
+
+Dalle interviste devono uscire:
+
+- un **elenco di driver architetturali** (🧩 i requisiti e i vincoli che «guidano» le scelte di progetto);
+- un insieme di **scenari di qualità**, ordinati per priorità dagli stakeholder.
+
+### Scenario d'esempio e utility tree · [[06-ADD-Designing a Software Architecture.pdf#page=5|p. 5]]–[[06-ADD-Designing a Software Architecture.pdf#page=8|8]]
+
+#### Uno scenario concreto di modificabilità · [[06-ADD-Designing a Software Architecture.pdf#page=5|p. 5]]
+
+> Uno sviluppatore vuole cambiare l'interfaccia utente. La modifica sarà fatta nel codice in fase di progettazione, richiederà meno di tre ore per essere fatta e collaudata, e non ci saranno effetti collaterali.
+
+| Parte dello scenario | Contenuto |
+|---|---|
+| Sorgente | uno sviluppatore |
+| Stimolo | vuole cambiare l'interfaccia utente |
+| Artefatto | il codice |
+| Ambiente | fase di progettazione |
+| Risposta | la modifica viene fatta e collaudata |
+| Misura della risposta | meno di tre ore, nessun effetto collaterale |
+
+#### Se nessuno stakeholder è disponibile: l'utility tree · [[06-ADD-Designing a Software Architecture.pdf#page=6|p. 6]]
+
+- Quando le «fonti primarie» dei requisiti (documenti e stakeholder) non sono disponibili, l'architetto può costruire un **utility tree** («albero dell'utilità»).
+- È una rappresentazione **dall'alto verso il basso** degli ASR legati agli attributi di qualità, cioè di quelli che l'architetto ritiene decisivi per il successo del sistema.
+- È organizzato su tre livelli:
+  1. gli **attributi di qualità** (ad es. prestazioni);
+  2. per ogni attributo, i suoi **raffinamenti**, cioè aspetti più specifici. Le prestazioni, ad esempio, si possono scomporre in «latenza dei dati» e «throughput delle transazioni» (transazioni completate al secondo), oppure in «tempo di attesa dell'utente» e «tempo di aggiornamento della pagina web»;
+  3. sotto ogni raffinamento, gli **ASR specifici**, scritti come scenari di qualità.
+
+#### Esempio di utility tree · [[06-ADD-Designing a Software Architecture.pdf#page=7|p. 7]]–[[06-ADD-Designing a Software Architecture.pdf#page=8|8]]
+
+- Ogni scenario si valuta con **due criteri**:
+  - il **valore di business**: quanto conta per il successo del sistema;
+  - il **rischio tecnico**: quanto è difficile ottenerlo.
+- Per ogni criterio si usa un punteggio semplice: **H** (*high*, alto), **M** (medio), **L** (*low*, basso). Ogni scenario riceve quindi una coppia (valore di business, rischio tecnico).
+- 🧩 Gli scenari (H, H) sono i più importanti da affrontare per primi: contano molto e sono difficili.
+
+Esempio della slide, un sistema ospedaliero:
+
+| Attributo | Raffinamento | Scenario | (valore, rischio) |
 |---|---|---|---|
-| Prestazioni | tempo di risposta delle transazioni | un utente aggiorna l'account di un paziente in risposta a una notifica di cambio indirizzo mentre il sistema è sotto carico di picco, e la transazione si completa in meno di 0,75 secondi | (H, H) |
-| Prestazioni | throughput | al carico di picco il sistema completa 150 transazioni normalizzate al secondo | (M, M) |
-| Usabilità | formazione | un neoassunto con almeno due anni di esperienza nel settore impara, con 1 settimana di formazione, a eseguire qualsiasi funzione principale del sistema in meno di 5 secondi | (M, L) |
-| Usabilità | efficienza delle operazioni | un addetto ai pagamenti dell'ospedale avvia un piano di pagamento per un paziente mentre interagisce con lui e completa il processo senza errori di input | (M, M) |
-| Configurabilità | configurabilità dei dati | un ospedale aumenta la tariffa di un servizio; il team di configurazione fa e collauda la modifica in 1 giorno lavorativo, senza cambiare il codice sorgente | (H, L) |
-| Manutenibilità | modifiche di routine | un manutentore trova carenze nel tempo di risposta, corregge il bug e distribuisce la correzione con non più di 3 persone-giorno di sforzo | (H, M) |
-| Manutenibilità | modifiche di routine | un requisito di reporting richiede di cambiare i metadati di generazione dei report; la modifica è fatta e collaudata in 4 persone-ore | (M, L) |
-| Manutenibilità | aggiornamento di componenti commerciali | il fornitore del database rilascia una nuova versione maggiore, che viene collaudata e installata con successo in meno di 3 persone-settimane | (H, M) |
-| Manutenibilità | aggiunta di una funzionalità | una funzionalità che traccia i donatori di sangue viene creata e integrata con successo in 2 persone-mesi | (M, M) |
-| Sicurezza | riservatezza | un fisioterapista può vedere la parte della cartella di un paziente relativa al trattamento ortopedico, ma non le altre parti né informazioni finanziarie | (H, M) |
-| Sicurezza | resistenza agli attacchi | il sistema respinge un tentativo di intrusione non autorizzato e lo segnala alle autorità entro 90 secondi | (H, M) |
-| Disponibilità | nessun fermo | il fornitore del database rilascia un nuovo software, sostituito a caldo (*hot-swapped*) senza downtime | (H, L) |
-| Disponibilità | nessun fermo | il sistema supporta l'accesso web 24/7/365 ai conti da parte dei pazienti | (M, M) |
+| Prestazioni | tempo di risposta delle transazioni | un utente aggiorna i dati di un paziente dopo una notifica di cambio indirizzo, mentre il sistema è al carico massimo; la transazione si completa in meno di 0,75 secondi | (H, H) |
+| Prestazioni | throughput | al carico massimo il sistema completa 150 transazioni normalizzate al secondo | (M, M) |
+| Usabilità | formazione | un neoassunto con almeno due anni di esperienza nel settore, dopo 1 settimana di formazione, sa eseguire ogni funzione principale del sistema in meno di 5 secondi | (M, L) |
+| Usabilità | efficienza delle operazioni | un addetto ai pagamenti avvia un piano di pagamento per un paziente mentre parla con lui, e completa il processo senza errori di inserimento | (M, M) |
+| Configurabilità | configurabilità dei dati | un ospedale aumenta la tariffa di un servizio; il team di configurazione fa e collauda la modifica in 1 giorno lavorativo, senza toccare il codice sorgente | (H, L) |
+| Manutenibilità | modifiche di routine | un manutentore scopre che il tempo di risposta non è adeguato, corregge il bug e distribuisce la correzione con al massimo 3 giorni-persona di lavoro | (H, M) |
+| Manutenibilità | modifiche di routine | un nuovo requisito di reportistica richiede di cambiare i metadati che generano i report; la modifica è fatta e collaudata in 4 ore-persona | (M, L) |
+| Manutenibilità | aggiornamento di componenti commerciali | il fornitore del database rilascia una nuova versione principale, che viene collaudata e installata con successo in meno di 3 settimane-persona | (H, M) |
+| Manutenibilità | aggiunta di una funzionalità | una funzionalità che tiene traccia dei donatori di sangue viene realizzata e integrata con successo in 2 mesi-persona | (M, M) |
+| Sicurezza | riservatezza | un fisioterapista può vedere la parte della cartella di un paziente sul trattamento ortopedico, ma non le altre parti né le informazioni economiche | (H, M) |
+| Sicurezza | resistenza agli attacchi | il sistema respinge un tentativo di accesso non autorizzato e lo segnala alle autorità entro 90 secondi | (H, M) |
+| Disponibilità | nessun fermo | il fornitore del database rilascia nuovo software, che viene sostituito a caldo (*hot-swap*, senza spegnere il sistema), senza interruzioni del servizio | (H, L) |
+| Disponibilità | nessun fermo | il sistema permette ai pazienti di accedere ai propri conti via web 24 ore su 24, tutti i giorni dell'anno | (M, M) |
+
+- 🧩 Un «giorno-persona» è il lavoro di una persona per un giorno: 3 giorni-persona possono essere 3 persone per un giorno o una persona per tre giorni.
 
 ![[lez09-add-p7-utility-tree-1.png]]
 ![[lez09-add-p8-utility-tree-2.png]]
-*L'utility tree in forma di tabella (attributo di qualità, raffinamento dell'attributo, scenario ASR con coppia H/M/L).*
+*L'utility tree originale delle slide, in forma di tabella: attributo di qualità, raffinamento, scenario con la coppia di punteggi H/M/L. È lo stesso contenuto della tabella qui sopra.*
 
-### ADD: un processo di progettazione iterativo · [[06-ADD-Designing a Software Architecture.pdf#page=9|p. 9]]–[[06-ADD-Designing a Software Architecture.pdf#page=11|11]]
+### Il metodo ADD · [[06-ADD-Designing a Software Architecture.pdf#page=9|p. 9]]–[[06-ADD-Designing a Software Architecture.pdf#page=13|13]]
 
-- *La necessità di un metodo* (p. 9) → **Attribute-Driven Design** (p. 10).
-- In ADD la progettazione dell'architettura avviene per **round**. Ogni round può svolgersi dentro un'iterazione di sviluppo, come uno sprint. Dentro i round si compie una serie di **iterazioni di progettazione**: con una o più iterazioni si produce un'architettura adatta allo **scopo di progetto** stabilito per quel round. ADD fornisce una **guida dettagliata, passo per passo**, ai compiti da svolgere dentro le iterazioni.
+#### Perché serve un metodo · [[06-ADD-Designing a Software Architecture.pdf#page=9|p. 9]]
 
-### System Context Diagram · [[06-ADD-Designing a Software Architecture.pdf#page=12|p. 12]]
+- Come si fa, concretamente, a progettare?
+- Per progettare in modo da **garantire** che i driver siano soddisfatti serve un **metodo rigoroso** (*principled*), cioè un metodo che tenga conto di tutti gli aspetti necessari per ottenere un progetto adeguato.
+- Un metodo dà una **guida**: dice cosa fare e in che ordine.
 
-- Prima di iniziare la progettazione è importante determinare l'**ambito del sistema**: cosa sta dentro e cosa fuori dal sistema che si sta creando, e con quali **entità esterne** il sistema interagisce. Questo contesto si rappresenta con un **system context diagram**.
+#### Panoramica di Attribute-Driven Design · [[06-ADD-Designing a Software Architecture.pdf#page=10|p. 10]]
+
+![[lez09-add-p10-panoramica-add.png]]
+*Il quadro complessivo di ADD, da sinistra a destra.*
+
+- **A sinistra, i driver architetturali** (in rosso), che l'architetto **raccoglie** («gathers»):
+  - lo scopo del progetto (*design purpose*);
+  - le funzionalità principali (*primary functionality*);
+  - gli attributi di qualità;
+  - i vincoli (*constraints*);
+  - le preoccupazioni architetturali (*architectural concerns*).
+- **In alto, i design concept** (in blu), cioè le soluzioni già note che l'architetto **seleziona e istanzia** («selects and instantiates»):
+  - architetture di riferimento;
+  - componenti sviluppati esternamente (librerie, framework, prodotti);
+  - tattiche;
+  - pattern.
+- **Al centro, l'architetto**, che a partire dai driver e dai design concept valuta delle **decisioni di progetto candidate**.
+- **A destra, le strutture** che l'architetto **produce** («produces»):
+  - strutture di **modulo** (ad es. uses, decomposizione, layered, classi e generalizzazione);
+  - strutture **componenti e connettori** (ad es. client–server, concorrenza, processi, dati condivisi);
+  - strutture di **allocazione** (ad es. assegnazione del lavoro, deployment, implementazione).
+
+#### ADD è un processo iterativo · [[06-ADD-Designing a Software Architecture.pdf#page=11|p. 11]]
+
+- In ADD la progettazione dell'architettura avviene per **round**.
+- Ogni round può svolgersi all'interno di un'iterazione di sviluppo, ad esempio uno **sprint**.
+- Dentro ogni round si fanno una serie di **iterazioni di progettazione**.
+- Con una o più iterazioni si arriva a un'architettura adatta allo **scopo di progetto** fissato per quel round.
+- ADD dà una **guida dettagliata, passo per passo**, alle attività da svolgere dentro le iterazioni.
+- 🧩 *In sintesi:* il progetto si divide in round (ad es. uno per sprint), ogni round in iterazioni, ogni iterazione segue i sette passi di ADD.
+
+#### System context diagram · [[06-ADD-Designing a Software Architecture.pdf#page=12|p. 12]]
+
+- Prima di cominciare a progettare bisogna stabilire l'**ambito del sistema**:
+  - che cosa sta **dentro** e che cosa sta **fuori** dal sistema che si sta costruendo;
+  - con quali **entità esterne** il sistema interagisce.
+- Questo contesto si rappresenta con un **system context diagram** (diagramma di contesto).
 
 ![[lez09-add-p12-system-context-diagram.png]]
-*Il sistema in progettazione (cerchio) con la workstation dell'utente, i servizi esterni e un database server; legenda: sistema in sviluppo, sistema esterno, flusso di dati.*
+*Il sistema da progettare (al centro) e i sistemi esterni con cui scambia dati: la workstation dell'utente, servizi esterni e un database server. La legenda distingue il sistema in sviluppo, i sistemi esterni e i flussi di dati.*
 
-### Passi e artefatti di ADD · [[06-ADD-Designing a Software Architecture.pdf#page=13|p. 13]]
+#### Passi e artefatti di ADD · [[06-ADD-Designing a Software Architecture.pdf#page=13|p. 13]]
 
 ![[lez09-add-p13-passi-e-artefatti-add.png]]
-*Gli ingressi (driver): scopo del progetto, requisiti funzionali primari, scenari di attributi di qualità, vincoli, preoccupazioni architetturali (in rosso). I sette passi (in blu): **Step 1** Review inputs → **Step 2** Establish iteration goal by selecting drivers → **Step 3** Choose one or more elements of the system to refine → **Step 4** Choose one or more design concepts that satisfy the selected drivers → **Step 5** Instantiate architectural elements, allocate responsibilities, and define interfaces → **Step 6** Sketch views and record design decisions → **Step 7** Perform analysis of current design and review iteration goal and achievement of design purpose. L'uscita è il (raffinato) progetto dell'architettura software (in verde). Si itera se necessario; si parte dal round precedente o, se il sistema esiste, dal sistema esistente (brownfield).*
+*Lo schema completo del metodo. In rosso i driver in ingresso, in blu i sette passi, in verde il risultato. Le frecce continue indicano l'ordine dei passi, quelle tratteggiate il flusso degli artefatti.*
+
+- **Ingressi** (i driver): scopo del progetto, requisiti funzionali primari, scenari di attributi di qualità, vincoli, preoccupazioni architetturali.
+- **I sette passi**:
+  1. rivedere gli ingressi;
+  2. stabilire l'obiettivo dell'iterazione, scegliendo i driver da affrontare;
+  3. scegliere uno o più elementi del sistema da raffinare;
+  4. scegliere uno o più design concept che soddisfano i driver scelti;
+  5. istanziare gli elementi architetturali, assegnare le responsabilità e definire le interfacce;
+  6. abbozzare le viste e registrare le decisioni di progetto;
+  7. analizzare il progetto corrente e verificare l'obiettivo dell'iterazione e il raggiungimento dello scopo di progetto.
+- **Uscita**: il progetto dell'architettura software, raffinato a ogni giro.
+- Se necessario si ripetono i passi dal 2 al 7 («iterate if necessary»).
+- Il punto di partenza è il progetto del round precedente oppure, se il sistema esiste già (*brownfield*), il sistema esistente.
 
 ### Passo 1: rivedere gli ingressi · [[06-ADD-Designing a Software Architecture.pdf#page=14|p. 14]]–[[06-ADD-Designing a Software Architecture.pdf#page=15|15]]
 
-- Prima di iniziare un round di progettazione bisogna assicurarsi che i **driver architetturali** siano disponibili e corretti: lo **scopo** del round di progettazione; i **requisiti funzionali primari** (casi d'uso o user story); gli **scenari primari di attributi di qualità**; gli eventuali **vincoli**; le eventuali **preoccupazioni** (*concerns*).
-- I driver entrano a far parte di un **backlog di progettazione architetturale** da usare per svolgere le varie iterazioni di progettazione. Prima di iniziare, bisogna essere certi di avere chiaro **il problema di progetto complessivo da risolvere**.
+- Prima di iniziare un round di progettazione bisogna verificare che i **driver architetturali** siano disponibili e corretti:
+  - lo **scopo** del round di progettazione;
+  - i **requisiti funzionali primari** (casi d'uso o user story);
+  - gli **scenari primari di attributi di qualità**;
+  - gli eventuali **vincoli** (🧩 ad es. una tecnologia imposta dal cliente);
+  - le eventuali **preoccupazioni** (*concerns*) (🧩 aspetti di cui l'architetto deve occuparsi anche se nessuno li ha chiesti, come la gestione degli errori o il logging).
+- I driver entrano in un **backlog di progettazione architetturale** (la lista delle cose da affrontare), da usare per organizzare le iterazioni.
+- Prima di cominciare bisogna avere chiaro **qual è, nel complesso, il problema di progetto da risolvere**.
 
 ### Passo 2: stabilire l'obiettivo dell'iterazione · [[06-ADD-Designing a Software Architecture.pdf#page=16|p. 16]]–[[06-ADD-Designing a Software Architecture.pdf#page=17|17]]
 
-- Ogni iterazione di progettazione si concentra su un **obiettivo particolare**, che di solito consiste nel progettare per soddisfare un **sottoinsieme dei driver**. Esempio: creare strutture da elementi che permettano di ottenere un particolare scenario di prestazioni, o un caso d'uso.
-- **Il problema di progetto è diviso in più sotto-problemi; un'iterazione comincia decidendo quale sotto-problema affrontare.**
+- Il problema di progetto viene **diviso in sotto-problemi**; un'iterazione comincia scegliendo quale sotto-problema affrontare.
+- Ogni iterazione si concentra su un **obiettivo preciso**.
+- Di solito l'obiettivo è soddisfare un **sottoinsieme dei driver**.
+- Esempio: creare strutture che permettano di soddisfare un certo scenario di prestazioni, oppure un caso d'uso.
 
-### Passo 3: scegliere uno o più elementi del sistema da raffinare · [[06-ADD-Designing a Software Architecture.pdf#page=18|p. 18]]–[[06-ADD-Designing a Software Architecture.pdf#page=19|19]]
+### Passo 3: scegliere gli elementi del sistema da raffinare · [[06-ADD-Designing a Software Architecture.pdf#page=18|p. 18]]–[[06-ADD-Designing a Software Architecture.pdf#page=19|19]]
 
-- Soddisfare i driver → prendere **decisioni di progetto architetturale** → le decisioni si manifestano in una o più **strutture architetturali** (fatte di elementi correlati, come moduli o componenti). In ogni iterazione gli elementi si raffinano con un approccio **top-down** o **bottom-up**.
-- Per risolvere il sotto-problema si prendono **tre tipi di decisioni** (p. 18, passi 3–5): **1.** scegliere le parti da scomporre; **2.** individuare e selezionare le soluzioni esistenti che supportano la scomposizione; **3.** creare elementi dalla soluzione esistente e stabilirne responsabilità e interfacce.
+- Il ragionamento del passo:
+  - per soddisfare i driver si prendono **decisioni di progetto architetturale**;
+  - le decisioni prendono forma in una o più **strutture architetturali**, fatte di elementi collegati tra loro (ad es. moduli o componenti).
+- In ogni iterazione gli elementi si raffinano:
+  - **top-down**, partendo dal sistema intero e scomponendolo;
+  - oppure **bottom-up**, partendo da elementi esistenti e componendoli.
+- Per risolvere il sotto-problema si prendono **tre tipi di decisioni**, che corrispondono ai passi 3, 4 e 5:
+  1. scegliere le parti da scomporre (passo 3);
+  2. individuare e scegliere le soluzioni esistenti che aiutano a scomporle (passo 4);
+  3. creare gli elementi a partire dalla soluzione scelta e stabilirne responsabilità e interfacce (passo 5).
 
-### Passo 4: scegliere i design concept che soddisfano i driver · [[06-ADD-Designing a Software Architecture.pdf#page=20|p. 20]]–[[06-ADD-Designing a Software Architecture.pdf#page=24|24]]
+### Passo 4: scegliere i design concept · [[06-ADD-Designing a Software Architecture.pdf#page=20|p. 20]]–[[06-ADD-Designing a Software Architecture.pdf#page=24|24]]
 
-- Bisogna identificare i vari **design concept** che potrebbero plausibilmente raggiungere l'obiettivo dell'iterazione, e scegliere tra le alternative. Esistono molti tipi di design concept — **tattiche, pattern, architetture di riferimento, componenti sviluppati esternamente** — e per ognuno molte opzioni. Si possono cercare in fonti diverse (blog e siti web, letteratura di ricerca, libri). Ne può risultare un numero considerevole di alternative da analizzare prima della scelta finale.
-- **Selezionare i design concept** (p. 21): una volta identificata una lista di design concept bisogna sceglierne uno. Come? **Creando una tabella che elenca pro e contro di ogni alternativa** e scegliendo in base ai propri criteri e driver.
+#### Individuare le alternative · [[06-ADD-Designing a Software Architecture.pdf#page=20|p. 20]]
 
-**Tabella d'esempio a supporto della selezione** (p. 22)
+- Si individuano i **design concept** che potrebbero ragionevolmente servire a raggiungere l'obiettivo dell'iterazione, e poi si sceglie tra queste alternative.
+- Esistono molti tipi di design concept, e per ogni tipo molte opzioni:
+  - **tattiche**;
+  - **pattern**;
+  - **architetture di riferimento**;
+  - **componenti sviluppati esternamente**.
+- Si possono cercare in fonti diverse: blog e siti web, letteratura scientifica, libri.
+- Ne può venire fuori un numero considerevole di alternative, da analizzare prima della scelta finale.
+
+#### Scegliere con una tabella · [[06-ADD-Designing a Software Architecture.pdf#page=21|p. 21]]–[[06-ADD-Designing a Software Architecture.pdf#page=22|22]]
+
+- Una volta individuata una lista di design concept, bisogna sceglierne uno.
+- Come? Si costruisce una **tabella con i pro e i contro di ogni alternativa** e si sceglie in base ai propri criteri e ai driver.
+
+Esempio della slide, la scelta del tipo di applicazione client:
 
 | Alternativa | Pro | Contro | Costo |
 |---|---|---|---|
-| Web application | accessibile da molte piattaforme con un browser web standard; caricamento veloce delle pagine; deployment semplice | non supporta un'interazione «ricca» | basso |
-| Rich internet application | supporta un'interazione utente «ricca»; deployment e aggiornamento semplici | tempi di caricamento più lunghi; richiede un ambiente di runtime installato nel browser del client | medio |
-| Mobile application | supporta un'interazione utente «ricca» | minore portabilità; limiti dello schermo | alto |
+| Web application | accessibile da molte piattaforme con un normale browser; pagine che si caricano in fretta; deployment semplice | non permette un'interazione «ricca» | basso |
+| Rich Internet application | permette un'interazione «ricca» con l'utente; deployment e aggiornamento semplici | tempi di caricamento più lunghi; serve un ambiente di esecuzione installato nel browser del client | medio |
+| Mobile application | permette un'interazione «ricca» con l'utente | meno portabile; limiti dello schermo | alto |
+
+- 🧩 Un'interazione «ricca» è quella di un'applicazione desktop: trascinamenti, animazioni, risposte immediate senza ricaricare la pagina.
 
 ![[lez09-add-p22-tabella-selezione-alternative.png]]
-*La tabella originale (nome dell'alternativa, pro, contro, costo).*
+*La tabella originale della slide (nome dell'alternativa, pro, contro, costo).*
 
-- **Se la tabella non basta** (p. 23) si possono creare **prototipi** e raccogliere misurazioni. Ma creare prototipi può essere costoso rispetto all'analisi: *che fare, e perché?*
-- **Prototipare o no?** (p. 24) Domande da considerare: il progetto incorpora tecnologie emergenti? la tecnologia è nuova per l'azienda? ci sono driver, in particolare attributi di qualità, la cui soddisfazione con la tecnologia scelta presenta rischi? manca evidenza che la tecnologia scelta aiuterà a soddisfare i driver del progetto? ci sono opzioni di configurazione associate alla tecnologia che vanno testate o capite? non è chiaro se la tecnologia scelta si può integrare con il progetto? **Se la maggior parte delle risposte è «sì» conviene considerare un prototipo usa-e-getta (*throwaway prototype*).**
+#### Prototipare o no · [[06-ADD-Designing a Software Architecture.pdf#page=23|p. 23]]–[[06-ADD-Designing a Software Architecture.pdf#page=24|24]]
+
+- Se la tabella non basta a decidere, può servire costruire dei **prototipi** e fare delle **misure**.
+- Ma un prototipo può costare molto più di un'analisi. Che cosa conviene fare, e perché?
+- Domande da porsi:
+  - il progetto usa **tecnologie emergenti**?
+  - la tecnologia è **nuova per l'azienda**?
+  - ci sono driver, soprattutto attributi di qualità, che con la tecnologia scelta è **rischioso** soddisfare?
+  - mancano **prove** che la tecnologia scelta aiuterà a soddisfare i driver?
+  - la tecnologia ha **opzioni di configurazione** da provare o da capire?
+  - non è chiaro se la tecnologia si possa **integrare** con il resto del progetto?
+- Se la risposta è «sì» per la maggior parte delle domande, conviene costruire un **prototipo usa e getta** (*throwaway prototype*): serve solo a rispondere al dubbio e poi si butta.
 
 ### Passo 5: istanziare gli elementi, assegnare le responsabilità e definire le interfacce · [[06-ADD-Designing a Software Architecture.pdf#page=25|p. 25]]–[[06-ADD-Designing a Software Architecture.pdf#page=29|29]]
 
-- Scelti uno o più design concept bisogna **istanziarli**. Esempio: se si è scelto il pattern a strati, bisogna decidere il **numero di strati** e le loro **relazioni consentite**.
-- Vanno definite le **responsabilità** di ogni elemento istanziato (per esempio gli strati di presentazione, logica di business e dati hanno responsabilità note e diverse). Gli elementi istanziati vanno anche **collegati**, perché possano collaborare: servono relazioni e scambio di informazioni tramite una **interfaccia**, che è una **specifica contrattuale** di come l'informazione deve fluire tra gli elementi.
-- **Produrre le strutture** (p. 26): le strutture si classificano in: **strutture di modulo** (elementi che esistono a tempo di sviluppo: file, moduli, classi); **strutture C&C** (elementi dinamici che esistono a runtime: processi, thread); **strutture di allocazione** (elementi software di una struttura di modulo o C&C e elementi non software come file system, hardware, team di sviluppo). Istanziando un design concept può servire produrre più di una struttura.
-- **Definire le interfacce** (p. 27): le interfacce sono le proprietà **visibili dall'esterno** degli elementi, che stabiliscono una specifica contrattuale che permette agli elementi di collaborare e scambiare informazioni. Due categorie: **esterne** e **interne**.
-- **Interfacce esterne** (p. 28): comprendono le interfacce di altri sistemi **richieste** dal sistema in sviluppo e le interfacce **fornite** dal sistema agli altri sistemi. Un **system context diagram** aiuta a capirle.
+#### Istanziare e collegare · [[06-ADD-Designing a Software Architecture.pdf#page=25|p. 25]]
+
+- Scelti uno o più design concept, bisogna **istanziarli**, cioè adattarli al proprio sistema.
+  - Esempio: se si è scelto il pattern a livelli, bisogna decidere **quanti livelli** e quali **relazioni** sono permesse tra loro.
+- Vanno definite le **responsabilità** di ogni elemento istanziato.
+  - Esempio: i livelli di presentazione, di logica di business e dei dati hanno responsabilità diverse e note.
+- Gli elementi vanno anche **collegati**, perché possano collaborare: servono relazioni e uno scambio di informazioni attraverso un'**interfaccia**.
+- Un'**interfaccia** è una **specifica contrattuale** che dice come le informazioni devono passare tra gli elementi.
+
+#### Produrre le strutture · [[06-ADD-Designing a Software Architecture.pdf#page=26|p. 26]]
+
+Le strutture si dividono in tre categorie:
+
+| Struttura | Elementi | Esempi |
+|---|---|---|
+| **Di modulo** | elementi che esistono durante lo sviluppo | file, moduli, classi |
+| **Componenti e connettori** (C&C) | elementi dinamici, che esistono durante l'esecuzione | processi, thread |
+| **Di allocazione** | elementi software (di una struttura di modulo o C&C) messi in relazione con elementi non software | file system, hardware, team di sviluppo |
+
+- Istanziando un design concept può essere necessario produrre **più di una struttura**.
+- 🧩 *Esempio.* Scegliere il client–server produce una struttura C&C (client e server che comunicano) ma anche una di allocazione (su quali macchine girano).
+
+#### Definire le interfacce · [[06-ADD-Designing a Software Architecture.pdf#page=27|p. 27]]–[[06-ADD-Designing a Software Architecture.pdf#page=29|29]]
+
+- Le **interfacce** sono le proprietà di un elemento **visibili dall'esterno**. Stabiliscono una specifica contrattuale che permette agli elementi di collaborare e scambiarsi informazioni.
+- Ci sono due categorie di interfacce: **esterne** e **interne**.
+- **Interfacce esterne**:
+  - le interfacce di altri sistemi di cui il sistema in sviluppo ha bisogno (**richieste**);
+  - le interfacce che il sistema offre agli altri sistemi (**fornite**).
+  - Per individuarle aiuta il **system context diagram**.
 
 ![[lez09-add-p28-interfacce-esterne.png]]
-*Esempio di system context diagram per il sistema FCAPS: workstation dell'utente, Time Server e database server come sistemi esterni.*
+*System context diagram del sistema FCAPS: il sistema scambia dati con la workstation dell'utente, con un Time Server e con un database server. Ogni freccia verso un sistema esterno è un'interfaccia esterna da definire.*
 
-- **Interfacce interne** (p. 29): sono le interfacce **tra gli elementi** che risultano dall'istanziazione dei design concept. Un **diagramma di sequenza** aiuta a capirle.
+- **Interfacce interne**:
+  - sono le interfacce **tra gli elementi** nati dall'istanziazione dei design concept.
+  - Per individuarle aiuta un **diagramma di sequenza**, che mostra quali messaggi si scambiano gli elementi.
 
 ![[lez09-add-p29-interfacce-interne.png]]
-*Diagramma di sequenza d'esempio con le chiamate tra oggetti (TimeServerConnector, TimeServerConfigurationController, TimeServerDataMapper, Time Server, TopologyController).*
+*Diagramma di sequenza d'esempio: gli oggetti TimeServerConnector, TimeServerConfigurationController, TimeServerDataMapper, Time Server e TopologyController si chiamano a vicenda. Ogni chiamata tra due oggetti indica un'operazione che deve far parte della loro interfaccia.*
 
 ### Passo 6: abbozzare le viste e registrare le decisioni · [[06-ADD-Designing a Software Architecture.pdf#page=30|p. 30]]–[[06-ADD-Designing a Software Architecture.pdf#page=38|38]]
 
-- Le **viste** definite nei passi precedenti vanno **abbozzate** (p. 31). Le decisioni significative prese nell'iterazione, e le **ragioni** che le hanno motivate (la **rationale**), vanno annotate per facilitare l'analisi e la comprensione successive: per esempio le decisioni sui trade-off importanti. Durante un'iterazione le decisioni si prendono soprattutto nei **passi 4 e 5**. Il «progetto» (*blueprint*) viene raffinato; può essere fatto **in parallelo al passo 5**. **Non è documentazione completa ma schizzi (*sketches*).**
-- **Registrare gli schizzi** (p. 32): se si usa una notazione informale bisogna **mantenere coerenza nell'uso dei simboli** (e aggiungere una **legenda**); sviluppare la disciplina di **scrivere le responsabilità** che si assegnano agli elementi mentre si creano le strutture: scriverle *subito* evita di doverle ricordare dopo.
+#### Abbozzare le viste · [[06-ADD-Designing a Software Architecture.pdf#page=30|p. 30]]–[[06-ADD-Designing a Software Architecture.pdf#page=31|31]]
+
+- Le **viste** definite nei passi precedenti vanno **abbozzate**.
+- Le decisioni importanti prese nell'iterazione, insieme ai **motivi** che le hanno giustificate (la **rationale**), vanno annotate. Servono per analizzare e capire le decisioni in seguito.
+  - Esempio: in questo passo si annotano le decisioni sui trade-off importanti.
+- Durante un'iterazione le decisioni si prendono soprattutto nei **passi 4 e 5**.
+- In questo passo si raffina il progetto (il *blueprint*). Si può fare **in parallelo con il passo 5**.
+- Attenzione: **non è una documentazione completa, ma schizzi** (*sketches*).
+
+#### Registrare gli schizzi · [[06-ADD-Designing a Software Architecture.pdf#page=32|p. 32]]–[[06-ADD-Designing a Software Architecture.pdf#page=33|33]]
+
+- Se per gli schizzi si usa una notazione informale, bisogna usare i simboli **in modo coerente** e aggiungere una **legenda** ai diagrammi.
+- Bisogna abituarsi a **scrivere le responsabilità** assegnate agli elementi mentre si creano le strutture.
+- Scriverle **in quel momento** evita di doversele ricordare dopo.
 
 ![[lez09-add-p33-sketch-e-responsabilita.png]]
-*Esempio di schizzo (architettura a Batch Layer, Speed Layer e Serving Layer con Data Stream, raw data storage, viste precalcolate, interfacce di query) con la tabella «elemento — responsabilità» (per esempio Data Stream: raccoglie dati da tutte le fonti in tempo reale e li invia sia al Batch Layer sia al Speed Layer; Batch Layer: memorizza i dati grezzi e precalcola le Batch Views da memorizzare nel Serving Layer).*
+*Esempio di schizzo con la tabella delle responsabilità. L'architettura ha un Batch Layer, uno Speed Layer e un Serving Layer, alimentati da un Data Stream. La tabella accanto dice cosa fa ogni elemento.*
 
-- **Registrare le decisioni di progetto** (p. 34): in ogni iterazione si prendono decisioni importanti per raggiungere l'obiettivo, per esempio: scegliere un design concept tra diverse alternative; creare strutture istanziando il design concept scelto; stabilire relazioni tra elementi e definire interfacce; allocare risorse (persone, hardware, calcolo…); altro.
-- **Registrare la rationale** (pp. 35–36): registrare le decisioni **oltre** a elementi, relazioni e proprietà è fondamentale per aiutare gli altri a capire come si è arrivati al risultato. Informazioni utili da registrare: quali evidenze sono state prodotte per giustificare le decisioni? chi ha fatto cosa? perché si sono prese scorciatoie? perché si sono fatti certi trade-off? quali ipotesi sono state fatte?
-- **Tenere traccia dell'avanzamento della progettazione** (p. 37; esempio di kanban board a p. 38): quando si progetta ci sono domande a cui rispondere: quanta progettazione serve? quanta ne è stata fatta finora? abbiamo finito? **Pratiche Agile come backlog e kanban board** aiutano a tracciare l'avanzamento e a rispondere. Qualsiasi progetto, con qualsiasi metodologia, dovrebbe tracciare l'avanzamento.
+- **Data Stream**: raccoglie in tempo reale i dati da tutte le fonti e li invia sia al Batch Layer sia allo Speed Layer.
+- **Batch Layer**: memorizza i dati grezzi e precalcola le viste (*batch view*) da memorizzare nel Serving Layer.
+- 🧩 Lo schizzo è informale, ma la tabella rende chiaro il ruolo di ogni scatola: è esattamente la disciplina che la slide raccomanda.
+
+#### Registrare le decisioni di progetto · [[06-ADD-Designing a Software Architecture.pdf#page=34|p. 34]]
+
+In ogni iterazione si prendono decisioni importanti per raggiungere l'obiettivo, ad esempio:
+
+- scegliere un design concept tra più alternative;
+- creare strutture istanziando il design concept scelto;
+- stabilire le relazioni tra gli elementi e definire le interfacce;
+- allocare risorse (persone, hardware, capacità di calcolo, …);
+- altre decisioni.
+
+#### Registrare la rationale · [[06-ADD-Designing a Software Architecture.pdf#page=35|p. 35]]–[[06-ADD-Designing a Software Architecture.pdf#page=36|36]]
+
+- Registrare le decisioni, **oltre** agli elementi, alle relazioni e alle proprietà, è fondamentale per far capire agli altri **come si è arrivati al risultato**: è la **design rationale**.
+- Informazioni utili da registrare:
+  - quali **prove** sono state raccolte per giustificare le decisioni?
+  - **chi** ha fatto cosa?
+  - **perché** si sono prese delle scorciatoie?
+  - perché si sono accettati certi **trade-off**?
+  - quali **ipotesi** sono state fatte?
+- 🧩 *Esempio.* «Abbiamo scelto la web application invece dell'app mobile perché il costo era basso e l'interazione ricca non era un driver; ipotesi: gli utenti lavorano da PC.»
+
+#### Tenere traccia dell'avanzamento · [[06-ADD-Designing a Software Architecture.pdf#page=37|p. 37]]–[[06-ADD-Designing a Software Architecture.pdf#page=38|38]]
+
+- Durante la progettazione ci si pone alcune domande:
+  - quanta progettazione serve?
+  - quanta ne abbiamo già fatta?
+  - abbiamo finito?
+- Le pratiche Agile, come il **backlog** e la **kanban board**, aiutano a tenere traccia dell'avanzamento e a rispondere a queste domande.
+- Qualsiasi progetto di sviluppo, con qualsiasi metodologia, dovrebbe tenere traccia dell'avanzamento.
 
 ![[lez09-add-p38-kanban-board.png]]
-*Esempio di kanban board di progettazione con colonne «Not Yet Addressed», «Partially Addressed», «Completely Addressed», «Discarded»: ogni scheda è un driver (scenario di qualità QA, vincolo CT, preoccupazione CN, caso d'uso UC) con la sua priorità (High/Medium/Low).*
+*Una kanban board di progettazione con quattro colonne: «Not Yet Addressed» (non ancora affrontati), «Partially Addressed» (affrontati in parte), «Completely Addressed» (affrontati del tutto), «Discarded» (scartati). Ogni scheda è un driver con la sua priorità (High, Medium, Low): uno scenario di qualità (QA), un vincolo (CT), una preoccupazione (CN) o un caso d'uso (UC). Le schede si spostano verso destra man mano che le iterazioni li soddisfano.*
 
-### Passo 7: analizzare il progetto corrente e rivedere l'obiettivo · [[06-ADD-Designing a Software Architecture.pdf#page=39|p. 39]]–[[06-ADD-Designing a Software Architecture.pdf#page=40|40]]
+### Passo 7: analizzare il progetto e rivedere l'obiettivo · [[06-ADD-Designing a Software Architecture.pdf#page=39|p. 39]]–[[06-ADD-Designing a Software Architecture.pdf#page=40|40]]
 
-- **Analisi del progetto corrente:** si può fare da soli rivedendo gli schizzi delle viste e le decisioni registrate, ma è meglio che **qualcun altro** aiuti a rivedere il progetto (con un'esperienza e una prospettiva diverse) e trovi errori. Le decisioni prese a questo punto sono analizzate, insieme ai progressi del processo di progettazione, per decidere se servono altre iterazioni.
-- **Rivedere l'obiettivo dell'iterazione:** esaminare lo stato dell'architettura rispetto allo scopo di progetto stabilito: considerare se sono state fatte abbastanza iterazioni per soddisfare i driver associati al round, e se lo scopo di progetto è stato raggiunto o servono ulteriori round in incrementi futuri.
-- **Iterare i passi 2–7 per ogni driver**, a partire da quelli a priorità più alta.
+- Le decisioni prese fino a questo punto vengono analizzate, insieme ai progressi dell'intero processo, per decidere se servono **altre iterazioni**.
+- **Analizzare il progetto corrente**:
+  - si può fare da soli, rileggendo gli schizzi delle viste e le decisioni registrate;
+  - è ancora meglio farsi aiutare da **qualcun altro**, con un'esperienza e un punto di vista diversi, che trovi gli errori.
+- **Rivedere l'obiettivo dell'iterazione**: si confronta lo stato dell'architettura con lo scopo di progetto fissato. Questo significa chiedersi:
+  - sono state fatte abbastanza iterazioni per soddisfare i driver di questo round?
+  - lo scopo di progetto è stato raggiunto, o servono altri round in incrementi futuri del progetto?
+- Si **ripetono i passi dal 2 al 7 per ogni driver**, partendo da quelli con la priorità più alta.
 
 ### Riepilogo · [[06-ADD-Designing a Software Architecture.pdf#page=41|p. 41]]
 
-- Presentata una guida dettagliata al metodo **Attribute-Driven Design, versione 3.0**. Discussi aspetti aggiuntivi da considerare nei passi: l'uso di un **backlog**; l'identificazione e selezione dei **design concept** e il loro uso nel produrre strutture; la **definizione delle interfacce**; la produzione di **documentazione preliminare**. Documentazione preliminare e attività di analisi vanno svolte regolarmente come parti integranti del processo di progettazione.
+- La lezione ha presentato passo per passo il metodo **Attribute-Driven Design, versione 3.0**.
+- Ha discusso alcuni aspetti in più da considerare nei passi:
+  - l'uso di un **backlog**;
+  - l'individuazione e la scelta dei **design concept** e il loro uso per produrre le strutture;
+  - la **definizione delle interfacce**;
+  - la produzione di una **documentazione preliminare**.
+- La documentazione preliminare e le attività di analisi vanno svolte **regolarmente**, come parte integrante del processo di progettazione, non alla fine.
 
-*Approfondimenti nel wiki: [[attribute-driven-design]], [[scenari-di-qualita]], [[buone-pratiche-architetturali]], [[strutture-e-viste]]*
+*Approfondimenti nel wiki: [[attribute-driven-design]], [[requisiti-architetturalmente-significativi]], [[scenari-di-qualita]], [[buone-pratiche-architetturali]], [[strutture-e-viste]]*
 
 ## Lezione 10 — Architetture orientate ai servizi e a microservizi (parte 1)
 
