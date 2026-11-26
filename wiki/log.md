@@ -211,3 +211,5 @@ Filtra ultimi 10: `grep "^## " wiki/log.md | tail -10`
 ## [2026-11-25] revisione | Lezione 8 | riscritta per intero nel testo di studio: elenchi verticali, termini spiegati, esempi brevi 🧩, didascalie autosufficienti; aggiunta la figura del Lunar Lander P2P (p. 156); regola registrata in CLAUDE.md
 
 ## [2026-11-25] revisione | Lezione 8 | spiegato «valgono in un certo contesto di sviluppo» nella definizione di stile
+
+## [2026-11-26] revisione | Lezione 10 (SOA e microservizi, parte 1) | riscritta nel testo di studio con il formato della Lezione 8: elenchi verticali, termini spiegati, tabelle di confronto, esempi brevi 🧩, didascalie passo per passo; aggiunto il conteggio dei 6 vincoli REST (p. 28)
